@@ -46,6 +46,18 @@ def btn(label, href, cls="btn"):
     return f'<a class="{cls}" href="{href}"{tgt}>{e(label)} {ARROW}</a>'
 
 
+def btn_orange(label, href):
+    """CTA orange — réservé à Contact / rendez-vous."""
+    return btn(label, href, cls="btn")
+
+
+def btn_plain(label, href, arrow=True):
+    """Lien discret (configurateur, liens secondaires)."""
+    tgt = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
+    arw = f" {ARROW}" if arrow else ""
+    return f'<a class="btn2" href="{href}"{tgt}>{e(label)}{arw}</a>'
+
+
 def header(active):
     links = ""
     for label, href in NAV:
@@ -58,7 +70,7 @@ def header(active):
     return f'''<div class="announce"><a href="{NAV_CTA[1]}">Votre artisan encadreur vous accueille sur rendez-vous.</a></div>
 <header class="site-header">
   <div class="bar">
-    <a class="logo" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"></a>
+    <a class="logo logo--mark" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"><span class="logo__word">Art'Cadres Luxembourg</span></a>
     <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="document.body.classList.toggle('nav-open')">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -292,7 +304,7 @@ accueil_body = f'''<section id="acc">
     <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
     <div class="p-lead"><p>L'encadrement sur mesure, les cadres standards, le tirage photo, la restauration de tableaux, la dorure et une galerie d'art, réunis en un même lieu, à Hollerich.</p></div>
-    <div class="p-btns">{btn("Composer votre cadre en ligne", "configurateur.html")}<a class="btn2" href="notre-histoire.html">Découvrir l'atelier</a></div>
+    <div class="p-btns">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Nous contacter", "contact.html")}</div>
   </div>
 </div>
 <div class="p-w">
@@ -311,7 +323,7 @@ accueil_body = f'''<section id="acc">
         <li><span>3</span> Recevez votre devis instantané</li>
       </ul>
     </div>
-    <div class="p-cta__panel">{btn("Ouvrir le configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+    <div class="p-cta__panel">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
   </div>
 </div>
 </section>
@@ -322,8 +334,8 @@ accueil_body = f'''<section id="acc">
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
-  <div><p class="p-stat">Formats monumentaux</p><h2>Du petit cadre aux très grandes dimensions</h2><p>Nous encadrons et installons sur site des œuvres jusqu'à 3 mètres de large, comme ce panneau mural réalisé pour les bureaux de Deloitte.</p></div>
-  <div class="p-imgs"><div class="p-fr"><img src="assets/gf-deloitte-1.jpg" alt="Œuvre grand format installée sur site" loading="lazy"></div><div class="p-fr"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental" loading="lazy"></div></div>
+  <div><p class="p-stat">Du format intime au monumental</p><h2>Nous encadrons et installons sur site</h2><p>Des médailles aux panneaux muraux de plusieurs mètres : nous maîtrisons l'encadrement sur mesure et la pose en entreprise, pour les particuliers comme pour les institutions.</p></div>
+  <div class="p-imgs"><div class="p-fr"><img src="assets/kathia-grand-format.jpg" alt="Kathia Neumann installe une œuvre grand format" loading="lazy"></div><div class="p-fr"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
 </div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
@@ -348,10 +360,10 @@ hist_body = f'''<section class="section"><div class="p-w">
 </div>
 {content_story("L'excellence de l'encadrement sur mesure", ["Chez Art'Cadres Luxembourg, chaque œuvre mérite une présentation à la hauteur de son histoire, de sa valeur et de son caractère.", "Forte de plus de 30 années d'expérience, Kathia Neumann met son expertise artisanale et son regard esthétique au service de créations entièrement sur mesure. Chaque projet fait l'objet d'une étude attentive, pour un encadrement en parfaite harmonie avec l'œuvre, son environnement et la sensibilité de son propriétaire.", "Moulures contemporaines ou classiques, finitions raffinées, verres de protection, passe-partout et techniques traditionnelles : chaque détail est sélectionné avec exigence pour donner naissance à une pièce unique."])}
 <div class="p-list reveal">{content_list("Nos métiers réunis en un même lieu", [("Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."), ("Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."), ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."), ("Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière.")], spaced=True)}</div>
-{strip(["assets/histoire-mchat.jpg", "assets/histoire-atelier-1.jpg", "assets/histoire-atelier-2.jpg"], 3, ["Collaboration M.Chat · Thoma Vuille", "Atelier d'encadrement sur mesure", "Restauration et finitions artisanales"], large=True)}
+{strip(["assets/kathia-fondatrice.jpg", "assets/kathia-grand-format.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Installation grand format en entreprise", "Atelier d'encadrement sur mesure"], large=True)}
 <figure class="p-quote reveal"><blockquote>« Chaque œuvre mérite une présentation à la hauteur de son histoire. »</blockquote><figcaption>Kathia Neumann, Art'Cadres Luxembourg</figcaption></figure>
 <div class="p-note reveal"><p>Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions bénéficient d'un accompagnement confidentiel, personnalisé et exigeant.</p></div>
-<div class="p-cta reveal">{btn("Prendre rendez-vous", "contact.html")}</div>
+<div class="p-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
 </div></section>'''
 
 # ================= ENCADREMENT SUR MESURE =================
@@ -361,7 +373,7 @@ mesure_body = f'''<section class="section"><div class="p-w">
 <div class="p-list reveal">{content_list("Quelques techniques du sur-mesure", [("La Marie-Louise biseautée", "Le haut de gamme du passe-partout : elle crée une profondeur sur vos sujets, montage traditionnel et moderne à la fois."), ("La caisse américaine", "Le type d'encadrement le plus répandu au monde : une mise en valeur par effet de suspension, l'œuvre flotte dans le cadre."), ("La technique de rehausse", "Un sujet, un verre de protection, une moulure et une rehausse pour que le verre soit en suspension au-dessus du sujet.")])}</div>
 <div class="p-list p-list2 reveal">{content_list("Les baguettes Nielsen, 4 univers", [("Nature", "Bois naturel, massif et placage."), ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."), ("Design", "Des lignes pures, associées à des finitions sobres ou métallisées."), ("Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies.")])}</div>
 {strip(["assets/ac-mesure-1.jpg", "assets/ac-mesure-2.jpg", "assets/ac-mesure-3.jpg"], 3)}
-<div class="p-cta reveal">{btn("Composer votre cadre en ligne", "configurateur.html")}</div>
+<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
 </div></section>'''
 
 # ================= ENCADREMENT STANDARD =================
@@ -369,7 +381,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 {content_hero("Cadres standards", "Les cadres Nielsen", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
 <div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Conçus par Nielsen Design", "La certification FSC garantit une gestion responsable des forêts. La plupart de nos cadres bois sont éco-responsables."), ("Fabriqués en Allemagne", "Nielsen, marque de référence de l'encadrement : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
 {strip(["assets/ac-standard-1.jpg", "assets/ac-standard-2.jpg"], 2)}
-<div class="p-cta reveal">{btn("Composer votre cadre en ligne", "configurateur.html")}</div>
+<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
 </div></section>'''
 
 # ================= DORURES & RESTAURATION =================
@@ -378,7 +390,7 @@ dorures_body = f'''<section class="section"><div class="p-w">
 {content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
 {strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4, ["Nettoyage et consolidation", "Retouche et harmonisation", "Dorure à la feuille", "Remise en valeur du tableau"], large=True)}
 <div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
-<div class="p-cta reveal">{btn("Demander un diagnostic", "contact.html")}</div>
+<div class="p-cta reveal">{btn_orange("Demander un diagnostic", "contact.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================
@@ -411,7 +423,7 @@ partenaires_body = f'''<section class="section"><div class="p-w">
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
     <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres pour rendre votre intérieur aussi parfait que possible. Nature, Color, Design, Charme : quatre univers, mille possibilités.</p>
-    {btn("Visiter le site Nielsen", "https://www.nielsen-design.com/")}
+    {btn_plain("Visiter le site Nielsen", "https://www.nielsen-design.com/")}
   </div>
 </div>
 <h2 class="p-h2 reveal" style="margin-top:clamp(72px,9vw,120px)">Ils nous recommandent</h2>
@@ -437,7 +449,7 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <h2 class="p-h1">Une collection coup de cœur</h2>
 <div class="g-lead reveal"><p>Passionnés depuis plus de 30 ans, nous avons construit notre espace galerie autour d'œuvres choisies, encadrées et mises en lumière avec le même soin que celui porté à vos objets.</p></div>
 <div class="g-grid">{gal_cells}</div>
-<div class="g-cta reveal">{btn("Prendre rendez-vous", "contact.html")}</div>
+<div class="g-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
 </div></section>'''
 
 # ================= CONTACT =================
@@ -445,6 +457,14 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
 <h2 class="c-h1">Où trouver la boutique Art'Cadres ?</h2>
 <div class="c-lead reveal"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville.</p></div>
+<div class="c-founder reveal">
+  <figure class="c-founder__photo"><div class="p-frame"><img src="assets/kathia-fondatrice.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager"></div></figure>
+  <div class="c-founder__txt">
+    <h3>Kathia Neumann</h3>
+    <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
+    <p>Plus de 30 ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue le savoir-faire de la Maison Neumann (Metz, 1972) à Luxembourg, avec la même exigence artisanale.</p>
+  </div>
+</div>
 <div class="c-grid">
   <div class="reveal">
     <div class="c-info">
@@ -453,17 +473,10 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
       <div class="c-row"><p class="c-lab">Adresse</p><div class="c-val"><p>2 bis rue de la toison d'or<br>L-2342 Luxembourg (Hollerich)</p></div></div>
       <div class="c-row"><p class="c-lab">Horaires</p><div class="c-val"><p>Mercredi au samedi<br>de 10 h à 18 h</p></div></div>
     </div>
-    <div class="c-team reveal">
-      <h3 class="c-team__h">L'équipe</h3>
-      <div class="c-team__grid">
-        <div class="c-person"><p class="c-person__name">Kathia Neumann</p><p class="c-person__role">Directrice · Encadreur d'art</p></div>
-        <div class="c-person"><p class="c-person__name">Artisans encadreurs</p><p class="c-person__role">Sur mesure, dorure &amp; restauration</p></div>
-      </div>
-    </div>
-    <div class="c-book reveal">{btn("Prendre rendez-vous", "tel:+35227849488")}<a class="btn2" href="mailto:contact@artcadres.lu">Écrire un e-mail</a></div>
+    <div class="c-book reveal">{btn_orange("Prendre rendez-vous", "tel:+35227849488")}{btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
     <div class="c-note"><p>Nous répondons sous 48 h ouvrées. Pour un rendez-vous, appelez-nous ou écrivez-nous directement.</p></div>
   </div>
-  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="eager"></div></figure>
+  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="lazy"></div></figure>
 </div>
 </div></section>'''
 

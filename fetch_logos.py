@@ -53,9 +53,9 @@ def recolor_svg(text, color=COLOR):
 
 def wordmark_svg(label, size=16, weight=700, stacked=False, variant=None):
     if variant == "bnl":
-        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" role="img" aria-label="Bibliothèque nationale du Luxembourg">
-  <text x="0" y="18" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="{COLOR}" letter-spacing="0.06em">BIBLIOTHÈQUE NATIONALE</text>
-  <text x="0" y="38" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" fill="{COLOR}" letter-spacing="0.02em">du Luxembourg</text>
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 52" role="img" aria-label="Bibliothèque nationale du Luxembourg">
+  <text x="140" y="17" text-anchor="middle" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="10.5" font-weight="700" fill="{COLOR}" letter-spacing="0.07em">BIBLIOTHÈQUE NATIONALE</text>
+  <text x="140" y="36" text-anchor="middle" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="{COLOR}">du Luxembourg</text>
 </svg>'''
     if stacked:
         w = 200
