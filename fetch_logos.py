@@ -13,7 +13,6 @@ SOURCES = {
     "logo-ref-deloitte.svg": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Deloitte_old_blue_logo.svg",
     "logo-ref-accor.svg": "https://upload.wikimedia.org/wikipedia/commons/4/46/AccorHotels_Logo_2016.svg",
     "logo-ref-ses.svg": "https://upload.wikimedia.org/wikipedia/commons/6/67/SES_S.A._logo.svg",
-    "logo-ref-courducale.svg": "https://upload.wikimedia.org/wikipedia/commons/8/84/Coat_of_arms_of_Luxembourg.svg",
     "logo-ref-bnl.png": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Biblioth%C3%A8que_nationale_de_Luxembourg_logo.png",
 }
 
@@ -21,6 +20,7 @@ WORDMARKS = {
     "logo-ref-sodikart.svg": ("SODIKART", 16, 700),
     "logo-ref-maisonheler.svg": ("Maison Heler", 14, 600),
     "logo-ref-mchat.svg": ("M.CHAT", 18, 800),
+    "logo-ref-courducale.svg": ("Cour grand-ducale", 13, 700, True),
 }
 
 
@@ -37,7 +37,13 @@ def recolor_svg(text, color=COLOR):
     return text
 
 
-def wordmark_svg(label, size=16, weight=700):
+def wordmark_svg(label, size=16, weight=700, stacked=False):
+    if stacked:
+        w = 200
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} 44" role="img" aria-label="{label}">
+  <text x="0" y="17" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size + 1}" font-weight="800" fill="{COLOR}" letter-spacing="0.08em">COUR</text>
+  <text x="0" y="36" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size}" font-weight="600" fill="{COLOR}" letter-spacing="0.03em">grand-ducale</text>
+</svg>'''
     w = max(120, len(label) * (size * 0.62))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} 40" role="img" aria-label="{label}">
   <text x="0" y="28" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size}" font-weight="{weight}" fill="{COLOR}" letter-spacing="0.04em">{label}</text>
@@ -80,10 +86,13 @@ def main():
             tmp = path + ".tmp.png"
             mono_png(path, tmp)
             os.replace(tmp, path)
-    for name, (label, sz, wt) in WORDMARKS.items():
+    for name, spec in WORDMARKS.items():
         path = os.path.join(OUT, name)
         print("wordmark", name)
-        open(path, "w", encoding="utf-8").write(wordmark_svg(label, sz, wt))
+        if len(spec) == 4:
+            open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2], spec[3]))
+        else:
+            open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2]))
     print("OK:", len(os.listdir(OUT)), "fichiers dans assets/logos/")
 
 

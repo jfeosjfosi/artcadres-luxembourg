@@ -19,3 +19,20 @@ python3 build.py
 python3 -m http.server 8765
 # http://localhost:8765
 ```
+
+## Domaine artcadres.lu (GitHub Pages)
+
+Le repo contient un fichier `CNAME` (`artcadres.lu`). Côté registrar DNS, pointer le domaine vers GitHub :
+
+**Enregistrements A (apex `artcadres.lu`)** — remplacer l'IP actuelle (`109.234.162.35`) par :
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+**Optionnel `www`** : CNAME `www` → `jfeosjfosi.github.io`
+
+Après propagation DNS (jusqu'à 48 h), activer **Enforce HTTPS** dans GitHub → Settings → Pages. Le site répondra sur https://artcadres.lu/

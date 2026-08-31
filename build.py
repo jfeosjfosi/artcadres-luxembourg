@@ -7,6 +7,7 @@ import html
 import os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
+SITE_URL = "https://artcadres.lu"
 
 NAV = [
     ("Accueil", "index.html"),
@@ -100,7 +101,11 @@ def footer():
 </div></footer>'''
 
 
-def page(title, description, body, active):
+def page(title, description, body, active, extra_head=""):
+    slug = "" if active == "index.html" else active
+    canonical = SITE_URL + ("/" if not slug else "/" + slug)
+    og_img = SITE_URL + "/assets/ac-accueil.jpg"
+    head_extra = f"\n  {extra_head}" if extra_head else ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -108,10 +113,18 @@ def page(title, description, body, active):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{e(title)}</title>
   <meta name="description" content="{e(description)}">
+  <link rel="canonical" href="{canonical}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_LU">
+  <meta property="og:site_name" content="Art'Cadres Luxembourg">
+  <meta property="og:title" content="{e(title)}">
+  <meta property="og:description" content="{e(description)}">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:image" content="{og_img}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">{head_extra}
 </head>
 <body>
 {header(active)}
@@ -193,7 +206,7 @@ REF_LOGOS = [
     ("logo-ref-deloitte.svg", "Deloitte", "logosvg--wide"),
     ("logo-ref-accor.svg", "Accor", "logosvg--wide"),
     ("logo-ref-ses.svg", "SES", ""),
-    ("logo-ref-courducale.svg", "Cour grand-ducale du Luxembourg", "logosvg--tall"),
+    ("logo-ref-courducale.svg", "Cour grand-ducale du Luxembourg", "logosvg--cour"),
     ("logo-ref-bnl.png", "Bibliothèque nationale du Luxembourg", "logosvg--tall"),
     ("logo-ref-maisonheler.svg", "Maison Heler", "logosvg--word"),
     ("logo-ref-sodikart.svg", "SODIKART", "logosvg--word"),
@@ -422,8 +435,11 @@ PAGES = [
 ]
 
 for fname, title, desc, body in PAGES:
+    extra = ""
+    if fname == "index.html":
+        extra = '<link rel="preload" as="image" href="assets/ac-accueil.jpg">'
     with open(os.path.join(OUT, fname), "w", encoding="utf-8") as f:
-        f.write(page(title, desc, body, fname))
+        f.write(page(title, desc, body, fname, extra))
     print("écrit :", fname)
 
 print("OK,", len(PAGES), "pages générées.")
