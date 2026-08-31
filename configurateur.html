@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Composez votre cadre — Devis en ligne — Art&#x27;Cadres Luxembourg</title>
+  <title>Composez votre cadre, devis en ligne, Art&#x27;Cadres Luxembourg</title>
   <meta name="description" content="Composez votre cadre sur mesure en ligne et obtenez un devis immédiat : baguette, passe-partout et verre.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       <button class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <a href="index.html"><span>Accueil</span></a><a href="notre-histoire.html"><span>Notre histoire</span></a><a href="encadrement-sur-mesure.html"><span>Encadrement sur mesure</span></a><a href="encadrement-standard.html"><span>Encadrement standard</span></a><a href="dorures-restauration.html"><span>Dorure &amp; restauration</span></a><a href="notre-galerie.html"><span>Galerie</span></a><a href="partenaires.html"><span>Partenaires</span></a><a href="contact.html"><span>Contact</span></a><a class="cta" href="configurateur.html" aria-current="page"><span>Devis en ligne</span></a>
+      <a href="index.html"><span>Accueil</span></a><a href="encadrement-sur-mesure.html"><span>Sur mesure</span></a><a href="encadrement-standard.html"><span>Cadres standards</span></a><a href="dorures-restauration.html"><span>Dorure &amp; restauration</span></a><a href="notre-galerie.html"><span>Galerie</span></a><a href="notre-histoire.html"><span>Histoire</span></a><a href="partenaires.html"><span>Partenaires</span></a><a href="contact.html"><span>Contact</span></a><a class="cta" href="configurateur.html" aria-current="page"><span>Devis en ligne</span></a>
     </nav>
     <div class="nav-backdrop" onclick="document.body.classList.remove('nav-open')"></div>
   </div>
@@ -30,15 +30,17 @@
 <main>
 <section id="cfg">
 <div class="cfg-inner">
-  <div class="cfg-head">
+  <div class="cfg-head reveal">
     <p class="cfg-eyebrow">Sur mesure, en ligne</p>
     <h2 class="cfg-title">Composez votre cadre</h2>
     <p class="cfg-intro">Choisissez la baguette, le passe-partout et le verre. Le prix se calcule au fur et à mesure, et vous obtenez votre devis immédiatement.</p>
     <ul class="cfg-points"><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Prix en temps réel</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Devis immédiat</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Ajusté au millimètre</li></ul>
   </div>
-  <div class="cfg-stage">
-    <iframe class="cfg-frame" src="https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <div class="cfg-stage reveal">
+    <div class="cfg-skeleton" aria-hidden="true"></div>
+    <iframe class="cfg-frame" src="https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin" onload="var s=this.parentNode.querySelector('.cfg-skeleton'); if(s) s.style.display='none';"></iframe>
   </div>
+  <p class="cfg-fallback">Le configurateur ne s'affiche pas ? <a href="https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
 </div>
 </section>
 </main>
@@ -57,7 +59,7 @@
     </div>
     <div class="fcol"><h3>Nos prestations</h3><div class="flinks">
       <a href="encadrement-sur-mesure.html">Encadrement sur mesure</a>
-      <a href="encadrement-standard.html">Encadrement standard</a>
+      <a href="encadrement-standard.html">Cadres standards</a>
       <a href="dorures-restauration.html">Dorure &amp; restauration</a>
       <a href="configurateur.html">Devis en ligne</a>
     </div></div>
@@ -75,7 +77,8 @@
       2 bis rue de la toison d'or, L-2342 Luxembourg</p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Art'Cadres Luxembourg — Maison Neumann depuis 1972</div>
+  <div class="footer-bottom">© 2026 Art'Cadres Luxembourg. Maison Neumann depuis 1972.</div>
 </div></footer>
+<script defer src="script.js"></script>
 </body>
 </html>
