@@ -4,9 +4,11 @@ Site vitrine statique (HTML/CSS), sans dépendance Shopify.
 
 ## URL live (à utiliser)
 
-**https://jfeosjfosi.github.io/artcadres-luxembourg/**
+**https://jfeosjfosi.github.io/artcadres-preview/**
 
-> `artcadres.lu` affiche encore l’**ancien WordPress** (hébergement o2switch). Ce n’est pas le nouveau site. Ne pas utiliser ce domaine tant que le DNS n’a pas été basculé.
+> Utilise **cette URL** (repo `artcadres-preview`). L’ancienne URL `artcadres-luxembourg` peut encore rediriger vers `artcadres.lu` dans ton navigateur à cause d’un **301 mis en cache** quand le domaine custom était actif.
+
+> `artcadres.lu` = ancien WordPress o2switch. **Ne pas utiliser.**
 
 - Pages générées par `build.py` (contenu réel du thème d'origine).
 - `styles.css` : styles partagés.
