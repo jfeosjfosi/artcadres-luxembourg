@@ -8,7 +8,7 @@ import os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 # URL live tant que le DNS artcadres.lu n'est pas basculé vers GitHub Pages
-SITE_URL = "https://jfeosjfosi.github.io/artcadres-luxembourg"
+SITE_URL = "https://jfeosjfosi.github.io/artcadres-preview"
 
 NAV = [
     ("Accueil", "index.html"),
