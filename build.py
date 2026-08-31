@@ -133,18 +133,22 @@ def content_list(title, items):
 
 
 def strip(imgs, cols):
-    cells = "".join(f'<div class="p-scell"><div class="p-frame"><img src="{s}" alt="" '
-                    f'loading="lazy"></div></div>' for s in imgs)
+    cells = ""
+    for i, s in enumerate(imgs):
+        load = "eager" if i == 0 else "lazy"
+        cells += (f'<div class="p-scell"><div class="p-frame"><img src="{s}" alt="" '
+                  f'loading="{load}"></div></div>')
     return f'<div class="p-strip strip-{cols} reveal">{cells}</div>'
 
 
-def content_hero(eyebrow, heading, lead_html, image, caption, solo=False):
+def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_img=False):
     if solo:
         fig = ""
     else:
         cap = f'<figcaption class="p-cap">{e(caption)}</figcaption>' if caption else ""
+        load = "eager" if eager_img else "lazy"
         fig = (f'<figure class="reveal" style="--d:120ms"><div class="p-frame">'
-               f'<img src="{image}" alt="{e(heading)}" loading="lazy"></div>{cap}</figure>')
+               f'<img src="{image}" alt="{e(heading)}" loading="{load}"></div>{cap}</figure>')
     solo_cls = " p-hero-solo" if solo else ""
     return (f'<div class="p-hero{solo_cls}"><div class="p-intro reveal">'
             f'<span class="p-eyebrow">{e(eyebrow)}</span>'
@@ -168,6 +172,15 @@ def logo_wall(items, flex=False):
     return f'<div class="{cls}">{tiles}</div>'
 
 
+def ref_logo_strip(items):
+    """Bande logos clients (logo seul, sans sous-titre). items = (fichier, alt, classe optique)."""
+    tiles = "".join(
+        f'<div class="logotile logotile--brand"><img class="logosvg {cls}" '
+        f'src="assets/logos/{fname}" alt="{e(alt)}" loading="lazy"></div>'
+        for fname, alt, cls in items)
+    return f'<div class="logostrip reveal">{tiles}</div>'
+
+
 # ================= ACCUEIL =================
 services = [("01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi."),
             ("02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre."),
@@ -176,15 +189,15 @@ services = [("01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi.")
 svc_html = "".join(f'<div class="p-svc"><span class="n">{n}</span><h3>{e(t)}</h3>'
                    f'<p>{e(d)}</p></div>' for n, t, d in services)
 
-conf_logos = [
-    ("D", "Deloitte", "Œuvres & grand format"),
-    ("A", "Accor", "ibis Styles, Mercure, MGallery"),
-    ("SES", "SES", "Fournisseur sur site"),
-    ("CG", "Cour grand-ducale", "200+ portraits officiels"),
-    ("BnL", "Bibliothèque nationale", "Grand format en situ"),
-    ("MH", "Maison Heler", "Hôtel signé Philippe Starck"),
-    ("SK", "SODIKART", "Maillots & pièces signés"),
-    ("MC", "M.Chat", "Avec Thoma Vuille"),
+REF_LOGOS = [
+    ("logo-ref-deloitte.svg", "Deloitte", "logosvg--wide"),
+    ("logo-ref-accor.svg", "Accor", "logosvg--wide"),
+    ("logo-ref-ses.svg", "SES", ""),
+    ("logo-ref-courducale.svg", "Cour grand-ducale du Luxembourg", "logosvg--tall"),
+    ("logo-ref-bnl.png", "Bibliothèque nationale du Luxembourg", "logosvg--tall"),
+    ("logo-ref-maisonheler.svg", "Maison Heler", "logosvg--word"),
+    ("logo-ref-sodikart.svg", "SODIKART", "logosvg--word"),
+    ("logo-ref-mchat.svg", "M.Chat", "logosvg--word"),
 ]
 conf_hl = [
     ("ref-courducale", "Cour grand-ducale", "Plus de 200 portraits officiels"),
@@ -231,14 +244,14 @@ accueil_body = f'''<section id="acc">
   <div class="p-services reveal">{svc_html}</div>
   <div class="p-story reveal">
     <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
-    <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="lazy"></div></figure>
+    <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="eager"></div></figure>
   </div>
   <div class="p-cta reveal"><h2>Votre devis, tout de suite</h2><p>Composez votre cadre en ligne et obtenez un prix instantané, sans engagement.</p>{btn("Ouvrir le configurateur", "configurateur.html")}</div>
 </div>
 </section>
 <section id="conf" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Des institutions, des marques et des artistes nous confient leurs œuvres</h2>
-{logo_wall(conf_logos)}
+{ref_logo_strip(REF_LOGOS)}
 <div class="p-strip strip-3 reveal" style="margin-top:clamp(40px,5vw,60px)">{conf_hl_html}</div>
 </div></section>
 <section id="gf" class="section"><div class="p-w">
@@ -259,7 +272,7 @@ accueil_body = f'''<section id="acc">
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
-{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. Un espace unique où savoir-faire artisanal, conseil personnalisé et passion de l'art se rencontrent.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville")}
+{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. Un espace unique où savoir-faire artisanal, conseil personnalisé et passion de l'art se rencontrent.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True)}
 {content_story("L'excellence de l'encadrement sur mesure", ["Chez Art'Cadres Luxembourg, chaque œuvre mérite une présentation à la hauteur de son histoire, de sa valeur et de son caractère.", "Forte de plus de 30 années d'expérience, Kathia Neumann met son expertise artisanale et son regard esthétique au service de créations entièrement sur mesure. Chaque projet fait l'objet d'une étude attentive, pour un encadrement en parfaite harmonie avec l'œuvre, son environnement et la sensibilité de son propriétaire.", "Moulures contemporaines ou classiques, finitions raffinées, verres de protection, passe-partout et techniques traditionnelles : chaque détail est sélectionné avec exigence pour donner naissance à une pièce unique."])}
 <div class="p-list reveal">{content_list("Nos métiers réunis en un même lieu", [("Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."), ("Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."), ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."), ("Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière.")])}</div>
 {strip(["assets/histoire-mchat.jpg", "assets/histoire-atelier-1.jpg", "assets/histoire-atelier-2.jpg"], 3)}
@@ -270,7 +283,7 @@ hist_body = f'''<section class="section"><div class="p-w">
 
 # ================= ENCADREMENT SUR MESURE =================
 mesure_body = f'''<section class="section"><div class="p-w">
-{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/ac-mesure.jpg", "Encadrement sur mesure à l'atelier")}
+{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/ac-mesure.jpg", "Encadrement sur mesure à l'atelier", eager_img=True)}
 {content_story("Mettre l'œuvre en valeur, selon votre budget", ["Notre objectif principal est la mise en valeur de l'œuvre, en tenant compte de la sensibilité de chacun, avec un budget adapté grâce à une gamme étendue de moulures tous styles, du contemporain au classique.", "Styles de nos moulures : modernes, noir, blanc, chêne, or, wengé, gris, couleurs."])}
 <div class="p-list reveal">{content_list("Quelques techniques du sur-mesure", [("La Marie-Louise biseautée", "Le haut de gamme du passe-partout : elle crée une profondeur sur vos sujets, montage traditionnel et moderne à la fois."), ("La caisse américaine", "Le type d'encadrement le plus répandu au monde : une mise en valeur par effet de suspension, l'œuvre flotte dans le cadre."), ("La technique de rehausse", "Un sujet, un verre de protection, une moulure et une rehausse pour que le verre soit en suspension au-dessus du sujet.")])}</div>
 <div class="p-list p-list2 reveal">{content_list("Les baguettes Nielsen, 4 univers", [("Nature", "Bois naturel, massif et placage."), ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."), ("Design", "Des lignes pures, associées à des finitions sobres ou métallisées."), ("Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies.")])}</div>
@@ -280,7 +293,7 @@ mesure_body = f'''<section class="section"><div class="p-w">
 
 # ================= ENCADREMENT STANDARD =================
 standard_body = f'''<section class="section"><div class="p-w">
-{content_hero("Cadres standards", "Les cadres Nielsen", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium")}
+{content_hero("Cadres standards", "Les cadres Nielsen", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
 <div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Conçus par Nielsen Design", "La certification FSC garantit une gestion responsable des forêts. La plupart de nos cadres bois sont éco-responsables."), ("Fabriqués en Allemagne", "Nielsen, marque de référence de l'encadrement : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
 {strip(["assets/ac-standard-1.jpg", "assets/ac-standard-2.jpg"], 2)}
 <div class="p-cta reveal">{btn("Composer votre cadre en ligne", "configurateur.html")}</div>
@@ -288,7 +301,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 
 # ================= DORURES & RESTAURATION =================
 dorures_body = f'''<section class="section"><div class="p-w">
-{content_hero("Dorure & restauration", "Redonnez vie à vos œuvres d'art", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier")}
+{content_hero("Dorure & restauration", "Redonnez vie à vos œuvres d'art", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
 {content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
 {strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4)}
 <div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
@@ -326,7 +339,7 @@ partenaires_body = f'''<section class="section"><div class="p-w">
 # ================= GALERIE =================
 gal_cells = "".join(
     f'<figure class="g-cell reveal"><div class="g-frame"><img src="assets/gal-{i:02d}.jpg" '
-    f'alt="Œuvre encadrée par Art\'Cadres Luxembourg" loading="lazy"></div></figure>'
+    f'alt="Œuvre encadrée par Art\'Cadres Luxembourg" loading="{"eager" if i == 1 else "lazy"}"></div></figure>'
     for i in range(1, 19))
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
@@ -351,7 +364,7 @@ contact_body = '''<section id="contact" class="section"><div class="p-w">
     </div>
     <div class="c-note"><p>Nous répondons sous 48 h ouvrées.</p></div>
   </div>
-  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="lazy"></div></figure>
+  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="eager"></div></figure>
 </div>
 </div></section>'''
 
