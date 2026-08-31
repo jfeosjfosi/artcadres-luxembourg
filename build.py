@@ -18,9 +18,20 @@ NAV = [
     ("Galerie", "notre-galerie.html"),
     ("Histoire", "notre-histoire.html"),
     ("Partenaires", "partenaires.html"),
-    ("Contact", "contact.html"),
 ]
-CTA = ("Devis en ligne", "configurateur.html")
+NAV_CFG = ("Composer votre cadre", "configurateur.html")
+NAV_CTA = ("Contact", "contact.html")
+
+ICON = {
+    "frame": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><rect x="7" y="7" width="10" height="10"/></svg>',
+    "ruler": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v8H4z"/><path d="M7 8v3M10 8v2M13 8v3M16 8v2"/></svg>',
+    "photo": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg>',
+    "bag": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+    "clock": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    "doc": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8l4 4v12H8z"/><path d="M16 4v4h4M10 12h6M10 16h6"/></svg>',
+    "size": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M20 20H4M20 20V8M20 20h-6"/></svg>',
+    "shield": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>',
+}
 
 ARROW = ('<span class="arw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/>'
          '</svg></span>')
@@ -40,9 +51,11 @@ def header(active):
     for label, href in NAV:
         cur = ' aria-current="page"' if href == active else ""
         links += f'<a href="{href}"{cur}><span>{e(label)}</span></a>'
-    cur = ' aria-current="page"' if CTA[1] == active else ""
-    links += f'<a class="cta" href="{CTA[1]}"{cur}><span>{e(CTA[0])}</span></a>'
-    return f'''<div class="announce"><a href="contact.html">Votre artisan encadreur vous accueille sur rendez-vous.</a></div>
+    cur = ' aria-current="page"' if NAV_CFG[1] == active else ""
+    links += f'<a href="{NAV_CFG[1]}"{cur}><span>{e(NAV_CFG[0])}</span></a>'
+    cur = ' aria-current="page"' if NAV_CTA[1] == active else ""
+    links += f'<a class="cta" href="{NAV_CTA[1]}"{cur}><span>{e(NAV_CTA[0])}</span></a>'
+    return f'''<div class="announce"><a href="{NAV_CTA[1]}">Votre artisan encadreur vous accueille sur rendez-vous.</a></div>
 <header class="site-header">
   <div class="bar">
     <a class="logo" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"></a>
@@ -61,17 +74,16 @@ def header(active):
 
 
 def footer():
-    parts = ["Encadrement sur mesure", "Restauration de tableaux",
-             "Click &amp; Collect en 1h", "Devis instantané en ligne"]
-    seq = "".join(f'<span>{p}</span><span class="sep">·</span>' for p in parts)
-    track = seq * 2
-    return f'''<section class="marquee" aria-hidden="true"><div class="marquee__track">{track}</div></section>
-<section class="trust"><div class="trust__grid">
-  <div><h4>Click &amp; Collect en 1h</h4><p>Retrait à l'atelier, à Hollerich.</p></div>
-  <div><h4>Devis instantané</h4><p>Votre prix en ligne, via le configurateur.</p></div>
-  <div><h4>Sur mesure &amp; grands formats</h4><p>Des petits cadres aux très grandes pièces.</p></div>
-  <div><h4>Restauration de tableaux</h4><p>Diagnostic et devis personnalisés.</p></div>
-</div></section>
+    trust = [
+        ("clock", "Click &amp; Collect en 1h", "Retrait à l'atelier, à Hollerich."),
+        ("doc", "Devis instantané", "Prix en ligne via le configurateur."),
+        ("size", "Sur mesure &amp; grands formats", "Du petit cadre aux pièces monumentales."),
+        ("shield", "Restauration de tableaux", "Diagnostic et devis personnalisés."),
+    ]
+    trust_html = "".join(
+        f'<div class="trust__item"><div class="trust__ico">{ICON[k]}</div>'
+        f'<h4>{t}</h4><p>{d}</p></div>' for k, t, d in trust)
+    return f'''<section class="trust trust--icons"><div class="trust__grid">{trust_html}</div></section>
 <footer class="site-footer"><div class="fw">
   <div class="footer-cols">
     <div class="fcol footer-logo">
@@ -82,7 +94,7 @@ def footer():
       <a href="encadrement-sur-mesure.html">Encadrement sur mesure</a>
       <a href="encadrement-standard.html">Cadres standards</a>
       <a href="dorures-restauration.html">Dorure &amp; restauration</a>
-      <a href="configurateur.html">Devis en ligne</a>
+      <a href="configurateur.html">Composer votre cadre</a>
     </div></div>
     <div class="fcol"><h3>Explorer</h3><div class="flinks">
       <a href="index.html">Accueil</a>
@@ -97,6 +109,12 @@ def footer():
       <a href="tel:+35227849488">+352 27 84 94 88</a><br>
       2 bis rue de la toison d'or, L-2342 Luxembourg</p>
     </div>
+  </div>
+  <div class="footer-legal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="conditions-generales-de-vente.html">CGV</a>
+    <a href="politique-de-confidentialite.html">Confidentialité</a>
+    <a href="politique-des-cookies.html">Cookies</a>
   </div>
   <div class="footer-bottom">© 2026 Art'Cadres Luxembourg. Maison Neumann depuis 1972.</div>
 </div></footer>'''
@@ -139,27 +157,34 @@ def page(title, description, body, active, extra_head=""):
 
 
 # ---------- Fragments reutilisables ----------
-def content_list(title, items):
+def content_list(title, items, spaced=False):
     lis = "".join(f'<li><span class="t">{e(t)}</span><span class="d">{e(d)}</span></li>'
                   for t, d in items)
     h = f'<h3 class="p-listh">{e(title)}</h3>' if title else ""
+    if spaced:
+        return f'<div class="p-list-block">{h}<ul>{lis}</ul></div>'
     return f'{h}<ul>{lis}</ul>'
 
 
-def strip(imgs, cols):
+def strip(imgs, cols, captions=None, large=False):
     cells = ""
     for i, s in enumerate(imgs):
         load = "eager" if i == 0 else "lazy"
-        cells += (f'<div class="p-scell"><div class="p-frame"><img src="{s}" alt="" '
-                  f'loading="{load}"></div></div>')
-    return f'<div class="p-strip strip-{cols} reveal">{cells}</div>'
+        cap = ""
+        if captions and i < len(captions):
+            cap = f'<figcaption class="p-cap p-cap--lg">{e(captions[i])}</figcaption>'
+        lg = " p-scell--lg" if large else ""
+        cells += (f'<figure class="p-scell{lg}"><div class="p-frame"><img src="{s}" alt="" '
+                  f'loading="{load}"></div>{cap}</figure>')
+    lg_cls = " p-strip--lg" if large else ""
+    return f'<div class="p-strip strip-{cols}{lg_cls} reveal">{cells}</div>'
 
 
 def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_img=False):
     if solo:
         fig = ""
     else:
-        cap = f'<figcaption class="p-cap">{e(caption)}</figcaption>' if caption else ""
+        cap = f'<figcaption class="p-cap p-cap--lg">{e(caption)}</figcaption>' if caption else ""
         load = "eager" if eager_img else "lazy"
         fig = (f'<figure class="reveal" style="--d:120ms"><div class="p-frame">'
                f'<img src="{image}" alt="{e(heading)}" loading="{load}"></div>{cap}</figure>')
@@ -186,6 +211,18 @@ def logo_wall(items, flex=False):
     return f'<div class="{cls}">{tiles}</div>'
 
 
+def legal_page(slug, title, description, html_file):
+    root = os.path.join(os.path.dirname(__file__), "..", "contenu-a-coller", html_file)
+    with open(root, encoding="utf-8") as f:
+        body_html = f.read()
+    body = f'''<section class="section legal"><div class="p-w">
+<span class="p-eyebrow">Informations</span>
+<h1 class="p-h1">{e(title)}</h1>
+<div class="legal__body">{body_html}</div>
+</div></section>'''
+    return (slug, f"{title} | Art'Cadres Luxembourg", description, body)
+
+
 def ref_logo_strip(items):
     """Bande logos clients (logo seul, sans sous-titre). items = (fichier, alt, classe optique)."""
     tiles = "".join(
@@ -196,22 +233,26 @@ def ref_logo_strip(items):
 
 
 # ================= ACCUEIL =================
-services = [("01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi."),
-            ("02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre."),
-            ("03", "Tirage photo", "Petits et grands formats."),
-            ("04", "Click & Collect", "Prêt en 1h, à emporter à l'atelier.")]
-svc_html = "".join(f'<div class="p-svc"><span class="n">{n}</span><h3>{e(t)}</h3>'
-                   f'<p>{e(d)}</p></div>' for n, t, d in services)
+services = [
+    ("frame", "01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi."),
+    ("ruler", "02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre."),
+    ("photo", "03", "Tirage photo", "Petits et grands formats."),
+    ("bag", "04", "Click & Collect", "Prêt en 1h, à emporter à l'atelier."),
+]
+svc_html = "".join(
+    f'<div class="p-svc"><div class="p-svc__ico">{ICON[ic]}</div>'
+    f'<span class="n">{n}</span><h3>{e(t)}</h3><p>{e(d)}</p></div>'
+    for ic, n, t, d in services)
 
 REF_LOGOS = [
-    ("logo-ref-deloitte.svg", "Deloitte", "logosvg--wide"),
-    ("logo-ref-accor.svg", "Accor", "logosvg--wide"),
-    ("logo-ref-ses.svg", "SES", ""),
+    ("logo-ref-deloitte.svg", "Deloitte", "logosvg--deloitte"),
+    ("logo-ref-accor.svg", "Accor", "logosvg--accor"),
+    ("logo-ref-ses.svg", "SES", "logosvg--ses"),
     ("logo-ref-courducale.svg", "Cour grand-ducale du Luxembourg", "logosvg--cour"),
-    ("logo-ref-bnl.png", "Bibliothèque nationale du Luxembourg", "logosvg--tall"),
-    ("logo-ref-maisonheler.svg", "Maison Heler", "logosvg--word"),
-    ("logo-ref-sodikart.svg", "SODIKART", "logosvg--word"),
-    ("logo-ref-mchat.svg", "M.Chat", "logosvg--word"),
+    ("logo-ref-bnl.svg", "Bibliothèque nationale du Luxembourg", "logosvg--bnl"),
+    ("logo-ref-maisonheler.svg", "Maison Heler", "logosvg--heler"),
+    ("logo-ref-sodikart.svg", "SODIKART", "logosvg--sodikart"),
+    ("logo-ref-mchat.svg", "M.Chat", "logosvg--mchat"),
 ]
 conf_hl = [
     ("ref-courducale", "Cour grand-ducale", "Plus de 200 portraits officiels"),
@@ -220,8 +261,8 @@ conf_hl = [
 ]
 conf_hl_html = "".join(
     f'<figure class="p-scell"><div class="p-frame"><img src="assets/{s}.jpg" '
-    f'alt="{e(n)}" loading="lazy"></div><figcaption class="p-cap">{e(n)}. {e(d)}.'
-    f'</figcaption></figure>' for s, n, d in conf_hl)
+    f'alt="{e(n)}" loading="lazy"></div><figcaption class="p-cap p-cap--lg">'
+    f'<strong>{e(n)}</strong> · {e(d)}.</figcaption></figure>' for s, n, d in conf_hl)
 
 gf_objs = [("obj-medailles", "Médailles & décorations"),
            ("obj-vegetal", "Cadres végétaux"),
@@ -260,7 +301,18 @@ accueil_body = f'''<section id="acc">
     <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="eager"></div></figure>
   </div>
-  <div class="p-cta reveal"><h2>Votre devis, tout de suite</h2><p>Composez votre cadre en ligne et obtenez un prix instantané, sans engagement.</p>{btn("Ouvrir le configurateur", "configurateur.html")}</div>
+  <div class="p-cta p-cta--rich reveal">
+    <div class="p-cta__copy">
+      <h2>Votre devis, en quelques clics</h2>
+      <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
+      <ul class="p-cta__steps">
+        <li><span>1</span> Choisissez vos matériaux</li>
+        <li><span>2</span> Ajustez au millimètre</li>
+        <li><span>3</span> Recevez votre devis instantané</li>
+      </ul>
+    </div>
+    <div class="p-cta__panel">{btn("Ouvrir le configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+  </div>
 </div>
 </section>
 <section id="conf" class="section"><div class="p-w">
@@ -270,26 +322,33 @@ accueil_body = f'''<section id="acc">
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
-  <div><div class="big">≈ 3 m</div><h2>Du petit cadre au format monumental</h2><p>Nous encadrons et installons sur site des œuvres de très grandes dimensions, jusqu'à environ 3 mètres, comme ce panneau mural réalisé pour les bureaux de Deloitte.</p></div>
+  <div><p class="p-stat">Formats monumentaux</p><h2>Du petit cadre aux très grandes dimensions</h2><p>Nous encadrons et installons sur site des œuvres jusqu'à 3 mètres de large, comme ce panneau mural réalisé pour les bureaux de Deloitte.</p></div>
   <div class="p-imgs"><div class="p-fr"><img src="assets/gf-deloitte-1.jpg" alt="Œuvre grand format installée sur site" loading="lazy"></div><div class="p-fr"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental" loading="lazy"></div></div>
 </div>
-<h3 class="p-objh reveal">On peut tout encadrer</h3>
+<h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
 </div></section>
 <section id="avis" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
 <div class="p-badges reveal">
-  <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">88 avis vérifiés, Art'Cadres Luxembourg</span></div>
+  <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">88 avis vérifiés · Art'Cadres Luxembourg</span></div>
 </div>
+<p class="p-avis-note reveal">Avis Google et Facebook recueillis pour Art'Cadres Luxembourg et la Maison Neumann.</p>
 <div class="p-avis reveal">{avis_cards}</div>
 </div></section>'''
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
 {content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. Un espace unique où savoir-faire artisanal, conseil personnalisé et passion de l'art se rencontrent.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True)}
+<div class="hist-stats reveal">
+  <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Maison Neumann</span></div>
+  <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
+  <div><span class="hist-stats__n">4</span><span class="hist-stats__l">métiers réunis</span></div>
+  <div><span class="hist-stats__n">88</span><span class="hist-stats__l">avis vérifiés</span></div>
+</div>
 {content_story("L'excellence de l'encadrement sur mesure", ["Chez Art'Cadres Luxembourg, chaque œuvre mérite une présentation à la hauteur de son histoire, de sa valeur et de son caractère.", "Forte de plus de 30 années d'expérience, Kathia Neumann met son expertise artisanale et son regard esthétique au service de créations entièrement sur mesure. Chaque projet fait l'objet d'une étude attentive, pour un encadrement en parfaite harmonie avec l'œuvre, son environnement et la sensibilité de son propriétaire.", "Moulures contemporaines ou classiques, finitions raffinées, verres de protection, passe-partout et techniques traditionnelles : chaque détail est sélectionné avec exigence pour donner naissance à une pièce unique."])}
-<div class="p-list reveal">{content_list("Nos métiers réunis en un même lieu", [("Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."), ("Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."), ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."), ("Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière.")])}</div>
-{strip(["assets/histoire-mchat.jpg", "assets/histoire-atelier-1.jpg", "assets/histoire-atelier-2.jpg"], 3)}
+<div class="p-list reveal">{content_list("Nos métiers réunis en un même lieu", [("Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."), ("Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."), ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."), ("Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière.")], spaced=True)}</div>
+{strip(["assets/histoire-mchat.jpg", "assets/histoire-atelier-1.jpg", "assets/histoire-atelier-2.jpg"], 3, ["Collaboration M.Chat · Thoma Vuille", "Atelier d'encadrement sur mesure", "Restauration et finitions artisanales"], large=True)}
 <figure class="p-quote reveal"><blockquote>« Chaque œuvre mérite une présentation à la hauteur de son histoire. »</blockquote><figcaption>Kathia Neumann, Art'Cadres Luxembourg</figcaption></figure>
 <div class="p-note reveal"><p>Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions bénéficient d'un accompagnement confidentiel, personnalisé et exigeant.</p></div>
 <div class="p-cta reveal">{btn("Prendre rendez-vous", "contact.html")}</div>
@@ -317,25 +376,34 @@ standard_body = f'''<section class="section"><div class="p-w">
 dorures_body = f'''<section class="section"><div class="p-w">
 {content_hero("Dorure & restauration", "Redonnez vie à vos œuvres d'art", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
 {content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
-{strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4)}
+{strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4, ["Nettoyage et consolidation", "Retouche et harmonisation", "Dorure à la feuille", "Remise en valeur du tableau"], large=True)}
 <div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
 <div class="p-cta reveal">{btn("Demander un diagnostic", "contact.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================
 partners = [
-    ("EH", "L'encadr'heure", "Bordeaux"),
-    ("AV", "Angles Var", "La Garde"),
-    ("CS", "Les cadres de Sophie", "Tassin-la-Demi-Lune"),
-    ("AC", "Art et Cadres", "Toulouse"),
-    ("HC", "Une histoire de cadre", "Mulhouse"),
-    ("CR", "Cadre Roussin", "Paris 15e"),
-    ("EC", "L'encadreur aux cadres", "Caen"),
-    ("CSa", "Claude Samuel", "Paris 12e"),
-    ("PP", "Le cadre passe-partout", "Reims"),
-    ("MB", "Misterblad", "Clichy"),
-    ("ChR", "Le Chat Rouge", "Pau"),
+    ("logo-part-lencadreheure.svg", "L'encadr'heure", "Bordeaux"),
+    ("logo-part-anglesvar.svg", "Angles Var", "La Garde"),
+    ("logo-part-cadresdesophie.svg", "Les cadres de Sophie", "Tassin-la-Demi-Lune"),
+    ("logo-part-artetcadres.svg", "Art et Cadres", "Toulouse"),
+    ("logo-part-histoirecadre.svg", "Une histoire de cadre", "Mulhouse"),
+    ("logo-part-cadreroussin.svg", "Cadre Roussin", "Paris 15e"),
+    ("logo-part-encadreurauxcadres.svg", "L'encadreur aux cadres", "Caen"),
+    ("logo-part-claudesamuel.svg", "Claude Samuel", "Paris 12e"),
+    ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout", "Reims"),
+    ("logo-part-misterblad.svg", "Misterblad", "Clichy"),
+    ("logo-part-chatrrouge.svg", "Le Chat Rouge", "Pau"),
 ]
+
+def partner_strip(items):
+    tiles = "".join(
+        f'<div class="partnertile reveal"><img class="logosvg logosvg--partner" '
+        f'src="assets/logos/{fname}" alt="{e(name)}" loading="lazy">'
+        f'<span class="partnertile__name">{e(name)}</span>'
+        f'<span class="partnertile__city">{e(city)}</span></div>'
+        for fname, name, city in items)
+    return f'<div class="partnergrid">{tiles}</div>'
 partenaires_body = f'''<section class="section"><div class="p-w">
 {content_hero("Partenaires & fournisseurs", "Nos partenaires et fournisseurs", "<p>Les maisons avec lesquelles nous travaillons, et les encadreurs qui nous recommandent partout en France.</p>", "", "", solo=True)}
 <div class="brandfeat reveal" style="margin-top:clamp(48px,6vw,72px)">
@@ -347,13 +415,22 @@ partenaires_body = f'''<section class="section"><div class="p-w">
   </div>
 </div>
 <h2 class="p-h2 reveal" style="margin-top:clamp(72px,9vw,120px)">Ils nous recommandent</h2>
-{logo_wall(partners, flex=True)}
+{partner_strip(partners)}
 </div></section>'''
 
 # ================= GALERIE =================
+GAL_CAPTIONS = [
+    "Grand format contemporain", "Encadrement sur mesure", "Passe-partout Marie-Louise",
+    "Œuvre graphique encadrée", "Cadre bois naturel", "Composition triptyque",
+    "Encadrement museum", "Série photographique", "Cadre aluminium Nielsen",
+    "Restauration et encadrement", "Objet encadré", "Galerie intérieure",
+    "Moulure classique dorée", "Art contemporain", "Encadrement minimaliste",
+    "Collection privée", "Format paysage", "Pièce signature",
+]
 gal_cells = "".join(
     f'<figure class="g-cell reveal"><div class="g-frame"><img src="assets/gal-{i:02d}.jpg" '
-    f'alt="Œuvre encadrée par Art\'Cadres Luxembourg" loading="{"eager" if i == 1 else "lazy"}"></div></figure>'
+    f'alt="{e(GAL_CAPTIONS[i-1])}" loading="{"eager" if i == 1 else "lazy"}"></div>'
+    f'<figcaption class="g-cap">{e(GAL_CAPTIONS[i-1])}</figcaption></figure>'
     for i in range(1, 19))
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
@@ -364,7 +441,7 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 </div></section>'''
 
 # ================= CONTACT =================
-contact_body = '''<section id="contact" class="section"><div class="p-w">
+contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
 <h2 class="c-h1">Où trouver la boutique Art'Cadres ?</h2>
 <div class="c-lead reveal"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville.</p></div>
@@ -376,7 +453,15 @@ contact_body = '''<section id="contact" class="section"><div class="p-w">
       <div class="c-row"><p class="c-lab">Adresse</p><div class="c-val"><p>2 bis rue de la toison d'or<br>L-2342 Luxembourg (Hollerich)</p></div></div>
       <div class="c-row"><p class="c-lab">Horaires</p><div class="c-val"><p>Mercredi au samedi<br>de 10 h à 18 h</p></div></div>
     </div>
-    <div class="c-note"><p>Nous répondons sous 48 h ouvrées.</p></div>
+    <div class="c-team reveal">
+      <h3 class="c-team__h">L'équipe</h3>
+      <div class="c-team__grid">
+        <div class="c-person"><p class="c-person__name">Kathia Neumann</p><p class="c-person__role">Directrice · Encadreur d'art</p></div>
+        <div class="c-person"><p class="c-person__name">Artisans encadreurs</p><p class="c-person__role">Sur mesure, dorure &amp; restauration</p></div>
+      </div>
+    </div>
+    <div class="c-book reveal">{btn("Prendre rendez-vous", "tel:+35227849488")}<a class="btn2" href="mailto:contact@artcadres.lu">Écrire un e-mail</a></div>
+    <div class="c-note"><p>Nous répondons sous 48 h ouvrées. Pour un rendez-vous, appelez-nous ou écrivez-nous directement.</p></div>
   </div>
   <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="eager"></div></figure>
 </div>
@@ -396,7 +481,7 @@ configurateur_body = f'''<section id="cfg">
     <p class="cfg-intro">Choisissez la baguette, le passe-partout et le verre. Le prix se calcule au fur et à mesure, et vous obtenez votre devis immédiatement.</p>
     <ul class="cfg-points">{cfg_points_html}</ul>
   </div>
-  <div class="cfg-stage reveal">
+  <div class="cfg-stage cfg-stage--crop reveal">
     <div class="cfg-skeleton" aria-hidden="true"></div>
     <iframe class="cfg-frame" src="{CFG_URL}" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin" onload="var s=this.parentNode.querySelector('.cfg-skeleton'); if(s) s.style.display='none';"></iframe>
   </div>
@@ -434,6 +519,18 @@ PAGES = [
      "Composez votre cadre sur mesure en ligne et obtenez un devis immédiat : baguette, passe-partout et verre.",
      configurateur_body),
 ]
+PAGES.extend([
+    legal_page("mentions-legales.html", "Mentions légales",
+               "Informations légales du site Art'Cadres Luxembourg.", "mentions-legales.html"),
+    legal_page("conditions-generales-de-vente.html", "CGV / CGU",
+               "Conditions générales de vente et d'utilisation Art'Cadres Luxembourg.",
+               "conditions-generales-de-vente.html"),
+    legal_page("politique-de-confidentialite.html", "Politique de confidentialité",
+               "Politique de confidentialité et protection des données Art'Cadres Luxembourg.",
+               "politique-de-confidentialite.html"),
+    legal_page("politique-des-cookies.html", "Politique des cookies",
+               "Politique des cookies Art'Cadres Luxembourg.", "politique-des-cookies.html"),
+])
 
 for fname, title, desc, body in PAGES:
     extra = ""

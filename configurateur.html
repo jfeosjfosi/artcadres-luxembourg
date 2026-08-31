@@ -30,7 +30,7 @@
       <button class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <a href="index.html"><span>Accueil</span></a><a href="encadrement-sur-mesure.html"><span>Sur mesure</span></a><a href="encadrement-standard.html"><span>Cadres standards</span></a><a href="dorures-restauration.html"><span>Dorure &amp; restauration</span></a><a href="notre-galerie.html"><span>Galerie</span></a><a href="notre-histoire.html"><span>Histoire</span></a><a href="partenaires.html"><span>Partenaires</span></a><a href="contact.html"><span>Contact</span></a><a class="cta" href="configurateur.html" aria-current="page"><span>Devis en ligne</span></a>
+      <a href="index.html"><span>Accueil</span></a><a href="encadrement-sur-mesure.html"><span>Sur mesure</span></a><a href="encadrement-standard.html"><span>Cadres standards</span></a><a href="dorures-restauration.html"><span>Dorure &amp; restauration</span></a><a href="notre-galerie.html"><span>Galerie</span></a><a href="notre-histoire.html"><span>Histoire</span></a><a href="partenaires.html"><span>Partenaires</span></a><a href="configurateur.html" aria-current="page"><span>Composer votre cadre</span></a><a class="cta" href="contact.html"><span>Contact</span></a>
     </nav>
     <div class="nav-backdrop" onclick="document.body.classList.remove('nav-open')"></div>
   </div>
@@ -44,7 +44,7 @@
     <p class="cfg-intro">Choisissez la baguette, le passe-partout et le verre. Le prix se calcule au fur et à mesure, et vous obtenez votre devis immédiatement.</p>
     <ul class="cfg-points"><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Prix en temps réel</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Devis immédiat</li><li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Ajusté au millimètre</li></ul>
   </div>
-  <div class="cfg-stage reveal">
+  <div class="cfg-stage cfg-stage--crop reveal">
     <div class="cfg-skeleton" aria-hidden="true"></div>
     <iframe class="cfg-frame" src="https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin" onload="var s=this.parentNode.querySelector('.cfg-skeleton'); if(s) s.style.display='none';"></iframe>
   </div>
@@ -52,13 +52,7 @@
 </div>
 </section>
 </main>
-<section class="marquee" aria-hidden="true"><div class="marquee__track"><span>Encadrement sur mesure</span><span class="sep">·</span><span>Restauration de tableaux</span><span class="sep">·</span><span>Click &amp; Collect en 1h</span><span class="sep">·</span><span>Devis instantané en ligne</span><span class="sep">·</span><span>Encadrement sur mesure</span><span class="sep">·</span><span>Restauration de tableaux</span><span class="sep">·</span><span>Click &amp; Collect en 1h</span><span class="sep">·</span><span>Devis instantané en ligne</span><span class="sep">·</span></div></section>
-<section class="trust"><div class="trust__grid">
-  <div><h4>Click &amp; Collect en 1h</h4><p>Retrait à l'atelier, à Hollerich.</p></div>
-  <div><h4>Devis instantané</h4><p>Votre prix en ligne, via le configurateur.</p></div>
-  <div><h4>Sur mesure &amp; grands formats</h4><p>Des petits cadres aux très grandes pièces.</p></div>
-  <div><h4>Restauration de tableaux</h4><p>Diagnostic et devis personnalisés.</p></div>
-</div></section>
+<section class="trust trust--icons"><div class="trust__grid"><div class="trust__item"><div class="trust__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h4>Click &amp; Collect en 1h</h4><p>Retrait à l'atelier, à Hollerich.</p></div><div class="trust__item"><div class="trust__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8l4 4v12H8z"/><path d="M16 4v4h4M10 12h6M10 16h6"/></svg></div><h4>Devis instantané</h4><p>Prix en ligne via le configurateur.</p></div><div class="trust__item"><div class="trust__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M20 20H4M20 20V8M20 20h-6"/></svg></div><h4>Sur mesure &amp; grands formats</h4><p>Du petit cadre aux pièces monumentales.</p></div><div class="trust__item"><div class="trust__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div><h4>Restauration de tableaux</h4><p>Diagnostic et devis personnalisés.</p></div></div></section>
 <footer class="site-footer"><div class="fw">
   <div class="footer-cols">
     <div class="fcol footer-logo">
@@ -69,7 +63,7 @@
       <a href="encadrement-sur-mesure.html">Encadrement sur mesure</a>
       <a href="encadrement-standard.html">Cadres standards</a>
       <a href="dorures-restauration.html">Dorure &amp; restauration</a>
-      <a href="configurateur.html">Devis en ligne</a>
+      <a href="configurateur.html">Composer votre cadre</a>
     </div></div>
     <div class="fcol"><h3>Explorer</h3><div class="flinks">
       <a href="index.html">Accueil</a>
@@ -84,6 +78,12 @@
       <a href="tel:+35227849488">+352 27 84 94 88</a><br>
       2 bis rue de la toison d'or, L-2342 Luxembourg</p>
     </div>
+  </div>
+  <div class="footer-legal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="conditions-generales-de-vente.html">CGV</a>
+    <a href="politique-de-confidentialite.html">Confidentialité</a>
+    <a href="politique-des-cookies.html">Cookies</a>
   </div>
   <div class="footer-bottom">© 2026 Art'Cadres Luxembourg. Maison Neumann depuis 1972.</div>
 </div></footer>

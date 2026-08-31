@@ -13,14 +13,28 @@ SOURCES = {
     "logo-ref-deloitte.svg": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Deloitte_old_blue_logo.svg",
     "logo-ref-accor.svg": "https://upload.wikimedia.org/wikipedia/commons/4/46/AccorHotels_Logo_2016.svg",
     "logo-ref-ses.svg": "https://upload.wikimedia.org/wikipedia/commons/6/67/SES_S.A._logo.svg",
-    "logo-ref-bnl.png": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Biblioth%C3%A8que_nationale_de_Luxembourg_logo.png",
 }
+
+PARTNERS = [
+    ("logo-part-lencadreheure.svg", "L'encadr'heure"),
+    ("logo-part-anglesvar.svg", "Angles Var"),
+    ("logo-part-cadresdesophie.svg", "Les cadres de Sophie"),
+    ("logo-part-artetcadres.svg", "Art et Cadres"),
+    ("logo-part-histoirecadre.svg", "Une histoire de cadre"),
+    ("logo-part-cadreroussin.svg", "Cadre Roussin"),
+    ("logo-part-encadreurauxcadres.svg", "L'encadreur aux cadres"),
+    ("logo-part-claudesamuel.svg", "Claude Samuel"),
+    ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout"),
+    ("logo-part-misterblad.svg", "Misterblad"),
+    ("logo-part-chatrrouge.svg", "Le Chat Rouge"),
+]
 
 WORDMARKS = {
     "logo-ref-sodikart.svg": ("SODIKART", 16, 700),
     "logo-ref-maisonheler.svg": ("Maison Heler", 14, 600),
     "logo-ref-mchat.svg": ("M.CHAT", 18, 800),
     "logo-ref-courducale.svg": ("Cour grand-ducale", 13, 700, True),
+    "logo-ref-bnl.svg": ("BnL", 14, 700, "bnl"),
 }
 
 
@@ -37,7 +51,12 @@ def recolor_svg(text, color=COLOR):
     return text
 
 
-def wordmark_svg(label, size=16, weight=700, stacked=False):
+def wordmark_svg(label, size=16, weight=700, stacked=False, variant=None):
+    if variant == "bnl":
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" role="img" aria-label="Bibliothèque nationale du Luxembourg">
+  <text x="0" y="18" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="{COLOR}" letter-spacing="0.06em">BIBLIOTHÈQUE NATIONALE</text>
+  <text x="0" y="38" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" fill="{COLOR}" letter-spacing="0.02em">du Luxembourg</text>
+</svg>'''
     if stacked:
         w = 200
         return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} 44" role="img" aria-label="{label}">
@@ -89,10 +108,17 @@ def main():
     for name, spec in WORDMARKS.items():
         path = os.path.join(OUT, name)
         print("wordmark", name)
-        if len(spec) == 4:
-            open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2], spec[3]))
+        if len(spec) == 4 and spec[3] == "bnl":
+            open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2], variant="bnl"))
+        elif len(spec) == 4:
+            open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2], stacked=spec[3] is True))
         else:
             open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2]))
+    for fname, label in PARTNERS:
+        path = os.path.join(OUT, fname)
+        print("partner", fname)
+        sz = 13 if len(label) > 18 else 14
+        open(path, "w", encoding="utf-8").write(wordmark_svg(label, sz, 700))
     print("OK:", len(os.listdir(OUT)), "fichiers dans assets/logos/")
 
 
