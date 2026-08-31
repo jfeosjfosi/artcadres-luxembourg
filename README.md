@@ -9,6 +9,7 @@ Site vitrine statique (HTML/CSS), sans dépendance Shopify.
 ## Régénérer
 
 ```bash
+python3 fetch_logos.py   # logos partenaires (Wikimedia + wordmarks)
 python3 build.py
 ```
 
