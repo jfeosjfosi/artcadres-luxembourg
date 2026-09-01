@@ -52,20 +52,20 @@ def recolor_svg(text, color=COLOR):
 
 
 def wordmark_svg(label, size=16, weight=700, stacked=False, variant=None):
+    font = "Manrope, ui-sans-serif, system-ui, sans-serif"
     if variant == "bnl":
-        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 52" role="img" aria-label="Bibliothèque nationale du Luxembourg">
-  <text x="140" y="17" text-anchor="middle" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="10.5" font-weight="700" fill="{COLOR}" letter-spacing="0.07em">BIBLIOTHÈQUE NATIONALE</text>
-  <text x="140" y="36" text-anchor="middle" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="{COLOR}">du Luxembourg</text>
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" role="img" aria-label="Bibliothèque nationale du Luxembourg">
+  <text x="110" y="16" text-anchor="middle" font-family="{font}" font-size="11" font-weight="700" fill="{COLOR}" letter-spacing="0.04em">BIBLIOTHÈQUE NATIONALE</text>
+  <text x="110" y="34" text-anchor="middle" font-family="{font}" font-size="13" font-weight="600" fill="{COLOR}">du Luxembourg</text>
 </svg>'''
     if stacked:
-        w = 200
-        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} 44" role="img" aria-label="{label}">
-  <text x="0" y="17" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size + 1}" font-weight="800" fill="{COLOR}" letter-spacing="0.08em">COUR</text>
-  <text x="0" y="36" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size}" font-weight="600" fill="{COLOR}" letter-spacing="0.03em">grand-ducale</text>
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 40" role="img" aria-label="{label}">
+  <text x="74" y="16" text-anchor="middle" font-family="{font}" font-size="15" font-weight="800" fill="{COLOR}" letter-spacing="0.16em">COUR</text>
+  <text x="74" y="34" text-anchor="middle" font-family="{font}" font-size="12.5" font-weight="600" fill="{COLOR}" letter-spacing="0.02em">grand-ducale</text>
 </svg>'''
-    w = max(120, len(label) * (size * 0.62))
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} 40" role="img" aria-label="{label}">
-  <text x="0" y="28" font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="{size}" font-weight="{weight}" fill="{COLOR}" letter-spacing="0.04em">{label}</text>
+    w = max(96, len(label) * (size * 0.68) + 8)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} 22" role="img" aria-label="{label}">
+  <text x="{w/2:.1f}" y="17" text-anchor="middle" font-family="{font}" font-size="{size}" font-weight="{weight}" fill="{COLOR}" letter-spacing="0.04em">{label}</text>
 </svg>'''
 
 

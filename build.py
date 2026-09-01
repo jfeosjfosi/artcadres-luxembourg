@@ -17,17 +17,19 @@ NAV = [
     ("Sur mesure", "encadrement-sur-mesure.html"),
     ("Institutions", "institutions-entreprises.html"),
     ("Galerie", "notre-galerie.html"),
+    ("Partenaires", "partenaires.html"),
 ]
 NAV_CFG = ("Configurateur", "configurateur.html")
 NAV_CTA = ("Contact", "contact.html")
 
 ICON = {
-    "frame": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><rect x="7" y="7" width="10" height="10"/></svg>',
-    "ruler": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v8H4z"/><path d="M7 8v3M10 8v2M13 8v3M16 8v2"/></svg>',
-    "photo": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg>',
-    "bag": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+    "frame": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><rect x="7.5" y="7.5" width="9" height="9"/></svg>',
+    "ruler": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5V3.5h5.5v11.5H20.5v5.5H3.5z"/><path d="M9 8H5.2M9 12H5.2M9 16H5.2M12 20.5v-3M16 20.5v-3"/></svg>',
+    "photo": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="9" cy="11" r="1.8"/><path d="M21 16.2l-5.2-5.2-3.8 3.8-2.4-2.4-6.6 6.6"/></svg>',
+    "bag": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1.15 12.2H4.85L6 8z"/><path d="M9.2 8V6.3a2.8 2.8 0 0 1 5.6 0V8"/></svg>',
+    "bars": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>',
     "clock": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-    "doc": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8l4 4v12H8z"/><path d="M16 4v4h4M10 12h6M10 16h6"/></svg>',
+    "doc": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h8.5L20 8v12.5H7z"/><path d="M15.5 3.5V8H20M10 12.5h7M10 16.5h7"/></svg>',
     "size": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M20 20H4M20 20V8M20 20h-6"/></svg>',
     "shield": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>',
 }
@@ -141,6 +143,7 @@ def schema_local():
         "alternateName": "Maison Neumann Luxembourg",
         "description": "Encadreur d'art à Luxembourg : sur mesure, cadres Nielsen, dorure, restauration de tableaux et galerie. Maison Neumann depuis 1972.",
         "url": SITE_URL + "/",
+        "image": SITE_URL + "/assets/ac-contact.jpg",
         "telephone": "+352-27-84-94-88",
         "email": "contact@artcadres.lu",
         "foundingDate": "1972",
@@ -204,7 +207,7 @@ def schema_faq(items):
 def page(title, description, body, active, extra_head="", og_image=None, json_ld=""):
     slug = "" if active == "index.html" else active
     canonical = SITE_URL + ("/" if not slug else "/" + slug)
-    og_img = og_image or (SITE_URL + "/assets/ac-accueil.jpg")
+    og_img = og_image or (SITE_URL + "/assets/ac-contact.jpg")
     head_extra = f"\n  {extra_head}" if extra_head else ""
     if json_ld:
         head_extra += f"\n  {json_ld}"
@@ -309,12 +312,23 @@ def legal_page(slug, title, description, html_file):
 
 
 def ref_logo_strip(items):
-    """Bande logos clients (logo seul, sans sous-titre). items = (fichier, alt, classe optique)."""
-    tiles = "".join(
-        f'<div class="logotile logotile--brand"><img class="logosvg {cls}" '
-        f'src="assets/logos/{fname}" alt="{e(alt)}" loading="lazy"></div>'
-        for fname, alt, cls in items)
-    return f'<div class="logostrip reveal-in">{tiles}</div>'
+    """Bande logos clients. items = ('img', fichier, alt, classe) ou ('word', variante, alt, html)."""
+    tiles = []
+    for item in items:
+        kind = item[0]
+        if kind == "img":
+            _, fname, alt, cls = item
+            tiles.append(
+                f'<div class="logotile logotile--brand"><img class="logosvg {cls}" '
+                f'src="assets/logos/{fname}" alt="{e(alt)}" loading="lazy"></div>'
+            )
+        else:
+            _, variant, alt, html_inner = item
+            tiles.append(
+                f'<div class="logotile logotile--brand">'
+                f'<span class="logoword logoword--{variant}">{html_inner}</span></div>'
+            )
+    return f'<div class="logostrip reveal-in">{"".join(tiles)}</div>'
 
 
 def ref_vignettes(items):
@@ -325,6 +339,32 @@ def ref_vignettes(items):
         f'<figcaption class="p-cap p-cap--lg"><strong>{e(alt)}</strong> · {e(cap)}</figcaption></figure>'
         for img, alt, cap in items)
     return f'<div class="ref-showcase reveal-in">{cells}</div>'
+
+
+def polaroid_stack(items):
+    """Pile de polaroids carrés qui se chevauchent (hero)."""
+    figs = []
+    for i, (src, alt) in enumerate(items):
+        load = "eager" if i == 0 else "lazy"
+        figs.append(
+            f'<figure class="polaroid" data-slot="{i}"><img src="{src}" alt="{e(alt)}" loading="{load}"></figure>'
+        )
+    return f'<div class="polaroids">{"".join(figs)}</div>'
+
+
+def logo_block(items, label="Ils nous font confiance"):
+    return (f'<div class="logo-block">'
+            f'<p class="logo-block__lab">{e(label)}</p>'
+            f'{ref_logo_strip(items)}</div>')
+
+
+def tech_cards(items):
+    cards = "".join(
+        f'<article class="tech-card reveal"><figure class="tech-card__img">'
+        f'<img src="{img}" alt="{e(title)}" loading="lazy"></figure>'
+        f'<h3>{e(title)}</h3><p>{e(txt)}</p></article>'
+        for img, title, txt in items)
+    return f'<div class="tech-grid">{cards}</div>'
 
 
 def icon_row(items):
@@ -353,19 +393,21 @@ services = [
     ("bag", "04", "Institutions & entreprises", "Grands formats et pose sur site.", "institutions-entreprises.html"),
 ]
 svc_html = "".join(
-    f'<a class="p-svc" href="{href}"><div class="p-svc__ico">{ICON[ic]}</div>'
-    f'<span class="n">{n}</span><h3>{e(t)}</h3><p>{e(d)}</p></a>'
+    f'<a class="p-svc" href="{href}"><div class="p-svc__head">'
+    f'<div class="p-svc__ico">{ICON[ic]}</div><span class="n">{n}</span></div>'
+    f'<h3>{e(t)}</h3><p>{e(d)}</p></a>'
     for ic, n, t, d, href in services)
 
 REF_LOGOS = [
-    ("logo-ref-deloitte.svg", "Deloitte", "logosvg--deloitte"),
-    ("logo-ref-accor.svg", "Accor", "logosvg--accor"),
-    ("logo-ref-ses.svg", "SES", "logosvg--ses"),
-    ("logo-ref-courducale.svg", "Cour grand-ducale du Luxembourg", "logosvg--cour"),
-    ("logo-ref-bnl.svg", "Bibliothèque nationale du Luxembourg", "logosvg--bnl"),
-    ("logo-ref-maisonheler.svg", "Maison Heler", "logosvg--heler"),
-    ("logo-ref-sodikart.svg", "SODIKART", "logosvg--sodikart"),
-    ("logo-ref-mchat.svg", "M.Chat", "logosvg--mchat"),
+    ("img", "logo-ref-deloitte.svg", "Deloitte", "logosvg--deloitte"),
+    ("img", "logo-ref-accor.svg", "Accor", "logosvg--accor"),
+    ("img", "logo-ref-ses.svg", "SES", "logosvg--ses"),
+    ("word", "cour", "Cour grand-ducale du Luxembourg",
+     "<b>COUR</b><small>grand-ducale</small>"),
+    ("word", "bnl", "Bibliothèque nationale du Luxembourg", "BnL"),
+    ("word", "heler", "Maison Heler", "Maison Heler"),
+    ("word", "sodikart", "SODIKART", "SODIKART"),
+    ("word", "mchat", "M.Chat", "M.CHAT"),
 ]
 conf_hl = [
     ("ref-deloitte-install", "Deloitte Luxembourg", "Panneaux muraux et œuvres pour les bureaux"),
@@ -427,14 +469,23 @@ avis_cards = "".join(
     f'<span class="name">{e(n)}</span><span class="p-src">· {e(s)}</span></div></div>'
     for n, s, t in avis)
 
+POLAROIDS = [
+    ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
+    ("assets/kathia-portrait.jpg", "Kathia Neumann, encadreur d'art"),
+    ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
+    ("assets/kathia-grand-format.jpg", "Installation grand format"),
+    ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
+]
+
 accueil_body = f'''<section id="acc">
-<div class="p-herobg" style="background-image:url(assets/ac-accueil.jpg);">
+<div class="p-hero-home">
   <div class="p-hw">
     <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes — Maison Neumann depuis 1972, à Hollerich.</p></div>
-    <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")}{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
+    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
+    <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")} {btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
   </div>
+  {polaroid_stack(POLAROIDS)}
 </div>
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
@@ -446,13 +497,13 @@ accueil_body = f'''<section id="acc">
     <div class="p-cta__copy">
       <h2>Votre devis, en quelques clics</h2>
       <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
-      <ul class="p-cta__steps">
-        <li><span>1</span> Choisissez vos matériaux</li>
-        <li><span>2</span> Ajustez au millimètre</li>
-        <li><span>3</span> Recevez votre devis instantané</li>
-      </ul>
+      <div class="p-cta__action">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
     </div>
-    <div class="p-cta__panel">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+    <ol class="p-cta__steps">
+      <li><span class="p-cta__ico">{ICON["bars"]}</span> Choisissez vos matériaux</li>
+      <li><span class="p-cta__ico">{ICON["ruler"]}</span> Ajustez au millimètre</li>
+      <li><span class="p-cta__ico">{ICON["doc"]}</span> Recevez votre devis instantané</li>
+    </ol>
   </div>
 </div>
 </section>
@@ -461,7 +512,7 @@ accueil_body = f'''<section id="acc">
 <p class="p-sub reveal-in">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
 {ref_vignettes(REF_VIGNETTES)}
-<div class="p-cta reveal-in">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
+<div class="p-cta reveal-in">{btn_orange("Demander un devis institutionnel", "contact.html")} {btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
@@ -512,10 +563,21 @@ mesure_body = f'''<section class="section"><div class="p-w">
 {content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/ac-mesure.jpg", "Encadrement sur mesure à l'atelier", eager_img=True)}
 {icon_row([("frame", "Étude personnalisée", "Chaque œuvre est analysée avec vous : style, conservation, budget."), ("ruler", "Techniques artisanales", "Marie-Louise, caisse américaine, rehausse et montages museum."), ("size", "Du petit au monumental", "Médailles, objets, tableaux et panneaux muraux pour entreprises.")])}
 {content_story("Mettre l'œuvre en valeur, selon votre budget", ["Notre objectif principal est la mise en valeur de l'œuvre, en tenant compte de la sensibilité de chacun, avec un budget adapté grâce à une gamme étendue de moulures tous styles, du contemporain au classique.", "Styles de nos moulures : modernes, noir, blanc, chêne, or, wengé, gris, couleurs."])}
-<div class="p-list reveal">{content_list("Quelques techniques du sur-mesure", [("La Marie-Louise biseautée", "Le haut de gamme du passe-partout : elle crée une profondeur sur vos sujets, montage traditionnel et moderne à la fois."), ("La caisse américaine", "Le type d'encadrement le plus répandu au monde : une mise en valeur par effet de suspension, l'œuvre flotte dans le cadre."), ("La technique de rehausse", "Un sujet, un verre de protection, une moulure et une rehausse pour que le verre soit en suspension au-dessus du sujet.")])}</div>
+<h2 class="p-h2 reveal">Quelques techniques du sur-mesure</h2>
+{tech_cards([
+    ("assets/gal-15.jpg", "La Marie-Louise biseautée",
+     "Le haut de gamme du passe-partout : un biseau qui crée de la profondeur autour du sujet, en montage traditionnel comme contemporain."),
+    ("assets/histoire-atelier-1.jpg", "La caisse américaine",
+     "L'œuvre flotte dans le cadre, en léger retrait. Une mise en valeur nette, très demandée pour l'art contemporain et la photographie."),
+    ("assets/ac-mesure-2.jpg", "Moulures et baguettes",
+     "Des centaines d'échantillons à l'atelier : or, bois, aluminium, patines. Nous choisissons avec vous la baguette qui sert l'œuvre."),
+    ("assets/gal-24.jpg", "La technique de rehausse",
+     "Le verre reste en suspension au-dessus du sujet. Idéal pour les objets, les pièces en volume et les montages museum."),
+])}
+{strip(["assets/gal-03.jpg", "assets/gal-08.jpg", "assets/gal-11.jpg", "assets/gal-18.jpg"], 4, ["Pop-art encadré", "Triptyque photographique", "Galerie privée", "Verre museum"], large=True)}
 <div class="p-list p-list2 reveal">{content_list("Les baguettes Nielsen, 4 univers", [("Nature", "Bois naturel, massif et placage."), ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."), ("Design", "Des lignes pures, associées à des finitions sobres ou métallisées."), ("Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies.")])}</div>
 {strip(["assets/obj-medailles.jpg", "assets/obj-vegetal.jpg", "assets/obj-cuillere.jpg"], 3, ["Médailles et décorations", "Cadres végétaux", "Objets et souvenirs"], large=True)}
-<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Demander un conseil", "contact.html")}</div>
+<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")} {btn_orange("Demander un conseil", "contact.html")}</div>
 </div></section>'''
 
 # ================= ENCADREMENT STANDARD =================
@@ -557,13 +619,13 @@ INST_CASES = [
 ]
 
 institutions_body = f'''<section class="section"><div class="p-w">
-{content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions au Luxembourg",
-"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Maison Neumann depuis 1972 — la même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
+{content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions",
+"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Maison Neumann depuis 1972. La même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
 "assets/kathia-grand-format.jpg", "Installation grand format en entreprise", eager_img=True)}
-{ref_logo_strip(REF_LOGOS)}
+{logo_block(REF_LOGOS)}
 {client_cards(INST_CASES)}
 <div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
-<div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Nos références détaillées", "institutions-entreprises.html")}</div>
+<div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")} {btn_plain("Voir la galerie", "notre-galerie.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================
@@ -634,7 +696,10 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
 <div class="c-lead reveal-in"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville. Réponse sous 48 h ouvrées.</p></div>
 <div class="c-founder reveal-in">
-  <figure class="c-founder__photo"><div class="p-frame"><img src="assets/kathia-fondatrice.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager"></div></figure>
+  <div class="c-photos">
+    <figure class="c-photos__a"><img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager"></figure>
+    <figure class="c-photos__b"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres à Hollerich" loading="lazy"></figure>
+  </div>
   <div class="c-founder__txt">
     <h3>Kathia Neumann</h3>
     <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
@@ -649,26 +714,21 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
       <div class="c-row"><p class="c-lab">Adresse</p><div class="c-val"><p>2 bis rue de la toison d'or<br>L-2342 Luxembourg (Hollerich)</p></div></div>
       <div class="c-row"><p class="c-lab">Horaires</p><div class="c-val"><p>Mercredi au samedi<br>de 10 h à 18 h</p></div></div>
     </div>
-    <div class="c-book">{btn_orange("Prendre rendez-vous", "tel:+35227849488")}{btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
+    <div class="c-book">{btn_orange("Prendre rendez-vous", "tel:+35227849488")} {btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
     <div class="c-note"><p>Nous répondons sous 48 h ouvrées. Pour un rendez-vous, appelez-nous ou écrivez-nous directement.</p></div>
   </div>
-  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="lazy"></div></figure>
+  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/histoire-atelier-2.jpg" alt="Atelier Art'Cadres, commandes institutionnelles" loading="lazy"></div></figure>
 </div>
 </div></section>'''
 
 # ================= CONFIGURATEUR =================
 CFG_URL = "https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app"
-cfg_points = ["Prix en temps réel", "Devis immédiat", "Ajusté au millimètre"]
-cfg_points_html = "".join(
-    '<li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>' + e(p) + "</li>"
-    for p in cfg_points)
 configurateur_body = f'''<section id="cfg">
 <div class="cfg-inner">
   <div class="cfg-head reveal-in">
     <p class="cfg-eyebrow">Sur mesure, en ligne</p>
     <h1 class="cfg-title">Configurateur cadre en ligne · Luxembourg</h1>
     <p class="cfg-intro">Choisissez la baguette, le passe-partout et le verre. Le prix se calcule au fur et à mesure, et vous obtenez votre devis immédiatement.</p>
-    <ul class="cfg-points">{cfg_points_html}</ul>
   </div>
   <div class="cfg-stage cfg-stage--crop reveal">
     <div class="cfg-skeleton" aria-hidden="true"></div>
@@ -711,7 +771,7 @@ PAGES = [
      partenaires_body, "partenaires.html", None, None),
     ("contact.html", "Contact Art'Cadres Luxembourg · Hollerich · RDV",
      "Contactez Art'Cadres : 2 bis rue de la toison d'or, L-2342 Luxembourg. Tél. +352 27 84 94 88. Rendez-vous avec Kathia Neumann.",
-     contact_body, "contact.html", SITE_URL + "/assets/kathia-fondatrice.jpg", CONTACT_LD),
+     contact_body, "contact.html", SITE_URL + "/assets/kathia-portrait.jpg", CONTACT_LD),
     ("configurateur.html", "Configurateur cadre en ligne · Devis instantané · Art'Cadres",
      "Composez votre cadre sur mesure en ligne : baguette Nielsen, passe-partout, verre. Prix en direct, retrait Click & Collect 1 h.",
      configurateur_body, "configurateur.html", None, None),
@@ -741,7 +801,7 @@ for entry in PAGES:
             json_ld = ""
     extra = ""
     if fname == "index.html":
-        extra = '<link rel="preload" as="image" href="assets/ac-accueil.jpg">'
+        extra = '<link rel="preload" as="image" href="assets/ac-contact.jpg">'
     with open(os.path.join(OUT, fname), "w", encoding="utf-8") as f:
         f.write(page(title, desc, body, active, extra, og_image=og_image, json_ld=json_ld))
     print("écrit :", fname)

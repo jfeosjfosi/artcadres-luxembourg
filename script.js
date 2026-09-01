@@ -39,4 +39,26 @@
       document.body.classList.remove("nav-open");
     });
   });
+
+  var stack = document.querySelector(".polaroids");
+  if (stack && stack.children.length > 1) {
+    function slots() {
+      [].forEach.call(stack.children, function (card, i) {
+        card.setAttribute("data-slot", String(i));
+      });
+    }
+    slots();
+    if (!reduce) {
+      setInterval(function () {
+        var first = stack.firstElementChild;
+        if (!first) return;
+        first.classList.add("polaroid--out");
+        setTimeout(function () {
+          first.classList.remove("polaroid--out");
+          stack.appendChild(first);
+          slots();
+        }, 620);
+      }, 3000);
+    }
+  }
 })();
