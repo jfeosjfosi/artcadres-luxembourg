@@ -54,10 +54,25 @@
     }
     slots();
     if (!reduce) {
-      setInterval(function () {
-        stack.appendChild(stack.firstElementChild);
+      var busy = false;
+      var EXIT_MS = 560;
+      function cycle() {
+        if (busy || document.hidden) return;
+        var front = stack.firstElementChild;
+        if (!front) return;
+        busy = true;
+        front.classList.add("is-exit");
+        stack.appendChild(front);
         slots();
-      }, 3200);
+        window.setTimeout(function () {
+          front.classList.add("is-tuck");
+          window.requestAnimationFrame(function () {
+            front.classList.remove("is-exit", "is-tuck");
+            window.setTimeout(function () { busy = false; }, 720);
+          });
+        }, EXIT_MS);
+      }
+      window.setInterval(cycle, 3400);
     }
   }
 })();

@@ -497,8 +497,8 @@ avis_cards = "".join(
     for n, s, t in avis)
 
 POLAROIDS = [
-    ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
     ("assets/kathia-portrait.jpg", "Kathia Neumann à l'atelier"),
+    ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
     ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
     ("assets/histoire-atelier-2.jpg", "Commande institutionnelle prête à livrer"),
     ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
@@ -507,14 +507,13 @@ POLAROIDS = [
 accueil_body = f'''<section id="acc">
 <div class="p-hero-home">
   <div class="p-hw">
-    <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
-    <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
     <a class="p-gtrust" href="#avis">
       <span class="p-gtrust__stars" aria-hidden="true">★★★★★</span>
       <strong>4,9/5</strong>
       <span>Google · 88 avis</span>
     </a>
+    <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
+    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
     <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")} {btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
   </div>
   {polaroid_stack(POLAROIDS)}
