@@ -483,6 +483,11 @@ accueil_body = f'''<section id="acc">
     <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
     <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
+    <a class="p-gtrust" href="#avis">
+      <span class="p-gtrust__stars" aria-hidden="true">★★★★★</span>
+      <strong>4,9/5</strong>
+      <span>Google · 88 avis</span>
+    </a>
     <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")} {btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
   </div>
   {polaroid_stack(POLAROIDS)}
