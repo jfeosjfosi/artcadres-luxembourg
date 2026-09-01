@@ -15,8 +15,11 @@ SITE_URL = "https://jfeosjfosi.github.io/artcadres-preview"
 NAV = [
     ("Accueil", "index.html"),
     ("Sur mesure", "encadrement-sur-mesure.html"),
+    ("Standards", "encadrement-standard.html"),
+    ("Restauration", "dorures-restauration.html"),
     ("Institutions", "institutions-entreprises.html"),
     ("Galerie", "notre-galerie.html"),
+    ("Histoire", "notre-histoire.html"),
     ("Partenaires", "partenaires.html"),
 ]
 NAV_CFG = ("Configurateur", "configurateur.html")
@@ -388,10 +391,18 @@ def client_cards(items):
 
 # ================= ACCUEIL =================
 services = [
-    ("frame", "01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi.", "encadrement-standard.html"),
-    ("ruler", "02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre.", "encadrement-sur-mesure.html"),
-    ("photo", "03", "Dorure & restauration", "Tableaux et patrimoine agréé MH.", "dorures-restauration.html"),
-    ("bag", "04", "Institutions & entreprises", "Grands formats et pose sur site.", "institutions-entreprises.html"),
+    ("frame", "01", "Cadres standards",
+     "Aluminium anodisé ou bois Nielsen, prêts à l'emploi. Une sélection permanente à l'atelier, à composer aussi en ligne et à retirer en une heure à Hollerich.",
+     "encadrement-standard.html"),
+    ("ruler", "02", "Cadres sur mesure",
+     "Chaque œuvre dicte sa baguette, son passe-partout et son verre. Nous étudions le format, la lumière et le lieu, puis nous réalisons le cadre à l'atelier.",
+     "encadrement-sur-mesure.html"),
+    ("photo", "03", "Dorure & restauration",
+     "Tableaux, dorure à la feuille et patrimoine familial. Diagnostic à l'atelier, agrément monuments historiques, interventions mesurées pour rendre à la pièce sa présence.",
+     "dorures-restauration.html"),
+    ("bag", "04", "Institutions & entreprises",
+     "Collections corporate, hôtellerie et institutions. Grands formats, séries et pose sur site, du Luxembourg à la Grande Région.",
+     "institutions-entreprises.html"),
 ]
 svc_html = "".join(
     f'<a class="p-svc" href="{href}"><div class="p-svc__head">'
@@ -429,8 +440,9 @@ REF_VIGNETTES = [
 ]
 
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
-    (1, "Encadrement contemporain"), (4, "Pop-art sur mesure"), (8, "Triptyque photographique"),
-    (11, "Galerie privée"), (15, "Encadrement classique"), (18, "Série limitée"),
+    (1, "Encadrement contemporain"), (3, "Pop-art encadré"), (4, "Aquarelle museum"),
+    (8, "Triptyque photographique"), (11, "Galerie privée"), (15, "Encadrement classique"),
+    (18, "Série limitée"), (22, "Atelier · baguettes"), (24, "Passe-partout biseauté"),
 ]]
 gal_teaser_html = "".join(
     f'<a class="gal-teaser__cell" href="notre-galerie.html"><img src="{img}" alt="{e(cap)}" loading="lazy"></a>'
@@ -504,12 +516,15 @@ accueil_body = f'''<section id="acc">
       <h2>Votre devis, en quelques clics</h2>
       <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
       <div class="p-cta__action">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+      <ol class="p-cta__steps">
+        <li><span class="p-cta__ico">{ICON["bars"]}</span> Choisissez vos matériaux</li>
+        <li><span class="p-cta__ico">{ICON["ruler"]}</span> Ajustez au millimètre</li>
+        <li><span class="p-cta__ico">{ICON["doc"]}</span> Recevez votre devis instantané</li>
+      </ol>
     </div>
-    <ol class="p-cta__steps">
-      <li><span class="p-cta__ico">{ICON["bars"]}</span> Choisissez vos matériaux</li>
-      <li><span class="p-cta__ico">{ICON["ruler"]}</span> Ajustez au millimètre</li>
-      <li><span class="p-cta__ico">{ICON["doc"]}</span> Recevez votre devis instantané</li>
-    </ol>
+    <figure class="p-cta__fig">
+      <div class="p-frame"><img src="assets/ac-mesure-2.jpg" alt="Échantillons de baguettes à l'atelier Art'Cadres" loading="lazy"></div>
+    </figure>
   </div>
 </div>
 </section>
@@ -532,7 +547,7 @@ accueil_body = f'''<section id="acc">
 <h2 class="p-h2 reveal">Réalisations encadrées</h2>
 <p class="p-sub reveal">Pop-art, street-art, aquarelles, photographies et pièces de collection : découvrez une sélection de nos encadrements sur mesure.</p>
 <div class="gal-teaser reveal">{gal_teaser_html}</div>
-<div class="p-cta reveal">{btn_plain("Explorer la galerie", "notre-galerie.html")}</div>
+<div class="p-cta reveal">{btn_orange("Explorer la galerie", "notre-galerie.html")}</div>
 </div></section>
 <section id="faq" class="section"><div class="p-w p-w--narrow">
 <h2 class="p-h2 reveal">Questions fréquentes</h2>
@@ -627,7 +642,7 @@ INST_CASES = [
 institutions_body = f'''<section class="section"><div class="p-w">
 {content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions",
 "<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Maison Neumann depuis 1972. La même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
-"assets/kathia-grand-format.jpg", "Installation grand format en entreprise", eager_img=True)}
+"assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 {client_cards(INST_CASES)}
 <div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
@@ -672,22 +687,33 @@ partenaires_body = f'''<section class="section"><div class="p-w">
 </div></section>'''
 
 # ================= GALERIE =================
-GAL_CAPTIONS = [
-    "Encadrement contemporain en intérieur", "Composition murale sur mesure", "Pop-art encadré · pièce signature",
-    "Aquarelle et passe-partout museum", "Street-art · cadre aluminium", "Art graphique · finition Nielsen",
-    "Triptyque photographique", "Série iconographique encadrée", "Encadrement minimaliste",
-    "Galerie privée · mise en scène", "Format paysage · salon", "Vue urbaine · cadre sur mesure",
-    "Botanique · passe-partout crème", "Encadrement classique bois", "Art contemporain · caisse américaine",
-    "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement museum · verre anti-UV",
-    "Monument parisien · intérieur", "Cuisine design · œuvre encadrée", "Encadrement couleur · chambre",
-    "Atelier · baguettes et moulures", "Chevalet et finitions artisanales", "Détail passe-partout biseauté",
+GAL_ITEMS = [
+    (f"assets/gal-{i:02d}.jpg", cap) for i, cap in enumerate([
+        "Encadrement contemporain en intérieur", "Composition murale sur mesure", "Pop-art encadré · pièce signature",
+        "Aquarelle et passe-partout museum", "Street-art · cadre aluminium", "Art graphique · finition Nielsen",
+        "Triptyque photographique", "Série iconographique encadrée", "Encadrement minimaliste",
+        "Galerie privée · mise en scène", "Format paysage · salon", "Vue urbaine · cadre sur mesure",
+        "Botanique · passe-partout crème", "Encadrement classique bois", "Art contemporain · caisse américaine",
+        "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement museum · verre anti-UV",
+        "Monument parisien · intérieur", "Cuisine design · œuvre encadrée", "Encadrement couleur · chambre",
+        "Atelier · baguettes et moulures", "Chevalet et finitions artisanales", "Détail passe-partout biseauté",
+    ], 1)
+] + [
+    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels"),
+    ("assets/histoire-atelier-1.jpg", "Atelier · chevalet et finitions"),
+    ("assets/ac-mesure-2.jpg", "Échantillons de baguettes Nielsen"),
+    ("assets/ac-mesure-1.jpg", "Étude de passe-partout à l'atelier"),
+    ("assets/ac-mesure-3.jpg", "Montage sur mesure en cours"),
+    ("assets/ac-standard-1.jpg", "Cadres Nielsen aluminium"),
+    ("assets/ac-standard-2.jpg", "Cadres Nielsen bois"),
+    ("assets/gf-deloitte-1.jpg", "Grand format · installation Deloitte"),
+    ("assets/ref-sodikart-maillot.jpg", "Mémorabilia sportif encadré"),
 ]
-GAL_COUNT = len(GAL_CAPTIONS)
 gal_cells = "".join(
-    f'<figure class="g-cell reveal"><div class="g-frame"><img src="assets/gal-{i:02d}.jpg" '
-    f'alt="{e(GAL_CAPTIONS[i-1])}" loading="{"eager" if i <= 3 else "lazy"}"></div>'
-    f'<figcaption class="g-cap">{e(GAL_CAPTIONS[i-1])}</figcaption></figure>'
-    for i in range(1, GAL_COUNT + 1))
+    f'<figure class="g-cell reveal"><div class="g-frame"><img src="{src}" '
+    f'alt="{e(cap)}" loading="{"eager" if i < 3 else "lazy"}"></div>'
+    f'<figcaption class="g-cap">{e(cap)}</figcaption></figure>'
+    for i, (src, cap) in enumerate(GAL_ITEMS))
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
 <h1 class="p-h1">Galerie d'art et réalisations encadrées</h1>
@@ -756,7 +782,7 @@ PAGES = [
      accueil_body, "", None, INDEX_LD),
     ("institutions-entreprises.html", "Encadrement entreprises & institutions · Art'Cadres Luxembourg",
      "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
-     institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/kathia-grand-format.jpg", INST_LD),
+     institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/histoire-atelier-2.jpg", INST_LD),
     ("notre-histoire.html", "Notre histoire · Maison Neumann depuis 1972 · Art'Cadres",
      "Art'Cadres Luxembourg perpétue la Maison Neumann (Metz, 1972) : encadrement sur mesure, restauration, dorure et galerie d'art à Hollerich.",
      hist_body, "notre-histoire.html", None, None),
