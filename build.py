@@ -433,7 +433,7 @@ accueil_body = f'''<section id="acc">
     <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
     <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes — Maison Neumann depuis 1972, à Hollerich.</p></div>
-    <div class="p-btns">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Demander un rendez-vous", "contact.html")}</div>
+    <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")}{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
   </div>
 </div>
 <div class="p-w">
@@ -457,8 +457,8 @@ accueil_body = f'''<section id="acc">
 </div>
 </section>
 <section id="conf" class="section"><div class="p-w">
-<h2 class="p-h2 reveal">Des institutions, des marques et des artistes nous confient leurs œuvres</h2>
-<p class="p-sub reveal">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
+<h2 class="p-h2 reveal-in">Des institutions, des marques et des artistes nous confient leurs œuvres</h2>
+<p class="p-sub reveal-in">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
 {ref_vignettes(REF_VIGNETTES)}
 <div class="p-cta reveal-in">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
@@ -563,7 +563,7 @@ institutions_body = f'''<section class="section"><div class="p-w">
 {ref_logo_strip(REF_LOGOS)}
 {client_cards(INST_CASES)}
 <div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
-<div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Composer un cadre standard", "configurateur.html")}</div>
+<div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Nos références détaillées", "institutions-entreprises.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================

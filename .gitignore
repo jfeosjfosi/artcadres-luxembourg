@@ -1,4 +1,6 @@
 _qa_screenshots/
 _qa_audit/node_modules/
+_qa_audit/_qa_audit/
+_qa_audit/package-lock.json
 .DS_Store
 *.tmp
