@@ -69,7 +69,7 @@ def header(active):
     return f'''<div class="announce"><a href="{NAV_CTA[1]}">Votre artisan encadreur vous accueille sur rendez-vous.</a></div>
 <header class="site-header">
   <div class="bar">
-    <a class="logo logo--mark" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"><span class="logo__word">Art'Cadres Luxembourg</span></a>
+    <a class="logo" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"></a>
     <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="document.body.classList.toggle('nav-open')">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -320,11 +320,11 @@ def ref_logo_strip(items):
 def ref_vignettes(items):
     """Vignettes photo sous le bandeau logos. items = (img, alt, caption)."""
     cells = "".join(
-        f'<figure class="p-scell p-scell--ref"><div class="p-frame"><img src="{img}" '
+        f'<figure class="ref-showcase__cell"><div class="ref-showcase__frame"><img src="{img}" '
         f'alt="{e(alt)}" loading="lazy"></div>'
         f'<figcaption class="p-cap p-cap--lg"><strong>{e(alt)}</strong> · {e(cap)}</figcaption></figure>'
         for img, alt, cap in items)
-    return f'<div class="p-strip strip-4 p-strip--refs reveal-in">{cells}</div>'
+    return f'<div class="ref-showcase reveal-in">{cells}</div>'
 
 
 def icon_row(items):
@@ -461,7 +461,7 @@ accueil_body = f'''<section id="acc">
 <p class="p-sub reveal">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
 {ref_vignettes(REF_VIGNETTES)}
-<div class="p-cta reveal-in" style="margin-top:32px">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
+<div class="p-cta reveal-in">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
