@@ -603,7 +603,7 @@ accueil_body = f'''<section id="acc">
 <div class="gal-teaser reveal">{gal_teaser_html}</div>
 <div class="p-cta reveal">{btn_orange("Explorer la galerie", "notre-galerie.html")}</div>
 </div></section>
-<section id="faq" class="section"><div class="p-w">
+<section id="faq" class="section"><div class="p-w p-w--narrow">
 <h2 class="p-h2 reveal">Questions fréquentes</h2>
 <div class="faq reveal">{faq_html}</div>
 </div></section>
