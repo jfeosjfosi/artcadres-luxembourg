@@ -253,7 +253,7 @@ def content_list(title, items, spaced=False):
                   for t, d in items)
     h = f'<h3 class="p-listh">{e(title)}</h3>' if title else ""
     if spaced:
-        return f'<div class="p-list-block">{h}<ul>{lis}</ul></div>'
+        return f'<div class="p-list-block reveal">{h}<ul>{lis}</ul></div>'
     return f'{h}<ul>{lis}</ul>'
 
 
@@ -449,12 +449,26 @@ gal_teaser_html = "".join(
     for img, cap in GAL_TEASER)
 
 FAQ_HOME = [
-    ("Pourquoi choisir un encadreur artisan à Luxembourg ?",
-     "Nous réunissons atelier sur mesure, restauration agréée monuments historiques, dorure et galerie d'art depuis la tradition Maison Neumann (1972). Les montages complexes et les grands formats sont étudiés sur place."),
-    ("Encadrez-vous les grands formats et les pièces monumentales ?",
-     "Oui. Nous encadrons et installons sur site des panneaux muraux de plusieurs mètres pour entreprises et institutions, en complément du petit format et des objets de collection."),
-    ("Proposez-vous un devis en ligne ?",
-     "Oui, via notre configurateur Nielsen : baguette, passe-partout et verre, avec prix en direct. Pour les projets B2B ou les restaurations, nous établissons un devis personnalisé sur rendez-vous."),
+    ("Combien coûte un encadrement sur mesure ?",
+     "Le prix dépend du format, de la baguette, du passe-partout et du verre. Notre configurateur calcule le tarif en direct pour les cadres Nielsen. Pour une restauration, un grand format ou un montage museum, nous établissons un devis à l'atelier, sans engagement."),
+    ("Quel est le délai ?",
+     "Un cadre standard Nielsen se retire souvent en Click & Collect dans l'heure. Un sur-mesure prend en général quelques jours, selon la complexité. Les restaurations et les commandes institutionnelles suivent un planning convenu avec vous."),
+    ("Faut-il prendre rendez-vous ?",
+     "Oui, nous vous accueillons sur rendez-vous, mercredi au samedi de 10 h à 18 h, au 2 bis rue de la toison d'or à Hollerich. Appelez-nous ou écrivez-nous : nous répondons sous 48 h ouvrées."),
+    ("Puis-je composer mon cadre en ligne sans venir ?",
+     "Oui. Choisissez baguette, passe-partout et verre dans le configurateur, obtenez le prix tout de suite, puis retirez la pièce à l'atelier. Pour une œuvre fragile, un objet ou un grand format, un passage à l'atelier reste le plus sûr."),
+    ("Encadrez-vous les très grands formats ?",
+     "Oui. Des médailles aux panneaux muraux de plusieurs mètres : nous encadrons et installons sur site, pour les particuliers comme pour Deloitte, Accor, SES ou la Cour grand-ducale."),
+    ("Restaurez-vous les tableaux, ou uniquement l'encadrement ?",
+     "Nous restaurons aussi. Vernis jaunis, salissures, petites déchirures : diagnostic à l'atelier, agrément monuments historiques, dorure à la feuille. L'encadrement vient ensuite, quand la pièce le demande."),
+    ("Quelle est la différence avec un cadre prêt-à-poser ?",
+     "Un cadre de grande surface se choisit au format. Chez nous, la baguette, le carton et le verre sont choisis pour l'œuvre, sa lumière et le mur. Conservation, ajustement au millimètre, finition atelier : ce n'est pas le même métier."),
+    ("Quels verres proposez-vous ?",
+     "Verre minéral standard, anti-reflet et verres de conservation anti-UV, selon l'œuvre et le budget. Nous vous conseillons sur place pour les photographies, les aquarelles et les pièces à protéger dans le temps."),
+    ("Établissez-vous des factures pour les entreprises ?",
+     "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur et collections corporate. Confidentialité et planning adaptés aux institutions."),
+    ("Où se trouve l'atelier ?",
+     "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. Maison Neumann depuis 1972, antenne luxembourgeoise de Kathia Neumann."),
 ]
 faq_html = "".join(
     f'<details class="faq-item"><summary>{e(q)}</summary><p>{e(a)}</p></details>'
@@ -511,6 +525,15 @@ accueil_body = f'''<section id="acc">
     <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="eager"></div></figure>
   </div>
+  {strip(["assets/ac-contact.jpg", "assets/ac-histoire.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Boutique · mur de baguettes Nielsen", "L'atelier Art'Cadres à Hollerich", "Chevalet et finitions artisanales"], large=True)}
+  {content_list("Tout ce que nous faisons à l'atelier", [
+    ("Encadrement sur mesure", "Chaque œuvre dicte sa baguette, son passe-partout et son verre. Marie-Louise, caisse américaine, rehausse : nous étudions le format, la lumière et le lieu, puis nous réalisons le cadre à l'atelier."),
+    ("Cadres standards Nielsen", "Aluminium anodisé ou bois, prêts à l'emploi. Une sélection permanente à Hollerich, à composer aussi en ligne et à retirer en une heure."),
+    ("Du petit format au monumental", "Médailles, objets de collection, tableaux et panneaux muraux de plusieurs mètres. Nous encadrons et installons sur site, pour les particuliers comme pour les institutions."),
+    ("Restauration de tableaux", "Vernis jaunis, salissures, petites déchirures : diagnostic à l'atelier, agrément monuments historiques, interventions mesurées pour rendre à la pièce sa présence."),
+    ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles. Nous restaurons les dorures anciennes et réalisons des finitions neuves."),
+    ("Galerie d'art", "Une collection coup de cœur, choisie, encadrée et mise en lumière avec le même soin que celui porté à vos propres œuvres."),
+  ], spaced=True)}
   <div class="p-cta p-cta--rich reveal">
     <div class="p-cta__copy">
       <h2>Votre devis, en quelques clics</h2>
@@ -549,7 +572,7 @@ accueil_body = f'''<section id="acc">
 <div class="gal-teaser reveal">{gal_teaser_html}</div>
 <div class="p-cta reveal">{btn_orange("Explorer la galerie", "notre-galerie.html")}</div>
 </div></section>
-<section id="faq" class="section"><div class="p-w p-w--narrow">
+<section id="faq" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Questions fréquentes</h2>
 <div class="faq reveal">{faq_html}</div>
 </div></section>
@@ -558,7 +581,6 @@ accueil_body = f'''<section id="acc">
 <div class="p-badges reveal">
   <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">88 avis vérifiés · projets sur mesure au Luxembourg</span></div>
 </div>
-<p class="p-avis-note reveal">Avis Google et Facebook recueillis pour Art'Cadres Luxembourg et la Maison Neumann.</p>
 <div class="p-avis reveal">{avis_cards}</div>
 </div></section>'''
 
