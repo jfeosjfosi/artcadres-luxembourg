@@ -257,6 +257,23 @@ def content_list(title, items, spaced=False):
     return f'{h}<ul>{lis}</ul>'
 
 
+def metier_grid(title, items):
+    """Mosaïque atelier : 2 tuiles larges + 4 compactes. items = (img, title, line, href, featured)."""
+    cells = ""
+    for img, t, d, href, featured in items:
+        lg = " metier__item--lg" if featured else ""
+        cells += (
+            f'<a class="metier__item{lg}" href="{href}">'
+            f'<div class="p-frame"><img src="{img}" alt="{e(t)}" loading="lazy"></div>'
+            f'<h3>{e(t)}</h3><p>{e(d)}</p></a>'
+        )
+    return (
+        f'<div class="metier reveal">'
+        f'<h2 class="metier__h">{e(title)}</h2>'
+        f'<div class="metier__grid">{cells}</div></div>'
+    )
+
+
 def strip(imgs, cols, captions=None, large=False):
     cells = ""
     for i, s in enumerate(imgs):
@@ -556,25 +573,31 @@ accueil_body = f'''<section id="acc">
     <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="eager"></div></figure>
   </div>
-  {strip(["assets/ac-contact.jpg", "assets/ac-histoire.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Boutique · mur de baguettes Nielsen", "L'atelier Art'Cadres à Hollerich", "Chevalet et finitions artisanales"], large=True)}
-  {content_list("Tout ce que nous faisons à l'atelier", [
-    ("Encadrement sur mesure", "Chaque œuvre dicte sa baguette, son passe-partout et son verre. Marie-Louise, caisse américaine, rehausse : nous étudions le format, la lumière et le lieu, puis nous réalisons le cadre à l'atelier."),
-    ("Cadres standards Nielsen", "Aluminium anodisé ou bois, prêts à l'emploi. Une sélection permanente à Hollerich, à composer aussi en ligne et à retirer en une heure."),
-    ("Du petit format au monumental", "Médailles, objets de collection, tableaux et panneaux muraux de plusieurs mètres. Nous encadrons et installons sur site, pour les particuliers comme pour les institutions."),
-    ("Restauration de tableaux", "Vernis jaunis, salissures, petites déchirures : diagnostic à l'atelier, agrément monuments historiques, interventions mesurées pour rendre à la pièce sa présence."),
-    ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles. Nous restaurons les dorures anciennes et réalisons des finitions neuves."),
-    ("Galerie d'art", "Une collection coup de cœur, choisie, encadrée et mise en lumière avec le même soin que celui porté à vos propres œuvres."),
-  ], spaced=True)}
+  {metier_grid("À l'atelier", [
+    ("assets/ac-mesure.jpg", "Encadrement sur mesure",
+     "Baguette, passe-partout et verre choisis pour l'œuvre, réalisés à Hollerich.",
+     "encadrement-sur-mesure.html", True),
+    ("assets/ac-standard.jpg", "Cadres Nielsen",
+     "Aluminium ou bois, à composer en ligne, à retirer en une heure.",
+     "encadrement-standard.html", False),
+    ("assets/kathia-grand-format.jpg", "Grands formats",
+     "Des médailles aux panneaux de plusieurs mètres, pose sur site.",
+     "institutions-entreprises.html", False),
+    ("assets/rest-apres.jpg", "Restauration de tableaux",
+     "Diagnostic, agrément monuments historiques, interventions mesurées.",
+     "dorures-restauration.html", True),
+    ("assets/ac-dorures-4.jpg", "Dorure à la feuille",
+     "Cadres, miroirs et objets dorés selon les techniques traditionnelles.",
+     "dorures-restauration.html", False),
+    ("assets/gal-01.jpg", "Galerie d'art",
+     "Une collection choisie, encadrée et mise en lumière.",
+     "notre-galerie.html", False),
+  ])}
   <div class="p-cta p-cta--rich reveal">
     <div class="p-cta__copy">
       <h2>Votre devis, en quelques clics</h2>
       <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
       <div class="p-cta__action">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
-      <ol class="p-cta__steps">
-        <li><span class="p-cta__ico">{ICON["bars"]}</span> Choisissez vos matériaux</li>
-        <li><span class="p-cta__ico">{ICON["ruler"]}</span> Ajustez au millimètre</li>
-        <li><span class="p-cta__ico">{ICON["doc"]}</span> Recevez votre devis instantané</li>
-      </ol>
     </div>
     <figure class="p-cta__fig">
       <div class="p-frame"><img src="assets/ac-mesure-2.jpg" alt="Échantillons de baguettes à l'atelier Art'Cadres" loading="lazy"></div>

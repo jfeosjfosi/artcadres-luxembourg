@@ -25,3 +25,5 @@ Skills installés dans `.claude/skills/` (AgriciDaniel/claude-seo). Pour Cursor,
 **Git :** après chaque modification du site, commit + `git push origin main` et `git push preview main` (Pages = remote `preview`).
 
 **UI :** ne jamais livrer sans screenshots desktop 1440×900 et mobile 390×844. Boucle jusqu’à ce que les deux formats soient justes. Voir `QA-UI.md`.
+
+**Design :** tokens et composants dans `DESIGN.md`. Ne pas inventer de paddings, rayons ou couleurs hors de cette échelle.
