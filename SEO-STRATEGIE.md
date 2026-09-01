@@ -26,7 +26,7 @@ Sur un marché local (~5 acteurs), **10 requêtes transactionnelles** concentren
 
 ## 2. Implémenté dans la refonte (build.py)
 
-- **JSON-LD** : `ProfessionalService` + `LocalBusiness` (index, contact), `FAQPage` (index)
+- **JSON-LD** : `ProfessionalService` + `LocalBusiness` (index, contact), `Person` (Kathia, Sylvie), `AggregateRating`, `hasMap`, `BreadcrumbList`, `Service` sur les 4 silos, `FAQPage` (index, Info)
 - **sitemap.xml** + **robots.txt** + **llms.txt** (GEO / IA)
 - **Meta titles/descriptions** optimisés par page (≤ 60 / 155 car.)
 - **Page Institutions & entreprises** — 8 cas clients nommés (trust B2B unique au LU)

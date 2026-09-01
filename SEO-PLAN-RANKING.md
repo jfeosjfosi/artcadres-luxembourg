@@ -41,18 +41,20 @@ APIs non branchées (à faire Phase 0) : Google Search Console, PageSpeed/CrUX, 
 
 ### Qualité de contenu vs seuils claude-seo (mots HTML totaux, chrome nav/footer inclus)
 
+Rebuild Phase 1 (1er sept. 2026) :
+
 | Page | Mots | Seuil page type | Verdict |
 |------|-----:|----------------:|---------|
-| Accueil | 1250 | 500 | OK |
-| Sur mesure | 471 | 800 service | **Thin** |
-| Institutions | 456 | 800 / 600 landing | **Thin** |
-| Histoire | 427 | 400 about | Limite |
-| Dorures | 345 | 800 service | **Thin** |
-| Standard | 318 | 800 service | **Thin** |
-| Galerie | 321 | 400 | Limite (grille) |
-| Partenaires | 280 | 400 | Thin |
-| Contact | 261 | 400 | Thin |
-| Configurateur | 199 | 600 landing | **Thin** |
+| Accueil | 1259 | 500 | OK |
+| Sur mesure | 809 | 800 service | OK |
+| Standard | 805 | 800 service | OK |
+| Dorures | 803 | 800 service | OK |
+| Institutions | 801 | 800 / 600 landing | OK |
+| Configurateur | 605 | 600 landing | OK |
+| Histoire | 462 | 400 about | OK |
+| Contact | 413 | 400 | OK |
+| Galerie | 400 | 400 | OK |
+| Partenaires | 400 | 400 | OK |
 
 **ACCEPT (échec) :** si dans 30 jours GSC n'indexe pas les 10 URLs sitemap, ou si `site:artcadres.lu` (après cutover) ne renvoie pas le H1 accueil.
 
@@ -96,7 +98,7 @@ Le pack local (Maps) pèse plus que « plus de blog ». Ordre d'attaque :
 
 **Pourquoi :** les silos existent déjà ; ils sont trop courts et mal marqués. C'est le levier le plus rapide **sur le site**.
 
-### 1.1 Titles ≤ 60 caractères (tronqués SERP aujourd'hui)
+### 1.1 Titles ≤ 60 caractères — **fait (code, 2026-09-01)**
 
 | Page | Actuel (~car.) | Cible |
 |------|----------------|-------|
@@ -106,7 +108,7 @@ Le pack local (Maps) pèse plus que « plus de blog ». Ordre d'attaque :
 | Configurateur | ~60+ | `Devis cadre en ligne Luxembourg · Art'Cadres` |
 | Dorures / Histoire / Partenaires | ~63 | Couper le sous-titre redondant |
 
-### 1.2 Enrichir les silos jusqu'au seuil 800 mots uniques (service)
+### 1.2 Enrichir les silos jusqu'au seuil 800 mots uniques (service) — **fait (code, 2026-09-01)**
 
 Sans blog. Texte « nous », preuves, process, CTA.
 
@@ -116,7 +118,9 @@ Sans blog. Texte « nous », preuves, process, CTA.
 - **Institutions** : process devis B2B, rayon 25 km, confidentialité, 1 cas par logo (déjà 8 cartes : allonger le corps).
 - **Configurateur** : 400+ mots autour de l'iframe (quoi, pour qui, limites, quand venir à l'atelier).
 
-### 1.3 Schema à ajouter (pas HowTo ; FAQ existante = Info)
+### 1.3 Schema à ajouter (pas HowTo ; FAQ existante = Info) — **fait (code, 2026-09-01)**
+
+`sameAs` GBP : **pas inventé** (Phase 0/2). Facebook conservé.
 
 - `BreadcrumbList` sur chaque silo.
 - `Service` lié à `#localbusiness` : sur-mesure, Nielsen, restauration, institutions.
@@ -127,13 +131,13 @@ Sans blog. Texte « nous », preuves, process, CTA.
 - `addressLocality` : préciser Hollerich (quartier) en plus de Luxembourg.
 - `areaServed` : Luxembourg-Ville, Hollerich, Howald, Grande Région (pas 30 landing villes).
 
-### 1.4 Images
+### 1.4 Images — **fait (code, 2026-09-01)**
 
 - Alts vides accueil : `ac-contact.jpg`, `ac-histoire.jpg`, `histoire-atelier-1.jpg` (strip boutique).
 - `width` / `height` ou aspect-ratio déjà CSS : ajouter attributs pour CLS.
 - OG image unique par silo (déjà partiellement).
 
-### 1.5 Maillage
+### 1.5 Maillage — **fait (code, 2026-09-01)**
 
 - Accueil → Sylvie / restauration dans le bloc métiers (ancre).
 - Footer / silos : Hollerich, Howald, « 25 km » une fois, pas doorway.
@@ -269,18 +273,18 @@ Re-audit : `/seo audit https://artcadres.lu` + `/seo local` + `/seo drift compar
 
 ## Backlog code (ordre d'implémentation site)
 
-1. `SITE_URL` + canonical domaine.  
-2. Titles courts.  
-3. Alts strip boutique.  
-4. Maps embed contact.  
-5. Schema Breadcrumb + Service + AggregateRating + Person.  
-6. Copy silos 800+ mots.  
-7. IndexNow script post-build.  
-8. Width/height images LCP.  
-9. Configurateur : texte autour iframe.  
-10. `sameAs` GBP.
+1. `SITE_URL` + canonical domaine. **Bloqué Phase 0.1** (DNS). Canonical reste github.io tant que artcadres.lu n'est pas live.  
+2. Titles courts. **Fait.**  
+3. Alts strip boutique. **Fait.**  
+4. Maps embed contact. **Fait.**  
+5. Schema Breadcrumb + Service + AggregateRating + Person. **Fait.** (`sameAs` GBP non inventé.)  
+6. Copy silos 800+ mots. **Fait** (rebuild + compte mots).  
+7. IndexNow : fichier clé à la racine. **Fait.** Ping live après cutover (github.io peut 403).  
+8. Width/height images LCP. **Fait.**  
+9. Configurateur : texte autour iframe. **Fait.**  
+10. `sameAs` GBP. **Hors code** (URL fiche à coller après audit Phase 2).
 
-Hors code : GBP, avis, citations, 301, GSC.
+Hors code : GBP, avis, citations (`citations-nap.md` créé), 301, GSC.
 
 ---
 
