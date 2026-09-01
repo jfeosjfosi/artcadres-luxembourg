@@ -347,7 +347,8 @@ def polaroid_stack(items):
     for i, (src, alt) in enumerate(items):
         load = "eager" if i == 0 else "lazy"
         figs.append(
-            f'<figure class="polaroid" data-slot="{i}"><img src="{src}" alt="{e(alt)}" loading="{load}"></figure>'
+            f'<figure class="polaroid" data-slot="{i}"><img src="{src}" alt="{e(alt)}" '
+            f'loading="{load}" draggable="false"></figure>'
         )
     return f'<div class="polaroids">{"".join(figs)}</div>'
 
@@ -471,9 +472,9 @@ avis_cards = "".join(
 
 POLAROIDS = [
     ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
-    ("assets/kathia-portrait.jpg", "Kathia Neumann, encadreur d'art"),
+    ("assets/kathia-portrait.jpg", "Kathia Neumann à l'atelier"),
     ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
-    ("assets/kathia-grand-format.jpg", "Installation grand format"),
+    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle prête à livrer"),
     ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
 ]
 
@@ -702,8 +703,8 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <div class="c-lead reveal-in"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville. Réponse sous 48 h ouvrées.</p></div>
 <div class="c-founder reveal-in">
   <div class="c-photos">
-    <figure class="c-photos__a"><img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager"></figure>
-    <figure class="c-photos__b"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres à Hollerich" loading="lazy"></figure>
+    <figure class="c-photos__a"><img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager" draggable="false"></figure>
+    <figure class="c-photos__b"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres à Hollerich" loading="lazy" draggable="false"></figure>
   </div>
   <div class="c-founder__txt">
     <h3>Kathia Neumann</h3>

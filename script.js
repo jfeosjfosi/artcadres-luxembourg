@@ -40,6 +40,11 @@
     });
   });
 
+  document.querySelectorAll("img").forEach(function (img) {
+    img.setAttribute("draggable", "false");
+    img.addEventListener("dragstart", function (ev) { ev.preventDefault(); });
+  });
+
   var stack = document.querySelector(".polaroids");
   if (stack && stack.children.length > 1) {
     function slots() {
@@ -50,15 +55,9 @@
     slots();
     if (!reduce) {
       setInterval(function () {
-        var first = stack.firstElementChild;
-        if (!first) return;
-        first.classList.add("polaroid--out");
-        setTimeout(function () {
-          first.classList.remove("polaroid--out");
-          stack.appendChild(first);
-          slots();
-        }, 620);
-      }, 3000);
+        stack.appendChild(stack.firstElementChild);
+        slots();
+      }, 3200);
     }
   }
 })();

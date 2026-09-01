@@ -11,7 +11,7 @@ body{
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   overflow-x:clip;
 }
-img{max-width:100%;}
+img{max-width:100%;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;}
 a{color:inherit;}
 
 /* ---------- Barre annonce + header ---------- */
@@ -454,7 +454,7 @@ a{color:inherit;}
 .c-photos figure{margin:0;background:#fff;padding:8px 8px 22px;box-shadow:0 18px 40px -18px #2c1f1766;border:1px solid #2c1f1712;}
 .c-photos img{display:block;width:100%;aspect-ratio:1;object-fit:cover;}
 .c-photos__a{position:relative;width:72%;z-index:2;transform:rotate(-4deg);}
-.c-photos__a img{object-position:78% 82%;}
+.c-photos__a img{object-position:82% 45%;}
 .c-photos__b{position:absolute;width:58%;right:-6%;bottom:-10%;z-index:1;transform:rotate(7deg);}
 @media(min-width:760px){
   .c-photos{min-height:340px;margin-right:10%;}
@@ -472,14 +472,13 @@ a{color:inherit;}
 /* --- Polaroids hero --- */
 .polaroids{position:relative;height:340px;width:100%;max-width:440px;margin:0 auto;}
 @media(min-width:960px){.polaroids{height:580px;max-width:none;}}
-.polaroid{position:absolute;width:68%;margin:0;padding:10px 10px 28px;background:#fff;border:1px solid #2c1f1714;box-shadow:0 22px 48px -20px #2c1f1766;left:18%;top:10%;transform:rotate(-4deg);z-index:1;transition:left .7s cubic-bezier(.32,.72,0,1),top .7s cubic-bezier(.32,.72,0,1),transform .7s cubic-bezier(.32,.72,0,1),opacity .45s ease;}
-.polaroid img{display:block;width:100%;aspect-ratio:1;object-fit:cover;}
+.polaroid{position:absolute;width:68%;margin:0;padding:10px 10px 28px;background:#fff;border:1px solid #2c1f1714;box-shadow:0 22px 48px -20px #2c1f1766;left:18%;top:10%;transform:rotate(-4deg);z-index:1;transition:left .9s cubic-bezier(.32,.72,0,1),top .9s cubic-bezier(.32,.72,0,1),transform .9s cubic-bezier(.32,.72,0,1);}
+.polaroid img{display:block;width:100%;aspect-ratio:1;object-fit:cover;pointer-events:none;}
 .polaroid[data-slot="0"]{left:16%;top:4%;transform:rotate(-8deg);z-index:5;}
 .polaroid[data-slot="1"]{left:28%;top:2%;transform:rotate(7deg);z-index:4;}
 .polaroid[data-slot="2"]{left:8%;top:18%;transform:rotate(3deg);z-index:3;}
 .polaroid[data-slot="3"]{left:32%;top:22%;transform:rotate(-5deg);z-index:2;}
 .polaroid[data-slot="4"]{left:14%;top:30%;transform:rotate(5deg);z-index:1;}
-.polaroid.polaroid--out{opacity:0;transform:translateY(-36px) rotate(-16deg) scale(.88);z-index:6;}
 @media(prefers-reduced-motion:reduce){.polaroid{transition:none;}}
 
 /* --- Bloc logos (pages intérieures) --- */
