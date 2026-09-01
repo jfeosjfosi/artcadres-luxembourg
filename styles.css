@@ -569,22 +569,13 @@ a{color:inherit;}
 /* --- Polaroids hero --- */
 .polaroids{position:relative;height:360px;width:100%;max-width:400px;margin:0 auto;overflow:visible;}
 @media(min-width:960px){.polaroids{height:560px;max-width:none;}}
-.polaroid{position:absolute;width:62%;margin:0;padding:10px 10px 26px;background:#fff;border:1px solid #2c1f1714;box-shadow:0 22px 48px -20px #2c1f1766;left:18%;top:0;transform:rotate(-4deg);z-index:1;transition:left .65s cubic-bezier(.32,.72,0,1),top .65s cubic-bezier(.32,.72,0,1),transform .65s cubic-bezier(.32,.72,0,1);will-change:left,top,transform;}
-.polaroid img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;pointer-events:none;}
+.polaroid{position:absolute;left:0;top:0;width:62%;margin:0;padding:10px 10px 26px;background:#fff;border:1px solid #2c1f1714;box-shadow:0 22px 48px -20px #2c1f1766;transform:translate3d(0,0,0) rotate(-6deg);z-index:1;}
+.polaroid img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;pointer-events:none;}
 .polaroid img[src*="kathia"]{object-position:center 8%;object-fit:cover;}
-.polaroid[data-slot="0"]{left:12%;top:0;transform:rotate(-7deg);z-index:5;}
-.polaroid[data-slot="1"]{left:26%;top:4%;transform:rotate(6deg);z-index:4;}
-.polaroid[data-slot="2"]{left:6%;top:12%;transform:rotate(3deg);z-index:3;}
-.polaroid[data-slot="3"]{left:30%;top:16%;transform:rotate(-4deg);z-index:2;}
-.polaroid[data-slot="4"]{left:10%;top:22%;transform:rotate(5deg);z-index:1;}
-.polaroid.is-exit{left:42%;top:8%;transform:rotate(16deg);z-index:10;}
-.polaroid.is-tuck{left:10%;top:22%;transform:rotate(5deg);z-index:0;}
-@media(prefers-reduced-motion:reduce){.polaroid{transition:none;}.polaroid.is-exit,.polaroid.is-tuck{left:10%;top:22%;transform:rotate(5deg);}}
+.polaroid.is-deal{pointer-events:none;will-change:transform;}
 @media(max-width:480px){
   .polaroids{height:268px;}
   .polaroid{width:52%;padding:8px 8px 18px;}
-  .polaroid.is-exit{left:22%;top:6%;transform:rotate(14deg);}
-  .polaroid.is-tuck{left:8%;top:16%;transform:rotate(4deg);}
 }
 
 /* --- Bloc logos (pages intérieures) --- */

@@ -74,6 +74,7 @@ Entre deux sections sœurs : `--s6` ou `--s7`, un seul filet. Pas `--space-block
 - Cadres photo : rayon `--r-frame` `4px`, padding `--s2`–`--s3`, fond `--mat`
 - Boutons : pill `--r-pill` `999px`, hauteur `--btn-h`
 - Hover : `transform` uniquement, courbe `--ease` `cubic-bezier(.32, .72, 0, 1)`
+- Polaroids hero : un seul geste `transform` (`is-deal`), pas `left` / `top`
 - Pas d'animation de `padding` / `left` / `height`
 - `prefers-reduced-motion: reduce` coupe les loops (pile polaroid)
 

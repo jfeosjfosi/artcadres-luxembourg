@@ -525,13 +525,13 @@ def ref_vignettes(items):
 
 
 def polaroid_stack(items):
-    """Pile de polaroids carrés qui se chevauchent (hero)."""
+    """Pile de polaroids 4:5 qui se chevauchent (hero)."""
     figs = []
     for i, (src, alt) in enumerate(items):
         load = "eager" if i == 0 else "lazy"
         figs.append(
             f'<figure class="polaroid" data-slot="{i}"><img src="{src}" alt="{e(alt)}" '
-            f'width="800" height="800" loading="{load}" draggable="false"></figure>'
+            f'width="640" height="800" loading="{load}" draggable="false"></figure>'
         )
     return f'<div class="polaroids">{"".join(figs)}</div>'
 

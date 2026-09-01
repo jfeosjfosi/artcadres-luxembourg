@@ -27,7 +27,7 @@ S’ils rendent un audit sans captures des deux formats, relancer.
 ## Accueil — critères hero
 
 - **Air sous la navbar** : 24–36 px desktop, 20–28 px mobile (ni collé, ni gouffre). Ne jamais mettre `padding-top: 0` sur `#acc .p-hero-home`.
-- **Pile polaroid** : la carte du dessus glisse sur le côté **dans** le tas, passe derrière (`is-exit` puis `is-tuck`), opacity toujours `1`. Pas de disparition, pas de carte coupée par `overflow-x: clip` sur html/body.
+- **Pile polaroid** : la carte du dessus glisse **dans** le tas en un seul arc (`is-deal`), passe derrière à mi-course, opacity toujours `1`. Pas de double hop (côté puis bas), pas de saut de `z-index` à l’arrivée. Pas de carte coupée par `overflow-x: clip`.
 - Google avis au-dessus du H1.
 
 ## Commande type
@@ -35,5 +35,5 @@ S’ils rendent un audit sans captures des deux formats, relancer.
 ```text
 Playwright 1440×900 + 390×844, fullPage false, zone hero.
 Mesurer header.bottom vs .p-gtrust.top et vs .polaroids.top.
-Animation : 3 frames (repos, is-exit, après tuck), opacity === 1, clippedRight === false.
+Animation : 3 frames (repos, pic du deal encore dessus, après passage derrière), opacity === 1, clippedRight === false, un seul arc.
 ```
