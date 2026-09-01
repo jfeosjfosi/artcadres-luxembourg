@@ -118,11 +118,12 @@ cta: contact.html
 
 ## 6. Skill SEO installé
 
-- Repo : [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) → `.claude/skills/` (25 skills)
-- Skill projet Cursor : `.cursor/skills/artcadres-seo/SKILL.md`
-- Instructions agents : `AGENTS.md` (racine repo)
+- Repo : [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) **v2.2.5**
+- Runtime : `~/.claude/skills/seo/bin/claude-seo` (`doctor` : ready, Chromium OK, 2026-09-01)
+- Skills projet : `.claude/skills/` + `.cursor/skills/artcadres-seo/SKILL.md`
+- **Plan de ranking phase par phase :** [`SEO-PLAN-RANKING.md`](SEO-PLAN-RANKING.md) (audit live + battre le benchmark LU)
 
-**Usage Cursor :** mentionner « audit SEO Art'Cadres » ou lire le skill `artcadres-seo` avant modifications meta.
+**Usage :** `/seo audit https://artcadres.lu` après cutover DNS. Preview : GitHub Pages.
 
 ---
 
