@@ -496,6 +496,28 @@ a{color:inherit;}
 .logo-block__lab{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;}
 .logo-block .logostrip{margin:0;}
 
+/* --- Restauration : avant / pendant / après --- */
+#dor .p-hero .p-frame img{aspect-ratio:4/5;object-fit:cover;object-position:center 22%;}
+.rest-work{margin-top:var(--space-block);}
+.rest-work .p-h2{margin-top:0;margin-bottom:22px;}
+.rest-steps{display:grid;grid-template-columns:1fr;gap:12px;}
+.rest-step{margin:0;}
+.rest-step .p-frame{padding:8px;}
+.rest-steps img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 35%;min-height:320px;}
+.rest-ba{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px;}
+.rest-ba img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center;min-height:260px;}
+@media(min-width:760px){
+  .rest-steps{grid-template-columns:repeat(3,1fr);}
+  .rest-ba{grid-template-columns:1fr 1fr;}
+  .rest-steps img{min-height:420px;}
+  .rest-ba img{min-height:320px;}
+}
+@media(min-width:1100px){
+  .rest-work{width:calc(100% + 96px);margin-left:-48px;}
+  .rest-steps img{min-height:520px;}
+  .rest-ba img{min-height:400px;}
+}
+
 /* --- Techniques sur mesure --- */
 .tech-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,48px);margin:0;}
 @media(min-width:760px){.tech-grid{grid-template-columns:repeat(2,1fr);gap:40px 36px;}}
@@ -506,7 +528,7 @@ a{color:inherit;}
 .tech-card p{margin:0;font-size:15px;line-height:1.6;color:var(--muted);max-width:42ch;}
 
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .p-frame:hover,.c-frame:hover,.ref-showcase__frame:hover,.tech-card__img:hover{
+  .p-frame:hover,.c-frame:hover,.ref-showcase__frame:hover,.tech-card__img:hover,.rest-step .p-frame:hover{
     transform:rotate(-1.3deg);
   }
   .c-frame,.ref-showcase__frame,.tech-card__img{

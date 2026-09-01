@@ -271,6 +271,38 @@ def strip(imgs, cols, captions=None, large=False):
     return f'<div class="p-strip strip-{cols}{lg_cls} reveal">{cells}</div>'
 
 
+def rest_gallery():
+    """Avant / pendant / après en grand, puis un second tableau avant-après."""
+    steps = [
+        ("assets/rest-avant.jpg", "Avant", "Vernis jauni, toile percée, couleurs ensevelies."),
+        ("assets/rest-pendant.jpg", "Pendant", "Consolidation et tests de nettoyage à l'atelier."),
+        ("assets/rest-apres.jpg", "Après", "Éclat retrouvé, cadre doré à la feuille."),
+    ]
+    cells = "".join(
+        f'<figure class="rest-step"><div class="p-frame">'
+        f'<img src="{src}" alt="{e(title + " — " + cap)}" loading="lazy"></div>'
+        f'<figcaption class="p-cap p-cap--lg"><strong>{e(title)}</strong> · {e(cap)}</figcaption>'
+        f'</figure>'
+        for src, title, cap in steps)
+    pair = (
+        '<div class="rest-ba">'
+        '<figure class="rest-step"><div class="p-frame">'
+        '<img src="assets/ac-dorures-3.jpg" alt="Tableau de 1912 avant restauration, pertes de matière" loading="lazy">'
+        '</div><figcaption class="p-cap p-cap--lg"><strong>Avant</strong> · Écaillage et pertes de matière</figcaption></figure>'
+        '<figure class="rest-step"><div class="p-frame">'
+        '<img src="assets/ac-dorures-4.jpg" alt="Tableau de 1910 après restauration à l\'atelier" loading="lazy">'
+        '</div><figcaption class="p-cap p-cap--lg"><strong>Après</strong> · Remise en valeur du tableau</figcaption></figure>'
+        '</div>'
+    )
+    return (
+        '<div class="rest-work reveal">'
+        '<h2 class="p-h2">Le travail, en images</h2>'
+        f'<div class="rest-steps">{cells}</div>'
+        f'{pair}'
+        '</div>'
+    )
+
+
 def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_img=False):
     if solo:
         fig = ""
@@ -632,11 +664,11 @@ standard_body = f'''<section class="section"><div class="p-w">
 </div></section>'''
 
 # ================= DORURES & RESTAURATION =================
-dorures_body = f'''<section class="section"><div class="p-w">
-{content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
+dorures_body = f'''<section id="dor" class="section"><div class="p-w">
+{content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
 {icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
 {content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin, en collaboration avec Sylvie Schied, restauratrice agréée monuments historiques.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
-{strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4, ["Nettoyage et consolidation", "Retouche et harmonisation", "Dorure à la feuille", "Remise en valeur du tableau"], large=True)}
+{rest_gallery()}
 <div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
 <div class="p-cta reveal">{btn_orange("Demander un diagnostic", "contact.html")}</div>
 </div></section>'''
