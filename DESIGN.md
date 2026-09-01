@@ -35,6 +35,7 @@ Manrope uniquement (déjà chargé). Pas d'Inter, pas de serif de secours.
 | `--t-h3` | `clamp(20px, 2.2vw, 26px)` | Tuiles, listes |
 | `--t-body` | `16px` / `17px` lead | Corps, `line-height: 1.65`, max `46ch`–`65ch` |
 | `--t-small` | `13px`–`14px` | Notes, captions |
+| `--t-nav` | `15px` | Liens navbar desktop (≥1400px) |
 | `--track-display` | `-0.025em` | Display et H2 |
 
 Poids : 500 nav, 600 boutons et titres de tuiles, 700 H1/H2. `text-wrap: balance` sur les titres.
