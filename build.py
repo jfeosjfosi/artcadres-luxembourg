@@ -748,17 +748,6 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
 <h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
 <div class="c-lead reveal-in"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville. Réponse sous 48 h ouvrées.</p></div>
-<div class="c-founder reveal-in">
-  <div class="c-photos">
-    <figure class="c-photos__a"><img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager" draggable="false"></figure>
-    <figure class="c-photos__b"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres à Hollerich" loading="lazy" draggable="false"></figure>
-  </div>
-  <div class="c-founder__txt">
-    <h3>Kathia Neumann</h3>
-    <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
-    <p>Plus de 30 ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue le savoir-faire de la Maison Neumann (Metz, 1972) à Luxembourg, avec la même exigence artisanale.</p>
-  </div>
-</div>
 <div class="c-grid reveal-in">
   <div>
     <div class="c-info">
@@ -770,7 +759,16 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
     <div class="c-book">{btn_orange("Prendre rendez-vous", "tel:+35227849488")} {btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
     <div class="c-note"><p>Nous répondons sous 48 h ouvrées. Pour un rendez-vous, appelez-nous ou écrivez-nous directement.</p></div>
   </div>
-  <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/histoire-atelier-2.jpg" alt="Atelier Art'Cadres, commandes institutionnelles" loading="lazy"></div></figure>
+  <aside class="c-kathia">
+    <figure>
+      <img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager" draggable="false">
+      <figcaption>
+        <h3>Kathia Neumann</h3>
+        <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
+        <p>Plus de 30 ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue le savoir-faire de la Maison Neumann (Metz, 1972) à Luxembourg, avec la même exigence artisanale.</p>
+      </figcaption>
+    </figure>
+  </aside>
 </div>
 </div></section>'''
 
