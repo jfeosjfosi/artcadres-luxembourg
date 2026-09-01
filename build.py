@@ -15,14 +15,10 @@ SITE_URL = "https://jfeosjfosi.github.io/artcadres-preview"
 NAV = [
     ("Accueil", "index.html"),
     ("Sur mesure", "encadrement-sur-mesure.html"),
-    ("Cadres standards", "encadrement-standard.html"),
-    ("Dorure & restauration", "dorures-restauration.html"),
-    ("Galerie", "notre-galerie.html"),
-    ("Histoire", "notre-histoire.html"),
     ("Institutions", "institutions-entreprises.html"),
-    ("Partenaires", "partenaires.html"),
+    ("Galerie", "notre-galerie.html"),
 ]
-NAV_CFG = ("Composer votre cadre", "configurateur.html")
+NAV_CFG = ("Configurateur", "configurateur.html")
 NAV_CTA = ("Contact", "contact.html")
 
 ICON = {
@@ -90,14 +86,14 @@ def header(active):
 
 def footer():
     trust = [
-        ("clock", "Click &amp; Collect en 1h", "Retrait à l'atelier, à Hollerich."),
-        ("doc", "Devis instantané", "Prix en ligne via le configurateur."),
-        ("size", "Sur mesure &amp; grands formats", "Du petit cadre aux pièces monumentales."),
-        ("shield", "Restauration de tableaux", "Diagnostic et devis personnalisés."),
+        ("shield", "Maison Neumann depuis 1972", "Tradition artisanale à Metz · antenne Luxembourg.", "notre-histoire.html"),
+        ("size", "Grands formats & institutions", "Panneaux monumentaux · pose sur site.", "institutions-entreprises.html"),
+        ("photo", "Restauration agréée MH", "Tableaux et patrimoine familial.", "dorures-restauration.html"),
+        ("doc", "Devis en ligne Nielsen", "Configurateur · retrait en 1 h à Hollerich.", "configurateur.html"),
     ]
     trust_html = "".join(
-        f'<div class="trust__item"><div class="trust__ico">{ICON[k]}</div>'
-        f'<h4>{t}</h4><p>{d}</p></div>' for k, t, d in trust)
+        f'<a class="trust__item trust__link" href="{href}"><div class="trust__ico">{ICON[k]}</div>'
+        f'<h4>{t}</h4><p>{d}</p></a>' for k, t, d, href in trust)
     return f'''<section class="trust trust--icons"><div class="trust__grid">{trust_html}</div></section>
 <footer class="site-footer"><div class="fw">
   <div class="footer-cols">
@@ -140,6 +136,7 @@ def schema_local():
     data = {
         "@context": "https://schema.org",
         "@type": ["ProfessionalService", "LocalBusiness"],
+        "@id": SITE_URL + "/#localbusiness",
         "name": "Art'Cadres Luxembourg",
         "alternateName": "Maison Neumann Luxembourg",
         "description": "Encadreur d'art à Luxembourg : sur mesure, cadres Nielsen, dorure, restauration de tableaux et galerie. Maison Neumann depuis 1972.",
@@ -164,6 +161,29 @@ def schema_local():
         }],
         "areaServed": {"@type": "Country", "name": "Luxembourg"},
         "sameAs": ["https://www.facebook.com/maisonneumann"],
+    }
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
+def schema_contact_page():
+    data = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Art'Cadres Luxembourg",
+        "url": SITE_URL + "/contact.html",
+        "mainEntity": {"@id": SITE_URL + "/#localbusiness"},
+    }
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
+def schema_institutions_page():
+    data = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Encadrement entreprises et institutions au Luxembourg",
+        "url": SITE_URL + "/institutions-entreprises.html",
+        "description": "Références B2B : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale.",
+        "about": {"@id": SITE_URL + "/#localbusiness"},
     }
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
@@ -294,7 +314,7 @@ def ref_logo_strip(items):
         f'<div class="logotile logotile--brand"><img class="logosvg {cls}" '
         f'src="assets/logos/{fname}" alt="{e(alt)}" loading="lazy"></div>'
         for fname, alt, cls in items)
-    return f'<div class="logostrip reveal">{tiles}</div>'
+    return f'<div class="logostrip reveal-in">{tiles}</div>'
 
 
 def ref_vignettes(items):
@@ -304,7 +324,7 @@ def ref_vignettes(items):
         f'alt="{e(alt)}" loading="lazy"></div>'
         f'<figcaption class="p-cap p-cap--lg"><strong>{e(alt)}</strong> · {e(cap)}</figcaption></figure>'
         for img, alt, cap in items)
-    return f'<div class="p-strip strip-4 p-strip--refs reveal">{cells}</div>'
+    return f'<div class="p-strip strip-4 p-strip--refs reveal-in">{cells}</div>'
 
 
 def icon_row(items):
@@ -327,15 +347,15 @@ def client_cards(items):
 
 # ================= ACCUEIL =================
 services = [
-    ("frame", "01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi."),
-    ("ruler", "02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre."),
-    ("photo", "03", "Tirage photo", "Petits et grands formats."),
-    ("bag", "04", "Click & Collect", "Prêt en 1h, à emporter à l'atelier."),
+    ("frame", "01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi.", "encadrement-standard.html"),
+    ("ruler", "02", "Cadres sur mesure", "Conçus selon vos goûts et votre œuvre.", "encadrement-sur-mesure.html"),
+    ("photo", "03", "Dorure & restauration", "Tableaux et patrimoine agréé MH.", "dorures-restauration.html"),
+    ("bag", "04", "Institutions & entreprises", "Grands formats et pose sur site.", "institutions-entreprises.html"),
 ]
 svc_html = "".join(
-    f'<div class="p-svc"><div class="p-svc__ico">{ICON[ic]}</div>'
-    f'<span class="n">{n}</span><h3>{e(t)}</h3><p>{e(d)}</p></div>'
-    for ic, n, t, d in services)
+    f'<a class="p-svc" href="{href}"><div class="p-svc__ico">{ICON[ic]}</div>'
+    f'<span class="n">{n}</span><h3>{e(t)}</h3><p>{e(d)}</p></a>'
+    for ic, n, t, d, href in services)
 
 REF_LOGOS = [
     ("logo-ref-deloitte.svg", "Deloitte", "logosvg--deloitte"),
@@ -412,12 +432,12 @@ accueil_body = f'''<section id="acc">
   <div class="p-hw">
     <span class="p-eyebrow">Art'Cadres · Luxembourg</span>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>L'encadrement sur mesure, les cadres standards, le tirage photo, la restauration de tableaux, la dorure et une galerie d'art, réunis en un même lieu, à Hollerich.</p></div>
-    <div class="p-btns">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Nous contacter", "contact.html")}</div>
+    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes — Maison Neumann depuis 1972, à Hollerich.</p></div>
+    <div class="p-btns">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Demander un rendez-vous", "contact.html")}</div>
   </div>
 </div>
 <div class="p-w">
-  <div class="p-services reveal">{svc_html}</div>
+  <div class="p-services reveal-in">{svc_html}</div>
   <div class="p-story reveal">
     <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" loading="eager"></div></figure>
@@ -441,8 +461,7 @@ accueil_body = f'''<section id="acc">
 <p class="p-sub reveal">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
 {ref_vignettes(REF_VIGNETTES)}
-<div class="p-strip strip-2 reveal" style="margin-top:clamp(40px,5vw,60px)">{conf_hl_html}</div>
-<div class="p-cta reveal" style="margin-top:32px">{btn_orange("Parler à un encadreur", "contact.html")}{btn_plain("Voir nos références institutions", "institutions-entreprises.html")}</div>
+<div class="p-cta reveal-in" style="margin-top:32px">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
@@ -465,7 +484,7 @@ accueil_body = f'''<section id="acc">
 <section id="avis" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
 <div class="p-badges reveal">
-  <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">88 avis vérifiés · Art'Cadres Luxembourg</span></div>
+  <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">88 avis vérifiés · projets sur mesure au Luxembourg</span></div>
 </div>
 <p class="p-avis-note reveal">Avis Google et Facebook recueillis pour Art'Cadres Luxembourg et la Maison Neumann.</p>
 <div class="p-avis reveal">{avis_cards}</div>
@@ -501,7 +520,7 @@ mesure_body = f'''<section class="section"><div class="p-w">
 
 # ================= ENCADREMENT STANDARD =================
 standard_body = f'''<section class="section"><div class="p-w">
-{content_hero("Cadres standards", "Les cadres Nielsen", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
+{content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
 {icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Fabrication allemande, certification FSC sur les cadres bois.")])}
 <div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Conçus par Nielsen Design", "La certification FSC garantit une gestion responsable des forêts. La plupart de nos cadres bois sont éco-responsables."), ("Fabriqués en Allemagne", "Nielsen, marque de référence de l'encadrement : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
 {strip(["assets/ac-standard-1.jpg", "assets/ac-standard-2.jpg"], 2)}
@@ -510,7 +529,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 
 # ================= DORURES & RESTAURATION =================
 dorures_body = f'''<section class="section"><div class="p-w">
-{content_hero("Dorure & restauration", "Redonnez vie à vos œuvres d'art", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
+{content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
 {icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
 {content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin, en collaboration avec Sylvie Schied, restauratrice agréée monuments historiques.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
 {strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4, ["Nettoyage et consolidation", "Retouche et harmonisation", "Dorure à la feuille", "Remise en valeur du tableau"], large=True)}
@@ -521,9 +540,9 @@ dorures_body = f'''<section class="section"><div class="p-w">
 # ================= INSTITUTIONS & ENTREPRISES =================
 INST_CASES = [
     ("assets/ref-deloitte-install.jpg", "Deloitte Luxembourg", "Grand compte · B2B",
-     "Nous encadrons et installons sur site des œuvres contemporaines et des panneaux muraux monumentaux pour l'un des plus grands employeurs privés du Grand-Duché."),
+     "Panneaux muraux monumentaux et œuvres contemporaines : étude atelier, fabrication sur mesure et pose sur site dans les bureaux du Grand-Duché."),
     ("assets/ref-accor.jpg", "Accor · ibis Styles, Mercure, MGallery", "Hôtellerie",
-     "Encadrements sur mesure pour plusieurs établissements hôteliers : art contemporain, photographies et pièces signature dans les espaces communs et chambres."),
+     "Encadrements pour plusieurs établissements : art contemporain et photographies dans espaces communs et chambres, avec finitions adaptées au flux hôtelier."),
     ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
      "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine."),
     ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces corporate et collections d'entreprise."),
@@ -544,7 +563,7 @@ institutions_body = f'''<section class="section"><div class="p-w">
 {ref_logo_strip(REF_LOGOS)}
 {client_cards(INST_CASES)}
 <div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
-<div class="p-cta reveal">{btn_orange("Parler à un encadreur", "contact.html")}{btn_plain("Composer un cadre standard", "configurateur.html")}</div>
+<div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")}{btn_plain("Composer un cadre standard", "configurateur.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================
@@ -603,7 +622,7 @@ gal_cells = "".join(
     for i in range(1, GAL_COUNT + 1))
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
-<h2 class="p-h1">Une collection coup de cœur</h2>
+<h1 class="p-h1">Galerie d'art et réalisations encadrées</h1>
 <div class="g-lead reveal"><p>Passionnés depuis plus de 30 ans, nous avons construit notre espace galerie autour d'œuvres choisies, encadrées et mises en lumière avec le même soin que celui porté à vos objets.</p></div>
 <div class="g-grid">{gal_cells}</div>
 <div class="g-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
@@ -612,9 +631,9 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 # ================= CONTACT =================
 contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
-<h2 class="c-h1">Où trouver la boutique Art'Cadres ?</h2>
-<div class="c-lead reveal"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville.</p></div>
-<div class="c-founder reveal">
+<h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
+<div class="c-lead reveal-in"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville. Réponse sous 48 h ouvrées.</p></div>
+<div class="c-founder reveal-in">
   <figure class="c-founder__photo"><div class="p-frame"><img src="assets/kathia-fondatrice.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" loading="eager"></div></figure>
   <div class="c-founder__txt">
     <h3>Kathia Neumann</h3>
@@ -622,15 +641,15 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
     <p>Plus de 30 ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue le savoir-faire de la Maison Neumann (Metz, 1972) à Luxembourg, avec la même exigence artisanale.</p>
   </div>
 </div>
-<div class="c-grid">
-  <div class="reveal">
+<div class="c-grid reveal-in">
+  <div>
     <div class="c-info">
       <div class="c-row"><p class="c-lab">Téléphone</p><div class="c-val"><p><a href="tel:+35227849488" style="text-decoration:none;color:inherit">+352 27 84 94 88</a></p></div></div>
       <div class="c-row"><p class="c-lab">E-mail</p><div class="c-val"><p><a href="mailto:contact@artcadres.lu" style="text-decoration:none;color:inherit">contact@artcadres.lu</a></p></div></div>
       <div class="c-row"><p class="c-lab">Adresse</p><div class="c-val"><p>2 bis rue de la toison d'or<br>L-2342 Luxembourg (Hollerich)</p></div></div>
       <div class="c-row"><p class="c-lab">Horaires</p><div class="c-val"><p>Mercredi au samedi<br>de 10 h à 18 h</p></div></div>
     </div>
-    <div class="c-book reveal">{btn_orange("Prendre rendez-vous", "tel:+35227849488")}{btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
+    <div class="c-book">{btn_orange("Prendre rendez-vous", "tel:+35227849488")}{btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
     <div class="c-note"><p>Nous répondons sous 48 h ouvrées. Pour un rendez-vous, appelez-nous ou écrivez-nous directement.</p></div>
   </div>
   <figure class="reveal" style="margin:0;--d:120ms"><div class="c-frame"><img src="assets/ac-contact.jpg" alt="Boutique Art'Cadres Luxembourg" loading="lazy"></div></figure>
@@ -645,9 +664,9 @@ cfg_points_html = "".join(
     for p in cfg_points)
 configurateur_body = f'''<section id="cfg">
 <div class="cfg-inner">
-  <div class="cfg-head reveal">
+  <div class="cfg-head reveal-in">
     <p class="cfg-eyebrow">Sur mesure, en ligne</p>
-    <h2 class="cfg-title">Composez votre cadre</h2>
+    <h1 class="cfg-title">Configurateur cadre en ligne · Luxembourg</h1>
     <p class="cfg-intro">Choisissez la baguette, le passe-partout et le verre. Le prix se calcule au fur et à mesure, et vous obtenez votre devis immédiatement.</p>
     <ul class="cfg-points">{cfg_points_html}</ul>
   </div>
@@ -656,12 +675,14 @@ configurateur_body = f'''<section id="cfg">
     <iframe class="cfg-frame" src="{CFG_URL}" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin" onload="var s=this.parentNode.querySelector('.cfg-skeleton'); if(s) s.style.display='none';"></iframe>
   </div>
   <p class="cfg-fallback">Le configurateur ne s'affiche pas ? <a href="{CFG_URL}" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
+  <div class="cfg-foot reveal">{btn_orange("Une question ? Contactez-nous", "contact.html")}</div>
 </div>
 </section>'''
 
 # ================= ÉCRITURE =================
 INDEX_LD = schema_local() + "\n  " + schema_faq(FAQ_HOME)
-CONTACT_LD = schema_local()
+CONTACT_LD = schema_contact_page()
+INST_LD = schema_institutions_page()
 
 PAGES = [
     ("index.html", "Encadreur d'art à Luxembourg · Art'Cadres (Maison Neumann 1972)",
@@ -669,7 +690,7 @@ PAGES = [
      accueil_body, "", None, INDEX_LD),
     ("institutions-entreprises.html", "Encadrement entreprises & institutions · Art'Cadres Luxembourg",
      "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
-     institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/kathia-grand-format.jpg", None),
+     institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/kathia-grand-format.jpg", INST_LD),
     ("notre-histoire.html", "Notre histoire · Maison Neumann depuis 1972 · Art'Cadres",
      "Art'Cadres Luxembourg perpétue la Maison Neumann (Metz, 1972) : encadrement sur mesure, restauration, dorure et galerie d'art à Hollerich.",
      hist_body, "notre-histoire.html", None, None),
@@ -750,7 +771,11 @@ with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
 - {SITE_URL}/ — Encadreur d'art, institutions, grands formats
 - {SITE_URL}/institutions-entreprises.html — B2B Deloitte, Accor, SES, BNL
 - {SITE_URL}/encadrement-sur-mesure.html — Sur mesure artisanal
-- {SITE_URL}/dorures-restauration.html — Restauration & dorure
+- {SITE_URL}/encadrement-standard.html — Cadres Nielsen
+- {SITE_URL}/dorures-restauration.html — Restauration & dorure agréée MH
+- {SITE_URL}/notre-galerie.html — Galerie et réalisations
+- {SITE_URL}/notre-histoire.html — Maison Neumann depuis 1972
+- {SITE_URL}/partenaires.html — Réseau Nielsen
 - {SITE_URL}/configurateur.html — Devis en ligne Nielsen
 - {SITE_URL}/contact.html — Rendez-vous Hollerich
 
@@ -759,5 +784,8 @@ contact@artcadres.lu · +352 27 84 94 88
 2 bis rue de la toison d'or, L-2342 Luxembourg
 """)
 print("écrit : llms.txt")
+
+open(os.path.join(OUT, ".nojekyll"), "w").close()
+print("écrit : .nojekyll")
 
 print("OK,", len(PAGES), "pages générées.")

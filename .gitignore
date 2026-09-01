@@ -1,3 +1,4 @@
 _qa_screenshots/
+_qa_audit/node_modules/
 .DS_Store
 *.tmp
