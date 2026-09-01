@@ -893,16 +893,26 @@ partners = [
     ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout", "Reims"),
     ("logo-part-misterblad.svg", "Misterblad", "Clichy"),
     ("logo-part-chatrrouge.svg", "Le Chat Rouge", "Pau"),
+    (None, "LC Cadres", "Enghien-les-Bains"),
+    (None, "Maison Neumann", "Metz"),
+    (None, "La tête dans le cadre", "Saint-Berthevin"),
 ]
 
+
 def partner_strip(items):
-    tiles = "".join(
-        f'<div class="partnertile reveal"><img class="logosvg logosvg--partner" '
-        f'src="assets/logos/{fname}" alt="{e(name)}" loading="lazy">'
-        f'<span class="partnertile__name">{e(name)}</span>'
-        f'<span class="partnertile__city">{e(city)}</span></div>'
-        for fname, name, city in items)
-    return f'<div class="partnergrid">{tiles}</div>'
+    tiles = []
+    for fname, name, city in items:
+        img = (
+            f'<img class="logosvg logosvg--partner" src="assets/logos/{fname}" '
+            f'alt="{e(name)}" loading="lazy">'
+            if fname else ""
+        )
+        tiles.append(
+            f'<div class="partnertile reveal">{img}'
+            f'<span class="partnertile__name">{e(name)}</span>'
+            f'<span class="partnertile__city">{e(city)}</span></div>'
+        )
+    return f'<div class="partnergrid">{"".join(tiles)}</div>'
 partenaires_body = f'''<section class="section"><div class="p-w">
 {content_hero("Partenaires & fournisseurs", "Nos partenaires et fournisseurs", "<p>Les maisons avec lesquelles nous travaillons, et les encadreurs qui nous recommandent partout en France.</p>", "", "", solo=True)}
 <div class="brandfeat reveal" style="margin-top:clamp(48px,6vw,72px)">
@@ -910,12 +920,11 @@ partenaires_body = f'''<section class="section"><div class="p-w">
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
     <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres pour rendre votre intérieur aussi parfait que possible. Nature, Color, Design, Charme : quatre univers, mille possibilités.</p>
-    <p>Nous sommes revendeur Nielsen à Luxembourg. Le configurateur en ligne reprend les baguettes, passe-partout et verres de la marque. Le Click & Collect se fait à Hollerich, souvent dans l'heure. Quand le format sort du catalogue, nous passons au sur-mesure à l'atelier, toujours avec la même exigence de coupe et d'assemblage.</p>
-    {btn_plain("Visiter le site Nielsen", "https://www.nielsen-design.com/")}
+    <p>Nous sommes revendeur Nielsen à Luxembourg. Les baguettes, passe-partout et verres de la marque se composent à l'atelier et dans le configurateur. Le Click &amp; Collect se fait à Hollerich, souvent dans l'heure. Quand le format sort du catalogue, nous passons au sur-mesure.</p>
   </div>
 </div>
 <h2 class="p-h2 reveal" style="margin-top:clamp(72px,9vw,120px)">Ils nous recommandent</h2>
-<p class="p-sub reveal">Un réseau d'encadreurs indépendants, de Bordeaux à Paris, nous adresse des clients de passage au Luxembourg. Nous travaillons dans le même esprit : conseil à l'atelier, pas de cadre anonyme de grande surface. Si vous venez d'une de ces maisons, dites-le-nous : nous reprenons le fil du conseil sans tout recommencer. Nielsen Design reste notre fournisseur de baguettes et de cadres standards à Hollerich, Luxembourg.</p>
+<p class="p-sub reveal">Un réseau d'encadreurs indépendants, de Bordeaux à Paris, nous adresse des clients de passage au Luxembourg. Nous travaillons dans le même esprit : conseil à l'atelier, pas de cadre anonyme de grande surface. Si vous venez d'une de ces maisons, dites-le-nous : nous reprenons le fil du conseil sans tout recommencer.</p>
 {partner_strip(partners)}
 </div></section>'''
 
