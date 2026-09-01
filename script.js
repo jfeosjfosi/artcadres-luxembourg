@@ -75,4 +75,44 @@
       window.setInterval(cycle, 3600);
     }
   }
+
+  var faqItems = document.querySelectorAll(".faq-item");
+  if (faqItems.length && !reduce) {
+    faqItems.forEach(function (item) {
+      var body = item.querySelector(".faq-a");
+      var sum = item.querySelector("summary");
+      if (!body || !sum) return;
+      function closeItem(el) {
+        var b = el.querySelector(".faq-a");
+        el.classList.remove("is-open");
+        if (b) b.style.gridTemplateRows = "0fr";
+        window.clearTimeout(el._faqT);
+        el._faqT = window.setTimeout(function () {
+          el.removeAttribute("open");
+        }, 460);
+      }
+      function openItem(el) {
+        window.clearTimeout(el._faqT);
+        el.setAttribute("open", "");
+        el.classList.add("is-open");
+        var b = el.querySelector(".faq-a");
+        if (!b) return;
+        b.style.gridTemplateRows = "0fr";
+        window.requestAnimationFrame(function () {
+          window.requestAnimationFrame(function () {
+            b.style.gridTemplateRows = "1fr";
+          });
+        });
+      }
+      sum.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        var willOpen = !item.classList.contains("is-open");
+        faqItems.forEach(function (other) {
+          if (other !== item && other.classList.contains("is-open")) closeItem(other);
+        });
+        if (willOpen) openItem(item);
+        else closeItem(item);
+      });
+    });
+  }
 })();

@@ -520,7 +520,8 @@ FAQ_HOME = [
      "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. Maison Neumann depuis 1972, antenne luxembourgeoise de Kathia Neumann."),
 ]
 faq_html = "".join(
-    f'<details class="faq-item"><summary>{e(q)}</summary><p>{e(a)}</p></details>'
+    f'<details class="faq-item"><summary>{e(q)}</summary>'
+    f'<div class="faq-a"><div class="faq-a__in"><p>{e(a)}</p></div></div></details>'
     for q, a in FAQ_HOME)
 
 gf_objs = [("obj-medailles", "Médailles & décorations"),
@@ -626,9 +627,24 @@ accueil_body = f'''<section id="acc">
 <div class="gal-teaser reveal">{gal_teaser_html}</div>
 <div class="p-cta reveal">{btn_orange("Explorer la galerie", "notre-galerie.html")}</div>
 </div></section>
-<section id="faq" class="section"><div class="p-w p-w--narrow">
-<h2 class="p-h2 reveal">Questions fréquentes</h2>
-<div class="faq reveal">{faq_html}</div>
+<section id="faq" class="section"><div class="p-w">
+<div class="faq-split reveal">
+  <div class="faq-main">
+    <h2 class="p-h2">Questions fréquentes</h2>
+    <div class="faq">{faq_html}</div>
+  </div>
+  <aside class="faq-aside">
+    <h3>Atelier Hollerich</h3>
+    <p class="faq-aside__lead">Nous vous accueillons sur rendez-vous, mercredi au samedi.</p>
+    <dl class="faq-aside__dl">
+      <div><dt>Téléphone</dt><dd><a href="tel:+35227849488">+352 27 84 94 88</a></dd></div>
+      <div><dt>E-mail</dt><dd><a href="mailto:contact@artcadres.lu">contact@artcadres.lu</a></dd></div>
+      <div><dt>Adresse</dt><dd>2 bis rue de la toison d'or<br>L-2342 Luxembourg</dd></div>
+      <div><dt>Horaires</dt><dd>Mercredi au samedi<br>10 h à 18 h</dd></div>
+    </dl>
+    <div class="faq-aside__cta">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
+  </aside>
+</div>
 </div></section>
 <section id="avis" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>

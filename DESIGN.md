@@ -90,6 +90,8 @@ Entre deux sections sœurs : `--s6` ou `--s7`, un seul filet. Pas `--space-block
 
 **Split devis `.p-cta--rich`** — copie à gauche, photo 4/3 à droite. Pas de liste d'étapes sous le bouton (ça casse le rythme).
 
+**Split FAQ** — questions à gauche, atelier (tél, mail, adresse, horaires) à droite dès 900 px. Accordion : `grid-template-rows` 0fr → 1fr, plus qui pivote. Padding `--s5` entre les questions. Mobile : contact sous la liste.
+
 **Hero accueil** — air sous nav 24–36 px desktop, 20–28 px mobile. Voir `QA-UI.md`.
 
 ## 7. Layout families (une fois par page)
