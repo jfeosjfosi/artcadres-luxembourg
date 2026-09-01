@@ -302,6 +302,53 @@ a{color:inherit;}
 .logosvg--mchat{transform:scale(1.05);}
 .logosvg--partner{max-width:168px;max-height:34px;margin-bottom:10px;}
 
+/* --- Sous-titre section --- */
+.p-sub{margin:-8px 0 clamp(32px,4vw,48px);max-width:62ch;font-size:17px;line-height:1.65;color:var(--muted);}
+.section--alt{background:var(--bg2);}
+
+/* --- Vignettes refs (4 col) --- */
+.p-strip--refs{margin-top:clamp(28px,4vw,40px);}
+.p-scell--ref .p-frame img{aspect-ratio:4/3;object-fit:cover;}
+.strip-4{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,24px);}
+@media(min-width:900px){.strip-4{grid-template-columns:repeat(4,1fr);}}
+
+/* --- Icônes services --- */
+.p-icos{display:grid;grid-template-columns:1fr;gap:24px;margin:clamp(32px,5vw,48px) 0;}
+@media(min-width:720px){.p-icos{grid-template-columns:repeat(3,1fr);}}
+.p-ico{padding:20px;border:1px solid #2c1f1714;border-radius:8px;background:var(--bg2);}
+.p-ico__mark{width:48px;height:48px;border-radius:50%;background:var(--bg);border:1px solid #2c1f1718;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:14px;}
+.p-ico__mark svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;}
+.p-ico h3{margin:0 0 8px;font-size:17px;font-weight:700;}
+.p-ico p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);}
+
+/* --- Teaser galerie accueil --- */
+.gal-teaser{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:760px){.gal-teaser{grid-template-columns:repeat(3,1fr);}}
+.gal-teaser__cell{display:block;border-radius:6px;overflow:hidden;aspect-ratio:4/3;}
+.gal-teaser__cell img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.gal-teaser__cell:hover img{transform:scale(1.04);}
+
+/* --- FAQ --- */
+.p-w--narrow{max-width:720px;}
+.faq{display:flex;flex-direction:column;gap:12px;}
+.faq-item{border:1px solid #2c1f1714;border-radius:8px;padding:16px 20px;background:var(--bg2);}
+.faq-item summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item p{margin:12px 0 0;font-size:15px;line-height:1.65;color:var(--muted);}
+
+/* --- Institutions --- */
+.inst-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,3vw,32px);margin:clamp(40px,6vw,64px) 0;}
+@media(min-width:720px){.inst-grid{grid-template-columns:repeat(2,1fr);}}
+.inst-card{display:grid;grid-template-columns:1fr;gap:0;border:1px solid #2c1f1714;border-radius:8px;overflow:hidden;background:var(--mat);}
+@media(min-width:540px){.inst-card{grid-template-columns:200px 1fr;}}
+.inst-card__img{margin:0;aspect-ratio:4/3;}
+@media(min-width:540px){.inst-card__img{aspect-ratio:auto;min-height:100%;}}
+.inst-card__img img{width:100%;height:100%;object-fit:cover;display:block;}
+.inst-card__body{padding:20px 22px;}
+.inst-card__body h3{margin:0 0 6px;font-size:18px;font-weight:700;}
+.inst-card__tag{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+.inst-card__body p{margin:0;font-size:15px;line-height:1.6;color:var(--muted);}
+
 /* --- Feature marque (Nielsen) --- */
 .brandfeat{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;border:1px solid #2c1f1714;border-radius:8px;padding:clamp(28px,4vw,48px);background:var(--bg2);}
 .brandfeat__mark{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:34px 40px;border:1px solid #2c1f171f;border-radius:6px;background:var(--bg);}

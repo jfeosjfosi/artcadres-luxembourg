@@ -4,7 +4,9 @@ Produit des fichiers .html autonomes (header/footer partages) a cote de ce scrip
 Lancer :  python3 build.py
 """
 import html
+import json
 import os
+from datetime import date
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 # URL live tant que le DNS artcadres.lu n'est pas basculé vers GitHub Pages
@@ -17,6 +19,7 @@ NAV = [
     ("Dorure & restauration", "dorures-restauration.html"),
     ("Galerie", "notre-galerie.html"),
     ("Histoire", "notre-histoire.html"),
+    ("Institutions", "institutions-entreprises.html"),
     ("Partenaires", "partenaires.html"),
 ]
 NAV_CFG = ("Composer votre cadre", "configurateur.html")
@@ -112,6 +115,7 @@ def footer():
       <a href="index.html">Accueil</a>
       <a href="notre-histoire.html">Notre histoire</a>
       <a href="notre-galerie.html">Notre galerie</a>
+      <a href="institutions-entreprises.html">Institutions &amp; entreprises</a>
       <a href="partenaires.html">Partenaires</a>
       <a href="contact.html">Contact</a>
     </div></div>
@@ -132,11 +136,58 @@ def footer():
 </div></footer>'''
 
 
-def page(title, description, body, active, extra_head=""):
+def schema_local():
+    data = {
+        "@context": "https://schema.org",
+        "@type": ["ProfessionalService", "LocalBusiness"],
+        "name": "Art'Cadres Luxembourg",
+        "alternateName": "Maison Neumann Luxembourg",
+        "description": "Encadreur d'art à Luxembourg : sur mesure, cadres Nielsen, dorure, restauration de tableaux et galerie. Maison Neumann depuis 1972.",
+        "url": SITE_URL + "/",
+        "telephone": "+352-27-84-94-88",
+        "email": "contact@artcadres.lu",
+        "foundingDate": "1972",
+        "priceRange": "€€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2 bis rue de la toison d'or",
+            "addressLocality": "Luxembourg",
+            "postalCode": "L-2342",
+            "addressCountry": "LU",
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 49.597, "longitude": 6.118},
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "10:00",
+            "closes": "18:00",
+        }],
+        "areaServed": {"@type": "Country", "name": "Luxembourg"},
+        "sameAs": ["https://www.facebook.com/maisonneumann"],
+    }
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
+def schema_faq(items):
+    data = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in items
+        ],
+    }
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
+
+def page(title, description, body, active, extra_head="", og_image=None, json_ld=""):
     slug = "" if active == "index.html" else active
     canonical = SITE_URL + ("/" if not slug else "/" + slug)
-    og_img = SITE_URL + "/assets/ac-accueil.jpg"
+    og_img = og_image or (SITE_URL + "/assets/ac-accueil.jpg")
     head_extra = f"\n  {extra_head}" if extra_head else ""
+    if json_ld:
+        head_extra += f"\n  {json_ld}"
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -144,6 +195,8 @@ def page(title, description, body, active, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{e(title)}</title>
   <meta name="description" content="{e(description)}">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2c1f17">
   <link rel="canonical" href="{canonical}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_LU">
@@ -244,6 +297,34 @@ def ref_logo_strip(items):
     return f'<div class="logostrip reveal">{tiles}</div>'
 
 
+def ref_vignettes(items):
+    """Vignettes photo sous le bandeau logos. items = (img, alt, caption)."""
+    cells = "".join(
+        f'<figure class="p-scell p-scell--ref"><div class="p-frame"><img src="{img}" '
+        f'alt="{e(alt)}" loading="lazy"></div>'
+        f'<figcaption class="p-cap p-cap--lg"><strong>{e(alt)}</strong> · {e(cap)}</figcaption></figure>'
+        for img, alt, cap in items)
+    return f'<div class="p-strip strip-4 p-strip--refs reveal">{cells}</div>'
+
+
+def icon_row(items):
+    """Ligne d'icônes + texte court (pages services)."""
+    cells = "".join(
+        f'<div class="p-ico"><div class="p-ico__mark">{ICON[ic]}</div>'
+        f'<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in items)
+    return f'<div class="p-icos reveal">{cells}</div>'
+
+
+def client_cards(items):
+    cards = "".join(
+        f'<article class="inst-card reveal"><figure class="inst-card__img"><img src="{img}" '
+        f'alt="{e(name)}" loading="lazy"></figure>'
+        f'<div class="inst-card__body"><h3>{e(name)}</h3><p class="inst-card__tag">{e(tag)}</p>'
+        f'<p>{e(txt)}</p></div></article>'
+        for img, name, tag, txt in items)
+    return f'<div class="inst-grid">{cards}</div>'
+
+
 # ================= ACCUEIL =================
 services = [
     ("frame", "01", "Cadres standards", "Aluminium ou bois, prêts à l'emploi."),
@@ -267,7 +348,8 @@ REF_LOGOS = [
     ("logo-ref-mchat.svg", "M.Chat", "logosvg--mchat"),
 ]
 conf_hl = [
-    ("ref-courducale", "Cour grand-ducale", "Plus de 200 portraits officiels"),
+    ("ref-deloitte-install", "Deloitte Luxembourg", "Panneaux muraux et œuvres pour les bureaux"),
+    ("ref-accor", "Accor · ibis Styles & Mercure", "Encadrements pour l'hôtellerie"),
     ("ref-maisonheler", "Maison Heler, Metz", "Le bar de l'hôtel signé Philippe Starck"),
     ("ref-mchat", "M.Chat", "Collaboration avec l'artiste Thoma Vuille"),
 ]
@@ -275,6 +357,33 @@ conf_hl_html = "".join(
     f'<figure class="p-scell"><div class="p-frame"><img src="assets/{s}.jpg" '
     f'alt="{e(n)}" loading="lazy"></div><figcaption class="p-cap p-cap--lg">'
     f'<strong>{e(n)}</strong> · {e(d)}.</figcaption></figure>' for s, n, d in conf_hl)
+
+REF_VIGNETTES = [
+    ("assets/ref-deloitte-install.jpg", "Deloitte", "Installation grand format sur site"),
+    ("assets/ref-accor.jpg", "Accor", "Hôtels ibis Styles, Mercure et MGallery"),
+    ("assets/ref-ses.jpg", "SES", "Fournisseur sur site · Betzdorf"),
+    ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale", "Grand format en situ"),
+]
+
+GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
+    (1, "Encadrement contemporain"), (4, "Pop-art sur mesure"), (8, "Triptyque photographique"),
+    (11, "Galerie privée"), (15, "Encadrement classique"), (18, "Série limitée"),
+]]
+gal_teaser_html = "".join(
+    f'<a class="gal-teaser__cell" href="notre-galerie.html"><img src="{img}" alt="{e(cap)}" loading="lazy"></a>'
+    for img, cap in GAL_TEASER)
+
+FAQ_HOME = [
+    ("Pourquoi choisir un encadreur artisan à Luxembourg ?",
+     "Nous réunissons atelier sur mesure, restauration agréée monuments historiques, dorure et galerie d'art depuis la tradition Maison Neumann (1972). Les montages complexes et les grands formats sont étudiés sur place."),
+    ("Encadrez-vous les grands formats et les pièces monumentales ?",
+     "Oui. Nous encadrons et installons sur site des panneaux muraux de plusieurs mètres pour entreprises et institutions, en complément du petit format et des objets de collection."),
+    ("Proposez-vous un devis en ligne ?",
+     "Oui, via notre configurateur Nielsen : baguette, passe-partout et verre, avec prix en direct. Pour les projets B2B ou les restaurations, nous établissons un devis personnalisé sur rendez-vous."),
+]
+faq_html = "".join(
+    f'<details class="faq-item"><summary>{e(q)}</summary><p>{e(a)}</p></details>'
+    for q, a in FAQ_HOME)
 
 gf_objs = [("obj-medailles", "Médailles & décorations"),
            ("obj-vegetal", "Cadres végétaux"),
@@ -329,8 +438,11 @@ accueil_body = f'''<section id="acc">
 </section>
 <section id="conf" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Des institutions, des marques et des artistes nous confient leurs œuvres</h2>
+<p class="p-sub reveal">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
-<div class="p-strip strip-3 reveal" style="margin-top:clamp(40px,5vw,60px)">{conf_hl_html}</div>
+{ref_vignettes(REF_VIGNETTES)}
+<div class="p-strip strip-2 reveal" style="margin-top:clamp(40px,5vw,60px)">{conf_hl_html}</div>
+<div class="p-cta reveal" style="margin-top:32px">{btn_orange("Parler à un encadreur", "contact.html")}{btn_plain("Voir nos références institutions", "institutions-entreprises.html")}</div>
 </div></section>
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
@@ -339,6 +451,16 @@ accueil_body = f'''<section id="acc">
 </div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
+</div></section>
+<section id="real" class="section section--alt"><div class="p-w">
+<h2 class="p-h2 reveal">Réalisations encadrées</h2>
+<p class="p-sub reveal">Pop-art, street-art, aquarelles, photographies et pièces de collection : découvrez une sélection de nos encadrements sur mesure.</p>
+<div class="gal-teaser reveal">{gal_teaser_html}</div>
+<div class="p-cta reveal">{btn_plain("Explorer la galerie", "notre-galerie.html")}</div>
+</div></section>
+<section id="faq" class="section"><div class="p-w p-w--narrow">
+<h2 class="p-h2 reveal">Questions fréquentes</h2>
+<div class="faq reveal">{faq_html}</div>
 </div></section>
 <section id="avis" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
@@ -369,16 +491,18 @@ hist_body = f'''<section class="section"><div class="p-w">
 # ================= ENCADREMENT SUR MESURE =================
 mesure_body = f'''<section class="section"><div class="p-w">
 {content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/ac-mesure.jpg", "Encadrement sur mesure à l'atelier", eager_img=True)}
+{icon_row([("frame", "Étude personnalisée", "Chaque œuvre est analysée avec vous : style, conservation, budget."), ("ruler", "Techniques artisanales", "Marie-Louise, caisse américaine, rehausse et montages museum."), ("size", "Du petit au monumental", "Médailles, objets, tableaux et panneaux muraux pour entreprises.")])}
 {content_story("Mettre l'œuvre en valeur, selon votre budget", ["Notre objectif principal est la mise en valeur de l'œuvre, en tenant compte de la sensibilité de chacun, avec un budget adapté grâce à une gamme étendue de moulures tous styles, du contemporain au classique.", "Styles de nos moulures : modernes, noir, blanc, chêne, or, wengé, gris, couleurs."])}
 <div class="p-list reveal">{content_list("Quelques techniques du sur-mesure", [("La Marie-Louise biseautée", "Le haut de gamme du passe-partout : elle crée une profondeur sur vos sujets, montage traditionnel et moderne à la fois."), ("La caisse américaine", "Le type d'encadrement le plus répandu au monde : une mise en valeur par effet de suspension, l'œuvre flotte dans le cadre."), ("La technique de rehausse", "Un sujet, un verre de protection, une moulure et une rehausse pour que le verre soit en suspension au-dessus du sujet.")])}</div>
 <div class="p-list p-list2 reveal">{content_list("Les baguettes Nielsen, 4 univers", [("Nature", "Bois naturel, massif et placage."), ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."), ("Design", "Des lignes pures, associées à des finitions sobres ou métallisées."), ("Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies.")])}</div>
-{strip(["assets/ac-mesure-1.jpg", "assets/ac-mesure-2.jpg", "assets/ac-mesure-3.jpg"], 3)}
-<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
+{strip(["assets/obj-medailles.jpg", "assets/obj-vegetal.jpg", "assets/obj-cuillere.jpg"], 3, ["Médailles et décorations", "Cadres végétaux", "Objets et souvenirs"], large=True)}
+<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}{btn_orange("Demander un conseil", "contact.html")}</div>
 </div></section>'''
 
 # ================= ENCADREMENT STANDARD =================
 standard_body = f'''<section class="section"><div class="p-w">
 {content_hero("Cadres standards", "Les cadres Nielsen", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
+{icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Fabrication allemande, certification FSC sur les cadres bois.")])}
 <div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Conçus par Nielsen Design", "La certification FSC garantit une gestion responsable des forêts. La plupart de nos cadres bois sont éco-responsables."), ("Fabriqués en Allemagne", "Nielsen, marque de référence de l'encadrement : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
 {strip(["assets/ac-standard-1.jpg", "assets/ac-standard-2.jpg"], 2)}
 <div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
@@ -387,10 +511,40 @@ standard_body = f'''<section class="section"><div class="p-w">
 # ================= DORURES & RESTAURATION =================
 dorures_body = f'''<section class="section"><div class="p-w">
 {content_hero("Dorure & restauration", "Redonnez vie à vos œuvres d'art", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/ac-dorures.jpg", "Restauration d'un tableau à l'atelier", eager_img=True)}
-{content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
+{icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
+{content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin, en collaboration avec Sylvie Schied, restauratrice agréée monuments historiques.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
 {strip(["assets/ac-dorures-1.jpg", "assets/ac-dorures-2.jpg", "assets/ac-dorures-3.jpg", "assets/ac-dorures-4.jpg"], 4, ["Nettoyage et consolidation", "Retouche et harmonisation", "Dorure à la feuille", "Remise en valeur du tableau"], large=True)}
 <div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
 <div class="p-cta reveal">{btn_orange("Demander un diagnostic", "contact.html")}</div>
+</div></section>'''
+
+# ================= INSTITUTIONS & ENTREPRISES =================
+INST_CASES = [
+    ("assets/ref-deloitte-install.jpg", "Deloitte Luxembourg", "Grand compte · B2B",
+     "Nous encadrons et installons sur site des œuvres contemporaines et des panneaux muraux monumentaux pour l'un des plus grands employeurs privés du Grand-Duché."),
+    ("assets/ref-accor.jpg", "Accor · ibis Styles, Mercure, MGallery", "Hôtellerie",
+     "Encadrements sur mesure pour plusieurs établissements hôteliers : art contemporain, photographies et pièces signature dans les espaces communs et chambres."),
+    ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
+     "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine."),
+    ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces corporate et collections d'entreprise."),
+    ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
+     "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales."),
+    ("assets/ref-courducale.jpg", "Cour grand-ducale & mairies", "Institution officielle",
+     "Plus de 200 portraits officiels encadrés lors des changements protocolaires — un niveau d'exigence que nous assumons avec discrétion."),
+    ("assets/ref-sodikart-maillot.jpg", "SODIKART", "Sport · mémorabilia",
+     "Maillots signés, pièces de collection et objets sportifs encadrés avec des montages museum adaptés aux pièces de valeur."),
+    ("assets/ref-mchat.jpg", "M.Chat · Thoma Vuille", "Artiste",
+     "Collaboration avec l'artiste : encadrements sur mesure pour des œuvres iconiques du street-art international."),
+]
+
+institutions_body = f'''<section class="section"><div class="p-w">
+{content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions au Luxembourg",
+"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Maison Neumann depuis 1972 — la même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
+"assets/kathia-grand-format.jpg", "Installation grand format en entreprise", eager_img=True)}
+{ref_logo_strip(REF_LOGOS)}
+{client_cards(INST_CASES)}
+<div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
+<div class="p-cta reveal">{btn_orange("Parler à un encadreur", "contact.html")}{btn_plain("Composer un cadre standard", "configurateur.html")}</div>
 </div></section>'''
 
 # ================= PARTENAIRES =================
@@ -432,18 +586,21 @@ partenaires_body = f'''<section class="section"><div class="p-w">
 
 # ================= GALERIE =================
 GAL_CAPTIONS = [
-    "Grand format contemporain", "Encadrement sur mesure", "Passe-partout Marie-Louise",
-    "Œuvre graphique encadrée", "Cadre bois naturel", "Composition triptyque",
-    "Encadrement museum", "Série photographique", "Cadre aluminium Nielsen",
-    "Restauration et encadrement", "Objet encadré", "Galerie intérieure",
-    "Moulure classique dorée", "Art contemporain", "Encadrement minimaliste",
-    "Collection privée", "Format paysage", "Pièce signature",
+    "Encadrement contemporain en intérieur", "Composition murale sur mesure", "Pop-art encadré · pièce signature",
+    "Aquarelle et passe-partout museum", "Street-art · cadre aluminium", "Art graphique · finition Nielsen",
+    "Triptyque photographique", "Série iconographique encadrée", "Encadrement minimaliste",
+    "Galerie privée · mise en scène", "Format paysage · salon", "Vue urbaine · cadre sur mesure",
+    "Botanique · passe-partout crème", "Encadrement classique bois", "Art contemporain · caisse américaine",
+    "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement museum · verre anti-UV",
+    "Monument parisien · intérieur", "Cuisine design · œuvre encadrée", "Encadrement couleur · chambre",
+    "Atelier · baguettes et moulures", "Chevalet et finitions artisanales", "Détail passe-partout biseauté",
 ]
+GAL_COUNT = len(GAL_CAPTIONS)
 gal_cells = "".join(
     f'<figure class="g-cell reveal"><div class="g-frame"><img src="assets/gal-{i:02d}.jpg" '
-    f'alt="{e(GAL_CAPTIONS[i-1])}" loading="{"eager" if i == 1 else "lazy"}"></div>'
+    f'alt="{e(GAL_CAPTIONS[i-1])}" loading="{"eager" if i <= 3 else "lazy"}"></div>'
     f'<figcaption class="g-cap">{e(GAL_CAPTIONS[i-1])}</figcaption></figure>'
-    for i in range(1, 19))
+    for i in range(1, GAL_COUNT + 1))
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
 <h2 class="p-h1">Une collection coup de cœur</h2>
@@ -503,34 +660,40 @@ configurateur_body = f'''<section id="cfg">
 </section>'''
 
 # ================= ÉCRITURE =================
+INDEX_LD = schema_local() + "\n  " + schema_faq(FAQ_HOME)
+CONTACT_LD = schema_local()
+
 PAGES = [
-    ("index.html", "Art'Cadres Luxembourg, encadreur d'art, sur mesure & restauration",
-     "Encadreur d'art à Luxembourg (Hollerich) : encadrement sur mesure, cadres standards Nielsen, dorure, restauration de tableaux et galerie. Maison Neumann depuis 1972.",
-     accueil_body),
-    ("notre-histoire.html", "Notre histoire, Art'Cadres Luxembourg (Maison Neumann)",
-     "L'histoire d'Art'Cadres Luxembourg : encadrement sur mesure, restauration, dorure et galerie, dans la tradition de la Maison Neumann.",
-     hist_body),
-    ("encadrement-sur-mesure.html", "Encadrement sur mesure à Luxembourg, Art'Cadres",
-     "Encadrement d'art sur mesure à Luxembourg : Marie-Louise, caisse américaine, rehausse et baguettes Nielsen.",
-     mesure_body),
-    ("encadrement-standard.html", "Cadres standards Nielsen, Art'Cadres Luxembourg",
-     "Cadres Nielsen en bois et aluminium : qualité, finitions et certification FSC, fabriqués en Allemagne.",
-     standard_body),
-    ("dorures-restauration.html", "Dorure & restauration de tableaux, Art'Cadres Luxembourg",
-     "Nettoyage, restauration de tableaux et dorure à Luxembourg. Diagnostic et devis personnalisés.",
-     dorures_body),
-    ("notre-galerie.html", "Notre galerie, Art'Cadres Luxembourg",
-     "La galerie d'Art'Cadres Luxembourg : une collection d'œuvres choisies, encadrées et mises en lumière.",
-     galerie_body),
-    ("partenaires.html", "Nos partenaires et fournisseurs, Art'Cadres Luxembourg",
-     "Nielsen Design et un réseau d'encadreurs partenaires qui recommandent Art'Cadres Luxembourg.",
-     partenaires_body),
-    ("contact.html", "Contact, Art'Cadres Luxembourg (Hollerich)",
-     "Contactez Art'Cadres Luxembourg : 2 bis rue de la toison d'or, L-2342 Luxembourg. Tél. +352 27 84 94 88.",
-     contact_body),
-    ("configurateur.html", "Composez votre cadre, devis en ligne, Art'Cadres Luxembourg",
-     "Composez votre cadre sur mesure en ligne et obtenez un devis immédiat : baguette, passe-partout et verre.",
-     configurateur_body),
+    ("index.html", "Encadreur d'art à Luxembourg · Art'Cadres (Maison Neumann 1972)",
+     "Encadreur d'art à Hollerich : sur mesure, cadres Nielsen, dorure, restauration agréée MH. Institutions Deloitte, Accor, SES. Devis en ligne.",
+     accueil_body, "", None, INDEX_LD),
+    ("institutions-entreprises.html", "Encadrement entreprises & institutions · Art'Cadres Luxembourg",
+     "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
+     institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/kathia-grand-format.jpg", None),
+    ("notre-histoire.html", "Notre histoire · Maison Neumann depuis 1972 · Art'Cadres",
+     "Art'Cadres Luxembourg perpétue la Maison Neumann (Metz, 1972) : encadrement sur mesure, restauration, dorure et galerie d'art à Hollerich.",
+     hist_body, "notre-histoire.html", None, None),
+    ("encadrement-sur-mesure.html", "Encadrement sur mesure Luxembourg · Art'Cadres",
+     "Encadrement d'art sur mesure à Luxembourg : Marie-Louise, caisse américaine, rehausse, objets et grands formats. Atelier Hollerich.",
+     mesure_body, "encadrement-sur-mesure.html", None, None),
+    ("encadrement-standard.html", "Cadres Nielsen Luxembourg · Click & Collect 1 h",
+     "Cadres standards Nielsen bois et aluminium à Luxembourg. FSC, fabriqués en Allemagne. Devis instantané et retrait en 1 h à Hollerich.",
+     standard_body, "encadrement-standard.html", None, None),
+    ("dorures-restauration.html", "Restauration tableau & dorure Luxembourg · Art'Cadres",
+     "Restauration de tableaux et dorure à la feuille à Luxembourg. Diagnostic gratuit, agrément monuments historiques, patrimoine familial.",
+     dorures_body, "dorures-restauration.html", None, None),
+    ("notre-galerie.html", "Galerie d'art & réalisations encadrées · Art'Cadres",
+     "Galerie Art'Cadres Luxembourg : œuvres encadrées sur mesure, pop-art, photographies et pièces de collection.",
+     galerie_body, "notre-galerie.html", SITE_URL + "/assets/gal-01.jpg", None),
+    ("partenaires.html", "Partenaires Nielsen & réseau encadreurs · Art'Cadres",
+     "Nielsen Design et réseau d'encadreurs partenaires recommandant Art'Cadres Luxembourg.",
+     partenaires_body, "partenaires.html", None, None),
+    ("contact.html", "Contact Art'Cadres Luxembourg · Hollerich · RDV",
+     "Contactez Art'Cadres : 2 bis rue de la toison d'or, L-2342 Luxembourg. Tél. +352 27 84 94 88. Rendez-vous avec Kathia Neumann.",
+     contact_body, "contact.html", SITE_URL + "/assets/kathia-fondatrice.jpg", CONTACT_LD),
+    ("configurateur.html", "Configurateur cadre en ligne · Devis instantané · Art'Cadres",
+     "Composez votre cadre sur mesure en ligne : baguette Nielsen, passe-partout, verre. Prix en direct, retrait Click & Collect 1 h.",
+     configurateur_body, "configurateur.html", None, None),
 ]
 PAGES.extend([
     legal_page("mentions-legales.html", "Mentions légales",
@@ -545,12 +708,56 @@ PAGES.extend([
                "Politique des cookies Art'Cadres Luxembourg.", "politique-des-cookies.html"),
 ])
 
-for fname, title, desc, body in PAGES:
+PAGE_URLS = []
+
+for entry in PAGES:
+    if len(entry) == 4:
+        fname, title, desc, body = entry
+        active, og_image, json_ld = fname, None, ""
+    else:
+        fname, title, desc, body, active, og_image, json_ld = entry
+        if json_ld is None:
+            json_ld = ""
     extra = ""
     if fname == "index.html":
         extra = '<link rel="preload" as="image" href="assets/ac-accueil.jpg">'
     with open(os.path.join(OUT, fname), "w", encoding="utf-8") as f:
-        f.write(page(title, desc, body, fname, extra))
+        f.write(page(title, desc, body, active, extra, og_image=og_image, json_ld=json_ld))
     print("écrit :", fname)
+    if not fname.startswith("politique") and "mentions" not in fname and "conditions" not in fname:
+        PAGE_URLS.append(fname)
+
+# sitemap.xml
+today = date.today().isoformat()
+urls_xml = "".join(
+    f"  <url><loc>{SITE_URL}/{'' if u == 'index.html' else u}</loc>"
+    f"<lastmod>{today}</lastmod><changefreq>monthly</changefreq>"
+    f"<priority>{'1.0' if u == 'index.html' else '0.8'}</priority></url>\n"
+    for u in PAGE_URLS)
+with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as f:
+    f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls_xml}</urlset>\n')
+print("écrit : sitemap.xml")
+
+with open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+print("écrit : robots.txt")
+
+with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
+    f.write(f"""# Art'Cadres Luxembourg
+> Encadreur d'art à Luxembourg (Hollerich). Maison Neumann depuis 1972.
+
+## Pages principales
+- {SITE_URL}/ — Encadreur d'art, institutions, grands formats
+- {SITE_URL}/institutions-entreprises.html — B2B Deloitte, Accor, SES, BNL
+- {SITE_URL}/encadrement-sur-mesure.html — Sur mesure artisanal
+- {SITE_URL}/dorures-restauration.html — Restauration & dorure
+- {SITE_URL}/configurateur.html — Devis en ligne Nielsen
+- {SITE_URL}/contact.html — Rendez-vous Hollerich
+
+## Contact
+contact@artcadres.lu · +352 27 84 94 88
+2 bis rue de la toison d'or, L-2342 Luxembourg
+""")
+print("écrit : llms.txt")
 
 print("OK,", len(PAGES), "pages générées.")
