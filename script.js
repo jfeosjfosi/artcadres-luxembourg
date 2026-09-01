@@ -55,24 +55,24 @@
     slots();
     if (!reduce) {
       var busy = false;
-      var EXIT_MS = 560;
       function cycle() {
         if (busy || document.hidden) return;
         var front = stack.firstElementChild;
         if (!front) return;
         busy = true;
         front.classList.add("is-exit");
-        stack.appendChild(front);
-        slots();
         window.setTimeout(function () {
           front.classList.add("is-tuck");
-          window.requestAnimationFrame(function () {
+          window.setTimeout(function () {
+            stack.appendChild(front);
+            slots();
+            void front.offsetWidth;
             front.classList.remove("is-exit", "is-tuck");
-            window.setTimeout(function () { busy = false; }, 720);
-          });
-        }, EXIT_MS);
+            window.setTimeout(function () { busy = false; }, 700);
+          }, 650);
+        }, 650);
       }
-      window.setInterval(cycle, 3400);
+      window.setInterval(cycle, 3600);
     }
   }
 })();

@@ -1,0 +1,16 @@
+---
+description: Interdit de livrer du UI sans screenshots desktop + mobile, boucle jusqu’à ce que ce soit parfait.
+alwaysApply: true
+---
+
+# Vérif UI obligatoire (desktop + mobile)
+
+Ne jamais dire « c’est bon » sans **preuves visuelles fraîches** des **deux** formats.
+
+**Desktop 1440×900** et **mobile 390×844**. Screenshot de la zone touchée, pas seulement le CSS.
+
+Boucle : regarder les captures → corriger → recapturer. S’arrêter seulement quand les deux formats sont justes (écart navbar, animation, crop, rythme). Les sous-agents UI font la même chose.
+
+Playwright : `reducedMotion: 'no-preference'` pour tester une animation. Mesurer les gaps en pixels (header vs hero), ne pas se fier au feeling.
+
+Ne pas commit/push un écran cassé. Détail : `QA-UI.md`.

@@ -21,3 +21,7 @@ Skills installés dans `.claude/skills/` (AgriciDaniel/claude-seo). Pour Cursor,
 **Copy :** toujours « nous », jamais « on ». Orange CTA = Contact uniquement.
 
 **Build :** `cd artcadres-site && python3 fetch_logos.py && python3 sync_assets.py && python3 build.py`
+
+**Git :** après chaque modification du site, commit + `git push origin main` et `git push preview main` (Pages = remote `preview`).
+
+**UI :** ne jamais livrer sans screenshots desktop 1440×900 et mobile 390×844. Boucle jusqu’à ce que les deux formats soient justes. Voir `QA-UI.md`.
