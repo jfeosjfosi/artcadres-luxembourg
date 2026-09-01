@@ -59,9 +59,9 @@ GAL = [
     (38, "Monument parisien · intérieur"),
     (40, "Cuisine design · œuvre encadrée"),
     (16, "Encadrement couleur · chambre"),
-    (28, "Atelier · baguettes et moulures"),
-    (36, "Chevalet et finitions artisanales"),
-    (14, "Détail passe-partout biseauté"),
+    (28, "Estampe limitée · caisse américaine"),
+    (36, "Peynet · encadrement classique"),
+    (14, "Œuvre contemporaine · cadre noir"),
 ]
 
 REF_FILES = [

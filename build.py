@@ -491,7 +491,7 @@ REF_VIGNETTES = [
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
     (1, "Encadrement contemporain"), (3, "Pop-art encadré"), (4, "Aquarelle museum"),
     (8, "Triptyque photographique"), (11, "Galerie privée"), (15, "Encadrement classique"),
-    (18, "Série limitée"), (22, "Atelier · baguettes"), (24, "Passe-partout biseauté"),
+    (18, "Série limitée"), (2, "Portrait contemporain"), (23, "Estampe encadrée"),
 ]]
 gal_teaser_html = "".join(
     f'<a class="gal-teaser__cell" href="notre-galerie.html"><img src="{img}" alt="{e(cap)}" loading="lazy"></a>'
@@ -788,18 +788,8 @@ GAL_ITEMS = [
         "Botanique · passe-partout crème", "Encadrement classique bois", "Art contemporain · caisse américaine",
         "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement museum · verre anti-UV",
         "Monument parisien · intérieur", "Cuisine design · œuvre encadrée", "Encadrement couleur · chambre",
-        "Atelier · baguettes et moulures", "Chevalet et finitions artisanales", "Détail passe-partout biseauté",
+        "Estampe limitée · caisse américaine", "Peynet · encadrement classique", "Œuvre contemporaine · cadre noir",
     ], 1)
-] + [
-    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels"),
-    ("assets/histoire-atelier-1.jpg", "Atelier · chevalet et finitions"),
-    ("assets/ac-mesure-2.jpg", "Échantillons de baguettes Nielsen"),
-    ("assets/ac-mesure-1.jpg", "Étude de passe-partout à l'atelier"),
-    ("assets/ac-mesure-3.jpg", "Montage sur mesure en cours"),
-    ("assets/ac-standard-1.jpg", "Cadres Nielsen aluminium"),
-    ("assets/ac-standard-2.jpg", "Cadres Nielsen bois"),
-    ("assets/gf-deloitte-1.jpg", "Grand format · installation Deloitte"),
-    ("assets/ref-sodikart-maillot.jpg", "Mémorabilia sportif encadré"),
 ]
 gal_cells = "".join(
     f'<figure class="g-cell reveal"><div class="g-frame"><img src="{src}" '
