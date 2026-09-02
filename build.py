@@ -956,15 +956,10 @@ partners = [
 
 def partner_strip(items):
     tiles = []
-    for fname, name, city in items:
-        img = (
-            f'<img class="logosvg logosvg--partner" src="assets/logos/{fname}" '
-            f'alt="{e(name)}" loading="lazy">'
-            if fname else ""
-        )
-        name_html = "" if fname else f'<span class="partnertile__name">{e(name)}</span>'
+    for _fname, name, city in items:
         tiles.append(
-            f'<div class="partnertile reveal">{img}{name_html}'
+            f'<div class="partnertile reveal">'
+            f'<span class="partnertile__name">{e(name)}</span>'
             f'<span class="partnertile__city">{e(city)}</span></div>'
         )
     return f'<div class="partnergrid">{"".join(tiles)}</div>'
@@ -1054,22 +1049,20 @@ configurateur_body = f'''<section id="cfg">
     <h1 class="cfg-title">Configurateur cadre en ligne · Luxembourg</h1>
     <p class="cfg-intro">Le configurateur Nielsen calcule un devis cadre en ligne pour les formats courants. Baguette, passe-partout, verre : le prix s'affiche tout de suite. Retrait Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
   </div>
-  <div class="cfg-seo reveal">
-    <h2>À qui s'adresse le devis en ligne</h2>
-    <p>Nous avons mis cet outil pour les particuliers et les professionnels qui connaissent déjà les cotes de l'œuvre, et qui veulent un cadre Nielsen bois ou aluminium sans rendez-vous préalable. Vous choisissez la baguette (univers Nature, Color, Design, Charme), le carton et le verre. Le tarif se calcule au fur et à mesure. Aucun engagement tant que vous ne validez pas la commande.</p>
-    <p>Le Click &amp; Collect se fait à l'atelier, 2 bis rue de la toison d'or, L-2342 Luxembourg (Hollerich). Nous préparons la pièce selon le stock. Dans la plupart des cas, le retrait est possible dans l'heure. Luxembourg-Ville, Hollerich et Howald sont à quelques minutes ; la pose sur site dans un rayon de 25 km se discute à part, surtout pour les grands formats et les entreprises. Aucun envoi postal : le cadre se retire à l'atelier.</p>
-  </div>
   <div class="cfg-stage cfg-stage--crop reveal">
     <div class="cfg-skeleton" aria-hidden="true"></div>
     <iframe class="cfg-frame" src="{CFG_URL}" title="Configurateur d'encadrement sur mesure" loading="lazy" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin" onload="var s=this.parentNode.querySelector('.cfg-skeleton'); if(s) s.style.display='none';"></iframe>
   </div>
   <p class="cfg-fallback">Le configurateur ne s'affiche pas ? <a href="{CFG_URL}" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
   <div class="cfg-seo reveal">
-    <h2>Limites de l'outil, et quand venir à l'atelier</h2>
-    <p>Le configurateur ne remplace pas un encadrement d'art sur mesure. Il ne gère pas les objets en volume, les médailles, les textiles, les papiers très fragiles, ni les formats hors catalogue. Dès que l'œuvre demande une Marie-Louise biseautée, une caisse américaine profonde, un verre museum ou un diagnostic de restauration, nous vous recevons à Hollerich, mercredi au samedi, de 10 h à 18 h.</p>
-    <p>Pour une série d'entreprise, une pose monumentale ou une collection, passez par la page institutions : devis, facture et planning, pas uniquement un cadre au format standard. Maison Neumann depuis 1972 : le même atelier assemble le Nielsen du configurateur et le sur-mesure discuté autour des échantillons.</p>
-    <p>Le devis en ligne n'est pas un panier e-commerce mondial. Il sert l'atelier de Hollerich : vous retirez la pièce, vous la voyez, vous la faites ajuster si besoin. Si le configurateur refuse un format, c'est souvent que le sur-mesure commence. Prenez rendez-vous, mercredi au samedi, de 10 h à 18 h, ou écrivez à contact@artcadres.lu. Téléphone : +352 27 84 94 88. Pose Howald et 25 km : nous en parlons après le devis, pas dans l'iframe. Pour une restauration ou un objet, n'utilisez pas le configurateur : venez à l'atelier.</p>
-    <p>Le configurateur affiche le prix TTC des options Nielsen choisies. Un montage museum ou une pose sur site s'ajoute ensuite, à l'atelier, sur devis.</p>
+    <h2>À qui s'adresse le devis en ligne</h2>
+    <p>Pour les formats courants Nielsen, bois ou aluminium. Vous choisissez baguette, passe-partout et verre : le tarif s'affiche au fur et à mesure. Aucun engagement tant que vous ne validez pas.</p>
+    <p>Click &amp; Collect à Hollerich, 2 bis rue de la toison d'or, souvent dans l'heure. Pas d'envoi postal. Pose sur site dans un rayon de 25 km : à part, sur devis.</p>
+  </div>
+  <div class="cfg-seo reveal">
+    <h2>Quand venir à l'atelier</h2>
+    <p>Le configurateur ne gère pas les objets, médailles, textiles, papiers fragiles ni les formats hors catalogue. Marie-Louise, caisse américaine, verre museum, restauration : rendez-vous à Hollerich, mercredi au samedi, 10 h à 18 h.</p>
+    <p>Série d'entreprise ou pose monumentale : page institutions. Un montage museum ou une pose s'ajoute à l'atelier, sur devis.</p>
   </div>
   <div class="cfg-foot reveal">{btn_orange("Une question ? Contactez-nous", "contact.html")}</div>
 </div>
