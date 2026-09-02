@@ -157,6 +157,7 @@ a{color:inherit;}
 .p-strip{margin-top:var(--space-block);display:grid;grid-template-columns:1fr;gap:16px;}
 .p-scell .p-frame{padding:10px;}
 .p-scell img{aspect-ratio:4/5;object-fit:cover;height:100%;width:100%;}
+.p-scell img[src*="kathia-solo"]{object-position:58% 18%;}
 .p-note{margin-top:26px;color:var(--muted);font-size:15px;}
 .p-quote{margin-top:var(--space-block);max-width:820px;}
 .p-quote blockquote{margin:0;font-size:clamp(26px,3.6vw,42px);line-height:1.18;font-weight:600;letter-spacing:-.01em;}
@@ -195,7 +196,7 @@ a{color:inherit;}
 #acc .p-hw .btn2:hover{background:#2c1f170d;}
 #acc .p-hw .btn{margin-top:0;}
 @media(min-width:960px){
-  #acc .p-hero-home{grid-template-columns:1.05fr .95fr;gap:36px;padding-top:56px;align-items:start;}
+  #acc .p-hero-home{grid-template-columns:1.05fr .95fr;gap:36px;padding-top:56px;align-items:center;}
 }
 #acc .p-services{margin-top:var(--space-section);display:grid;grid-template-columns:1fr;gap:48px;background:none;border:0;border-radius:0;padding-top:var(--s6);border-top:1px solid #2c1f1718;}
 #acc .p-svc{background:none;padding:0;text-decoration:none;color:inherit;display:flex;flex-direction:column;min-height:0;transition:color .3s cubic-bezier(.32,.72,0,1);}
@@ -212,7 +213,7 @@ a{color:inherit;}
 #acc .p-svc__ico svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;}
 #acc .p-strip{margin-top:var(--space-block);}
 #acc .p-strip .p-frame img{aspect-ratio:4/5;object-fit:cover;min-height:260px;}
-#acc .metier{margin-top:var(--s7);padding-top:var(--s7);border-top:1px solid var(--line);}
+#acc .metier{margin-top:var(--space-block);padding-top:var(--s6);border-top:1px solid var(--line);}
 #acc .metier__h{margin:0 0 var(--s5);font-size:var(--t-h2);line-height:var(--lh-tight);letter-spacing:var(--track-display);font-weight:700;max-width:18ch;text-wrap:balance;}
 #acc .metier__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);}
 #acc .metier__item{display:flex;flex-direction:column;gap:var(--s2);text-decoration:none;color:inherit;min-width:0;}
@@ -240,7 +241,7 @@ a{color:inherit;}
   #acc .metier__item--lg img{aspect-ratio:4/3;min-height:280px;}
   #acc .metier__item:not(.metier__item--lg) img{aspect-ratio:4/5;min-height:220px;}
 }
-#acc .p-cta--rich{margin-top:var(--s6);border:0;border-radius:0;border-top:1px solid var(--line);padding:var(--s6) 0 0;display:grid;grid-template-columns:1fr;gap:var(--s5);background:none;max-width:none;align-items:center;}
+#acc .p-cta--rich{margin-top:var(--space-block);border:0;border-radius:0;border-top:1px solid var(--line);padding:var(--s6) 0 0;display:grid;grid-template-columns:1fr;gap:var(--s5);background:none;max-width:none;align-items:center;}
 #acc .p-cta--rich h2{font-size:var(--t-h2);margin:0 0 var(--s3);letter-spacing:var(--track-display);line-height:var(--lh-tight);max-width:16ch;}
 #acc .p-cta--rich .p-cta__copy p{color:var(--muted);margin:0 0 var(--s5);font-size:var(--t-body);line-height:var(--lh-body);max-width:var(--measure);}
 #acc .p-cta__action{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s4);margin-top:0;}
@@ -249,7 +250,7 @@ a{color:inherit;}
 }
 #acc .p-cta__note{margin:0;font-size:var(--t-small);color:var(--muted);line-height:1.4;display:inline-flex;align-items:center;min-height:var(--btn-h);}
 #acc .p-cta__fig{margin:0;}
-#acc .p-cta__fig .p-frame img{aspect-ratio:5/3;object-fit:cover;width:100%;min-height:0;}
+#acc .p-cta__fig .p-frame img{aspect-ratio:4/3;object-fit:cover;width:100%;min-height:0;}
 @media(min-width:900px){
   #acc .p-cta--rich{grid-template-columns:1.2fr .9fr;gap:var(--s6);align-items:center;}
 }
@@ -571,7 +572,7 @@ a{color:inherit;}
 
 /* --- Polaroids hero --- */
 .polaroids{position:relative;height:360px;width:100%;max-width:400px;margin:0 auto;overflow:visible;}
-@media(min-width:960px){.polaroids{height:440px;max-width:none;}}
+@media(min-width:960px){.polaroids{height:456px;max-width:none;}}
 .polaroid{position:absolute;left:0;top:0;width:62%;margin:0;padding:10px 10px 26px;background:#fff;border:1px solid #2c1f1714;box-shadow:0 22px 48px -20px #2c1f1766;transform:translate3d(0,0,0) rotate(-6deg);z-index:1;}
 .polaroid img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;pointer-events:none;}
 .polaroid img[src*="kathia"]{object-position:center 8%;object-fit:cover;}

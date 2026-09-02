@@ -433,14 +433,14 @@ Ordre volontaire : d’abord ce qui « saute aux yeux », ensuite le rythme, ens
 | Phase | Contenu | Fichiers | Statut |
 |---|---|---|---|
 | **0** | Ce document | `RETOURS.md` | fait |
-| **1** | A1 animation + A2 hero air / alignement | `script.js`, `styles.css`, `QA-UI.md`, `DESIGN.md` | à faire |
-| **2** | A3 métiers + rythme `--space-section` accueil | `styles.css` | à faire |
-| **3** | A4 devis orange + alignement + photo atelier | `build.py`, `styles.css`, `DESIGN.md` | à faire |
-| **4** | A5 mosaïque titre + photos | `build.py` | à faire |
-| **5** | A6 + A7 mêmes cadres photo | `build.py`, `styles.css` | à faire |
-| **6** | A8 FAQ −30 % + titre aside | `build.py`, `styles.css` | à faire |
-| **7** | A9 avis + A10 footer | `styles.css` | à faire |
-| **8** | A11 sous-agent audit 1440 + 390 toute l’accueil, correctifs de finition | captures `_qa_audit/` (non commitées) | à faire |
+| **1** | A1 animation + A2 hero air / alignement | `script.js`, `styles.css`, `QA-UI.md`, `DESIGN.md` | fait |
+| **2** | A3 métiers + rythme `--space-section` accueil | `styles.css` | fait |
+| **3** | A4 devis orange + alignement + photo atelier | `build.py`, `styles.css`, `DESIGN.md` | fait |
+| **4** | A5 mosaïque titre + photos | `build.py` | fait |
+| **5** | A6 + A7 mêmes cadres photo | `build.py`, `styles.css` | fait |
+| **6** | A8 FAQ −30 % + titre aside | `build.py`, `styles.css` | fait |
+| **7** | A9 avis + A10 footer | `styles.css` | fait |
+| **8** | A11 sous-agent audit 1440 + 390 toute l’accueil, correctifs de finition | captures `_qa_audit/` (non commitées) | fait |
 
 Chaque phase : build si besoin → screenshots des deux viewports → lecture des PNG → commit + push origin **et** preview.
 
@@ -452,13 +452,13 @@ Après l’accueil (ou en parallèle une fois A1–A4 stables). Caler le visuel 
 
 | Phase | Contenu | Fichiers | Statut |
 |---|---|---|---|
-| **S1** | B1 hero photo atelier + B2 icônes lisibles + air | `build.py`, `styles.css` | à faire |
-| **S2** | B3 tuer les 3 pavés, faits en liste / un split | `build.py` | à faire |
-| **S3** | B4 garder tech-cards, photo moulures réelle | `build.py` | à faire |
-| **S4** | B5 formats Pop-art… (grille type accueil) | `build.py`, `styles.css` (`.p-strip--lg`) | à faire |
-| **S5** | B6 Nielsen 4 univers visuels + hiérarchie type | `build.py`, `styles.css` | à faire |
-| **S6** | B7 4 objets identiques à l’accueil | `build.py` | à faire |
-| **S7** | B8 réinjecter Pompidou, PH, verre UV, styles moulures | `build.py` | à faire |
+| **S1** | B1 hero photo atelier + B2 icônes lisibles + air | `build.py`, `styles.css` | fait |
+| **S2** | B3 tuer les 3 pavés, faits en liste / un split | `build.py` | fait |
+| **S3** | B4 garder tech-cards, photo moulures réelle | `build.py` | fait |
+| **S4** | B5 formats Pop-art… (grille type accueil) | `build.py`, `styles.css` (`.p-strip--lg`) | fait |
+| **S5** | B6 Nielsen 4 univers visuels + hiérarchie type | `build.py`, `styles.css` | fait |
+| **S6** | B7 4 objets identiques à l’accueil | `build.py` | fait |
+| **S7** | B8 réinjecter Pompidou, PH, verre UV, styles moulures | `build.py` | fait |
 
 ---
 
@@ -468,11 +468,11 @@ Même langage que Sur mesure / accueil.
 
 | Phase | Contenu | Fichiers | Statut |
 |---|---|---|---|
-| **N1** | C1 hero atelier (plus `ac-standard.jpg`) | `build.py` | à faire |
-| **N2** | C2 icônes + air | `styles.css` | à faire |
-| **N3** | C3 couper les romans, liste type ancien site | `build.py` | à faire |
-| **N4** | C4 strip photos réelles | `build.py` | à faire |
-| **N5** | C5 FSC® mention exacte, univers, CTA configurateur | `build.py` | à faire |
+| **N1** | C1 hero atelier (plus `ac-standard.jpg`) | `build.py` | fait |
+| **N2** | C2 icônes + air | `styles.css` | fait |
+| **N3** | C3 couper les romans, liste type ancien site | `build.py` | fait |
+| **N4** | C4 strip photos réelles | `build.py` | fait |
+| **N5** | C5 FSC® mention exacte, univers, CTA configurateur | `build.py` | fait |
 
 **Tirage photo** (sauté sur l’accueil originale) : phase dédiée dès que l’accueil A3/A5 est ouverte, pas avant d’avoir un visuel atelier. Ne pas inventer une page vide.
 
@@ -482,10 +482,10 @@ Même langage que Sur mesure / accueil.
 
 | Phase | Contenu | Fichiers | Statut |
 |---|---|---|---|
-| **DOR1** | D1 textes courts + D2 galerie avant/pendant/après plus haut | `build.py` | à faire |
-| **INST1** | E1 raccourcir stories institutions, **layout inchangé** | `build.py` | à faire |
-| **GAL1** | F1 lead galerie `--t-body`, 1 paragraphe | `build.py`, `styles.css` | à faire |
-| **HIS1** | G1–G7 histoire (hero, métiers+icônes, Kathia solo, caisses, **plus de citation**, alignement CTA) | `build.py`, `styles.css` | à faire |
+| **DOR1** | D1 textes courts + D2 galerie avant/pendant/après plus haut | `build.py` | fait |
+| **INST1** | E1 raccourcir stories institutions, **layout inchangé** | `build.py` | fait |
+| **GAL1** | F1 lead galerie `--t-body`, 1 paragraphe | `build.py`, `styles.css` | fait |
+| **HIS1** | G1–G7 histoire (hero, métiers+icônes, Kathia solo, caisses, **plus de citation**, alignement CTA) | `build.py`, `styles.css` | fait |
 
 Vérif 1440 + 390 à chaque phase.
 
@@ -495,9 +495,9 @@ Vérif 1440 + 390 à chaque phase.
 
 | Phase | Contenu | Fichiers | Statut |
 |---|---|---|---|
-| **P1** | H1 page partenaires **conservée** (existe sur artcadres.lu), vrais logos, grille propre | `build.py`, `fetch_logos.py`, `styles.css` | à faire |
-| **K1** | I1 crop Kathia solo + I2 map gardée, fond `--bg` | `build.py`, `styles.css` | à faire |
-| **Q1** | J1 configurateur fond `--bg`, chrome aligné nav | `styles.css` | à faire |
+| **P1** | H1 page partenaires **conservée** (existe sur artcadres.lu), vrais logos, grille propre | `build.py`, `fetch_logos.py`, `styles.css` | fait |
+| **K1** | I1 crop Kathia solo + I2 map gardée, fond `--bg` | `build.py`, `styles.css` | fait |
+| **Q1** | J1 configurateur fond `--bg`, chrome aligné nav | `styles.css` | fait |
 
 Contact et configurateur : **les deux viewports**, crop Kathia relu sur les PNG.
 
