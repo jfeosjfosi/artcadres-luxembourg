@@ -26,7 +26,7 @@ S’ils rendent un audit sans captures des deux formats, relancer.
 
 ## Accueil — critères hero
 
-- **Air sous la navbar** : 24–36 px desktop, 20–28 px mobile (ni collé, ni gouffre). Ne jamais mettre `padding-top: 0` sur `#acc .p-hero-home`.
+- **Air sous la navbar** : 52–64 px desktop, 36–44 px mobile (ni collé, ni gouffre). Ne jamais mettre `padding-top: 0` sur `#acc .p-hero-home`.
 - **Pile polaroid** : la carte du dessus glisse **dans** le tas en un seul arc (`is-deal`), passe derrière à mi-course, opacity toujours `1`. Pas de double hop (côté puis bas), pas de saut de `z-index` à l’arrivée. Pas de carte coupée par `overflow-x: clip`.
 - Google avis au-dessus du H1.
 

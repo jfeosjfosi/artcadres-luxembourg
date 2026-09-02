@@ -6,7 +6,7 @@ Source de vérité visuelle. Les tokens vivent dans `:root` de `styles.css`. Ne 
 
 ## 1. Atmosphere
 
-Atelier lumineux, papier, bois, feuille d'or. Surfaces calmes, photos réelles, peu de cartes. L'orange n'apparaît que sur Contact et les accents (étoiles, soulignements, icônes). Le configurateur reste un bouton contour.
+Atelier lumineux, papier, bois, feuille d'or. Surfaces calmes, photos réelles, peu de cartes. L'orange n'apparaît que sur Contact, les accents (étoiles, soulignements, icônes), et **une exception** : le CTA « Accéder au configurateur » du bloc devis accueil (et le même CTA sur la page Standard). Le bouton hero « Composer votre cadre en ligne » reste contour.
 
 ## 2. Color
 
@@ -21,7 +21,7 @@ Atelier lumineux, papier, bois, feuille d'or. Surfaces calmes, photos réelles, 
 | `--line` | `color-mix(in srgb, var(--ink) 12%, transparent)` | Filets 1 px |
 | `--shadow` | `0 24px 60px -34px color-mix(in srgb, var(--ink) 40%, transparent)` | Cadres photo |
 
-Jamais `#000`. Jamais un second accent. Jamais orange sur un bouton qui n'est pas Contact / rendez-vous.
+Jamais `#000`. Jamais un second accent. Orange = Contact / rendez-vous, plus l'exception configurateur du devis (A4 / C3).
 
 ## 3. Type
 
@@ -53,8 +53,8 @@ Poids : 500 nav, 600 boutons et titres de tuiles, 700 H1/H2. `text-wrap: balance
 | `--s5` | `32px` |
 | `--s6` | `48px` |
 | `--s7` | `64px` |
-| `--space-section` | `clamp(64px, 7vw, 80px)` |
-| `--space-block` | `64px` |
+| `--space-section` | `clamp(72px, 8vw, 96px)` |
+| `--space-block` | `72px` |
 | `--space-cta` | `48px` |
 | `--btn-h` | `56px` |
 | `--maxw` | `1180px` |
@@ -90,11 +90,11 @@ Entre deux sections sœurs : `--s6` ou `--s7`, un seul filet. Pas `--space-block
 
 **Mosaïque atelier `.metier`** — 6 cellules, 2 mises en avant (col 1), 4 compactes. Photo réelle + titre + une ligne. Lien vers la page. Mobile : une colonne.
 
-**Split devis `.p-cta--rich`** — copie à gauche, photo 4/3 à droite. Pas de liste d'étapes sous le bouton (ça casse le rythme).
+**Split devis `.p-cta--rich`** — copie à gauche, photo 4/3 à droite. CTA orange « Accéder au configurateur » + note Click & Collect sur la même ligne (`align-items: center`, `min-height: var(--btn-h)`).
 
 **Split FAQ** — questions à gauche, atelier (tél, mail, adresse, horaires) à droite dès 900 px. Accordion : `grid-template-rows` 0fr → 1fr, plus qui pivote. Padding `--s5` entre les questions. Mobile : contact sous la liste.
 
-**Hero accueil** — air sous nav 24–36 px desktop, 20–28 px mobile. Voir `QA-UI.md`.
+**Hero accueil** — air sous nav **52–64 px** desktop, **36–44 px** mobile. Voir `QA-UI.md`. `align-items: center` dès 960 px. Ne jamais `padding-top: 0`.
 
 ## 7. Layout families (une fois par page)
 

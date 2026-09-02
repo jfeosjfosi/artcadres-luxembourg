@@ -51,7 +51,7 @@ def btn(label, href, cls="btn"):
 
 
 def btn_orange(label, href):
-    """CTA orange — réservé à Contact / rendez-vous."""
+    """CTA orange — Contact / rendez-vous, plus exception devis configurateur."""
     return btn(label, href, cls="btn")
 
 
@@ -443,15 +443,15 @@ def rest_gallery():
         '</div>'
     )
     return (
-        '<div class="rest-work reveal">'
-        '<h2 class="p-h2">Le travail, en images</h2>'
+        '<div class="rest-work rest-work--lead reveal">'
+        '<h2 class="p-h2">Avant, pendant, après</h2>'
         f'<div class="rest-steps">{cells}</div>'
         f'{pair}'
         '</div>'
     )
 
 
-def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_img=False):
+def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_img=False, wide=False):
     if solo:
         fig = ""
     else:
@@ -460,7 +460,8 @@ def content_hero(eyebrow, heading, lead_html, image, caption, solo=False, eager_
         fig = (f'<figure class="reveal" style="--d:120ms"><div class="p-frame">'
                f'<img src="{image}" alt="{e(heading)}" width="1200" height="900" loading="{load}"></div>{cap}</figure>')
     solo_cls = " p-hero-solo" if solo else ""
-    return (f'<div class="p-hero{solo_cls}"><div class="p-intro reveal">'
+    wide_cls = " p-hero--wide" if wide else ""
+    return (f'<div class="p-hero{solo_cls}{wide_cls}"><div class="p-intro reveal">'
             f'<span class="p-eyebrow">{e(eyebrow)}</span>'
             f'<h1 class="p-h1">{e(heading)}</h1>'
             f'<div class="p-lead">{lead_html}</div></div>{fig}</div>')
@@ -530,7 +531,7 @@ def polaroid_stack(items):
     for i, (src, alt) in enumerate(items):
         load = "eager" if i == 0 else "lazy"
         figs.append(
-            f'<figure class="polaroid" data-slot="{i}"><img src="{src}" alt="{e(alt)}" '
+            f'<figure class="polaroid" data-home="{i}" data-slot="{i}"><img src="{src}" alt="{e(alt)}" '
             f'width="640" height="800" loading="{load}" draggable="false"></figure>'
         )
     return f'<div class="polaroids">{"".join(figs)}</div>'
@@ -551,12 +552,44 @@ def tech_cards(items):
     return f'<div class="tech-grid">{cards}</div>'
 
 
-def icon_row(items):
+def icon_row(items, extra=""):
     """Ligne d'icônes + texte court (pages services)."""
     cells = "".join(
         f'<div class="p-ico"><div class="p-ico__mark">{ICON[ic]}</div>'
         f'<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in items)
-    return f'<div class="p-icos reveal">{cells}</div>'
+    cls = f"p-icos{extra} reveal"
+    return f'<div class="{cls}">{cells}</div>'
+
+
+def nielsen_univers():
+    items = [
+        ("nature", "Nature", "Bois naturel, massif et placage."),
+        ("color", "Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
+        ("design", "Design", "Des lignes pures, associées à des finitions sobres ou métallisées."),
+        ("charme", "Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies."),
+    ]
+    cells = "".join(
+        f'<article class="univ__item"><div class="univ__swatch univ__swatch--{k}"></div>'
+        f'<h3>{e(t)}</h3><p>{e(d)}</p></article>'
+        for k, t, d in items)
+    return (
+        '<div class="univ-wrap reveal">'
+        '<h2 class="p-h2">Les baguettes Nielsen, 4 univers</h2>'
+        f'<div class="univ">{cells}</div></div>'
+    )
+
+
+def matters_block():
+    return (
+        '<div class="matters reveal">'
+        "<article><h3>Passe-partout</h3>"
+        "<p>Contrecollés PH neutre, sans acide, pour la conservation des œuvres sur papier.</p></article>"
+        "<article><h3>Verre Nielsen</h3>"
+        "<p>Confort visuel, rendu des couleurs, filtrage UV de 55 % à 99 % selon le verre choisi.</p></article>"
+        "<article><h3>Baguette</h3>"
+        "<p>Moulures et baguettes Nielsen, choisies à l'atelier autour des échantillons.</p></article>"
+        "</div>"
+    )
 
 
 def client_cards(items):
@@ -660,7 +693,7 @@ gf_objs = [("obj-medailles", "Médailles & décorations"),
            ("obj-cuillere", "Objets (couverts, souvenirs)"),
            ("obj-trefle", "Porte-bonheur & petites pièces")]
 gf_objs_html = "".join(
-    f'<div class="p-obj"><img src="assets/{s}.jpg" alt="{e(l)}" loading="lazy">'
+    f'<div class="p-obj"><div class="p-frame"><img src="assets/{s}.jpg" alt="{e(l)}" loading="lazy"></div>'
     f'<span><b>{e(l)}</b></span></div>' for s, l in gf_objs)
 
 avis = [
@@ -702,14 +735,14 @@ accueil_body = f'''<section id="acc">
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
   <div class="p-story reveal">
-    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces.</p></div></div>
+    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces. Nous réalisons aussi vos tirages photo, petits et grands formats.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" width="1200" height="900" loading="eager"></div></figure>
   </div>
-  {metier_grid("À l'atelier", [
-    ("assets/ac-mesure.jpg", "Encadrement sur mesure",
+  {metier_grid("Art'Cadres Luxembourg", [
+    ("assets/histoire-atelier-1.jpg", "Encadrement sur mesure",
      "Baguette, passe-partout et verre choisis pour l'œuvre, réalisés à Hollerich.",
      "encadrement-sur-mesure.html", True),
-    ("assets/ac-standard.jpg", "Cadres Nielsen",
+    ("assets/ac-mesure-1.jpg", "Cadres Nielsen",
      "Aluminium ou bois, à composer en ligne, à retirer en une heure.",
      "encadrement-standard.html", False),
     ("assets/kathia-grand-format.jpg", "Grands formats",
@@ -729,10 +762,10 @@ accueil_body = f'''<section id="acc">
     <div class="p-cta__copy">
       <h2>Votre devis, en quelques clics</h2>
       <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
-      <div class="p-cta__action">{btn_plain("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+      <div class="p-cta__action">{btn_orange("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
     </div>
     <figure class="p-cta__fig">
-      <div class="p-frame"><img src="assets/ac-mesure-2.jpg" alt="Échantillons de baguettes à l'atelier Art'Cadres" loading="lazy"></div>
+      <div class="p-frame"><img src="assets/ac-contact.jpg" alt="Mur de baguettes à l'atelier Art'Cadres, Hollerich" loading="lazy"></div>
     </figure>
   </div>
 </div>
@@ -747,7 +780,7 @@ accueil_body = f'''<section id="acc">
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
   <div><p class="p-stat">Du format intime au monumental</p><h2>Nous encadrons et installons sur site</h2><p>Des médailles aux panneaux muraux de plusieurs mètres : nous maîtrisons l'encadrement sur mesure et la pose en entreprise, pour les particuliers comme pour les institutions.</p></div>
-  <div class="p-imgs"><div class="p-fr"><img src="assets/kathia-grand-format.jpg" alt="Kathia Neumann installe une œuvre grand format" loading="lazy"></div><div class="p-fr"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
+  <div class="p-imgs"><div class="p-frame"><img src="assets/kathia-grand-format.jpg" alt="Kathia Neumann installe une œuvre grand format" loading="lazy"></div><div class="p-frame"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
 </div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
@@ -765,7 +798,7 @@ accueil_body = f'''<section id="acc">
     <div class="faq">{faq_html}</div>
   </div>
   <aside class="faq-aside">
-    <h3>Atelier Hollerich</h3>
+    <h3>Art'Cadres Luxembourg</h3>
     <p class="faq-aside__lead">Nous vous accueillons sur rendez-vous, mercredi au samedi.</p>
     <dl class="faq-aside__dl">
       <div><dt>Téléphone</dt><dd><a href="tel:+35227849488">+352 27 84 94 88</a></dd></div>
@@ -787,65 +820,80 @@ accueil_body = f'''<section id="acc">
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
-{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. Un espace unique où savoir-faire artisanal, conseil personnalisé et passion de l'art se rencontrent.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True)}
+{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. Un espace unique où savoir-faire artisanal, conseil personnalisé et passion de l'art se rencontrent.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True, wide=True)}
 <div class="hist-stats reveal">
   <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Maison Neumann</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
   <div><span class="hist-stats__n">4</span><span class="hist-stats__l">métiers réunis</span></div>
   <div><span class="hist-stats__n">88</span><span class="hist-stats__l">avis vérifiés</span></div>
 </div>
-{content_story("L'excellence de l'encadrement sur mesure", ["Chez Art'Cadres Luxembourg, chaque œuvre mérite une présentation à la hauteur de son histoire, de sa valeur et de son caractère.", "Forte de plus de 30 années d'expérience, Kathia Neumann met son expertise artisanale et son regard esthétique au service de créations entièrement sur mesure. Chaque projet fait l'objet d'une étude attentive, pour un encadrement en parfaite harmonie avec l'œuvre, son environnement et la sensibilité de son propriétaire.", "Moulures contemporaines ou classiques, finitions raffinées, verres de protection, passe-partout et techniques traditionnelles : chaque détail est sélectionné avec exigence pour donner naissance à une pièce unique.", "Kathia Neumann a ouvert l'antenne luxembourgeoise après plus de trente ans à Metz. L'atelier de Hollerich réunit encadrement, restauration avec Sylvie Schied, dorure et une galerie. Nous recevons particuliers, artistes, collectionneurs, architectes et institutions, mercredi au samedi, sur rendez-vous."])}
-<div class="p-list reveal">{content_list("Nos métiers réunis en un même lieu", [("Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."), ("Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."), ("Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."), ("Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière.")], spaced=True)}</div>
-{strip(["assets/kathia-fondatrice.jpg", "assets/kathia-grand-format.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Installation grand format en entreprise", "Atelier d'encadrement sur mesure"], large=True)}
-<figure class="p-quote reveal"><blockquote>« Chaque œuvre mérite une présentation à la hauteur de son histoire. »</blockquote><figcaption>Kathia Neumann, Art'Cadres Luxembourg</figcaption></figure>
-<div class="p-note reveal"><p>Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions bénéficient d'un accompagnement confidentiel, personnalisé et exigeant.</p></div>
-<div class="p-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
+{content_story("L'excellence de l'encadrement sur mesure", ["Kathia Neumann a ouvert l'antenne luxembourgeoise après plus de trente ans à Metz. L'atelier de Hollerich réunit encadrement, restauration avec Sylvie Schied, dorure et une galerie.", "Moulures contemporaines ou classiques, verres de protection et passe-partout : chaque détail est choisi pour l'œuvre, son mur et son propriétaire."])}
+{icon_row([
+    ("ruler", "Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."),
+    ("photo", "Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."),
+    ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."),
+    ("bag", "Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière."),
+], extra=" p-icos--4")}
+{strip(["assets/kathia-solo.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Commande prête à livrer, cadres sous film", "Atelier d'encadrement sur mesure"], large=True)}
+<div class="hist-end">
+  <p class="p-note">Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions : un accompagnement confidentiel, à l'atelier.</p>
+  {btn_orange("Prendre rendez-vous", "contact.html")}
+</div>
 </div></section>'''
 
 # ================= ENCADREMENT SUR MESURE =================
 mesure_body = f'''<section class="section"><div class="p-w">
-{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/ac-mesure.jpg", "Encadrement sur mesure à l'atelier", eager_img=True)}
+{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
 {icon_row([("frame", "Étude personnalisée", "Chaque œuvre est analysée avec vous : style, conservation, budget."), ("ruler", "Techniques artisanales", "Marie-Louise, caisse américaine, rehausse et montages museum."), ("size", "Du petit au monumental", "Médailles, objets, tableaux et panneaux muraux pour entreprises.")])}
-{content_story("Mettre l'œuvre en valeur, selon votre budget", ["Notre objectif principal est la mise en valeur de l'œuvre, en tenant compte de la sensibilité de chacun, avec un budget adapté grâce à une gamme étendue de moulures tous styles, du contemporain au classique.", "Styles de nos moulures : modernes, noir, blanc, chêne, or, wengé, gris, couleurs."])}
-{content_story("Du rendez-vous à Hollerich au cadre fini", ["Nous vous recevons à l'atelier, au 2 bis rue de la toison d'or à Hollerich. Vous apportez l'œuvre, ou des photos et les cotes si le format est trop grand pour un premier passage. Nous regardons ensemble le sujet, le mur où il sera accroché, la lumière, et le budget. Rien n'est figé : une Marie-Louise biseautée n'est pas obligatoire, une caisse américaine non plus. Nous proposons ce qui sert la pièce.", "Le sur-mesure commence quand un cadre Nielsen au format courant ne suffit plus : proportions hors série, objet en volume, verre de conservation, passe-partout profond, série à harmoniser. Nous découpons, assemblons et finissons à l'atelier. Les baguettes Nielsen (Nature, Color, Design, Charme) restent disponibles ; nous les combinons avec des moulures plus spécifiques quand le projet le demande.", "Un devis sur mesure se discute autour des échantillons, pas uniquement à l'écran. Les délais vont de quelques jours à plusieurs semaines selon la baguette, le verre anti-UV et la charge de l'atelier. Nous indiquons une date dès que le montage est arrêté."])}
-{content_story("Objets, volumes et quand venir plutôt que commander en ligne", ["Le configurateur calcule un devis Nielsen en direct. Il est fait pour les formats courants, le Click & Collect en une heure, et ceux qui savent déjà ce qu'ils veulent. Dès qu'il y a un objet, un textile, une médaille, un papier fragile ou un grand format, nous vous demandons de passer à l'atelier.", "Nous encadrons tableaux, lithographies, photographies, aquarelles, maillots, médailles, végétaux, couverts et reliques familiales. La technique de rehausse maintient le verre au-dessus du volume. Un montage museum isole l'œuvre du carton. Nous n'imposons pas le plus cher : nous expliquons le rôle de chaque couche (carton, filet, verre) pour que vous choisissiez en connaissance de cause.", "Pour une entreprise ou une pose dans un rayon de 25 km autour de Luxembourg-Ville, Howald et Hollerich, le planning inclut la livraison et l'accrochage. Composez un Nielsen en ligne si le format le permet, ou prenez rendez-vous pour un conseil sur mesure."])}
+<div class="p-story reveal">
+  <div class="p-intro"><h2>Mise en valeur, selon votre budget</h2><div class="p-body"><p>Nous choisissons la baguette pour l'œuvre, le mur et votre budget : moulures contemporaines ou classiques, du filet discret à l'or. Pros, particuliers, architectes et décorateurs : le même atelier, y compris pour des pièces exposées au Centre Pompidou.</p></div></div>
+  <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+</div>
+<ul class="p-chips reveal"><li>Modernes</li><li>Noir</li><li>Blanc</li><li>Chêne</li><li>Or</li><li>Wengé</li><li>Gris</li><li>Couleurs</li></ul>
+<div class="p-list reveal">{content_list("Du rendez-vous au cadre", [("À l'atelier", "Vous apportez l'œuvre, ou les cotes. Nous regardons le sujet, la lumière et le budget."), ("Quand Nielsen ne suffit plus", "Format hors série, objet, verre de conservation, passe-partout profond."), ("Délais", "Quelques jours à plusieurs semaines, selon la baguette et la charge de l'atelier.")])}</div>
+{matters_block()}
 <h2 class="p-h2 reveal">Quelques techniques du sur-mesure</h2>
 {tech_cards([
     ("assets/gal-15.jpg", "La Marie-Louise biseautée",
      "Le haut de gamme du passe-partout : un biseau qui crée de la profondeur autour du sujet, en montage traditionnel comme contemporain."),
     ("assets/histoire-atelier-1.jpg", "La caisse américaine",
      "L'œuvre flotte dans le cadre, en léger retrait. Une mise en valeur nette, très demandée pour l'art contemporain et la photographie."),
-    ("assets/ac-mesure-2.jpg", "Moulures et baguettes",
+    ("assets/ac-contact.jpg", "Moulures et baguettes",
      "Des centaines d'échantillons à l'atelier : or, bois, aluminium, patines. Nous choisissons avec vous la baguette qui sert l'œuvre."),
     ("assets/gal-24.jpg", "La technique de rehausse",
      "Le verre reste en suspension au-dessus du sujet. Idéal pour les objets, les pièces en volume et les montages museum."),
 ])}
 {strip(["assets/gal-03.jpg", "assets/gal-08.jpg", "assets/gal-11.jpg", "assets/gal-18.jpg"], 4, ["Pop-art encadré", "Triptyque photographique", "Galerie privée", "Verre museum"], large=True)}
-<div class="p-list p-list2 reveal">{content_list("Les baguettes Nielsen, 4 univers", [("Nature", "Bois naturel, massif et placage."), ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."), ("Design", "Des lignes pures, associées à des finitions sobres ou métallisées."), ("Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies.")])}</div>
-{strip(["assets/obj-medailles.jpg", "assets/obj-vegetal.jpg", "assets/obj-cuillere.jpg"], 3, ["Médailles et décorations", "Cadres végétaux", "Objets et souvenirs"], large=True)}
-<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")} {btn_orange("Demander un conseil", "contact.html")}</div>
+{nielsen_univers()}
+<h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
+<div class="p-objs reveal">{gf_objs_html}</div>
+<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")} {btn_orange("Demander un conseil", "contact.html")} {btn_plain("Dorure & restauration", "dorures-restauration.html")}</div>
 </div></section>'''
 
 # ================= ENCADREMENT STANDARD =================
 standard_body = f'''<section class="section"><div class="p-w">
-{content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-standard.jpg", "Cadres Nielsen, bois et aluminium", eager_img=True)}
-{icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Fabrication allemande, certification FSC sur les cadres bois.")])}
-<div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Conçus par Nielsen Design", "La certification FSC garantit une gestion responsable des forêts. La plupart de nos cadres bois sont éco-responsables."), ("Fabriqués en Allemagne", "Nielsen, marque de référence de l'encadrement : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
-{content_story("Aluminium ou bois : comment choisir", ["Les cadres aluminium Nielsen se chargent et se démontent facilement. Ils conviennent aux affiches, photographies et séries que vous changerez. Le verre minéral 2 mm à chants polis évite les arêtes coupantes. Les cadres bois portent davantage le décor : chêne, couleurs, or, patines. La certification FSC concerne la filière bois. La fabrication reste allemande.", "Un cadre Nielsen au format courant n'est pas un encadrement d'art sur mesure. Il ne remplace pas une Marie-Louise biseautée, une caisse américaine profonde, ni un montage d'objet. Si votre œuvre dépasse les cotes du configurateur, si le papier est fragile, ou si vous voulez un verre museum, nous basculons vers le sur-mesure à l'atelier.", "Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Nous desservons Luxembourg-Ville, Hollerich et Howald pour le retrait. La pose sur site dans un rayon de 25 km reste un service à part, plutôt lié aux commandes institutionnelles et aux grands formats."])}
-{content_story("Ce que vous emportez avec un cadre Nielsen", ["Un cadre standard Nielsen, c'est une coupe d'usine, un verre minéral, un fond MDF et une finition répétable. Nous le stockons et le préparons à l'atelier : ce n'est pas un colis anonyme. Vous pouvez changer l'affiche plus tard sans casser le cadre, surtout en aluminium. Le bois se prête mieux à un salon, une chambre, un cabinet où la baguette fait partie du décor.", "Nous conseillons le standard quand le format existe, quand le budget doit rester lisible, et quand le délai compte (Click & Collect). Nous conseillons le sur-mesure quand l'œuvre a une valeur patrimoniale, un format irrégulier, ou quand le verre de conservation n'est pas une option. Les deux familles se retrouvent dans le même atelier, avec le même accueil mercredi au samedi.", "Pour une série d'entreprise au format identique, le Nielsen reste souvent le bon outil : une référence, un devis en ligne, une livraison groupée. Pour un portrait officiel ou une pièce unique, nous ouvrons les échantillons de moulures. Si vous hésitez, écrivez-nous les cotes et une photo : nous vous disons franchement si le configurateur suffit ou s'il faut un rendez-vous.", "L'atelier est à Hollerich. Vous composez en ligne, vous retirez sur place, vous repartez avec un cadre prêt à accrocher. Si le stock d'une baguette manque, nous vous prévenons et proposons une alternative Nielsen du même univers, ou un rendez-vous sur mesure. Les univers Nature, Color, Design et Charme couvrent le bois brut, la couleur, les lignes pures et les patines ; nous vous aidons à choisir si l'écran ne suffit pas. Certification FSC sur la plupart des bois, fabrication en Allemagne. Nous le conseillons, nous le préparons, nous ne le déguisons pas en sur-mesure."])}
-{strip(["assets/ac-standard-1.jpg", "assets/ac-standard-2.jpg"], 2, ["Cadres Nielsen aluminium à l'atelier Hollerich", "Cadres Nielsen bois, certification FSC"])}
-<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
+{content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
+{icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Cadre certifié FSC®. Fabrication allemande.")])}
+<div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Cadre certifié FSC®", "Conçus par Nielsen Design. La certification FSC® garantit une gestion responsable des forêts."), ("Fabriqués en Allemagne", "Nielsen, marque de référence : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
+{nielsen_univers()}
+<div class="p-story reveal">
+  <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Si le format sort du catalogue, nous passons au sur-mesure.</p></div></div>
+  <figure><div class="p-frame"><img src="assets/ac-mesure-1.jpg" alt="Passe-partout découpés à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+</div>
+{strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
+<div class="p-cta p-cta--cfg reveal">{btn_orange("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
 </div></section>'''
 
 # ================= DORURES & RESTAURATION =================
 dorures_body = f'''<section id="dor" class="section"><div class="p-w">
 {content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
 {icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
-{content_story("La préservation de votre patrimoine", ["Chez Art'Cadres, nous vous accompagnons dans la préservation de votre patrimoine artistique grâce à des prestations de nettoyage et de restauration réalisées avec le plus grand soin, en collaboration avec Sylvie Schied, restauratrice agréée monuments historiques.", "Chaque œuvre est étudiée avant toute intervention afin de lui redonner son éclat tout en respectant son histoire, ses matériaux et l'intention de l'artiste. Un tableau est bien plus qu'un objet décoratif : c'est un souvenir de famille, un héritage ou une pièce de collection qui mérite d'être préservée pour les générations futures."])}
-{content_story("Un diagnostic, pas un simple nettoyage", ["Un nettoyage de surface n'est pas une restauration. Nous distinguons la poussière, le vernis oxydé, les lacunes, les déformations de toile et les accidents de cadre. Sylvie Schied intervient quand l'œuvre le justifie : consolidations, tests de solubilité, retouches localisées. Nous ne promettons pas un tableau comme neuf. Nous visons la lisibilité de l'œuvre et le respect des matériaux.", "La dorure concerne les cadres, les miroirs et certains objets. Feuille d'or, apprêts, bol, brunissoir : les gestes sont ceux de l'atelier, pas ceux d'une peinture métallisée. Un cadre fendu ou un stuc manquant se répare avant la feuille. Pour un tableau de famille, nous vous disons clairement si l'intervention est de conservation, de présentation, ou les deux.", "Vous déposez la pièce à Hollerich. Nous établissons un diagnostic écrit et un devis. Aucune intervention sans votre accord. Les photos avant, pendant et après documentent le travail. Après restauration, un encadrement sur mesure peut protéger l'œuvre (verre de conservation, fond isolé). Rendez-vous mercredi au samedi, de 10 h à 18 h."])}
-{content_story("Quand restaurer, et ce que nous ne faisons pas", ["Les signes fréquents : vernis qui a jauni au point de masquer les ombres, craquelures ouvertes, coins de toile détendus, cadre qui poudre, or qui s'écaille. Un tableau qui a vécu dans une cheminée ou un grenier n'a pas le même traitement qu'une huile récemment accrochée. Nous expliquons le geste prévu avant de toucher la matière.", "L'agrément monuments historiques de Sylvie Schied compte pour les pièces patrimoniales et pour les familles qui veulent une intervention documentée, pas un bricolage. Nous ne « rafraîchissons » pas une peinture à la peinture neuve. Nous ne démontons pas un cadre ancien pour le remplacer par du plastique doré. Si la pièce relève d'un musée ou d'une assurance, nous le disons et nous adaptons le devis.", "Après le chantier, beaucoup de clients choisissent un encadrement neuf pour protéger le travail : verre anti-UV, fond isolé, quincaillerie d'accrochage. D'autres conservent le cadre d'origine une fois la dorure reprise. Les deux options se discutent à l'atelier, à Hollerich, avec la pièce sous les yeux.", "Apportez le tableau tel quel, sans le démonter vous-même. Un diagnostic ne vous engage pas. Nous indiquons un ordre de budget avant d'ouvrir un chantier long. Pour Howald et Luxembourg-Ville, le dépôt se fait à l'atelier ; nous ne collectons pas les pièces à domicile sauf projet institutionnel convenu. Maison Neumann depuis 1972 : la restauration s'inscrit dans le même atelier que l'encadrement."])}
 {rest_gallery()}
-<div class="p-note reveal"><p>N'hésitez pas à nous apporter votre tableau pour un diagnostic et un devis personnalisés.</p></div>
+<div class="p-list reveal">{content_list("Diagnostic, dorure, limites", [("Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("Dorure", "Feuille d'or, apprêts, bol, brunissoir : cadres, miroirs et objets, pas une peinture métallisée."), ("Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}</div>
+<div class="p-story reveal">
+  <div class="p-intro"><h2>Préservation du patrimoine</h2><div class="p-body"><p>Nettoyage et restauration avec Sylvie Schied, agréée monuments historiques. Chaque œuvre est étudiée avant d'intervenir, pour retrouver l'éclat sans trahir les matériaux ni l'intention de l'artiste.</p></div></div>
+</div>
+<div class="p-note reveal"><p>Apportez votre tableau pour un diagnostic et un devis. Merci de ne pas le démonter vous-même.</p></div>
 <div class="p-cta reveal">{btn_orange("Demander un diagnostic", "contact.html")}</div>
 </div></section>'''
 
@@ -874,9 +922,8 @@ institutions_body = f'''<section class="section"><div class="p-w">
 "assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 {client_cards(INST_CASES)}
-{content_story("Comment nous travaillons avec une entreprise", ["Un projet B2B commence par un brief : volumes, délais, lieux de pose, contraintes d'accès, charte visuelle. Nous établissons un devis, une facture et un planning. La confidentialité s'applique aux institutions et aux sièges : nous ne photographions pas un plateau sans accord. Les portraits protocolaires, les collections d'entreprise et l'hôtellerie n'ont pas le même cahier des charges ; nous l'écrivons avant de couper la première baguette.", "Nous installons dans un rayon d'environ 25 km autour de Luxembourg-Ville, Hollerich et Howald, et plus loin pour les comptes déjà suivis, notamment Betzdorf et Metz. Grands formats, séries murales, accrochage en open space ou en hall. L'étude se fait à l'atelier ; la pose se calcule avec vous (horaires, sécurité, moyens d'accès).", "Les directions communication et les architectes d'intérieur nous confient des pièces qui resteront des années au mur. Le verre, le fond, la baguette et la quincaillerie d'accrochage font partie du devis. Maison Neumann depuis 1972 : la même exigence pour un siège que pour un particulier. Les cas Deloitte, Accor, SES, Bibliothèque nationale et Cour grand-ducale illustrent le niveau attendu."])}
-{content_story("Devis, délais et ce que nous livrons", ["Un devis institutionnel précise les quantités, les références de baguettes, le type de verre, les fonds, et si la pose est incluse. Nous facturons l'entreprise, pas un particulier intermédiaire, sauf mandat écrit. Les délais se calent sur vos fermetures de site, vos inaugurations et vos protocoles. Un portrait officiel n'a pas la même date butoir qu'une série d'affiches pour un couloir.", "Pour Howald, Kirchberg ou un siège hors ville, nous venons avec l'équipe d'accrochage quand le format l'exige. Le rayon de 25 km couvre la plupart des adresses luxembourgeoises courantes ; au-delà, nous étudions le déplacement. Vous parlez à Kathia Neumann ou à l'atelier, pas à un standard anonyme.", "Un premier contact par e-mail avec les cotes, le nombre de pièces et le lieu de pose suffit à ouvrir un devis. Nous confirmons ensuite un rendez-vous à Hollerich ou une visite sur site si le volume le justifie."])}
-<div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel, contactez-nous directement : devis personnalisé, confidentialité et planning adaptés.</p></div>
+<div class="p-list reveal">{content_list("Comment nous travaillons", [("Brief", "Volumes, délais, lieux de pose, charte. Devis, facture et planning. Confidentialité pour les sièges et les institutions."), ("Pose", "Rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz)."), ("Devis", "Quantités, baguettes, verre, fonds, pose. Un e-mail avec les cotes et le lieu suffit à ouvrir le dossier.")])}</div>
+<div class="p-note reveal"><p>Nous intervenons sur rendez-vous à Luxembourg-Ville, Hollerich et dans un rayon de 25 km. Pour un projet institutionnel : devis, confidentialité, planning.</p></div>
 <div class="p-cta reveal">{btn_orange("Demander un devis institutionnel", "contact.html")} {btn_plain("Voir la galerie", "notre-galerie.html")}</div>
 </div></section>'''
 
@@ -893,9 +940,9 @@ partners = [
     ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout", "Reims"),
     ("logo-part-misterblad.svg", "Misterblad", "Clichy"),
     ("logo-part-chatrrouge.svg", "Le Chat Rouge", "Pau"),
-    (None, "LC Cadres", "Enghien-les-Bains"),
-    (None, "Maison Neumann", "Metz"),
-    (None, "La tête dans le cadre", "Saint-Berthevin"),
+    ("logo-part-lccadres.svg", "LC Cadres", "Enghien-les-Bains"),
+    ("logo-part-maisonneumann.svg", "Maison Neumann", "Metz"),
+    ("logo-part-tetecadre.svg", "La tête dans le cadre", "Saint-Berthevin"),
 ]
 
 
@@ -907,23 +954,23 @@ def partner_strip(items):
             f'alt="{e(name)}" loading="lazy">'
             if fname else ""
         )
+        name_html = "" if fname else f'<span class="partnertile__name">{e(name)}</span>'
         tiles.append(
-            f'<div class="partnertile reveal">{img}'
-            f'<span class="partnertile__name">{e(name)}</span>'
+            f'<div class="partnertile reveal">{img}{name_html}'
             f'<span class="partnertile__city">{e(city)}</span></div>'
         )
     return f'<div class="partnergrid">{"".join(tiles)}</div>'
 partenaires_body = f'''<section class="section"><div class="p-w">
 {content_hero("Partenaires & fournisseurs", "Nos partenaires et fournisseurs", "<p>Les maisons avec lesquelles nous travaillons, et les encadreurs qui nous recommandent partout en France.</p>", "", "", solo=True)}
-<div class="brandfeat reveal" style="margin-top:clamp(48px,6vw,72px)">
+<div class="brandfeat reveal">
   <div class="brandfeat__mark"><span class="wm">nielsen</span><span class="wmsub">Design</span></div>
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
-    <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres pour rendre votre intérieur aussi parfait que possible. Nature, Color, Design, Charme : quatre univers, mille possibilités.</p>
-    <p>Nous sommes revendeur Nielsen à Luxembourg. Les baguettes, passe-partout et verres de la marque se composent à l'atelier et dans le configurateur. Le Click &amp; Collect se fait à Hollerich, souvent dans l'heure. Quand le format sort du catalogue, nous passons au sur-mesure.</p>
+    <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres. Nature, Color, Design, Charme : quatre univers, mille possibilités.</p>
+    <p>Nous sommes revendeur Nielsen à Luxembourg. Les baguettes, passe-partout et verres se composent à l'atelier et dans le configurateur. Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
   </div>
 </div>
-<h2 class="p-h2 reveal" style="margin-top:clamp(72px,9vw,120px)">Ils nous recommandent</h2>
+<h2 class="p-h2 reveal">Ils nous recommandent</h2>
 <p class="p-sub reveal">Un réseau d'encadreurs indépendants, de Bordeaux à Paris, nous adresse des clients de passage au Luxembourg. Nous travaillons dans le même esprit : conseil à l'atelier, pas de cadre anonyme de grande surface. Si vous venez d'une de ces maisons, dites-le-nous : nous reprenons le fil du conseil sans tout recommencer.</p>
 {partner_strip(partners)}
 </div></section>'''
@@ -949,7 +996,7 @@ gal_cells = "".join(
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
 <h1 class="p-h1">Galerie d'art et réalisations encadrées</h1>
-<div class="g-lead reveal"><p>Passionnés depuis plus de 30 ans, nous avons construit notre espace galerie autour d'œuvres choisies, encadrées et mises en lumière avec le même soin que celui porté à vos objets.</p><p>Chaque pièce ci-dessous a été encadrée à Hollerich : pop-art, photographie, aquarelle, estampe, caisse américaine ou montage classique. La galerie n'est pas un catalogue e-commerce. Elle montre le niveau de finition que nous visons pour vos propres œuvres, du particulier à la collection d'entreprise.</p><p>Si une réalisation vous inspire, apportez la vôtre à l'atelier ou envoyez-nous une photo et les cotes. Nous vous dirons si un Nielsen suffit ou s'il faut un encadrement sur mesure. La galerie se visite sur rendez-vous, comme le reste de l'atelier, mercredi au samedi, de 10 h à 18 h, à Hollerich.</p></div>
+<div class="g-lead reveal"><p>Chaque pièce ci-dessous a été encadrée à Hollerich : pop-art, photographie, aquarelle, estampe, caisse américaine ou montage classique. La galerie montre le niveau de finition que nous visons pour vos propres œuvres.</p></div>
 <div class="g-grid">{gal_cells}</div>
 <div class="g-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")}</div>
 </div></section>'''
@@ -972,7 +1019,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
   </div>
   <aside class="c-kathia">
     <figure>
-      <img src="assets/kathia-portrait.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" width="800" height="1000" loading="eager" draggable="false">
+      <div class="p-frame"><img src="assets/kathia-solo.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" width="800" height="1000" loading="eager" draggable="false"></div>
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
@@ -983,7 +1030,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 </div>
 <div class="c-zone reveal">
   <h2 class="p-h2">Luxembourg-Ville, Hollerich, Howald</h2>
-  <p>L'atelier se trouve à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Nous recevons sur rendez-vous, mercredi au samedi, de 10 h à 18 h. Howald et les quartiers sud sont à quelques minutes. Nous posons les grands formats dans un rayon d'environ 25 km. Pour un montage complexe, un objet ou une restauration, un passage à l'atelier reste le plus sûr : le configurateur en ligne ne remplace pas un diagnostic sur pièce. Parking à proximité. Tél. +352 27 84 94 88 · contact@artcadres.lu. Kathia Neumann vous accueille pour l'encadrement ; Sylvie Schied intervient sur les restaurations qui le demandent. La carte ci-dessous indique l'entrée de l'atelier.</p>
+  <p>L'atelier est à Hollerich : 2 bis rue de la toison d'or, L-2342. Rendez-vous mercredi au samedi, 10 h à 18 h. Pose des grands formats dans un rayon d'environ 25 km.</p>
 </div>
 <div class="c-map reveal">
   <iframe title="Carte Art'Cadres Luxembourg, Hollerich" src="https://maps.google.com/maps?q=2+bis+rue+de+la+toison+d%27or,+L-2342+Luxembourg&amp;hl=fr&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>

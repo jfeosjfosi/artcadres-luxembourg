@@ -27,6 +27,9 @@ PARTNERS = [
     ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout"),
     ("logo-part-misterblad.svg", "Misterblad"),
     ("logo-part-chatrrouge.svg", "Le Chat Rouge"),
+    ("logo-part-lccadres.svg", "LC Cadres"),
+    ("logo-part-maisonneumann.svg", "Maison Neumann"),
+    ("logo-part-tetecadre.svg", "La tête dans le cadre"),
 ]
 
 WORDMARKS = {
