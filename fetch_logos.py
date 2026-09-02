@@ -13,6 +13,16 @@ SOURCES = {
     "logo-ref-deloitte.svg": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Deloitte_old_blue_logo.svg",
     "logo-ref-accor.svg": "https://upload.wikimedia.org/wikipedia/commons/4/46/AccorHotels_Logo_2016.svg",
     "logo-ref-ses.svg": "https://upload.wikimedia.org/wikipedia/commons/6/67/SES_S.A._logo.svg",
+    "logo-nielsen.svg": "https://lencadrheure.com/wp-content/uploads/2023/11/Nielsen-Design.svg",
+}
+
+# Logos partenaires récupérés sur les sites des maisons. Les autres restent des wordmarks.
+PARTNER_FETCH = {
+    "logo-part-misterblad.svg": "https://misterblad.com/wp-content/uploads/Logo_Misterblad_Encadrement_Gris.svg",
+    "logo-part-chatrrouge.svg": "https://atelierlechatrouge.com/wp-content/uploads/Logotype_Atelier_Le_Chat_Rouge_2-1.svg",
+    "logo-part-lccadres.svg": "https://lc-cadres.com/wp-content/uploads/Logo_LC_Cadres.svg",
+    "logo-part-tetecadre.svg": "https://latetedanslecadre.fr/wp-content/uploads/Logo_La-Tete-Dans-Le-Cadre.svg",
+    "logo-part-maisonneumann.svg": "https://maisonneumann.com/wp-content/uploads/Logo_Maison_Neumann.svg",
 }
 
 PARTNERS = [
@@ -117,9 +127,25 @@ def main():
             open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2], stacked=spec[3] is True))
         else:
             open(path, "w", encoding="utf-8").write(wordmark_svg(spec[0], spec[1], spec[2]))
+    for name, url in PARTNER_FETCH.items():
+        path = os.path.join(OUT, name)
+        print("partner", name)
+        try:
+            download(url, path)
+            if name.endswith(".svg"):
+                svg = open(path, encoding="utf-8", errors="replace").read()
+                open(path, "w", encoding="utf-8").write(recolor_svg(svg))
+        except Exception as err:
+            print("  skip", name, err)
+    fetched = set(PARTNER_FETCH)
     for fname, label in PARTNERS:
+        if fname in fetched:
+            continue
         path = os.path.join(OUT, fname)
-        print("partner", fname)
+        if os.path.isfile(path) and os.path.getsize(path) > 800:
+            print("keep", fname)
+            continue
+        print("wordmark", fname)
         sz = 13 if len(label) > 18 else 14
         open(path, "w", encoding="utf-8").write(wordmark_svg(label, sz, 700))
     print("OK:", len(os.listdir(OUT)), "fichiers dans assets/logos/")

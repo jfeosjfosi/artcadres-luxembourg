@@ -937,15 +937,15 @@ institutions_body = f'''<section class="section"><div class="p-w">
 
 # ================= PARTENAIRES =================
 partners = [
-    ("logo-part-lencadreheure.svg", "L'encadr'heure", "Bordeaux"),
-    ("logo-part-anglesvar.svg", "Angles Var", "La Garde"),
-    ("logo-part-cadresdesophie.svg", "Les cadres de Sophie", "Tassin-la-Demi-Lune"),
-    ("logo-part-artetcadres.svg", "Art et Cadres", "Toulouse"),
-    ("logo-part-histoirecadre.svg", "Une histoire de cadre", "Mulhouse"),
-    ("logo-part-cadreroussin.svg", "Cadre Roussin", "Paris 15e"),
-    ("logo-part-encadreurauxcadres.svg", "L'encadreur aux cadres", "Caen"),
-    ("logo-part-claudesamuel.svg", "Claude Samuel", "Paris 12e"),
-    ("logo-part-cadrepassepartout.svg", "Le cadre passe-partout", "Reims"),
+    ("logo-part-lencadreheure.png", "L'encadr'heure", "Bordeaux"),
+    ("logo-part-anglesvar.png", "Angles Var", "La Garde"),
+    ("", "Les cadres de Sophie", "Tassin-la-Demi-Lune"),
+    ("", "Art et Cadres", "Toulouse"),
+    ("", "Une histoire de cadre", "Mulhouse"),
+    ("", "Cadre Roussin", "Paris 15e"),
+    ("", "L'encadreur aux cadres", "Caen"),
+    ("", "Claude Samuel", "Paris 12e"),
+    ("", "Le cadre passe-partout", "Reims"),
     ("logo-part-misterblad.svg", "Misterblad", "Clichy"),
     ("logo-part-chatrrouge.svg", "Le Chat Rouge", "Pau"),
     ("logo-part-lccadres.svg", "LC Cadres", "Enghien-les-Bains"),
@@ -955,18 +955,27 @@ partners = [
 
 
 def partner_strip(items):
+    logo_dir = os.path.join(os.path.dirname(__file__), "assets", "logos")
     tiles = []
-    for _fname, name, city in items:
+    for fname, name, city in items:
+        src = os.path.join(logo_dir, fname) if fname else ""
+        use_img = bool(fname and os.path.isfile(src) and os.path.getsize(src) > 800)
+        if use_img:
+            mark = (
+                f'<img class="logosvg logosvg--partner" src="assets/logos/{fname}" '
+                f'alt="{e(name)}" loading="lazy">'
+            )
+        else:
+            mark = f'<span class="partnertile__name">{e(name)}</span>'
         tiles.append(
-            f'<div class="partnertile reveal">'
-            f'<span class="partnertile__name">{e(name)}</span>'
+            f'<div class="partnertile reveal">{mark}'
             f'<span class="partnertile__city">{e(city)}</span></div>'
         )
     return f'<div class="partnergrid">{"".join(tiles)}</div>'
 partenaires_body = f'''<section class="section"><div class="p-w">
 {content_hero("Partenaires & fournisseurs", "Nos partenaires et fournisseurs", "<p>Les maisons avec lesquelles nous travaillons, et les encadreurs qui nous recommandent partout en France.</p>", "", "", solo=True)}
 <div class="brandfeat reveal">
-  <div class="brandfeat__mark"><span class="wm">nielsen</span><span class="wmsub">Design</span></div>
+  <div class="brandfeat__mark"><img class="brandfeat__logo" src="assets/logos/logo-nielsen.svg" alt="Nielsen Design" width="220" height="160"></div>
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
     <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres. Nature, Color, Design, Charme : quatre univers, mille possibilités.</p>
