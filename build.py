@@ -387,12 +387,17 @@ def content_list(title, items, spaced=False):
 
 
 def metier_grid(title, items):
-    """Mosaïque atelier : 2 tuiles larges + 4 compactes. items = (img, title, line, href, featured)."""
+    """Mosaïque atelier : 2 tuiles larges + compactes. items = (img, title, line, href, featured).
+    featured True = --lg, 'band' = bandeau pleine largeur (tirage photo)."""
     cells = ""
     for img, t, d, href, featured in items:
-        lg = " metier__item--lg" if featured else ""
+        extra = ""
+        if featured is True:
+            extra = " metier__item--lg"
+        elif featured == "band":
+            extra = " metier__item--band"
         cells += (
-            f'<a class="metier__item{lg}" href="{href}">'
+            f'<a class="metier__item{extra}" href="{href}">'
             f'<div class="p-frame"><img src="{img}" alt="{e(t)}" loading="lazy"></div>'
             f'<h3>{e(t)}</h3><p>{e(d)}</p></a>'
         )
@@ -757,6 +762,9 @@ accueil_body = f'''<section id="acc">
     ("assets/gal-01.jpg", "Galerie d'art",
      "Une collection choisie, encadrée et mise en lumière.",
      "notre-galerie.html", False),
+    ("assets/gal-08.jpg", "Tirage photo",
+     "Petits et grands formats, réalisés pour l'encadrement à l'atelier.",
+     "encadrement-sur-mesure.html", "band"),
   ])}
   <div class="p-cta p-cta--rich reveal">
     <div class="p-cta__copy">
@@ -827,7 +835,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   <div><span class="hist-stats__n">4</span><span class="hist-stats__l">métiers réunis</span></div>
   <div><span class="hist-stats__n">88</span><span class="hist-stats__l">avis vérifiés</span></div>
 </div>
-{content_story("L'excellence de l'encadrement sur mesure", ["Kathia Neumann a ouvert l'antenne luxembourgeoise après plus de trente ans à Metz. L'atelier de Hollerich réunit encadrement, restauration avec Sylvie Schied, dorure et une galerie.", "Moulures contemporaines ou classiques, verres de protection et passe-partout : chaque détail est choisi pour l'œuvre, son mur et son propriétaire."])}
+{content_story("L'excellence de l'encadrement sur mesure", ["Kathia Neumann a ouvert l'antenne luxembourgeoise après plus de trente ans à Metz. L'atelier de Hollerich réunit encadrement, restauration avec Sylvie Schied (agréée monuments historiques), dorure et une galerie.", "Moulures contemporaines ou classiques, verres de protection et passe-partout : chaque détail est choisi pour l'œuvre, son mur et son propriétaire."])}
 {icon_row([
     ("ruler", "Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."),
     ("photo", "Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."),
@@ -878,7 +886,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 {nielsen_univers()}
 <div class="p-story reveal">
   <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Si le format sort du catalogue, nous passons au sur-mesure.</p></div></div>
-  <figure><div class="p-frame"><img src="assets/ac-mesure-1.jpg" alt="Passe-partout découpés à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+  <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
 {strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
 <div class="p-cta p-cta--cfg reveal">{btn_orange("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
@@ -889,7 +897,7 @@ dorures_body = f'''<section id="dor" class="section"><div class="p-w">
 {content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
 {icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
 {rest_gallery()}
-<div class="p-list reveal">{content_list("Diagnostic, dorure, limites", [("Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("Dorure", "Feuille d'or, apprêts, bol, brunissoir : cadres, miroirs et objets, pas une peinture métallisée."), ("Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}</div>
+<div class="p-list reveal">{content_list("Diagnostic, dorure, limites", [("Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("Dorure", "Feuille d'or sur cadres, miroirs, consoles, statues et ferronnerie. Apprêts, bol, brunissoir : pas une peinture métallisée."), ("Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}</div>
 <div class="p-story reveal">
   <div class="p-intro"><h2>Préservation du patrimoine</h2><div class="p-body"><p>Nettoyage et restauration avec Sylvie Schied, agréée monuments historiques. Chaque œuvre est étudiée avant d'intervenir, pour retrouver l'éclat sans trahir les matériaux ni l'intention de l'artiste.</p></div></div>
 </div>

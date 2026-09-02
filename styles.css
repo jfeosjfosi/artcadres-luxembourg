@@ -119,6 +119,7 @@ a{color:inherit;}
 
 /* ---------- Sections contenu partagées (.p-*) ---------- */
 .section{padding:var(--space-section) 0;}
+.section,.metier,#conf,#gf,#real,#faq,#avis,#acc{scroll-margin-top:96px;}
 .p-w > .p-h2:first-child{margin-top:0;}
 .p-w{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
 .crumbs{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter) 0;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;align-items:center;letter-spacing:.02em;}
@@ -225,6 +226,14 @@ a{color:inherit;}
 #acc .metier__item h3{margin:0;font-size:var(--t-h3);font-weight:600;letter-spacing:-.015em;line-height:1.2;}
 #acc .metier__item p{margin:0;font-size:14px;line-height:1.5;color:var(--muted);max-width:36ch;}
 #acc .metier__item:hover h3{color:var(--accent);}
+#acc .metier__item--band{grid-column:1/-1;}
+#acc .metier__item--band img{aspect-ratio:16/9;height:140px;}
+@media(min-width:900px){
+  #acc .metier__item--band{flex-direction:row;align-items:center;gap:var(--s4);}
+  #acc .metier__item--band .p-frame{width:240px;flex:none;}
+  #acc .metier__item--band img{height:112px;min-height:112px;aspect-ratio:16/9;}
+  #acc .metier__item--band h3,#acc .metier__item--band p{max-width:none;}
+}
 @media(prefers-reduced-motion:reduce){
   #acc .metier__item img{transition:none;}
   #acc .metier__item:hover img{transform:none;}
@@ -232,14 +241,8 @@ a{color:inherit;}
 @media(min-width:900px){
   #acc .metier__grid{grid-template-columns:1.35fr 1fr 1fr;gap:var(--s3);}
   #acc .metier__item--lg{grid-column:auto;}
-  #acc .metier__item img,
-  #acc .metier__item--lg img,
-  #acc .metier__item:not(.metier__item--lg) img{aspect-ratio:auto;height:280px;min-height:280px;}
-}
-@media(min-width:900px){
-  #acc .metier__grid{grid-template-columns:1.35fr 1fr 1fr;gap:var(--s3);}
-  #acc .metier__item--lg img{aspect-ratio:4/3;min-height:280px;}
-  #acc .metier__item:not(.metier__item--lg) img{aspect-ratio:4/5;min-height:220px;}
+  #acc .metier__item--lg img{aspect-ratio:4/3;height:280px;min-height:280px;}
+  #acc .metier__item:not(.metier__item--lg):not(.metier__item--band) img{aspect-ratio:4/5;height:280px;min-height:220px;}
 }
 #acc .p-cta--rich{margin-top:var(--space-block);border:0;border-radius:0;border-top:1px solid var(--line);padding:var(--s6) 0 0;display:grid;grid-template-columns:1fr;gap:var(--s5);background:none;max-width:none;align-items:center;}
 #acc .p-cta--rich h2{font-size:var(--t-h2);margin:0 0 var(--s3);letter-spacing:var(--track-display);line-height:var(--lh-tight);max-width:16ch;}

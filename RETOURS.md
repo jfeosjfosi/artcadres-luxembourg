@@ -283,10 +283,10 @@ Croisement https://artcadres.lu/ (accueil) + pages services. À traiter, pas à 
 
 | Original artcadres.lu | Nouveau site | Décision |
 |---|---|---|
-| Accueil : **Tirage photo**, petits et grands formats | **Absent** | Réinjecter (ligne métier, mosaïque ou page courte) — ne pas skipper |
+| Accueil : **Tirage photo**, petits et grands formats | Bandeau mosaïque + ligne 1972 | OK |
 | Accueil : Click and Collect 1 h | Présent | OK |
 | Sur mesure : Pompidou, PH neutre, verre UV 55–99 % | Skip | B8 |
-| Histoire : Sylvie Schied, musées, MH, miroirs/consoles/statues/ferronnerie | Partiel sur dorure | Vérifier à la passe Dorure |
+| Histoire : Sylvie Schied, musées, MH, miroirs/consoles/statues/ferronnerie | Histoire + dorure | OK |
 | Boutique WooCommerce | Remplacée par configurateur Nielsen | OK, volontaire |
 | Cours dessin / vente matériel (texte Maison Neumann Metz) | Non repris (c’est Metz, pas LU) | Ne pas coller sur LU |
 
