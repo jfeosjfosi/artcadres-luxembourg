@@ -302,7 +302,7 @@ a{color:inherit;}
 #avis{background:var(--bg);}
 #avis .p-h2{font-size:clamp(30px,4vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:700;margin:0 0 var(--s5);max-width:28ch;}
 #avis .p-badges{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 24px;}
-#avis .p-badge{display:flex;align-items:baseline;gap:12px;border:1px solid #2c1f171f;border-radius:4px;padding:16px 22px;background:var(--bg);}
+#avis .p-badge{display:flex;align-items:flex-start;gap:12px;border:1px solid #2c1f171f;border-radius:4px;padding:16px 22px;background:var(--bg);}
 #avis .p-badge .v{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.01em;}
 #avis .p-badge .s{color:var(--accent);font-size:15px;letter-spacing:.06em;}
 #avis .p-badge .m{color:var(--muted);font-size:14px;}
@@ -686,9 +686,10 @@ a{color:inherit;}
 .matters h3{margin:0 0 var(--s2);font-size:var(--t-h3);font-weight:600;}
 .matters p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);}
 
-.p-gtrusts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 var(--s3);}
+.p-gtrusts{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s1);margin:0 0 var(--s3);}
 .p-gtrust{margin:0;}
-.p-gtrust--2{font-size:12px;}
+.p-gtrust__sub{margin:0;padding-left:14px;font-size:12px;line-height:1.4;color:var(--muted);font-weight:500;}
+#avis .p-badge .m small{display:block;margin-top:6px;font-size:13px;font-weight:500;color:var(--muted);}
 #gf .p-feat .btn2{margin-top:var(--s3);}
 .p-faq-block{margin-top:var(--space-block);}
 .p-faq-block .faq{max-width:62ch;}

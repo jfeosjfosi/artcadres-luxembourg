@@ -826,11 +826,7 @@ accueil_body = f'''<section id="acc">
       <strong>4,7/5</strong>
       <span>Art'Cadres Luxembourg · 12 avis</span>
     </a>
-    <a class="p-gtrust p-gtrust--2" href="#avis">
-      <span class="p-gtrust__stars" aria-hidden="true">★★★★★</span>
-      <strong>4,9/5</strong>
-      <span>Maison Neumann Metz · 76 avis</span>
-    </a>
+    <p class="p-gtrust__sub">Maison Neumann, Metz · 4,9/5 · 76 avis</p>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
     <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
@@ -922,8 +918,10 @@ accueil_body = f'''<section id="acc">
 <section id="avis" class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
 <div class="p-badges reveal">
-  <div class="p-badge"><span class="v">4,7/5</span><span class="s">★★★★★</span><span class="m">Art'Cadres Luxembourg · 12 avis Google</span></div>
-  <div class="p-badge"><span class="v">4,9/5</span><span class="s">★★★★★</span><span class="m">Maison Neumann, Metz · 76 avis Google</span></div>
+  <div class="p-badge">
+    <span class="v">4,7/5</span><span class="s">★★★★★</span>
+    <span class="m">Art'Cadres Luxembourg · 12 avis Google<small>Maison Neumann, Metz · 4,9/5 · 76 avis</small></span>
+  </div>
 </div>
 <div class="p-avis reveal">{avis_cards}</div>
 </div></section>'''
