@@ -1,0 +1,32 @@
+# À activer UNIQUEMENT au cutover artcadres.lu (o2switch).
+# Voir SEO/REDIRECTIONS-301.md. Ne pas coller ce fichier sur GitHub Pages.
+
+DirectoryIndex index.html index.php
+Options -Indexes
+ErrorDocument 404 /404.html
+
+Redirect 301 /nos-services/ / 
+Redirect 301 /nos-services/encadrement-sur-mesure/ /encadrement-sur-mesure.html
+Redirect 301 /nos-services/encadrement-standard/ /encadrement-standard.html
+Redirect 301 /nos-services/restauration-de-tableaux-dorures/ /dorures-restauration.html
+Redirect 301 /nos-services/prendre-un-rendez-vous/ /contact.html
+Redirect 301 /nos-services/cours-de-peinture-dessin/ /contact.html
+Redirect 301 /contact/ /contact.html
+Redirect 301 /notre-galerie/ /notre-galerie.html
+Redirect 301 /notre-histoire/ /notre-histoire.html
+Redirect 301 /partenaires/ /partenaires.html
+Redirect 301 /mentions-legales/ /mentions-legales.html
+Redirect 301 /conditions-generales-de-vente/ /conditions-generales-de-vente.html
+Redirect 301 /politique-de-confidentialite/ /politique-de-confidentialite.html
+Redirect 301 /politique-des-cookies/ /politique-des-cookies.html
+Redirect 301 /presse/ /notre-histoire.html
+Redirect 301 /nous-rejoindre/ /contact.html
+Redirect 301 /boutique/ /configurateur.html
+Redirect 301 /boutique/catalogue-dimages/ /notre-galerie.html
+Redirect 301 /commande/ /configurateur.html
+Redirect 301 /panier/ /configurateur.html
+Redirect 301 /wishlist/ /configurateur.html
+Redirect 301 /liste-de-souhaits/ /configurateur.html
+Redirect 301 /mon-compte/ /configurateur.html
+Redirect 301 /retour-et-remboursement/ /conditions-generales-de-vente.html
+Redirect 301 /maintenance/ /

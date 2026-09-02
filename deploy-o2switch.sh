@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Déploie le site statique sur artcadres.lu (o2switch) via FTP.
+# NE PAS lancer tant que la carte 301 n'est pas prête (SEO/REDIRECTIONS-301.md)
+# et qu'une sauvegarde WordPress n'a pas été faite. mirror --delete EFFACE le WP.
+# Au cutover : SITE_URL = https://artcadres.lu dans build.py, puis ce script.
 # Usage :
 #   export FTP_USER="votre_user"
 #   export FTP_PASS="votre_pass"

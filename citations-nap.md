@@ -13,7 +13,7 @@ Copier **byte pour byte** dans LuxYello, Editus, Petit Futé, Europages, Apple M
 | Téléphone | +352 27 84 94 88 |
 | E-mail | contact@artcadres.lu |
 | Site (après cutover DNS) | https://artcadres.lu |
-| Site (tant que Pages) | https://jfeosjfosi.github.io/artcadres-preview/ |
+| Site (tant que Pages) | https://jfeosjfosi.github.io/artcadres-luxembourg/ |
 | Horaires | Mercredi–samedi 10:00–18:00 |
 | Catégorie primaire GBP | Encadreur |
 

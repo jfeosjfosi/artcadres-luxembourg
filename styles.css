@@ -686,4 +686,29 @@ a{color:inherit;}
 .matters h3{margin:0 0 var(--s2);font-size:var(--t-h3);font-weight:600;}
 .matters p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);}
 
+.p-gtrusts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 var(--s3);}
+.p-gtrust{margin:0;}
+.p-gtrust--2{font-size:12px;}
+#gf .p-feat .btn2{margin-top:var(--s3);}
+.p-faq-block{margin-top:var(--space-block);}
+.p-faq-block .faq{max-width:62ch;}
+.p-table-wrap{margin-top:var(--space-block);overflow-x:auto;}
+.p-table-cap{margin:0 0 var(--s3);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+.p-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;}
+.p-table th,.p-table td{text-align:left;padding:var(--s3) var(--s3) var(--s3) 0;border-bottom:1px solid var(--line);vertical-align:top;}
+.p-table th{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+.p-table td{color:var(--ink);}
+.bio-grid{display:grid;grid-template-columns:1fr;gap:var(--s6);margin:var(--space-block) 0;}
+@media(min-width:820px){.bio-grid{grid-template-columns:1fr 1fr;}}
+.bio-card h2{margin:0 0 var(--s2);font-size:var(--t-h3);font-weight:700;letter-spacing:var(--track-display);}
+.bio-card__role{margin:0 0 var(--s3);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+.bio-card p{margin:0;font-size:15px;line-height:1.65;color:var(--muted);max-width:54ch;}
+.bio-card--solo{margin:var(--space-block) 0 0;}
+.gloss{margin:var(--s6) 0 0;display:grid;gap:0;}
+.gloss-item{display:grid;grid-template-columns:1fr;gap:var(--s2);padding:var(--s5) 0;border-bottom:1px solid var(--line);}
+.gloss-item dt{font-size:var(--t-h3);font-weight:700;letter-spacing:-.02em;}
+.gloss-item dd{margin:0;font-size:15px;line-height:1.65;color:var(--muted);max-width:58ch;}
+@media(min-width:720px){.gloss-item{grid-template-columns:minmax(160px,22ch) 1fr;gap:var(--s6);align-items:start;}}
+#gal .p-h2{margin-top:var(--space-block);margin-bottom:var(--s5);}
+
 

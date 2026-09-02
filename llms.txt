@@ -2,16 +2,18 @@
 > Encadreur d'art à Luxembourg (Hollerich). Maison Neumann depuis 1972.
 
 ## Pages principales
-- https://jfeosjfosi.github.io/artcadres-preview/ — Encadreur d'art, institutions, grands formats
-- https://jfeosjfosi.github.io/artcadres-preview/institutions-entreprises.html — B2B Deloitte, Accor, SES, BNL
-- https://jfeosjfosi.github.io/artcadres-preview/encadrement-sur-mesure.html — Sur mesure artisanal
-- https://jfeosjfosi.github.io/artcadres-preview/encadrement-standard.html — Cadres Nielsen
-- https://jfeosjfosi.github.io/artcadres-preview/dorures-restauration.html — Restauration & dorure, Sylvie Schied agréée MH
-- https://jfeosjfosi.github.io/artcadres-preview/notre-galerie.html — Galerie et réalisations
-- https://jfeosjfosi.github.io/artcadres-preview/notre-histoire.html — Maison Neumann depuis 1972
-- https://jfeosjfosi.github.io/artcadres-preview/partenaires.html — Réseau Nielsen
-- https://jfeosjfosi.github.io/artcadres-preview/configurateur.html — Devis en ligne Nielsen
-- https://jfeosjfosi.github.io/artcadres-preview/contact.html — Rendez-vous Hollerich
+- https://jfeosjfosi.github.io/artcadres-luxembourg/ — Encadreur d'art, institutions, grands formats
+- https://jfeosjfosi.github.io/artcadres-luxembourg/institutions-entreprises.html — B2B Deloitte, Accor, SES, BNL
+- https://jfeosjfosi.github.io/artcadres-luxembourg/encadrement-sur-mesure.html — Sur mesure artisanal
+- https://jfeosjfosi.github.io/artcadres-luxembourg/encadrement-standard.html — Cadres Nielsen
+- https://jfeosjfosi.github.io/artcadres-luxembourg/dorures-restauration.html — Restauration & dorure, Sylvie Schied agréée MH
+- https://jfeosjfosi.github.io/artcadres-luxembourg/encadrement-grand-format.html — Grands formats et pose sur site
+- https://jfeosjfosi.github.io/artcadres-luxembourg/glossaire-encadrement.html — Lexique (passe-partout, Marie-Louise, verre musée)
+- https://jfeosjfosi.github.io/artcadres-luxembourg/notre-galerie.html — Galerie et réalisations
+- https://jfeosjfosi.github.io/artcadres-luxembourg/notre-histoire.html — Maison Neumann depuis 1972
+- https://jfeosjfosi.github.io/artcadres-luxembourg/partenaires.html — Réseau Nielsen
+- https://jfeosjfosi.github.io/artcadres-luxembourg/configurateur.html — Devis en ligne Nielsen
+- https://jfeosjfosi.github.io/artcadres-luxembourg/contact.html — Rendez-vous Hollerich
 
 ## Contact
 contact@artcadres.lu · +352 27 84 94 88
