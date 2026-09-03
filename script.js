@@ -119,16 +119,18 @@
         var front = cards[0];
         var W = stack.clientWidth, H = stack.clientHeight;
         var p0 = POSES[0];
-        // La carte de devant se soulève nettement hors de la pile (haut-droite), puis file au fond.
-        var outT = tf(p0.x * W + 0.42 * W, p0.y * H - 0.12 * H, p0.r - 8, 1.04);
+        // Fondu enchaîné : la carte de devant se dissout SUR PLACE (léger lift, aucun déplacement
+        // latéral), puis réapparaît tout au fond en fondu. Aucune carte ne traverse le dessus d'une autre.
+        var liftT = tf(p0.x * W, (p0.y - 0.05) * H, p0.r - 3, 1.03);
         front.style.zIndex = "200";
         var fAnim = front.animate([
           { transform: poseAt(0), opacity: 1, offset: 0 },
-          { transform: outT, opacity: 0.42, offset: 0.5 },
+          { transform: liftT, opacity: 0, offset: 0.42 },
+          { transform: poseAt(n - 1), opacity: 0, offset: 0.5 },
           { transform: poseAt(n - 1), opacity: 1, offset: 1 }
-        ], { duration: DUR, easing: "cubic-bezier(0.55, 0, 0.25, 1)", fill: "forwards" });
-        // Au sommet, la carte est dégagée à droite ET fondue : on la passe derrière, le swap est invisible.
-        window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.5));
+        ], { duration: DUR, easing: "cubic-bezier(0.5, 0, 0.2, 1)", fill: "forwards" });
+        // Dès qu'elle est invisible (fondue), on la place au fond (derrière) : le changement de plan ne se voit pas.
+        window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.42));
         // Toutes les autres avancent d'un cran, en même temps (c'est ce qui rend le mouvement fluide).
         for (var i = 1; i < n; i++) {
           cards[i].style.zIndex = String(100 - (i - 1));
