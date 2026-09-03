@@ -40,6 +40,32 @@
     });
   });
 
+  document.querySelectorAll(".nav-dd").forEach(function (dd) {
+    var btn = dd.querySelector(".nav-dd__btn");
+    if (!btn) return;
+    btn.addEventListener("click", function (ev) {
+      if (window.matchMedia("(max-width: 1399px)").matches) return;
+      ev.preventDefault();
+      var open = !dd.classList.contains("is-open");
+      document.querySelectorAll(".nav-dd.is-open").forEach(function (other) {
+        other.classList.remove("is-open");
+        var b = other.querySelector(".nav-dd__btn");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+      dd.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+  document.addEventListener("click", function (ev) {
+    document.querySelectorAll(".nav-dd.is-open").forEach(function (dd) {
+      if (!dd.contains(ev.target)) {
+        dd.classList.remove("is-open");
+        var b = dd.querySelector(".nav-dd__btn");
+        if (b) b.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
   document.querySelectorAll("img").forEach(function (img) {
     img.setAttribute("draggable", "false");
     img.addEventListener("dragstart", function (ev) { ev.preventDefault(); });
@@ -47,87 +73,80 @@
 
   var stack = document.querySelector(".polaroids");
   if (stack && stack.children.length > 1) {
-    var EASE = "cubic-bezier(0.33, 0.05, 0.15, 1)";
-    var DUR = 1240;
+    var EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
+    var DUR = 1150;
+    // Slots de devant -> fond : recul progressif (bas-droite), plus petit, légère rotation.
     var POSES = [
-      { x: 0.15, y: 0.00, r: -6, z: 5 },
-      { x: 0.21, y: 0.05, r: 5, z: 4 },
-      { x: 0.11, y: 0.10, r: -3, z: 3 },
-      { x: 0.23, y: 0.15, r: 4, z: 2 },
-      { x: 0.13, y: 0.20, r: 2, z: 1 }
+      { x: 0.02, y: 0.00, r: -5, s: 1.00 },
+      { x: 0.085, y: 0.055, r: 4, s: 0.955 },
+      { x: 0.15, y: 0.11, r: -2, s: 0.91 },
+      { x: 0.215, y: 0.165, r: 3, s: 0.865 },
+      { x: 0.28, y: 0.22, r: 2, s: 0.82 }
     ];
-    function tf(x, y, r) {
-      return "translate3d(" + x + "px," + y + "px,0) rotate(" + r + "deg)";
+    function tf(x, y, r, s) {
+      return "translate3d(" + x + "px," + y + "px,0) rotate(" + r + "deg) scale(" + s + ")";
     }
-    function pose(i) {
+    function poseAt(i) {
       var p = POSES[Math.min(i, POSES.length - 1)];
-      var x = p.x * stack.clientWidth;
-      var y = p.y * stack.clientHeight;
-      return { transform: tf(x, y, p.r), z: String(p.z), x: x, y: y, r: p.r };
+      return tf(p.x * stack.clientWidth, p.y * stack.clientHeight, p.r, p.s);
     }
-    function homeOf(card) {
-      var i = parseInt(card.getAttribute("data-home"), 10);
-      if (isNaN(i)) i = 0;
-      return pose(i);
-    }
-    function zByOrder() {
+    function layout() {
       [].forEach.call(stack.children, function (card, i) {
         card.setAttribute("data-slot", String(i));
-        card.style.zIndex = String(Math.max(1, 5 - i));
+        card.style.transform = poseAt(i);
+        card.style.zIndex = String(100 - i);
+        card.style.willChange = "transform";
       });
     }
-    function layoutHomes() {
-      [].forEach.call(stack.children, function (card, i) {
-        if (!card.hasAttribute("data-home")) card.setAttribute("data-home", String(i));
-        card.style.transform = homeOf(card).transform;
-      });
-      zByOrder();
-    }
-    layoutHomes();
+    layout();
     if (!reduce && stack.animate) {
       var busy = false;
       function cycle() {
         if (busy || document.hidden) return;
-        var front = stack.firstElementChild;
-        if (!front) return;
+        var cards = [].slice.call(stack.children);
+        var n = cards.length;
+        if (n < 2) return;
         busy = true;
-        var from = homeOf(front);
-        var w = stack.clientWidth;
-        var peekX = from.x + (w < 420 ? 0.10 : 0.12) * w;
-        var peekY = from.y + 0.06 * stack.clientHeight;
+        var front = cards[0];
+        var W = stack.clientWidth, H = stack.clientHeight;
+        var p0 = POSES[0];
+        // La carte de devant se soulève nettement hors de la pile (haut-droite), puis file au fond.
+        var outT = tf(p0.x * W + 0.34 * W, p0.y * H - 0.11 * H, p0.r - 9, 1.05);
+        front.style.zIndex = "200";
+        var fAnim = front.animate([
+          { transform: poseAt(0), offset: 0 },
+          { transform: outT, offset: 0.5 },
+          { transform: poseAt(n - 1), offset: 1 }
+        ], { duration: DUR, easing: "cubic-bezier(0.55, 0, 0.25, 1)", fill: "forwards" });
+        // Une fois détachée de la pile, on la passe derrière : le swap de z devient invisible.
+        window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.55));
+        // Toutes les autres avancent d'un cran, en même temps (c'est ce qui rend le mouvement fluide).
+        for (var i = 1; i < n; i++) {
+          cards[i].style.zIndex = String(100 - (i - 1));
+          cards[i].animate([
+            { transform: poseAt(i) },
+            { transform: poseAt(i - 1) }
+          ], { duration: DUR, easing: EASE, fill: "forwards" });
+        }
         var done = false;
-
-        front.classList.add("is-deal");
-        front.style.zIndex = "10";
-
-        var anim = front.animate([
-          { transform: from.transform, offset: 0 },
-          { transform: tf(peekX, peekY, from.r + 10), offset: 0.42 },
-          { transform: from.transform, offset: 1 }
-        ], { duration: DUR, easing: EASE, fill: "forwards" });
-
-        window.setTimeout(function () {
-          if (front.classList.contains("is-deal")) front.style.zIndex = "0";
-        }, Math.round(DUR * 0.42));
-
         function finish() {
           if (done) return;
           done = true;
-          try { anim.commitStyles(); anim.cancel(); } catch (err) {}
-          front.style.transform = from.transform;
+          try {
+            [].forEach.call(stack.children, function (c) {
+              c.getAnimations().forEach(function (a) { a.cancel(); });
+            });
+          } catch (e) {}
           stack.appendChild(front);
-          front.classList.remove("is-deal");
-          zByOrder();
+          layout();
           busy = false;
         }
-        if (anim.finished) anim.finished.then(finish, finish);
-        else anim.onfinish = finish;
-        window.setTimeout(finish, DUR + 100);
+        if (fAnim.finished) fAnim.finished.then(finish, finish);
+        else fAnim.onfinish = finish;
+        window.setTimeout(finish, DUR + 140);
       }
-      window.setInterval(cycle, 3600);
-      window.addEventListener("resize", function () {
-        if (!busy) layoutHomes();
-      });
+      window.setInterval(cycle, 4200);
+      window.addEventListener("resize", function () { if (!busy) layout(); });
     }
   }
 
