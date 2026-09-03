@@ -86,10 +86,10 @@
     // Slots de devant -> fond : recul progressif (bas-droite), plus petit, légère rotation.
     var POSES = [
       { x: 0.02, y: 0.00, r: -5, s: 1.00 },
-      { x: 0.085, y: 0.055, r: 4, s: 0.955 },
-      { x: 0.15, y: 0.11, r: -2, s: 0.91 },
-      { x: 0.215, y: 0.165, r: 3, s: 0.865 },
-      { x: 0.28, y: 0.22, r: 2, s: 0.82 }
+      { x: 0.09, y: 0.06, r: 4, s: 0.925 },
+      { x: 0.16, y: 0.12, r: -2, s: 0.85 },
+      { x: 0.235, y: 0.185, r: 3, s: 0.775 },
+      { x: 0.31, y: 0.25, r: 2, s: 0.70 }
     ];
     function tf(x, y, r, s) {
       return "translate3d(" + x + "px," + y + "px,0) rotate(" + r + "deg) scale(" + s + ")";
@@ -103,6 +103,7 @@
         card.setAttribute("data-slot", String(i));
         card.style.transform = poseAt(i);
         card.style.zIndex = String(100 - i);
+        card.style.opacity = "1";
         card.style.willChange = "transform";
       });
     }
@@ -119,15 +120,15 @@
         var W = stack.clientWidth, H = stack.clientHeight;
         var p0 = POSES[0];
         // La carte de devant se soulève nettement hors de la pile (haut-droite), puis file au fond.
-        var outT = tf(p0.x * W + 0.34 * W, p0.y * H - 0.11 * H, p0.r - 9, 1.05);
+        var outT = tf(p0.x * W + 0.42 * W, p0.y * H - 0.12 * H, p0.r - 8, 1.04);
         front.style.zIndex = "200";
         var fAnim = front.animate([
-          { transform: poseAt(0), offset: 0 },
-          { transform: outT, offset: 0.5 },
-          { transform: poseAt(n - 1), offset: 1 }
+          { transform: poseAt(0), opacity: 1, offset: 0 },
+          { transform: outT, opacity: 0.42, offset: 0.5 },
+          { transform: poseAt(n - 1), opacity: 1, offset: 1 }
         ], { duration: DUR, easing: "cubic-bezier(0.55, 0, 0.25, 1)", fill: "forwards" });
-        // Une fois détachée de la pile, on la passe derrière : le swap de z devient invisible.
-        window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.55));
+        // Au sommet, la carte est dégagée à droite ET fondue : on la passe derrière, le swap est invisible.
+        window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.5));
         // Toutes les autres avancent d'un cran, en même temps (c'est ce qui rend le mouvement fluide).
         for (var i = 1; i < n; i++) {
           cards[i].style.zIndex = String(100 - (i - 1));
