@@ -65,6 +65,14 @@
       }
     });
   });
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Escape") return;
+    document.querySelectorAll(".nav-dd.is-open").forEach(function (dd) {
+      dd.classList.remove("is-open");
+      var b = dd.querySelector(".nav-dd__btn");
+      if (b) b.setAttribute("aria-expanded", "false");
+    });
+  });
 
   document.querySelectorAll("img").forEach(function (img) {
     img.setAttribute("draggable", "false");

@@ -14,7 +14,7 @@ Redirect 301 /nos-services/cours-de-peinture-dessin/ /contact.html
 Redirect 301 /contact/ /contact.html
 Redirect 301 /notre-galerie/ /notre-galerie.html
 Redirect 301 /notre-histoire/ /notre-histoire.html
-Redirect 301 /partenaires/ /partenaires.html
+Redirect 301 /partenaires/ /notre-histoire.html
 Redirect 301 /mentions-legales/ /mentions-legales.html
 Redirect 301 /conditions-generales-de-vente/ /conditions-generales-de-vente.html
 Redirect 301 /politique-de-confidentialite/ /politique-de-confidentialite.html

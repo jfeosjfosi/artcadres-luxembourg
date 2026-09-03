@@ -19,13 +19,14 @@ TEL_E164 = "+35227849488"
 
 NAV = [
     ("Accueil", "index.html"),
-    ("Sur mesure", "encadrement-sur-mesure.html"),
-    ("Standards", "encadrement-standard.html"),
     ("Restauration", "dorures-restauration.html"),
     ("Institutions", "institutions-entreprises.html"),
     ("Galerie", "notre-galerie.html"),
     ("Histoire", "notre-histoire.html"),
-    ("Partenaires", "partenaires.html"),
+]
+NAV_FRAME = [
+    ("Sur mesure", "encadrement-sur-mesure.html"),
+    ("Standard", "encadrement-standard.html"),
 ]
 NAV_CFG = ("Configurateur", "configurateur.html")
 NAV_CTA = ("Contact", "contact.html")
@@ -68,8 +69,25 @@ def btn_plain(label, href, arrow=True):
 
 
 def header(active):
+    frame_on = active in {href for _, href in NAV_FRAME}
     links = ""
     for label, href in NAV:
+        if label == "Accueil":
+            cur = ' aria-current="page"' if href == active else ""
+            links += f'<a href="{href}"{cur}><span>{e(label)}</span></a>'
+            cur_f = ' aria-current="page"' if frame_on else ""
+            parts = []
+            for lab, h in NAV_FRAME:
+                ac = ' aria-current="page"' if h == active else ""
+                parts.append(f'<a href="{h}"{ac}>{e(lab)}</a>')
+            items = "".join(parts)
+            links += (
+                f'<div class="nav-dd">'
+                f'<button type="button" class="nav-dd__btn"{cur_f} aria-expanded="false" aria-haspopup="true">'
+                f'<span>Encadrement</span></button>'
+                f'<div class="nav-dd__menu">{items}</div></div>'
+            )
+            continue
         cur = ' aria-current="page"' if href == active else ""
         links += f'<a href="{href}"{cur}><span>{e(label)}</span></a>'
     cur = ' aria-current="page"' if NAV_CFG[1] == active else ""
@@ -124,7 +142,6 @@ def footer():
       <a href="institutions-entreprises.html">Institutions &amp; entreprises</a>
       <a href="encadrement-grand-format.html">Grands formats</a>
       <a href="glossaire-encadrement.html">Glossaire</a>
-      <a href="partenaires.html">Partenaires</a>
       <a href="contact.html">Contact</a>
     </div></div>
     <div class="fcol"><h3>Nous contacter</h3>
@@ -328,7 +345,6 @@ CRUMBS = {
     "institutions-entreprises.html": [("Accueil", "index.html"), ("Institutions", "institutions-entreprises.html")],
     "notre-galerie.html": [("Accueil", "index.html"), ("Galerie", "notre-galerie.html")],
     "notre-histoire.html": [("Accueil", "index.html"), ("Histoire", "notre-histoire.html")],
-    "partenaires.html": [("Accueil", "index.html"), ("Partenaires", "partenaires.html")],
     "configurateur.html": [("Accueil", "index.html"), ("Configurateur", "configurateur.html")],
     "contact.html": [("Accueil", "index.html"), ("Contact", "contact.html")],
     "encadrement-grand-format.html": [("Accueil", "index.html"), ("Grands formats", "encadrement-grand-format.html")],
@@ -663,24 +679,6 @@ def icon_row(items, extra=""):
     return f'<div class="{cls}">{cells}</div>'
 
 
-def nielsen_univers():
-    items = [
-        ("nature", "Nature", "Bois naturel, massif et placage."),
-        ("color", "Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
-        ("design", "Design", "Des lignes pures, associées à des finitions sobres ou métallisées."),
-        ("charme", "Charme", "L'univers des dorures, des patines à l'ancienne et des finitions blanchies."),
-    ]
-    cells = "".join(
-        f'<article class="univ__item"><div class="univ__swatch univ__swatch--{k}"></div>'
-        f'<h3>{e(t)}</h3><p>{e(d)}</p></article>'
-        for k, t, d in items)
-    return (
-        '<div class="univ-wrap reveal">'
-        '<h2 class="p-h2">Les baguettes Nielsen, 4 univers</h2>'
-        f'<div class="univ">{cells}</div></div>'
-    )
-
-
 def matters_block():
     return (
         '<div class="matters reveal">'
@@ -1013,15 +1011,6 @@ mesure_body = f'''<section class="section"><div class="p-w">
      "Le verre reste en suspension au-dessus du sujet. Idéal pour les objets, les pièces en volume et les montages museum."),
 ])}
 {strip(["assets/gal-03.jpg", "assets/gal-08.jpg", "assets/gal-11.jpg", "assets/gal-18.jpg"], 4, ["Pop-art encadré", "Triptyque photographique", "Galerie privée", "Verre museum"], large=True)}
-{nielsen_univers()}
-{compare_table("Les 4 univers Nielsen",
-    ["Univers", "Matière dominante", "Ambiance"],
-    [
-        ("Nature", "Bois massif et placage", "Chêne, brut, veine visible"),
-        ("Color", "Laques vives ou pastel", "Mates ou brillantes"),
-        ("Design", "Lignes pures, métal", "Sobres ou métallisées"),
-        ("Charme", "Dorures et patines", "Ancien, blanchi, or"),
-    ])}
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
 {faq_section("Questions sur le sur-mesure", FAQ_MESURE)}
@@ -1041,7 +1030,6 @@ standard_body = f'''<section class="section"><div class="p-w">
 {content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Une qualité qui fait la différence : tous les cadres Nielsen, en aluminium comme en bois, sont réalisés avec des matériaux de grande qualité. Devis en ligne, retrait Click & Collect à Hollerich, souvent dans l'heure.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
 {icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Cadre certifié FSC®. Fabrication allemande.")])}
 <div class="p-list reveal">{content_list("Une qualité qui fait la différence", [("Les cadres bois", "Des dorés aux couleurs vives en passant par les bois bruts : une large palette de styles."), ("Les cadres aluminium", "Simples à charger, démonter et remonter ; tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis, aucun risque de blessure."), ("Cadre certifié FSC®", "Conçus par Nielsen Design. La certification FSC® garantit une gestion responsable des forêts."), ("Fabriqués en Allemagne", "Nielsen, marque de référence : une expertise sur le cadre, le verre et le contrecollé.")])}</div>
-{nielsen_univers()}
 <div class="p-story reveal">
   <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Si le format sort du catalogue, nous passons au sur-mesure.</p><p>Nielsen n'est pas un cadre de grande surface : le verre est minéral, les cartons sont conçus pour l'encadrement, le bois est certifié FSC®. C'est le bon choix pour une photographie, une affiche, un diplôme, un tirage dont le format entre dans la grille. Ce n'est pas le bon choix pour une médaille, un pastel fragile ou un panneau de trois mètres : là, l'atelier reprend la main.</p><p>Le Click & Collect évite l'attente d'un sur-mesure quand le format est connu. Vous pouvez commander le matin, passer l'après-midi. Si la teinte hésite, dix minutes à l'atelier devant le mur de baguettes valent mieux qu'un échange de messages. Revendeur Nielsen à Luxembourg : les quatre univers (Nature, Color, Design, Charme) sont ceux du configurateur et ceux du stock Hollerich.</p></div></div>
   <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
@@ -1168,20 +1156,22 @@ def partner_strip(items):
             f'<span class="partnertile__city">{e(city)}</span></div>'
         )
     return f'<div class="partnergrid">{"".join(tiles)}</div>'
-partenaires_body = f'''<section class="section"><div class="p-w">
-{content_hero("Partenaires & fournisseurs", "Nos partenaires et fournisseurs", "<p>Les maisons avec lesquelles nous travaillons, et les encadreurs qui nous recommandent partout en France.</p>", "", "", solo=True)}
+
+
+partners_block = f'''<div id="partenaires" class="hist-partners">
 <div class="brandfeat reveal">
   <div class="brandfeat__mark"><img class="brandfeat__logo" src="assets/logos/logo-nielsen.svg" alt="Nielsen Design" width="220" height="160"></div>
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
-    <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres. Nature, Color, Design, Charme : quatre univers, mille possibilités. Certification FSC®, fabrication allemande. Nous sommes revendeur Nielsen à Luxembourg : configurateur en ligne et Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
-    <p>Quand le format sort du catalogue, nous restons dans le même atelier : sur-mesure, museum, restauration. Nielsen pour la grille courante, l'établi pour le reste.</p>
+    <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres. Certification FSC®, fabrication allemande. Nous sommes revendeur Nielsen à Luxembourg : configurateur en ligne et Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
+    <p>Quand le format sort du catalogue, nous restons dans le même atelier : sur-mesure, museum, restauration.</p>
   </div>
 </div>
 <h2 class="p-h2 reveal">Ils nous recommandent</h2>
 <p class="p-sub reveal">Un réseau d'encadreurs indépendants, de Bordeaux à Paris, nous adresse des clients de passage au Luxembourg. Nous travaillons dans le même esprit : conseil à l'atelier, pas de cadre anonyme de grande surface. Si vous venez d'une de ces maisons, dites-le-nous : nous reprenons le fil du conseil sans tout recommencer.</p>
 {partner_strip(partners)}
-</div></section>'''
+</div>'''
+hist_body = hist_body.replace('<div class="hist-end">', partners_block + '\n<div class="hist-end">', 1)
 
 # ================= GALERIE =================
 GAL_ITEMS = [
@@ -1423,9 +1413,6 @@ PAGES = [
     ("glossaire-encadrement.html", "Glossaire de l'encadrement · Art'Cadres Luxembourg",
      "Passe-partout, Marie-Louise, caisse américaine, verre musée, dorure à la feuille : le lexique de l'atelier Art'Cadres à Hollerich.",
      gloss_body, "glossaire-encadrement.html", None, None),
-    ("partenaires.html", "Partenaires Nielsen · Art'Cadres Luxembourg",
-     "Nielsen Design et réseau d'encadreurs partenaires recommandant Art'Cadres Luxembourg.",
-     partenaires_body, "partenaires.html", None, None),
     ("contact.html", "Contact Hollerich · Art'Cadres Luxembourg",
      "Contactez Art'Cadres : 2 bis rue de la toison d'or, L-2342 Luxembourg. Tél. +352 27 84 94 88. Rendez-vous avec Kathia Neumann.",
      contact_body, "contact.html", SITE_URL + "/assets/kathia-portrait.jpg", CONTACT_LD),
@@ -1500,8 +1487,7 @@ with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
 - {SITE_URL}/encadrement-grand-format.html — Grands formats et pose sur site
 - {SITE_URL}/glossaire-encadrement.html — Lexique (passe-partout, Marie-Louise, verre musée)
 - {SITE_URL}/notre-galerie.html — Galerie et réalisations
-- {SITE_URL}/notre-histoire.html — Maison Neumann depuis 1972
-- {SITE_URL}/partenaires.html — Réseau Nielsen
+- {SITE_URL}/notre-histoire.html — Maison Neumann depuis 1972 · partenaires Nielsen
 - {SITE_URL}/configurateur.html — Devis en ligne Nielsen
 - {SITE_URL}/contact.html — Rendez-vous Hollerich
 
@@ -1537,5 +1523,23 @@ err404 = err404.replace('content="index, follow"', 'content="noindex, follow"', 
 with open(os.path.join(OUT, "404.html"), "w", encoding="utf-8") as f:
     f.write(err404)
 print("écrit : 404.html")
+
+with open(os.path.join(OUT, "partenaires.html"), "w", encoding="utf-8") as f:
+    f.write(f'''<!DOCTYPE html>
+<html lang="fr-LU">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{SITE_URL}/notre-histoire.html">
+  <meta http-equiv="refresh" content="0;url=notre-histoire.html#partenaires">
+  <title>Partenaires · Art'Cadres Luxembourg</title>
+  <script>location.replace("notre-histoire.html#partenaires");</script>
+</head>
+<body>
+  <p><a href="notre-histoire.html#partenaires">Nos partenaires se trouvent sur Notre histoire.</a></p>
+</body>
+</html>
+''')
+print("écrit : partenaires.html (redirection)")
 
 print("OK,", len(PAGES), "pages générées + 404.")

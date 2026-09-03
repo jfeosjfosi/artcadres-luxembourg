@@ -10,8 +10,7 @@
 - https://jfeosjfosi.github.io/artcadres-luxembourg/encadrement-grand-format.html — Grands formats et pose sur site
 - https://jfeosjfosi.github.io/artcadres-luxembourg/glossaire-encadrement.html — Lexique (passe-partout, Marie-Louise, verre musée)
 - https://jfeosjfosi.github.io/artcadres-luxembourg/notre-galerie.html — Galerie et réalisations
-- https://jfeosjfosi.github.io/artcadres-luxembourg/notre-histoire.html — Maison Neumann depuis 1972
-- https://jfeosjfosi.github.io/artcadres-luxembourg/partenaires.html — Réseau Nielsen
+- https://jfeosjfosi.github.io/artcadres-luxembourg/notre-histoire.html — Maison Neumann depuis 1972 · partenaires Nielsen
 - https://jfeosjfosi.github.io/artcadres-luxembourg/configurateur.html — Devis en ligne Nielsen
 - https://jfeosjfosi.github.io/artcadres-luxembourg/contact.html — Rendez-vous Hollerich
 
