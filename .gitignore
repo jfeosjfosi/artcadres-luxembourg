@@ -6,3 +6,7 @@ node_modules/
 package-lock.json
 .DS_Store
 *.tmp
+
+# QA scratch (screenshots lourds, playwright) — ne pas déployer
+_qa_audit/
+__pycache__/
