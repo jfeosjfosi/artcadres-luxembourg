@@ -934,10 +934,9 @@ hist_body = f'''<section class="section"><div class="p-w">
   <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
-    "En 1972, la Maison Neumann ouvre à Metz un atelier d'encadrement. Cinquante ans plus tard, le métier n'a pas changé de fond : regarder l'œuvre, choisir la baguette, protéger le papier, poser le verre. Ce qui a changé, c'est le territoire. Après plus de trente ans à Metz, Kathia Neumann a créé Art'Cadres à Luxembourg pour servir les collectionneurs, les artistes et les institutions du Grand-Duché sans leur demander de traverser la frontière pour un conseil sérieux.",
-    "Hollerich n'est pas une vitrine déportée. C'est un atelier complet : encadrement sur mesure, cadres Nielsen en Click & Collect, dorure à la feuille, restauration de tableaux avec Sylvie Schied (agréée monuments historiques) et une galerie. Particuliers, architectes, décorateurs et directions communication y trouvent le même interlocuteur, du petit cadre au panneau monumental.",
-    "Nous travaillons en français, à Luxembourg-Ville, avec pose dans un rayon d'environ 25 km. La Maison Neumann reste la maison sœur à Metz : mêmes exigences, deux fiches Google distinctes. Art'Cadres Luxembourg : 4,7/5 sur 12 avis. Maison Neumann Metz : 4,9/5 sur 76 avis.",
-    "La transmission n'est pas un slogan. Kathia a appris le métier dans l'atelier de Metz, puis l'a installé rue de la toison d'or : mêmes échantillons, même exigence de coupe, même refus du cadre anonyme. Sylvie Schied y ajoute la restauration, ce que Metz ne pouvait pas offrir seul aux clients luxembourgeois. Quatre métiers dans un seul lieu, pour ne pas envoyer une toile chez trois prestataires.",
+    "La Maison Neumann ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
+    "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille, et la restauration avec Sylvie Schied, agréée monuments historiques. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
+    "Metz reste ouvert, avec sa propre fiche Google : Maison Neumann, 4,9/5 sur 76 avis. Art'Cadres Luxembourg : 4,7/5 sur 12 avis.",
 ])}
 <div class="p-list reveal">{content_list("Repères", [
     ("1972", "Fondation de la Maison Neumann à Metz."),
@@ -963,7 +962,7 @@ hist_body = f'''<section class="section"><div class="p-w">
     ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."),
     ("bag", "Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière."),
 ], extra=" p-icos--4")}
-{strip(["assets/kathia-solo.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Commande prête à livrer, cadres sous film", "Atelier d'encadrement sur mesure"], large=True)}
+{strip(["assets/kathia-portrait.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Commande prête à livrer, cadres sous film", "Atelier d'encadrement sur mesure"], large=True)}
 <div class="hist-end">
   <p class="p-note">Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions : un accompagnement confidentiel, à l'atelier.</p>
   {btn_orange("Prendre rendez-vous", "contact.html")}
