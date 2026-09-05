@@ -346,6 +346,9 @@ a{color:inherit;}
 #avis .p-src{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 @media(min-width:720px){#avis .p-avis{grid-template-columns:repeat(2,1fr);}}
 @media(min-width:1080px){#avis .p-avis{grid-template-columns:repeat(3,1fr);}}
+/* pas de case vide : la derniere carte occupe la place restante */
+@media(min-width:720px) and (max-width:1079px){#avis .p-card:last-child:nth-child(odd){grid-column:span 2;}}
+@media(min-width:1080px){#avis .p-card:last-child:nth-child(3n+2){grid-column:span 2;}}
 
 /* --- Galerie (#gal) --- */
 #gal{background:var(--bg);}
