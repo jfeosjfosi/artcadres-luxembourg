@@ -834,7 +834,7 @@ accueil_body = f'''<section id="acc">
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
   <div class="p-story reveal">
-    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>Le savoir-faire remonte à 1972, à Metz. Après plus de trente ans d'atelier, Kathia Neumann a voulu le porter plus loin et a créé Art'Cadres à Hollerich.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces. Nous réalisons aussi vos tirages photo, petits et grands formats.</p></div></div>
+    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>Le savoir-faire remonte à 1972, à Metz. Après plus de trente ans d'atelier, Kathia Neumann a voulu le porter plus loin et a créé Art'Cadres à Hollerich.</p><p>Le même atelier reçoit le particulier venu encadrer un dessin et l'institution qui commande une série. Du petit format au panneau monumental. Nous réalisons aussi vos tirages photo, petits et grands formats.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" width="1200" height="900" loading="eager"></div></figure>
   </div>
   {metier_grid("Art'Cadres Luxembourg", [
@@ -963,7 +963,7 @@ hist_body = f'''<section class="section"><div class="p-w">
 ], extra=" p-icos--4")}
 {strip(["assets/kathia-portrait.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Commande prête à livrer, cadres sous film", "Atelier d'encadrement sur mesure"], large=True)}
 <div class="hist-end">
-  <p class="p-note">Particuliers, artistes, collectionneurs, architectes, décorateurs, entreprises et institutions : un accompagnement confidentiel, à l'atelier.</p>
+  <p class="p-note">Un dessin de famille ou une commande institutionnelle : le même atelier, le même soin, en toute confidentialité.</p>
   {btn_orange("Prendre rendez-vous", "contact.html")}
 </div>
 </div></section>'''
