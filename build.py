@@ -889,7 +889,7 @@ accueil_body = f'''<section id="acc">
 </div></section>
 <section id="real" class="section section--alt"><div class="p-w">
 <h2 class="p-h2 reveal">Réalisations encadrées</h2>
-<p class="p-sub reveal">Pop-art, street-art, aquarelles, photographies et pièces de collection : découvrez une sélection de nos encadrements sur mesure.</p>
+<p class="p-sub reveal">Pop-art, street-art, aquarelles, photographies et pièces de collection : voici une sélection de nos encadrements sur mesure.</p>
 <div class="gal-teaser reveal">{gal_teaser_html}</div>
 <div class="p-cta reveal">{btn_orange("Explorer la galerie", "notre-galerie.html")}</div>
 </div></section>
@@ -925,7 +925,7 @@ accueil_body = f'''<section id="acc">
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
-{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. L'atelier de Hollerich perpétue un savoir-faire né à Metz en 1972.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True, wide=True)}
+{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. L'atelier de Hollerich perpétue un savoir-faire né à Metz en 1972.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres à Hollerich, Luxembourg-Ville", eager_img=True, wide=True)}
 <div class="hist-stats reveal">
   <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Les débuts de l'atelier</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
@@ -956,7 +956,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   </article>
 </div>
 {icon_row([
-    ("ruler", "Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour sublimer chaque œuvre."),
+    ("ruler", "Encadrement sur mesure", "Baguette, passe-partout et verre choisis pour l'œuvre, son format et son accrochage."),
     ("photo", "Restauration de tableaux", "Conservation et remise en valeur des pièces anciennes."),
     ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."),
     ("bag", "Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière."),
@@ -1167,7 +1167,7 @@ partners_block = f'''<div id="partenaires" class="hist-partners">
   <div class="brandfeat__mark"><img class="brandfeat__logo" src="assets/logos/logo-nielsen.svg" alt="Nielsen Design" width="220" height="160"></div>
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
-    <p>Fort d'une expérience de plus de 30 ans dans l'encadrement, Nielsen réunit une équipe de passionnés qui conçoit chaque jour des baguettes et des cadres. Certification FSC®, fabrication allemande. Nous sommes revendeur Nielsen à Luxembourg : configurateur en ligne et Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
+    <p>Nielsen conçoit et fabrique ses baguettes et ses cadres en Allemagne depuis plus de trente ans. Certification FSC®. Nous sommes revendeur Nielsen à Luxembourg : configurateur en ligne et Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
     <p>Quand le format sort du catalogue, nous restons dans le même atelier : sur-mesure, museum, restauration.</p>
   </div>
 </div>
@@ -1212,7 +1212,7 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
 <h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
-<div class="c-lead reveal-in"><p>Encadrement, restauration, cadres Nielsen ou devis institutionnel : un seul atelier, à Hollerich, au cœur de Luxembourg-Ville.</p></div>
+<div class="c-lead reveal-in"><p>Encadrement, restauration, cadres Nielsen ou devis institutionnel : un seul atelier, à Hollerich, Luxembourg-Ville.</p></div>
 <div class="c-grid reveal-in">
   <div>
     <div class="c-info">
