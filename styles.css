@@ -78,6 +78,8 @@ a{color:inherit;}
   .nav-dd{border-bottom:1px solid #2c1f1714;}
   .nav-dd__btn{display:block;width:100%;text-align:left;padding:14px 6px;font-size:17px;pointer-events:none;}
   .nav-dd__btn::after{display:none;}
+  .nav-dd__btn span::after{display:none;}
+  .nav-dd:hover .nav-dd__btn span::after,.nav-dd:focus-within .nav-dd__btn span::after{width:0;}
   .nav-dd__menu{display:block;position:static;border:0;box-shadow:none;padding:0 0 8px 12px;background:transparent;}
   .nav-dd__menu a{padding:10px 6px;border-bottom:0;font-size:16px;}
 }
