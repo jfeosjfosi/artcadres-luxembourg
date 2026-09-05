@@ -102,7 +102,7 @@
       [].forEach.call(stack.children, function (card, i) {
         card.setAttribute("data-slot", String(i));
         card.style.transform = poseAt(i);
-        card.style.zIndex = String(100 - i);
+        card.style.zIndex = String(10 - i);
         card.style.opacity = "1";
         card.style.willChange = "transform";
       });
@@ -122,7 +122,7 @@
         // Fondu enchaîné : la carte de devant se dissout SUR PLACE (léger lift, aucun déplacement
         // latéral), puis réapparaît tout au fond en fondu. Aucune carte ne traverse le dessus d'une autre.
         var liftT = tf(p0.x * W, (p0.y - 0.05) * H, p0.r - 3, 1.03);
-        front.style.zIndex = "200";
+        front.style.zIndex = "20";
         var fAnim = front.animate([
           { transform: poseAt(0), opacity: 1, offset: 0 },
           { transform: liftT, opacity: 0, offset: 0.42 },
@@ -133,7 +133,7 @@
         window.setTimeout(function () { front.style.zIndex = "1"; }, Math.round(DUR * 0.42));
         // Toutes les autres avancent d'un cran, en même temps (c'est ce qui rend le mouvement fluide).
         for (var i = 1; i < n; i++) {
-          cards[i].style.zIndex = String(100 - (i - 1));
+          cards[i].style.zIndex = String(10 - (i - 1));
           cards[i].animate([
             { transform: poseAt(i) },
             { transform: poseAt(i - 1) }

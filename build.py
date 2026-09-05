@@ -681,13 +681,14 @@ def icon_row(items, extra=""):
 
 def matters_block():
     return (
+        '<h2 class="p-h2 reveal">Les trois choix qui font un cadre</h2>'
         '<div class="matters reveal">'
-        "<article><h3>Passe-partout</h3>"
-        "<p>Contrecollés PH neutre, sans acide, pour la conservation des œuvres sur papier.</p></article>"
-        "<article><h3>Verre Nielsen</h3>"
-        "<p>Confort visuel, rendu des couleurs, filtrage UV de 55 % à 99 % selon le verre choisi.</p></article>"
-        "<article><h3>Baguette</h3>"
-        "<p>Moulures et baguettes Nielsen, choisies à l'atelier autour des échantillons.</p></article>"
+        "<article><h3>Le passe-partout</h3>"
+        "<p>Le carton biseauté placé entre l'œuvre et le verre. Il empêche le papier de toucher le verre et il donne de l'air au sujet. Contrecollé PH neutre, sans acide.</p></article>"
+        "<article><h3>Le verre</h3>"
+        "<p>Il protège l'œuvre, et on la regarde à travers. Selon la pièce, on cherche moins de reflets, plus de filtrage UV, ou les deux. Le détail figure dans le tableau ci-dessous.</p></article>"
+        "<article><h3>La baguette</h3>"
+        "<p>Le cadre lui-même. Moulures Nielsen ou bois, choisies à l'atelier devant les échantillons, pour le sujet comme pour le mur où il sera accroché.</p></article>"
         "</div>"
     )
 
@@ -985,17 +986,18 @@ mesure_body = f'''<section class="section"><div class="p-w">
   <div class="p-intro"><h2>Mise en valeur, selon votre budget</h2><div class="p-body"><p>Nous choisissons la baguette pour l'œuvre, le mur et votre budget : moulures contemporaines ou classiques, du filet discret à l'or. Pros, particuliers, architectes et décorateurs : le même atelier, y compris pour des pièces exposées au Centre Pompidou.</p><p>Le rendez-vous à Hollerich sert à ça : sortir les échantillons, poser l'œuvre sur la table, parler lumière du salon ou du hall d'accueil. Un passe-partout PH neutre (sans acide) protège le papier dans le temps. Un carton bas de gamme jaunit et attaque l'aquarelle. Nous ne le proposons pas.</p></div></div>
   <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
+<h3 class="p-listh reveal">Finitions de baguettes disponibles à l'atelier</h3>
 <ul class="p-chips reveal"><li>Modernes</li><li>Noir</li><li>Blanc</li><li>Chêne</li><li>Or</li><li>Wengé</li><li>Gris</li><li>Couleurs</li></ul>
-<div class="p-list reveal">{content_list("Du rendez-vous au cadre", [("À l'atelier", "Vous apportez l'œuvre, ou les cotes. Nous regardons le sujet, la lumière et le budget."), ("Quand Nielsen ne suffit plus", "Format hors série, objet, verre de conservation, passe-partout profond."), ("Délais", "Quelques jours à plusieurs semaines, selon la baguette et la charge de l'atelier.")])}</div>
 {matters_block()}
 {compare_table("Types de verre proposés à l'atelier",
     ["Verre", "Usage", "Filtrage UV", "Reflets"],
     [
         ("Minéral 2 mm", "Affiches, tirages récents peu exposés", "Faible", "Présents"),
         ("Anti-reflet", "Intérieurs lumineux, confort visuel", "Variable", "Atténués"),
-        ("Conservation 55–99 %", "Aquarelles, photos, pièces à transmettre", "Élevé", "Selon gamme"),
+        ("Conservation 55 à 99 %", "Aquarelles, photos, pièces à transmettre", "Élevé", "Selon gamme"),
         ("Musée (museum)", "Œuvres sensibles, collections", "Jusqu'à 99 %", "Très faibles"),
     ])}
+<div class="p-list reveal">{content_list("Du rendez-vous au cadre", [("À l'atelier", "Vous apportez l'œuvre, ou les cotes. Nous regardons le sujet, la lumière et le budget."), ("Quand Nielsen ne suffit plus", "Format hors série, objet, verre de conservation, passe-partout profond."), ("Délais", "Quelques jours à plusieurs semaines, selon la baguette et la charge de l'atelier.")])}</div>
 <h2 class="p-h2 reveal">Quelques techniques du sur-mesure</h2>
 {tech_cards([
     ("assets/gal-15.jpg", "La Marie-Louise biseautée",
@@ -1016,8 +1018,8 @@ mesure_body = f'''<section class="section"><div class="p-w">
 
 # ================= ENCADREMENT STANDARD =================
 FAQ_STANDARD = [
-    ("Le Click & Collect est-il vraiment en 1 h ?",
-     "Oui, pour les formats Nielsen en stock à Hollerich. Vous composez en ligne, vous venez retirer. Pas d'envoi postal. Si la baguette manque, nous vous prévenons et proposons une date ou un sur-mesure."),
+    ("Mon format n'entre pas dans le catalogue, que faire ?",
+     "Nous passons au sur-mesure. La baguette est coupée à vos cotes à l'atelier, avec le passe-partout et le verre choisis pour l'œuvre. Le prix se décide alors sur devis à Hollerich, et non dans le configurateur."),
     ("Bois ou aluminium : que choisir ?",
      "L'aluminium se démonte et se remonte facilement (tournettes rivetées, verre minéral 2 mm). Le bois offre davantage de styles : doré, brut, couleur. Les deux sont Nielsen, FSC®, fabriqués en Allemagne."),
     ("Puis-je voir les baguettes avant de commander ?",
@@ -1194,10 +1196,6 @@ def gal_group(title, items, eager_n=0):
 galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
 <h1 class="p-h1">Galerie d'art et réalisations encadrées</h1>
-<div class="g-lead reveal">
-<p>Chaque pièce ci-dessous a été encadrée à Hollerich : pop-art, photographie, aquarelle, estampe, caisse américaine ou montage classique. La galerie n'est pas un catalogue à vendre pièce par pièce. Elle montre le niveau de finition que nous visons pour vos propres œuvres : coupe nette, carton PH neutre, verre choisi, baguette qui sert le sujet plutôt que de le recouvrir.</p>
-<p>Pop-art et street-art demandent souvent une caisse américaine ou un aluminium sobre. Les aquarelles et estampes demandent un passe-partout museum et, souvent, un verre anti-UV. Les intérieurs (salon, cuisine, chambre) montrent le cadre une fois accroché, pas seulement sur la table de l'atelier. Apportez votre pièce : nous retrouvons le même soin, sans copier un modèle vu ici.</p>
-</div>
 {gal_group("Contemporain, pop-art et street-art", GAL_ITEMS[0:8], eager_n=3)}
 {gal_group("Photographie, papier et museum", GAL_ITEMS[8:16])}
 {gal_group("Intérieurs et montages classiques", GAL_ITEMS[16:24])}
@@ -1208,7 +1206,7 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 contact_body = f'''<section id="contact" class="section"><div class="p-w">
 <span class="p-eyebrow">Nous trouver</span>
 <h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
-<div class="c-lead reveal-in"><p>Votre artisan encadreur vous accueille sur rendez-vous, au cœur de Luxembourg-Ville. Réponse sous 48 h ouvrées. Encadrement, restauration, Nielsen ou devis institutionnel : un seul atelier à Hollerich.</p></div>
+<div class="c-lead reveal-in"><p>Encadrement, restauration, cadres Nielsen ou devis institutionnel : un seul atelier, à Hollerich, au cœur de Luxembourg-Ville.</p></div>
 <div class="c-grid reveal-in">
   <div>
     <div class="c-info">
