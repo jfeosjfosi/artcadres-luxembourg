@@ -716,6 +716,7 @@ a{color:inherit;}
 .p-table-wrap{margin-top:var(--space-block);overflow-x:auto;}
 .p-table-cap{margin:0 0 var(--s3);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
 .p-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;}
+@media(max-width:719px){.p-table{min-width:560px;}.p-table-wrap{-webkit-overflow-scrolling:touch;}}
 .p-table th,.p-table td{text-align:left;padding:var(--s3) var(--s3) var(--s3) 0;border-bottom:1px solid var(--line);vertical-align:top;}
 .p-table th{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
 .p-table td{color:var(--ink);}
