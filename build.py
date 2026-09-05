@@ -114,7 +114,7 @@ def header(active):
 
 def footer():
     trust = [
-        ("shield", "Maison Neumann depuis 1972", "Tradition artisanale à Metz · antenne Luxembourg.", "notre-histoire.html"),
+        ("shield", "Un savoir-faire depuis 1972", "Trente ans d'atelier, transmis à Luxembourg.", "notre-histoire.html"),
         ("size", "Grands formats & institutions", "Panneaux monumentaux · pose sur site.", "institutions-entreprises.html"),
         ("photo", "Restauration agréée MH", "Tableaux et patrimoine familial.", "dorures-restauration.html"),
         ("doc", "Devis en ligne Nielsen", "Configurateur · retrait en 1 h à Hollerich.", "configurateur.html"),
@@ -157,7 +157,7 @@ def footer():
     <a href="politique-de-confidentialite.html">Confidentialité</a>
     <a href="politique-des-cookies.html">Cookies</a>
   </div>
-  <div class="footer-bottom">© 2026 Art'Cadres Luxembourg. Maison Neumann depuis 1972.</div>
+  <div class="footer-bottom">© 2026 Art'Cadres Luxembourg · Un savoir-faire d'encadrement depuis 1972.</div>
 </div></footer>'''
 
 
@@ -167,8 +167,8 @@ def schema_local():
         "@type": ["ProfessionalService", "LocalBusiness"],
         "@id": SITE_URL + "/#localbusiness",
         "name": "Art'Cadres Luxembourg",
-        "alternateName": "Maison Neumann Luxembourg",
-        "description": "Encadreur d'art à Luxembourg : sur mesure, cadres Nielsen, dorure, restauration de tableaux et galerie. Maison Neumann depuis 1972.",
+        "alternateName": "Art'Cadres Encadrement",
+        "description": "Encadreur d'art à Luxembourg : sur mesure, cadres Nielsen, dorure, restauration de tableaux et galerie. Un savoir-faire depuis 1972.",
         "url": SITE_URL + "/",
         "image": SITE_URL + "/assets/ac-contact.jpg",
         "telephone": TEL_SCHEMA,
@@ -265,7 +265,7 @@ def schema_organization():
         "@type": "Organization",
         "@id": SITE_URL + "/#organization",
         "name": "Art'Cadres Luxembourg",
-        "alternateName": "Maison Neumann Luxembourg",
+        "alternateName": "Art'Cadres Encadrement",
         "url": SITE_URL + "/",
         "logo": SITE_URL + "/assets/logo-artcadres-fonce.svg",
         "sameAs": ["https://www.facebook.com/maisonneumann"],
@@ -781,7 +781,7 @@ FAQ_HOME = [
     ("Établissez-vous des factures pour les entreprises ?",
      "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur, hôtels et collections corporate. Confidentialité et planning adaptés aux institutions (sièges, palais, bibliothèques). Nous travaillons déjà avec Deloitte, Accor (ibis Styles, Mercure, MGallery), SES à Betzdorf, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale (plus de 200 portraits officiels). Un e-mail avec les cotes, le lieu de pose et le volume suffit à ouvrir le dossier. Paiement et mentions légales : voir nos CGV. Page dédiée : institutions et entreprises."),
     ("Où se trouve l'atelier ?",
-     "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. E-mail contact@artcadres.lu. Horaires : mercredi au samedi, 10 h à 18 h, sur rendez-vous. Maison Neumann depuis 1972, antenne luxembourgeoise de Kathia Neumann. Pose des grands formats dans un rayon d'environ 25 km (Howald, Kirchberg, et au-delà pour les comptes suivis). L'atelier réunit encadrement, restauration, dorure et une galerie. Plan Google Maps sur la page Contact."),
+     "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. E-mail contact@artcadres.lu. Horaires : mercredi au samedi, 10 h à 18 h, sur rendez-vous. Un savoir-faire d'encadrement transmis depuis 1972 par Kathia Neumann. Pose des grands formats dans un rayon d'environ 25 km (Howald, Kirchberg, et au-delà pour les comptes suivis). L'atelier réunit encadrement, restauration, dorure et une galerie. Plan Google Maps sur la page Contact."),
 ]
 faq_html = faq_markup(FAQ_HOME)
 
@@ -799,7 +799,6 @@ avis = [
     ("Claudine Arendt", "Google", "Charmant accueil dans un cadre chaleureux, conseil personnalisé et professionnel. Vaste choix de cadres sur mesure, finition de qualité."),
     ("Samuel Gori", "Google", "Parfait du début à la fin. Un travail de grande qualité, de très bons conseils et une vraie attention du détail, tout en maîtrisant le coût final."),
     ("Catherine Christmann", "Google", "L'encadrement de notre lithographie est juste parfait. Votre savoir-faire a sublimé l'œuvre. Merci pour la qualité et le soin des finitions."),
-    ("Sandrine Vaglio", "Facebook", "J'en ai rêvé et la Maison Neumann l'a fait ! Le reste est du grand art. Merci à Katia et à son équipe."),
 ]
 avis_cards = "".join(
     f'<div class="p-card"><div class="p-stars">★★★★★</div>'
@@ -824,18 +823,17 @@ accueil_body = f'''<section id="acc">
       <strong>4,7/5</strong>
       <span>Art'Cadres Luxembourg · 12 avis</span>
     </a>
-    <p class="p-gtrust__sub">Maison Neumann, Metz · 4,9/5 · 76 avis</p>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>Encadrement d'art et restauration agréée monuments historiques pour institutions et grands comptes. Maison Neumann depuis 1972, à Hollerich.</p></div>
-    <div class="p-btns">{btn_orange("Demander un rendez-vous", "contact.html")} {btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div>
+    <div class="p-lead"><p>Nous encadrons, dorons et restaurons vos œuvres, du dessin de famille aux 200 portraits officiels de la Cour grand-ducale. Un savoir-faire d'atelier perfectionné depuis 1972, à Hollerich.</p></div>
+    <div class="p-btns">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Voir le prix de mon cadre en ligne", "configurateur.html")}</div>
   </div>
   {polaroid_stack(POLAROIDS)}
 </div>
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
   <div class="p-story reveal">
-    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>La Maison Neumann encadre et restaure à Metz depuis 1972. Après plus de 30 ans d'expérience, Kathia Neumann a souhaité développer ce savoir-faire au-delà des frontières en créant une antenne à Luxembourg.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces. Nous réalisons aussi vos tirages photo, petits et grands formats.</p></div></div>
+    <div class="p-intro"><h2>Un savoir-faire transmis depuis 1972</h2><div class="p-body"><p>Le savoir-faire remonte à 1972, à Metz. Après plus de trente ans d'atelier, Kathia Neumann a voulu le porter plus loin et a créé Art'Cadres à Hollerich.</p><p>Particuliers, artistes, collectionneurs, architectes, décorateurs et institutions y trouvent un accompagnement personnalisé, du petit cadre aux très grandes pièces. Nous réalisons aussi vos tirages photo, petits et grands formats.</p></div></div>
     <figure><div class="p-frame"><img src="assets/histoire-mchat.jpg" alt="Un savoir-faire transmis depuis 1972" width="1200" height="900" loading="eager"></div></figure>
   </div>
   {metier_grid("Art'Cadres Luxembourg", [
@@ -918,7 +916,7 @@ accueil_body = f'''<section id="acc">
 <div class="p-badges reveal">
   <div class="p-badge">
     <span class="v">4,7/5</span><span class="s">★★★★★</span>
-    <span class="m">Art'Cadres Luxembourg · 12 avis Google<small>Maison Neumann, Metz · 4,9/5 · 76 avis</small></span>
+    <span class="m">Art'Cadres Luxembourg · 12 avis Google</span>
   </div>
 </div>
 <div class="p-avis reveal">{avis_cards}</div>
@@ -926,20 +924,20 @@ accueil_body = f'''<section id="acc">
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
-{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. L'atelier de Hollerich prolonge la Maison Neumann, fondée à Metz en 1972.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True, wide=True)}
+{content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. L'atelier de Hollerich perpétue un savoir-faire né à Metz en 1972.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres, au cœur de Luxembourg-Ville", eager_img=True, wide=True)}
 <div class="hist-stats reveal">
-  <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Maison Neumann</span></div>
+  <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Les débuts de l'atelier</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
   <div><span class="hist-stats__n">MH</span><span class="hist-stats__l">agrément Sylvie Schied</span></div>
   <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
-    "La Maison Neumann ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
+    "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
     "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille, et la restauration avec Sylvie Schied, agréée monuments historiques. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
-    "Metz reste ouvert, avec sa propre fiche Google : Maison Neumann, 4,9/5 sur 76 avis. Art'Cadres Luxembourg : 4,7/5 sur 12 avis.",
+    "L'atelier de Metz reste ouvert, avec sa propre fiche Google : 4,9/5 sur 76 avis. Art'Cadres Luxembourg : 4,7/5 sur 12 avis.",
 ])}
 <div class="p-list reveal">{content_list("Repères", [
-    ("1972", "Fondation de la Maison Neumann à Metz."),
+    ("1972", "Fondation de l'atelier d'encadrement à Metz."),
     ("30+ ans", "Kathia Neumann encadre, forme l'antenne Luxembourg."),
     ("Hollerich", "Atelier, galerie, Click & Collect, rendez-vous mercredi au samedi."),
     ("Agréée MH", "Sylvie Schied restaure à l'atelier, devis écrit avant le geste."),
@@ -1085,7 +1083,7 @@ INST_CASES = [
     ("assets/ref-accor.jpg", "Accor · ibis Styles, Mercure, MGallery", "Hôtellerie",
      "Encadrements pour plusieurs établissements : art contemporain et photographies dans espaces communs et chambres. Finitions pensées pour le flux hôtelier (maintenance, séries identiques, remplacement d'une pièce sans tout recommencer). Facture et suivi par site."),
     ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
-     "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontière, dans le sillage de la Maison Neumann."),
+     "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontière."),
     ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces corporate et collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
     ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
      "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales. Conservation du papier, verre adapté, discrétion dans les salles."),
@@ -1099,7 +1097,7 @@ INST_CASES = [
 
 institutions_body = f'''<section class="section"><div class="p-w">
 {content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions",
-"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Maison Neumann depuis 1972. La même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
+"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Un savoir-faire d'atelier depuis 1972. La même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
 "assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 <h2 class="p-h2 reveal">Références nommées</h2>
@@ -1132,7 +1130,6 @@ partners = [
     ("logo-part-misterblad.svg", "Misterblad", "Clichy"),
     ("logo-part-chatrrouge.svg", "Le Chat Rouge", "Pau"),
     ("logo-part-lccadres.svg", "LC Cadres", "Enghien-les-Bains"),
-    ("logo-part-maisonneumann.svg", "Maison Neumann", "Metz"),
     ("logo-part-tetecadre.svg", "La tête dans le cadre", "Saint-Berthevin"),
 ]
 
@@ -1229,7 +1226,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
-        <p>Plus de 30 ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue le savoir-faire de la Maison Neumann (Metz, 1972) à Luxembourg, avec la même exigence artisanale.</p>
+        <p>Plus de trente ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue à Luxembourg un savoir-faire né à Metz en 1972, avec la même exigence artisanale.</p>
       </figcaption>
     </figure>
   </aside>
@@ -1391,8 +1388,8 @@ PAGES = [
     ("institutions-entreprises.html", "Encadrement entreprises Luxembourg · Art'Cadres",
      "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
      institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/histoire-atelier-2.jpg", INST_LD),
-    ("notre-histoire.html", "Maison Neumann depuis 1972 · Art'Cadres",
-     "Art'Cadres Luxembourg perpétue la Maison Neumann (Metz, 1972) : encadrement sur mesure, restauration, dorure et galerie d'art à Hollerich.",
+    ("notre-histoire.html", "Notre histoire : un savoir-faire depuis 1972 · Art'Cadres",
+     "Art'Cadres Luxembourg perpétue un savoir-faire d'encadrement né en 1972 : sur mesure, restauration, dorure et galerie d'art à Hollerich.",
      hist_body, "notre-histoire.html", None, None),
     ("encadrement-sur-mesure.html", "Encadrement sur mesure Luxembourg · Art'Cadres",
      "Encadrement d'art sur mesure à Luxembourg : Marie-Louise, caisse américaine, rehausse, objets et grands formats. Atelier Hollerich.",
@@ -1475,7 +1472,7 @@ print("écrit : robots.txt")
 
 with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
     f.write(f"""# Art'Cadres Luxembourg
-> Encadreur d'art à Luxembourg (Hollerich). Maison Neumann depuis 1972.
+> Encadreur d'art à Luxembourg (Hollerich). Un savoir-faire depuis 1972.
 
 ## Pages principales
 - {SITE_URL}/ — Encadreur d'art, institutions, grands formats
@@ -1486,7 +1483,7 @@ with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
 - {SITE_URL}/encadrement-grand-format.html — Grands formats et pose sur site
 - {SITE_URL}/glossaire-encadrement.html — Lexique (passe-partout, Marie-Louise, verre musée)
 - {SITE_URL}/notre-galerie.html — Galerie et réalisations
-- {SITE_URL}/notre-histoire.html — Maison Neumann depuis 1972 · partenaires Nielsen
+- {SITE_URL}/notre-histoire.html : savoir-faire depuis 1972, partenaires Nielsen
 - {SITE_URL}/configurateur.html — Devis en ligne Nielsen
 - {SITE_URL}/contact.html — Rendez-vous Hollerich
 
