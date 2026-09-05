@@ -1033,13 +1033,14 @@ standard_body = f'''<section class="section"><div class="p-w">
   <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Si le format sort du catalogue, nous passons au sur-mesure.</p><p>Nielsen n'est pas un cadre de grande surface : le verre est minéral, les cartons sont conçus pour l'encadrement, le bois est certifié FSC®. C'est le bon choix pour une photographie, une affiche, un diplôme, un tirage dont le format entre dans la grille. Ce n'est pas le bon choix pour une médaille, un pastel fragile ou un panneau de trois mètres : là, l'atelier reprend la main.</p><p>Le Click & Collect évite l'attente d'un sur-mesure quand le format est connu. Vous pouvez commander le matin, passer l'après-midi. Si la teinte hésite, dix minutes à l'atelier devant le mur de baguettes valent mieux qu'un échange de messages. Revendeur Nielsen à Luxembourg : les quatre univers (Nature, Color, Design, Charme) sont ceux du configurateur et ceux du stock Hollerich.</p></div></div>
   <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
-{compare_table("Standard Nielsen ou sur-mesure atelier",
-    ["", "Nielsen Click & Collect", "Sur-mesure atelier"],
+{compare_table("Cadre Nielsen ou sur-mesure : lequel vous faut-il ?",
+    ["", "Cadre Nielsen, en ligne", "Sur-mesure, à l'atelier"],
     [
-        ("Délai", "Souvent 1 h", "Quelques jours à plusieurs semaines"),
-        ("Formats", "Catalogue Nielsen", "Hors série, objets, monumentaux"),
-        ("Prix", "Affiché en ligne", "Devis à Hollerich"),
-        ("Verre musée / Marie-Louise", "Selon options du configurateur", "Montage museum complet"),
+        ("Pour quelle œuvre", "Photo, affiche, diplôme, tirage dont le format entre dans la grille Nielsen", "Œuvre fragile, objet en volume, médaille, très grand format, pièce à transmettre"),
+        ("Délai", "Souvent dans l'heure, selon le stock à Hollerich", "De quelques jours à plusieurs semaines"),
+        ("Prix", "Affiché en direct dans le configurateur", "Sur devis, établi à l'atelier une fois l'œuvre vue"),
+        ("Verre et passe-partout", "Parmi les options proposées par le configurateur", "Choisis pour l'œuvre : verre de conservation, carton sans acide, Marie-Louise"),
+        ("Où cela se décide", "En ligne, puis retrait à Hollerich", "Autour de la table, devant les échantillons"),
     ])}
 {strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
 {faq_section("Questions cadres Nielsen", FAQ_STANDARD)}
