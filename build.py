@@ -1103,9 +1103,14 @@ institutions_body = f'''<section class="section"><div class="p-w">
 "assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 <h2 class="p-h2 reveal">Références nommées</h2>
-<p class="p-sub reveal">Huit comptes que nous pouvons citer. Derrière chaque logo : un brief, un atelier, une pose. Pas une liste d'ambition.</p>
+<p class="p-sub reveal">Huit références que nous pouvons citer. Chacune a suivi le même chemin : un devis chiffré, une fabrication à l'atelier de Hollerich, une pose sur site.</p>
 {client_cards(INST_CASES)}
-<div class="p-list reveal">{content_list("Comment nous travaillons", [("Brief", "Volumes, délais, lieux de pose, charte. Devis, facture et planning. Confidentialité pour les sièges et les institutions."), ("Pose", "Rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz)."), ("Devis", "Quantités, baguettes, verre, fonds, pose. Un e-mail avec les cotes et le lieu suffit à ouvrir le dossier.")])}</div>
+<h2 class="p-h2 reveal">Comment nous travaillons</h2>
+{icon_row([
+    ("ruler", "1. Le brief", "Volumes, délais, lieux de pose, charte graphique. Nous travaillons sous confidentialité pour les sièges et les institutions."),
+    ("doc", "2. Le devis", "Quantités, baguettes, verre, fonds et pose, chiffrés ligne par ligne. Un e-mail avec les cotes et le lieu suffit à ouvrir le dossier."),
+    ("frame", "3. La pose", "Sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz)."),
+])}
 {faq_section("Questions entreprises", [
     ("Facturez-vous les sociétés et les institutions ?",
      "Oui. Devis, facture, interlocuteur unique. Confidentialité de chantier. Planning adapté aux halls, aux musées et aux sièges."),
