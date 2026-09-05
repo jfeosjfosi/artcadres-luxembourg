@@ -861,9 +861,9 @@ accueil_body = f'''<section id="acc">
   ])}
   <div class="p-cta p-cta--rich reveal">
     <div class="p-cta__copy">
-      <h2>Votre devis, en quelques clics</h2>
-      <p>Composez votre cadre en ligne : baguette, passe-partout, verre. Le prix se calcule en direct, sans engagement.</p>
-      <div class="p-cta__action">{btn_orange("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+      <h2>Le prix de votre cadre, tout de suite</h2>
+      <p>Choisissez baguette, passe-partout et verre. Le prix s'affiche en direct, sans vous déplacer, sans engagement.</p>
+      <div class="p-cta__action">{btn_orange("Composer mon cadre et voir le prix", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
     </div>
     <figure class="p-cta__fig">
       <div class="p-frame"><img src="assets/ac-contact.jpg" alt="Mur de baguettes à l'atelier Art'Cadres, Hollerich" loading="lazy"></div>
