@@ -760,7 +760,7 @@ REF_VIGNETTES = [
 ]
 
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
-    (1, "Encadrement contemporain"), (3, "Pop-art encadré"), (4, "Aquarelle museum"),
+    (1, "Encadrement contemporain"), (3, "Pop-art encadré"), (4, "Aquarelle et passe-partout de conservation"),
     (8, "Triptyque photographique"), (11, "Galerie privée"), (15, "Encadrement classique"),
     (18, "Série limitée"), (2, "Portrait contemporain"), (23, "Estampe encadrée"),
 ]]
@@ -1204,11 +1204,11 @@ hist_body = hist_body.replace('<div class="hist-end">', partners_block + '\n<div
 GAL_ITEMS = [
     (f"assets/gal-{i:02d}.jpg", cap) for i, cap in enumerate([
         "Encadrement contemporain en intérieur", "Composition murale sur mesure", "Pop-art encadré · pièce signature",
-        "Aquarelle et passe-partout museum", "Street-art · cadre aluminium", "Art graphique · finition Nielsen",
+        "Aquarelle et passe-partout de conservation", "Street-art · cadre aluminium", "Art graphique · finition Nielsen",
         "Triptyque photographique", "Série iconographique encadrée", "Encadrement minimaliste",
         "Galerie privée · mise en scène", "Format paysage · salon", "Vue urbaine · cadre sur mesure",
         "Botanique · passe-partout crème", "Encadrement classique bois", "Art contemporain · caisse américaine",
-        "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement museum · verre anti-UV",
+        "Collection · harmonie chromatique", "Série limitée encadrée", "Encadrement muséal · verre anti-UV",
         "Monument parisien · intérieur", "Cuisine design · œuvre encadrée", "Encadrement couleur · chambre",
         "Estampe limitée · caisse américaine", "Peynet · encadrement classique", "Œuvre contemporaine · cadre noir",
     ], 1)
