@@ -980,16 +980,30 @@ FAQ_MESURE = [
      "Oui : médailles, maillots, végétaux, couverts, pièces en relief. La rehausse maintient le verre au-dessus du volume. Apportez l'objet, ne le forcez pas dans un cadre plat."),
 ]
 mesure_body = f'''<section class="section"><div class="p-w">
-{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité de l'encadrement font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
+{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité du montage font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
 {icon_row([("frame", "Étude personnalisée", "Chaque œuvre est analysée avec vous : style, conservation, budget."), ("ruler", "Techniques artisanales", "Marie-Louise, caisse américaine, rehausse et montages museum."), ("size", "Du petit au monumental", "Médailles, objets, tableaux et panneaux muraux pour entreprises.")])}
-<div class="p-story reveal">
-  <div class="p-intro"><h2>Mise en valeur, selon votre budget</h2><div class="p-body"><p>Nous choisissons la baguette pour l'œuvre, le mur et votre budget : moulures contemporaines ou classiques, du filet discret à l'or. Pros, particuliers, architectes et décorateurs : le même atelier, y compris pour des pièces exposées au Centre Pompidou.</p><p>Le rendez-vous à Hollerich sert à ça : sortir les échantillons, poser l'œuvre sur la table, parler lumière du salon ou du hall d'accueil. Un passe-partout PH neutre (sans acide) protège le papier dans le temps. Un carton bas de gamme jaunit et attaque l'aquarelle. Nous ne le proposons pas.</p></div></div>
-  <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
-</div>
-<h3 class="p-listh reveal">Finitions de baguettes disponibles à l'atelier</h3>
-<ul class="p-chips reveal"><li>Modernes</li><li>Noir</li><li>Blanc</li><li>Chêne</li><li>Or</li><li>Wengé</li><li>Gris</li><li>Couleurs</li></ul>
-{matters_block()}
-{compare_table("Types de verre proposés à l'atelier",
+<h2 class="p-h2 reveal">Nos trois techniques signature</h2>
+{tech_cards([
+    ("assets/gal-15.jpg", "La Marie-Louise biseautée",
+     "Le haut de gamme du passe-partout : un biseau qui crée de la profondeur autour du sujet, en montage traditionnel comme contemporain."),
+    ("assets/gal-08.jpg", "La caisse américaine",
+     "L'encadrement le plus répandu au monde : l'œuvre flotte dans le cadre, en léger retrait. Très demandée pour l'art contemporain et la photographie."),
+    ("assets/gal-24.jpg", "La technique de rehausse",
+     "Le verre reste en suspension au-dessus du sujet, un fond peut s'ajouter. Pour les objets, les pièces en volume et les montages museum."),
+])}
+<h2 class="p-h2 reveal">Composer votre cadre : trois choix</h2>
+{icon_row([
+    ("frame", "La baguette", "Le cadre lui-même. Des centaines d'échantillons à l'atelier : bois, aluminium, patines, or."),
+    ("doc", "Le passe-partout", "Le carton biseauté entre l'œuvre et le verre. Contrecollé PH neutre, sans acide, pour traverser le temps."),
+    ("photo", "Le verre", "Confort visuel, rendu des couleurs et conservation : filtrage UV de 55 % à 99 % selon le verre."),
+])}
+<div class="p-list reveal">{content_list("Les quatre univers de baguettes Nielsen", [
+    ("Nature", "Bois naturel, en massif ou en placage."),
+    ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
+    ("Design", "Des lignes pures, en finitions sobres ou métallisées."),
+    ("Charme", "Dorures, patines à l'ancienne et finitions blanchies."),
+])}</div>
+{compare_table("Le verre, selon l'œuvre",
     ["Verre", "Usage", "Filtrage UV", "Reflets"],
     [
         ("Minéral 2 mm", "Affiches, tirages récents peu exposés", "Faible", "Présents"),
@@ -997,19 +1011,10 @@ mesure_body = f'''<section class="section"><div class="p-w">
         ("Conservation 55 à 99 %", "Aquarelles, photos, pièces à transmettre", "Élevé", "Selon gamme"),
         ("Musée (museum)", "Œuvres sensibles, collections", "Jusqu'à 99 %", "Très faibles"),
     ])}
-<div class="p-list reveal">{content_list("Du rendez-vous au cadre", [("À l'atelier", "Vous apportez l'œuvre, ou les cotes. Nous regardons le sujet, la lumière et le budget."), ("Quand Nielsen ne suffit plus", "Format hors série, objet, verre de conservation, passe-partout profond."), ("Délais", "Quelques jours à plusieurs semaines, selon la baguette et la charge de l'atelier.")])}</div>
-<h2 class="p-h2 reveal">Quelques techniques du sur-mesure</h2>
-{tech_cards([
-    ("assets/gal-15.jpg", "La Marie-Louise biseautée",
-     "Le haut de gamme du passe-partout : un biseau qui crée de la profondeur autour du sujet, en montage traditionnel comme contemporain."),
-    ("assets/histoire-atelier-1.jpg", "La caisse américaine",
-     "L'œuvre flotte dans le cadre, en léger retrait. Une mise en valeur nette, très demandée pour l'art contemporain et la photographie."),
-    ("assets/ac-contact.jpg", "Moulures et baguettes",
-     "Des centaines d'échantillons à l'atelier : or, bois, aluminium, patines. Nous choisissons avec vous la baguette qui sert l'œuvre."),
-    ("assets/gal-24.jpg", "La technique de rehausse",
-     "Le verre reste en suspension au-dessus du sujet. Idéal pour les objets, les pièces en volume et les montages museum."),
-])}
-{strip(["assets/gal-03.jpg", "assets/gal-08.jpg", "assets/gal-11.jpg", "assets/gal-18.jpg"], 4, ["Pop-art encadré", "Triptyque photographique", "Galerie privée", "Verre museum"], large=True)}
+<div class="p-story reveal">
+  <div class="p-intro"><h2>Pour qui nous travaillons</h2><div class="p-body"><p>Professionnels, particuliers, architectes et décorateurs : le même atelier, avec le même soin. Nous avons encadré aussi bien des œuvres de famille que des pièces exposées au Centre Pompidou.</p><p>Le rendez-vous à Hollerich sert à ça : sortir les échantillons, poser l'œuvre sur la table, parler de la lumière du lieu d'accrochage et du budget.</p></div></div>
+  <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+</div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
 {faq_section("Questions sur le sur-mesure", FAQ_MESURE)}
