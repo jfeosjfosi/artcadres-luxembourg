@@ -25,8 +25,8 @@ NAV = [
     ("Histoire", "notre-histoire.html"),
 ]
 NAV_FRAME = [
-    ("Sur mesure", "encadrement-sur-mesure.html"),
-    ("Standard", "encadrement-standard.html"),
+    ("Encadrement sur mesure", "encadrement-sur-mesure.html"),
+    ("Encadrement standard", "encadrement-standard.html"),
 ]
 NAV_CFG = ("Configurateur", "configurateur.html")
 NAV_CTA = ("Contact", "contact.html")
@@ -812,7 +812,7 @@ POLAROIDS = [
     ("assets/kathia-portrait.jpg", "Kathia Neumann à l'atelier"),
     ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
     ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
-    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle prête à livrer"),
+    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle, avant la pose"),
     ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
 ]
 
@@ -822,8 +822,8 @@ accueil_body = f'''<section id="acc">
     <div class="p-gtrusts">
     <a class="p-gtrust" href="#avis">
       <span class="p-gtrust__stars" aria-hidden="true">★★★★★</span>
-      <strong>4,9/5</strong>
-      <span>88 avis Google</span>
+      <strong>4,7/5</strong>
+      <span>12 avis Google</span>
     </a>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
@@ -883,7 +883,7 @@ accueil_body = f'''<section id="acc">
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
   <div><p class="p-stat">Du format intime au monumental</p><h2>Nous encadrons et installons sur site</h2><p>Des médailles aux panneaux muraux de plusieurs mètres : nous maîtrisons l'encadrement sur mesure et la pose en entreprise, pour les particuliers comme pour les institutions.</p>{btn_plain("Page grands formats", "encadrement-grand-format.html")}</div>
-  <div class="p-imgs"><div class="p-frame"><img src="assets/kathia-grand-format.jpg" alt="Kathia Neumann installe une œuvre grand format" loading="lazy"></div><div class="p-frame"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
+  <div class="p-imgs"><div class="p-frame"><img src="assets/kathia-grand-format.jpg" alt="Pose d'un grand format sur site, Luxembourg" loading="lazy"></div><div class="p-frame"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
 </div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
@@ -917,8 +917,8 @@ accueil_body = f'''<section id="acc">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
 <div class="p-badges reveal">
   <div class="p-badge">
-    <span class="v">4,9/5</span><span class="s">★★★★★</span>
-    <span class="m">88 avis Google</span>
+    <span class="v">4,7/5</span><span class="s">★★★★★</span>
+    <span class="m">12 avis Google</span>
   </div>
 </div>
 <div class="p-avis reveal">{avis_cards}</div>
@@ -931,7 +931,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Les débuts de l'atelier</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
   <div><span class="hist-stats__n">MH</span><span class="hist-stats__l">agrément Sylvie Schied</span></div>
-  <div><span class="hist-stats__n">4,9</span><span class="hist-stats__l">88 avis Google</span></div>
+  <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
     "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
@@ -962,7 +962,7 @@ hist_body = f'''<section class="section"><div class="p-w">
     ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles."),
     ("bag", "Galerie d'art", "Une collection coup de cœur, encadrée et mise en lumière."),
 ], extra=" p-icos--4")}
-{strip(["assets/kathia-portrait.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann · fondatrice", "Commande prête à livrer, cadres sous film", "Atelier d'encadrement sur mesure"], large=True)}
+{strip(["assets/kathia-portrait.jpg", "assets/histoire-atelier-2.jpg", "assets/histoire-atelier-1.jpg"], 3, ["Kathia Neumann, à l'atelier de Hollerich", "Cadres protégés, prêts pour la livraison", "L'atelier d'encadrement, Hollerich"], large=True)}
 <div class="hist-end">
   <p class="p-note">Un dessin de famille ou une commande institutionnelle : le même atelier, le même soin, en toute confidentialité.</p>
   {btn_orange("Prendre rendez-vous", "contact.html")}
