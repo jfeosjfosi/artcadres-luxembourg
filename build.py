@@ -98,11 +98,11 @@ def header(active):
 <header class="site-header">
   <div class="bar">
     <a class="logo" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="document.body.classList.toggle('nav-open')">
+    <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav" onclick="document.body.classList.toggle('nav-open')">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <nav class="nav">
-      <button class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
+    <nav class="nav" id="site-nav" aria-hidden="true">
+      <button type="button" class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
       {links}

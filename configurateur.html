@@ -29,11 +29,11 @@
 <header class="site-header">
   <div class="bar">
     <a class="logo" href="index.html"><img src="assets/logo-artcadres-fonce.svg" alt="Art'Cadres Luxembourg"></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="document.body.classList.toggle('nav-open')">
+    <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav" onclick="document.body.classList.toggle('nav-open')">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <nav class="nav">
-      <button class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
+    <nav class="nav" id="site-nav" aria-hidden="true">
+      <button type="button" class="nav-toggle nav-close" aria-label="Fermer le menu" onclick="document.body.classList.remove('nav-open')">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
       <a href="index.html"><span>Accueil</span></a><div class="nav-dd"><button type="button" class="nav-dd__btn" aria-expanded="false" aria-haspopup="true"><span>Encadrement</span></button><div class="nav-dd__menu"><a href="encadrement-sur-mesure.html">Encadrement sur mesure</a><a href="encadrement-standard.html">Encadrement standard</a></div></div><a href="dorures-restauration.html"><span>Restauration</span></a><a href="institutions-entreprises.html"><span>Institutions</span></a><a href="notre-galerie.html"><span>Galerie</span></a><a href="notre-histoire.html"><span>Histoire</span></a><a href="configurateur.html" aria-current="page"><span>Configurateur</span></a><a class="cta" href="contact.html"><span>Contact</span></a>

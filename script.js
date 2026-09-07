@@ -34,6 +34,22 @@
     window.addEventListener("resize", revealInView);
   }
 
+  var drawer = document.querySelector("header .nav");
+  var burger = document.querySelector("header .bar > .nav-toggle");
+  function syncDrawer() {
+    var open = document.body.classList.contains("nav-open");
+    if (drawer) {
+      drawer.setAttribute("aria-hidden", open ? "false" : "true");
+      if ("inert" in drawer) drawer.inert = !open;
+    }
+    if (burger) burger.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  syncDrawer();
+  new MutationObserver(syncDrawer).observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
   document.querySelectorAll(".nav a").forEach(function (a) {
     a.addEventListener("click", function () {
       document.body.classList.remove("nav-open");
@@ -94,9 +110,21 @@
     function tf(x, y, r, s) {
       return "translate3d(" + x + "px," + y + "px,0) rotate(" + r + "deg) scale(" + s + ")";
     }
+    function fanShift() {
+      if (!window.matchMedia("(max-width: 959px)").matches) return 0;
+      var n = stack.children.length;
+      var front = stack.children[0];
+      if (!n || !front) return 0;
+      var last = POSES[Math.min(n - 1, POSES.length - 1)];
+      var W = stack.clientWidth;
+      var cardW = front.offsetWidth;
+      var left = POSES[0].x * W;
+      var right = last.x * W + cardW * last.s + cardW * 0.08;
+      return (W - (right - left)) / 2 - left;
+    }
     function poseAt(i) {
       var p = POSES[Math.min(i, POSES.length - 1)];
-      return tf(p.x * stack.clientWidth, p.y * stack.clientHeight, p.r, p.s);
+      return tf(p.x * stack.clientWidth + fanShift(), p.y * stack.clientHeight, p.r, p.s);
     }
     function layout() {
       [].forEach.call(stack.children, function (card, i) {
@@ -108,8 +136,9 @@
       });
     }
     layout();
+    var busy = false;
+    window.addEventListener("resize", function () { if (!busy) layout(); });
     if (!reduce && stack.animate) {
-      var busy = false;
       function cycle() {
         if (busy || document.hidden) return;
         var cards = [].slice.call(stack.children);
@@ -121,7 +150,7 @@
         var p0 = POSES[0];
         // Fondu enchaîné : la carte de devant se dissout SUR PLACE (léger lift, aucun déplacement
         // latéral), puis réapparaît tout au fond en fondu. Aucune carte ne traverse le dessus d'une autre.
-        var liftT = tf(p0.x * W, (p0.y - 0.05) * H, p0.r - 3, 1.03);
+        var liftT = tf(p0.x * W + fanShift(), (p0.y - 0.05) * H, p0.r - 3, 1.03);
         front.style.zIndex = "20";
         var fAnim = front.animate([
           { transform: poseAt(0), opacity: 1, offset: 0 },
@@ -157,7 +186,6 @@
         window.setTimeout(finish, DUR + 140);
       }
       window.setInterval(cycle, 4200);
-      window.addEventListener("resize", function () { if (!busy) layout(); });
     }
   }
 
