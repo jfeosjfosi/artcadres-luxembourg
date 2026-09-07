@@ -412,13 +412,19 @@ def faq_markup(items):
 
 def compare_table(caption, headers, rows):
     th = "".join(f"<th>{e(h)}</th>" for h in headers)
-    trs = "".join(
-        "<tr>" + "".join(f"<td>{e(c)}</td>" for c in row) + "</tr>" for row in rows
-    )
-    cap = f'<p class="p-table-cap">{e(caption)}</p>' if caption else ""
+    trs = ""
+    for row in rows:
+        cells = ""
+        for i, c in enumerate(row):
+            if i == 0:
+                cells += f'<th scope="row" class="p-table__crit">{e(c)}</th>'
+            else:
+                cells += f'<td data-col="{e(headers[i])}">{e(c)}</td>'
+        trs += f"<tr>{cells}</tr>"
+    cap = f'<h2 class="p-table-title reveal">{e(caption)}</h2>' if caption else ""
     return (
-        f'<div class="p-table-wrap reveal">{cap}'
-        f'<table class="p-table"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
+        f'{cap}<div class="p-table-wrap reveal">'
+        f'<table class="p-table p-table--compare"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
     )
 
 
