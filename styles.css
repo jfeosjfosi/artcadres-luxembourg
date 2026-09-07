@@ -195,6 +195,8 @@ a{color:inherit;}
 .p-quote figcaption{margin-top:22px;font-size:14px;letter-spacing:.04em;color:var(--muted);}
 .p-cta{margin-top:var(--space-cta);padding-top:0;border-top:0;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;}
 @media(min-width:900px){
+  .p-story--flip .p-intro{order:2;}
+  .p-story--flip figure{order:1;}
   .p-hero{grid-template-columns:1.05fr .95fr;gap:64px;}
   .p-hero--wide{grid-template-columns:.82fr 1.18fr;}
   .p-hero-solo{grid-template-columns:1fr;}

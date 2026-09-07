@@ -993,13 +993,17 @@ mesure_body = f'''<section class="section"><div class="p-w">
 ])}
 </div></section>
 <section class="section section--alt"><div class="p-w">
-<h2 class="p-h2 reveal">Composer votre cadre : trois choix</h2>
-{icon_row([
-    ("frame", "La baguette", "Le cadre lui-même. Des centaines d'échantillons à l'atelier : bois, aluminium, patines, or."),
-    ("doc", "Le passe-partout", "Le carton biseauté entre l'œuvre et le verre. Contrecollé PH neutre, sans acide, pour traverser le temps."),
-    ("photo", "Le verre", "Confort visuel, rendu des couleurs et conservation : filtrage UV de 55 % à 99 % selon le verre."),
-])}
-{compare_table("Le verre, selon l'œuvre",
+<div class="p-story reveal">
+  <div class="p-intro"><h2>La baguette</h2><div class="p-body"><p>Le cadre lui-même, choisi pour l'œuvre, le mur et votre budget. Des centaines d'échantillons à l'atelier, dans tous les styles : bois naturel en massif ou en placage, couleurs vives ou pastel, lignes pures aux finitions métallisées, dorures et patines à l'ancienne.</p></div></div>
+  <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Mur de baguettes et moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+</div>
+<div class="p-story p-story--flip reveal">
+  <div class="p-intro"><h2>Le passe-partout</h2><div class="p-body"><p>Le carton biseauté placé entre l'œuvre et le verre. Il donne de l'air au sujet et empêche le papier de toucher la vitre. Contrecollé PH neutre et sans acide, pour que l'œuvre traverse le temps sans jaunir.</p></div></div>
+  <figure><div class="p-frame"><img src="assets/ac-mesure-1.jpg" alt="Passe-partout et cartons de conservation à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+</div>
+<h2 class="p-h2 reveal">Le verre, selon l'œuvre</h2>
+<p class="p-sub reveal">Le verre protège l'œuvre, et c'est à travers lui qu'on la regarde. Selon la pièce, on cherche moins de reflets, plus de filtrage anti-UV, ou les deux.</p>
+{compare_table("Types de verre proposés à l'atelier",
     ["Verre", "Usage", "Filtrage UV", "Reflets"],
     [
         ("Minéral 2 mm", "Affiches, tirages récents peu exposés", "Faible", "Présents"),
@@ -1013,12 +1017,6 @@ mesure_body = f'''<section class="section"><div class="p-w">
   <div class="p-intro"><h2>Pour qui nous travaillons</h2><div class="p-body"><p>Professionnels, particuliers, architectes et décorateurs : le même atelier, avec le même soin. Nous avons encadré aussi bien des œuvres de famille que des pièces exposées au Centre Pompidou.</p><p>Le rendez-vous à Hollerich sert à ça : sortir les échantillons, poser l'œuvre sur la table, parler de la lumière du lieu d'accrochage et du budget.</p></div></div>
   <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
-<div class="p-list reveal">{content_list("Les quatre univers de baguettes Nielsen", [
-    ("Nature", "Bois naturel, en massif ou en placage."),
-    ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
-    ("Design", "Des lignes pures, en finitions sobres ou métallisées."),
-    ("Charme", "Dorures, patines à l'ancienne et finitions blanchies."),
-])}</div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
 </div></section>
