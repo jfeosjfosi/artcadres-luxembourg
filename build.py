@@ -981,7 +981,6 @@ FAQ_MESURE = [
 ]
 mesure_body = f'''<section class="section"><div class="p-w">
 {content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité du montage font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
-{icon_row([("frame", "Étude personnalisée", "Chaque œuvre est analysée avec vous : style, conservation, budget."), ("ruler", "Techniques artisanales", "Marie-Louise, caisse américaine, rehausse et montages museum."), ("size", "Du petit au monumental", "Médailles, objets, tableaux et panneaux muraux pour entreprises.")])}
 <h2 class="p-h2 reveal">Nos trois techniques signature</h2>
 {tech_cards([
     ("assets/gal-15.jpg", "La Marie-Louise biseautée",
@@ -991,18 +990,14 @@ mesure_body = f'''<section class="section"><div class="p-w">
     ("assets/gal-24.jpg", "La technique de rehausse",
      "Le verre reste en suspension au-dessus du sujet, un fond peut s'ajouter. Pour les objets, les pièces en volume et les montages museum."),
 ])}
+</div></section>
+<section class="section section--alt"><div class="p-w">
 <h2 class="p-h2 reveal">Composer votre cadre : trois choix</h2>
 {icon_row([
     ("frame", "La baguette", "Le cadre lui-même. Des centaines d'échantillons à l'atelier : bois, aluminium, patines, or."),
     ("doc", "Le passe-partout", "Le carton biseauté entre l'œuvre et le verre. Contrecollé PH neutre, sans acide, pour traverser le temps."),
     ("photo", "Le verre", "Confort visuel, rendu des couleurs et conservation : filtrage UV de 55 % à 99 % selon le verre."),
 ])}
-<div class="p-list reveal">{content_list("Les quatre univers de baguettes Nielsen", [
-    ("Nature", "Bois naturel, en massif ou en placage."),
-    ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
-    ("Design", "Des lignes pures, en finitions sobres ou métallisées."),
-    ("Charme", "Dorures, patines à l'ancienne et finitions blanchies."),
-])}</div>
 {compare_table("Le verre, selon l'œuvre",
     ["Verre", "Usage", "Filtrage UV", "Reflets"],
     [
@@ -1011,14 +1006,24 @@ mesure_body = f'''<section class="section"><div class="p-w">
         ("Conservation 55 à 99 %", "Aquarelles, photos, pièces à transmettre", "Élevé", "Selon gamme"),
         ("Musée (museum)", "Œuvres sensibles, collections", "Jusqu'à 99 %", "Très faibles"),
     ])}
+</div></section>
+<section class="section"><div class="p-w">
 <div class="p-story reveal">
   <div class="p-intro"><h2>Pour qui nous travaillons</h2><div class="p-body"><p>Professionnels, particuliers, architectes et décorateurs : le même atelier, avec le même soin. Nous avons encadré aussi bien des œuvres de famille que des pièces exposées au Centre Pompidou.</p><p>Le rendez-vous à Hollerich sert à ça : sortir les échantillons, poser l'œuvre sur la table, parler de la lumière du lieu d'accrochage et du budget.</p></div></div>
   <figure><div class="p-frame"><img src="assets/ac-contact.jpg" alt="Échantillons de moulures à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
+<div class="p-list reveal">{content_list("Les quatre univers de baguettes Nielsen", [
+    ("Nature", "Bois naturel, en massif ou en placage."),
+    ("Color", "Un monde tout en couleur : vives ou pastel, mates ou brillantes."),
+    ("Design", "Des lignes pures, en finitions sobres ou métallisées."),
+    ("Charme", "Dorures, patines à l'ancienne et finitions blanchies."),
+])}</div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
+</div></section>
+<section class="section section--alt"><div class="p-w">
 {faq_section("Questions sur le sur-mesure", FAQ_MESURE)}
-<div class="p-cta reveal">{btn_plain("Composer votre cadre en ligne", "configurateur.html")} {btn_orange("Demander un conseil", "contact.html")} {btn_plain("Dorure & restauration", "dorures-restauration.html")}</div>
+<div class="p-endcta reveal"><h2>Parlons de votre projet</h2><p>Apportez l'œuvre ou ses cotes. Nous regardons ensemble le sujet, la lumière et le budget, à l'atelier de Hollerich.</p><div class="p-cta">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Composer votre cadre en ligne", "configurateur.html")}</div></div>
 </div></section>'''
 
 # ================= ENCADREMENT STANDARD =================
@@ -1032,10 +1037,15 @@ FAQ_STANDARD = [
 ]
 standard_body = f'''<section class="section"><div class="p-w">
 {content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Les cadres Nielsen, aluminium comme bois, sont fabriqués en Allemagne et certifiés FSC®. Vous composez le vôtre en ligne, vous le retirez à Hollerich, souvent dans l'heure.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
-{icon_row([("bag", "Click & Collect 1 h", "Retrait à l'atelier Hollerich après commande en ligne."), ("doc", "Devis instantané", "Configurez baguette, passe-partout et verre en direct."), ("shield", "Qualité Nielsen", "Cadre certifié FSC®. Fabrication allemande.")])}
-<div class="p-list reveal">{content_list("Bois ou aluminium, ce que vous obtenez", [("Les cadres bois", "Dorés, bruts ou en couleur, dans les quatre univers Nielsen : Nature, Color, Design et Charme."), ("Les cadres aluminium", "Se chargent, se démontent et se remontent sans outil. Tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis."), ("Certifiés FSC®", "Le bois provient de forêts gérées de façon responsable."), ("Fabriqués en Allemagne", "Nielsen fabrique ses cadres, son verre et ses contrecollés. Nous en sommes revendeur à Luxembourg.")])}</div>
+</div></section>
+<section class="section section--alt"><div class="p-w">
+<h2 class="p-h2 reveal">Bois ou aluminium, ce que vous obtenez</h2>
+{icon_row([("frame", "Les cadres bois", "Dorés, bruts ou en couleur, dans les quatre univers Nielsen : Nature, Color, Design et Charme."), ("size", "Les cadres aluminium", "Se chargent et se démontent sans outil. Tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis."), ("shield", "Certifiés FSC®, fabriqués en Allemagne", "Bois issu de forêts gérées de façon responsable. Nous sommes revendeur Nielsen à Luxembourg.")])}
+{strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
+</div></section>
+<section class="section"><div class="p-w">
 <div class="p-story reveal">
-  <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite. Le retrait se fait à Hollerich, souvent dans l'heure selon le stock. Si le format sort du catalogue, nous passons au sur-mesure.</p><p>Nielsen n'est pas un cadre de grande surface : le verre est minéral, les cartons sont conçus pour l'encadrement, le bois est certifié FSC®. C'est le bon choix pour une photographie, une affiche, un diplôme, un tirage dont le format entre dans la grille. Ce n'est pas le bon choix pour une médaille, un pastel fragile ou un panneau de trois mètres : là, l'atelier reprend la main.</p><p>Le Click & Collect évite l'attente d'un sur-mesure quand le format est connu. Vous pouvez commander le matin, passer l'après-midi. Si la teinte hésite, dix minutes à l'atelier devant le mur de baguettes valent mieux qu'un échange de messages. Revendeur Nielsen à Luxembourg : les quatre univers (Nature, Color, Design, Charme) sont ceux du configurateur et ceux du stock Hollerich.</p></div></div>
+  <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite, et le retrait se fait à Hollerich, souvent dans l'heure selon le stock.</p><p>Nielsen n'est pas un cadre de grande surface : verre minéral, cartons conçus pour l'encadrement, bois certifié FSC®. Les quatre univers (Nature, Color, Design, Charme) du configurateur sont aussi ceux du stock à Hollerich.</p></div></div>
   <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
 {compare_table("Cadre Nielsen ou sur-mesure : lequel vous faut-il ?",
@@ -1047,9 +1057,10 @@ standard_body = f'''<section class="section"><div class="p-w">
         ("Verre et passe-partout", "Parmi les options proposées par le configurateur", "Choisis pour l'œuvre : verre de conservation, carton sans acide, Marie-Louise"),
         ("Où cela se décide", "En ligne, puis retrait à Hollerich", "Autour de la table, devant les échantillons"),
     ])}
-{strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
+</div></section>
+<section class="section section--alt"><div class="p-w">
 {faq_section("Questions cadres Nielsen", FAQ_STANDARD)}
-<div class="p-cta p-cta--cfg reveal">{btn_orange("Accéder au configurateur", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait en 1 h à l'atelier</p></div>
+<div class="p-endcta reveal"><h2>Votre cadre Nielsen, en quelques clics</h2><p>Composez baguette, passe-partout et verre en ligne : le prix s'affiche tout de suite. Retrait au Click &amp; Collect à Hollerich.</p><div class="p-cta">{btn_orange("Accéder au configurateur", "configurateur.html")} {btn_plain("Prendre rendez-vous", "contact.html")}</div></div>
 </div></section>'''
 
 # ================= DORURES & RESTAURATION =================
@@ -1067,21 +1078,24 @@ dorures_body = f'''<section id="dor" class="section"><div class="p-w">
 {content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien. À Hollerich, Sylvie Schied, restauratrice agréée monuments historiques, établit le diagnostic avant toute intervention.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
 {icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
 {rest_gallery()}
+</div></section>
+<section class="section section--alt"><div class="p-w">
 {content_story("Le diagnostic, avant le geste", [
     "Apportez le tableau à l'atelier, sans le démonter. Un cadre mal retiré arrache parfois la toile ou le papier. Sylvie Schied regarde la couche picturale, le châssis, les soulèvements, les manques, le vernis. Elle dit ce qui se fait, ce qui se discute, et ce que nous refusons : repeindre une œuvre « au neuf », masquer une lacune sous un aplomb décoratif, remplacer un cadre ancien par une imitation plastique.",
     "Le devis est écrit. Aucune intervention sans votre accord. Les étapes classiques, selon l'état : dépoussiérage, tests de solubilité, allègement de vernis jauni, consolidation d'une déchirure, masticage ponctuel, réintégration mesurée, vernis final. Chaque geste vise à retrouver la présence de la pièce, pas à inventer un tableau plus jeune que son auteur.",
 ])}
-<div class="p-list reveal">{content_list("Diagnostic, dorure, limites", [("Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("Dorure", "Feuille d'or sur cadres, miroirs, consoles, statues et ferronnerie. Apprêts, bol, brunissoir : pas une peinture métallisée."), ("Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}</div>
+<h2 class="p-h2 reveal">Diagnostic, dorure, limites</h2>
+{icon_row([("shield", "Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("frame", "Dorure à la feuille", "Feuille d'or sur cadres, miroirs, consoles, statues et ferronnerie. Apprêts, bol, brunissoir, pas une peinture métallisée."), ("doc", "Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}
+</div></section>
+<section class="section"><div class="p-w">
 <div class="bio-card bio-card--solo reveal">
   <h2>Sylvie Schied, restauratrice agréée MH</h2>
   <p>L'agrément monuments historiques est délivré en France après examen des compétences. Il distingue une restauratrice formée à la conservation du patrimoine d'un atelier qui « rafraîchit » les tableaux. À Luxembourg, cet agrément est l'argument le plus rare du métier : il protège les familles qui confient un portrait d'ancêtre autant que les pièces destinées à une collection. Sylvie travaille à Hollerich, dans le même lieu que l'encadrement : une fois la restauration stabilisée, le cadre et le verre se décident sans transporter l'œuvre une seconde fois.</p>
 </div>
-<div class="p-story reveal">
-  <div class="p-intro"><h2>Préservation du patrimoine</h2><div class="p-body"><p>Nettoyage et restauration avec Sylvie Schied, agréée monuments historiques. Chaque œuvre est étudiée avant d'intervenir, pour retrouver l'éclat sans trahir les matériaux ni l'intention de l'artiste. La dorure à la feuille (or, parfois argent ou or blanc selon le cadre) reprend les techniques d'atelier : apprêts, bol, pose de la feuille, brunissoir. Ce n'est pas une bombe métallisée. Un miroir, une console, un cadre baroque : le même soin.</p></div></div>
-</div>
+</div></section>
+<section class="section section--alt"><div class="p-w">
 {faq_section("Questions restauration et dorure", FAQ_DORURES)}
-<div class="p-note reveal"><p>Apportez votre tableau pour un diagnostic et un devis. Merci de ne pas le démonter vous-même.</p></div>
-<div class="p-cta reveal">{btn_orange("Demander un diagnostic", "contact.html")}</div>
+<div class="p-endcta reveal"><h2>Confiez-nous votre tableau</h2><p>Apportez l'œuvre pour un diagnostic et un devis écrit, sans engagement. Merci de ne pas la démonter vous-même.</p><div class="p-cta">{btn_orange("Demander un diagnostic", "contact.html")}</div></div>
 </div></section>'''
 
 # ================= INSTITUTIONS & ENTREPRISES =================

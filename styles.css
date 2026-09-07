@@ -457,6 +457,12 @@ a{color:inherit;}
 /* --- Sous-titre section --- */
 .p-sub{margin:0 0 clamp(32px,4vw,48px);max-width:62ch;font-size:17px;line-height:1.65;color:var(--muted);}
 .section--alt{background:var(--bg2);}
+.p-endcta{margin-top:var(--space-block);background:var(--ink);color:#f3ede3;border-radius:var(--r-frame);padding:clamp(36px,5vw,64px) clamp(24px,4vw,56px);text-align:center;}
+.p-endcta h2{margin:0 0 var(--s3);color:#fff;font-size:var(--t-h2);letter-spacing:var(--track-display);font-weight:700;line-height:1.12;text-wrap:balance;}
+.p-endcta p{margin:0 auto var(--s5);color:#e7ddcf;max-width:52ch;font-size:16px;line-height:1.6;}
+.p-endcta .p-cta{justify-content:center;margin:0;}
+.p-endcta .btn2{color:#f3ede3;border-color:#ffffff44;}
+.p-endcta .btn2:hover{background:#ffffff14;}
 #real .p-cta,#faq .p-cta,#avis .p-cta{margin-top:var(--space-cta);}
 
 /* --- Vignettes refs institutions (accueil) --- */
@@ -670,11 +676,11 @@ a{color:inherit;}
 
 /* --- Techniques sur mesure --- */
 .tech-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,48px);margin:0;}
-@media(min-width:760px){.tech-grid{grid-template-columns:repeat(2,1fr);gap:40px 36px;}}
+@media(min-width:760px){.tech-grid{grid-template-columns:repeat(3,1fr);gap:32px 28px;}}
 .tech-card{margin:0;}
-.tech-card__img{margin:0 0 16px;padding:12px;background:var(--mat);border:1px solid #2c1f1714;border-radius:4px;box-shadow:0 24px 56px -32px #2c1f1766;}
-.tech-card__img img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;min-height:260px;}
-.tech-card h3{margin:0 0 8px;font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
+.tech-card__img{margin:0 0 18px;padding:0;background:none;border:1px solid #2c1f1714;border-radius:6px;overflow:hidden;box-shadow:0 16px 36px -28px #2c1f1755;}
+.tech-card__img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;}
+.tech-card h3{margin:0 0 var(--s3);font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
 .tech-card p{margin:0;font-size:15px;line-height:1.6;color:var(--muted);max-width:42ch;}
 
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
