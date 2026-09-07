@@ -1138,7 +1138,7 @@ institutions_body = f'''<section class="section"><div class="p-w">
 ])}
 {faq_section("Questions entreprises", [
     ("Facturez-vous les sociétés et les institutions ?",
-     "Oui. Devis, facture, interlocuteur unique. Confidentialité de chantier. Planning adapté aux halls, aux musées et aux sièges."),
+     "Oui. Nous établissons un devis puis une facture, avec un interlocuteur unique du premier échange jusqu'à la pose. Chaque chantier reste confidentiel, et nous adaptons le planning aux contraintes des halls, des musées et des sièges."),
     ("Intervenez-vous à Kirchberg et Howald ?",
      "Oui. Hollerich est l'atelier. La pose se fait sur site dans un rayon d'environ 25 km, et au-delà pour les comptes suivis."),
     ("Gérez-vous les séries et les remplacements ?",
@@ -1311,14 +1311,14 @@ FAQ_GF = [
     ("La pose est-elle incluse ?",
      "La pose sur site se chiffre à part, dans un rayon d'environ 25 km, plus loin pour les comptes suivis. Un particulier collectionneur et une entreprise passent par le même planning."),
     ("Particuliers ou seulement les entreprises ?",
-     "Les deux. La page institutions détaille Deloitte, Accor, SES, BnL, Cour. Cette page s'adresse aussi aux artistes et aux collectionneurs."),
+     "Les deux. La page institutions détaille nos références (Deloitte, Accor, SES, la Bibliothèque nationale, la Cour grand-ducale), mais cette page s'adresse tout autant aux artistes et aux collectionneurs."),
 ]
 gf_body = f'''<section class="section"><div class="p-w">
 {content_hero("Grands formats", "Encadrement grand format au Luxembourg",
 "<p>Des médailles aux panneaux de plusieurs mètres : nous encadrons et installons sur site. Le grand format n'est pas un cadre agrandi. Il demande un châssis calculé, un verre ou un plexi adapté, et une pose à deux.</p>",
-"assets/kathia-grand-format.jpg", "Kathia Neumann installe une œuvre grand format", eager_img=True)}
-{icon_row([("size", "Du petit au monumental", "Médailles, maillots, toiles, panneaux muraux."), ("shield", "Pose sur site", "Rayon d'environ 25 km, plus loin pour les comptes suivis."), ("bag", "Entreprises et particuliers", "Même atelier, devis et planning dédiés.")])}
-{content_story("Ce que le catalogue ne fait pas", [
+"assets/kathia-grand-format.jpg", "Pose d'un grand format à l'atelier", eager_img=True)}
+{icon_row([("size", "De la médaille au mur entier", "Nous encadrons toutes les tailles, de la médaille au panneau de plusieurs mètres."), ("shield", "Nous venons poser chez vous", "Livraison et accrochage sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville."), ("bag", "Pour les entreprises comme les particuliers", "Le même atelier et le même soin, avec un devis et un planning dédiés pour les chantiers.")])}
+{content_story("Là où le configurateur s'arrête", [
     "Un cadre Nielsen se retire en une heure quand le format entre dans la grille. Un panneau de deux ou trois mètres, un triptyque, une photographie monumentale pour un hall : le configurateur s'arrête. Nous prenons les cotes sur place ou à l'atelier, nous dessinons le montage, nous fabriquons, nous accrochons.",
     "Deloitte nous a confié des panneaux muraux. La Bibliothèque nationale, des grands formats en situ. Accor, des séries hôtelières. La Cour grand-ducale, plus de 200 portraits officiels. Ces chantiers ont appris à l'atelier le rythme d'un siège, d'un hall, d'un palais : discrétion, planning, pièces de rechange.",
     "Les particuliers et les artistes passent par la même table. Une toile hors norme, une photographie de voyage en très grand, une collection à accrocher d'un seul tenant : nous venons voir le mur. Howald, Kirchberg, Hollerich, et un rayon d'environ 25 km autour de Luxembourg-Ville.",
