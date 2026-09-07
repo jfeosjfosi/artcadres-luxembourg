@@ -795,11 +795,12 @@ gf_objs_html = "".join(
     f'<span><b>{e(l)}</b></span></div>' for s, l in gf_objs)
 
 avis = [
-    ("LuZ De Lor", "Google", "Une adresse de confiance pour tous vos travaux d'encadrement. Mes œuvres ont toutes été parfaitement mises en valeur grâce aux conseils et au travail des artisans."),
-    ("Anthony S.", "Google", "J'ai confié l'agrandissement et la mise en cadre d'une photo, je suis ravi du résultat. Travail soigné, de très haute qualité, service impeccable."),
-    ("Claudine Arendt", "Google", "Charmant accueil dans un cadre chaleureux, conseil personnalisé et professionnel. Vaste choix de cadres sur mesure, finition de qualité."),
-    ("Samuel Gori", "Google", "Parfait du début à la fin. Un travail de grande qualité, de très bons conseils et une vraie attention du détail, tout en maîtrisant le coût final."),
-    ("Catherine Christmann", "Google", "L'encadrement de notre lithographie est juste parfait. Votre savoir-faire a sublimé l'œuvre. Merci pour la qualité et le soin des finitions."),
+    ("LuZ De Lor", "Google", "Une adresse de confiance pour tous vos travaux d'encadrement. J'ai amené plusieurs œuvres (affiche, peinture sur toile et photos) qui ont toutes été parfaitement mises en valeur grâce aux conseils de la vendeuse et au travail des artisans. Merci Art'cadres pour votre professionnalisme !"),
+    ("Anthony S.", "Google", "Un grand merci à la Maison Neumann ! J'ai confié l'agrandissement et la mise en cadre d'une photo, je suis ravi du résultat. Le travail est soigné, de très haute qualité, et le service impeccable. Une adresse incontournable."),
+    ("Claudine Arendt", "Google", "Charmant accueil dans un cadre chaleureux, conseil personnalisé et professionnel. Vaste choix de cadres sur mesure, finition de qualité. Absolument à recommander."),
+    ("Samuel Gori", "Google", "Tout simplement parfait du début à la fin. Un travail d'une grande qualité avec de très bons conseils et une attention du détail, tout en maîtrisant le coût final. Je vais refaire appel à leurs services sans tarder !"),
+    ("Catherine Christmann", "Google", "L'encadrement de notre lithographie est juste parfait. Votre savoir-faire a sublimé l'œuvre. Merci pour la qualité de votre travail et le soin apporté aux finitions."),
+    ("Sandrine Vaglio", "Facebook", "J'en ai rêvé et Maison Neumann l'a fait ! Petite contribution de ma part : le magazine et le tissu. Le reste est du grand art. Merci à Katia et son équipe !"),
 ]
 avis_cards = "".join(
     f'<div class="p-card"><div class="p-stars">★★★★★</div>'
@@ -821,8 +822,8 @@ accueil_body = f'''<section id="acc">
     <div class="p-gtrusts">
     <a class="p-gtrust" href="#avis">
       <span class="p-gtrust__stars" aria-hidden="true">★★★★★</span>
-      <strong>4,7/5</strong>
-      <span>Art'Cadres Luxembourg · 12 avis</span>
+      <strong>4,9/5</strong>
+      <span>88 avis Google</span>
     </a>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
@@ -916,8 +917,8 @@ accueil_body = f'''<section id="acc">
 <h2 class="p-h2 reveal">Ils nous ont fait confiance, ils en parlent</h2>
 <div class="p-badges reveal">
   <div class="p-badge">
-    <span class="v">4,7/5</span><span class="s">★★★★★</span>
-    <span class="m">Art'Cadres Luxembourg · 12 avis Google</span>
+    <span class="v">4,9/5</span><span class="s">★★★★★</span>
+    <span class="m">88 avis Google</span>
   </div>
 </div>
 <div class="p-avis reveal">{avis_cards}</div>
@@ -930,7 +931,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Les débuts de l'atelier</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
   <div><span class="hist-stats__n">MH</span><span class="hist-stats__l">agrément Sylvie Schied</span></div>
-  <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
+  <div><span class="hist-stats__n">4,9</span><span class="hist-stats__l">88 avis Google</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
     "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
