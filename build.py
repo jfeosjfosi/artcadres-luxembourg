@@ -802,11 +802,10 @@ gf_objs_html = "".join(
 
 avis = [
     ("LuZ De Lor", "Google", "Une adresse de confiance pour tous vos travaux d'encadrement. J'ai amené plusieurs œuvres (affiche, peinture sur toile et photos) qui ont toutes été parfaitement mises en valeur grâce aux conseils de la vendeuse et au travail des artisans. Merci Art'cadres pour votre professionnalisme !"),
-    ("Anthony S.", "Google", "Un grand merci à la Maison Neumann ! J'ai confié l'agrandissement et la mise en cadre d'une photo, je suis ravi du résultat. Le travail est soigné, de très haute qualité, et le service impeccable. Une adresse incontournable."),
+    ("Anthony S.", "Google", "J'ai confié l'agrandissement et la mise en cadre d'une photo, je suis ravi du résultat. Le travail est soigné, de très haute qualité, et le service impeccable."),
     ("Claudine Arendt", "Google", "Charmant accueil dans un cadre chaleureux, conseil personnalisé et professionnel. Vaste choix de cadres sur mesure, finition de qualité. Absolument à recommander."),
     ("Samuel Gori", "Google", "Tout simplement parfait du début à la fin. Un travail d'une grande qualité avec de très bons conseils et une attention du détail, tout en maîtrisant le coût final. Je vais refaire appel à leurs services sans tarder !"),
     ("Catherine Christmann", "Google", "L'encadrement de notre lithographie est juste parfait. Votre savoir-faire a sublimé l'œuvre. Merci pour la qualité de votre travail et le soin apporté aux finitions."),
-    ("Sandrine Vaglio", "Facebook", "J'en ai rêvé et Maison Neumann l'a fait ! Petite contribution de ma part : le magazine et le tissu. Le reste est du grand art. Merci à Katia et son équipe !"),
 ]
 avis_cards = "".join(
     f'<div class="p-card"><div class="p-stars">★★★★★</div>'
