@@ -1246,7 +1246,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
   </div>
   <aside class="c-kathia">
     <figure>
-      <div class="p-frame"><img src="assets/kathia-solo.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" width="800" height="1000" loading="eager" draggable="false"></div>
+      <div class="p-frame"><img src="assets/kathia-bleu.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" width="800" height="1000" loading="eager" draggable="false"></div>
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
