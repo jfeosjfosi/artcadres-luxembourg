@@ -1049,7 +1049,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 </div></section>
 <section class="section"><div class="p-w">
 <div class="p-story reveal">
-  <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite, et le retrait se fait à Hollerich, souvent dans l'heure selon le stock.</p><p>Nielsen n'est pas un cadre de grande surface : verre minéral, cartons conçus pour l'encadrement, bois certifié FSC®. Les quatre univers (Nature, Color, Design, Charme) du configurateur sont aussi ceux du stock à Hollerich.</p></div></div>
+  <div class="p-intro"><h2>Composez, retirez en 1 h</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite, et le retrait se fait à Hollerich, souvent dans l'heure selon le stock.</p><p>Nielsen n'est pas un cadre de grande surface : verre minéral, cartons conçus pour l'encadrement, bois certifié FSC®. Les gammes du configurateur, du bois naturel aux finitions dorées, sont aussi celles du stock à Hollerich.</p></div></div>
   <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
 </div>
 {compare_table("Cadre Nielsen ou sur-mesure : lequel vous faut-il ?",
