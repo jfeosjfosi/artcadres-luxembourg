@@ -114,7 +114,7 @@ def header(active):
 
 def footer():
     trust = [
-        ("shield", "Un savoir-faire depuis 1972", "Trente ans d'atelier, transmis à Luxembourg.", "notre-histoire.html"),
+        ("shield", "Un savoir-faire depuis 1972", "L'atelier d'encadrement d'art de Kathia Neumann, à Hollerich.", "notre-histoire.html"),
         ("size", "Grands formats & institutions", "Panneaux monumentaux · pose sur site.", "institutions-entreprises.html"),
         ("photo", "Restauration agréée MH", "Tableaux et patrimoine familial.", "dorures-restauration.html"),
         ("doc", "Devis en ligne Nielsen", "Configurateur · retrait en 1 h à Hollerich.", "configurateur.html"),
@@ -721,7 +721,7 @@ services = [
      "Tableaux, dorure à la feuille et patrimoine familial. Diagnostic à l'atelier, agrément monuments historiques, interventions mesurées pour rendre à la pièce sa présence.",
      "dorures-restauration.html"),
     ("bag", "04", "Institutions & entreprises",
-     "Collections corporate, hôtellerie et institutions. Grands formats, séries et pose sur site, du Luxembourg à la Grande Région.",
+     "Collections d'entreprise, hôtellerie et institutions. Grands formats, séries et pose sur site, du Luxembourg à la Grande Région.",
      "institutions-entreprises.html"),
 ]
 svc_html = "".join(
@@ -770,9 +770,9 @@ gal_teaser_html = "".join(
 
 FAQ_HOME = [
     ("Combien coûte un encadrement sur mesure ?",
-     "Le prix d'un encadrement sur mesure au Luxembourg dépend du format, de la baguette, du passe-partout et du verre. Pour les cadres Nielsen courants, notre configurateur calcule le tarif en direct : vous voyez le montant avant de vous déplacer à Hollerich. Un montage museum, une Marie-Louise biseautée, une caisse américaine, un objet en volume ou un verre anti-UV à 99 % sortent du catalogue : nous établissons alors un devis à l'atelier, sans engagement. Les grands formats et les séries d'entreprise suivent un chiffrage à part, avec pose sur site si besoin. Apportez l'œuvre ou les cotes : nous vous indiquons une fourchette dès le premier rendez-vous."),
+     "Le prix d'un encadrement sur mesure au Luxembourg dépend du format, de la baguette, du passe-partout et du verre. Pour les cadres Nielsen courants, notre configurateur calcule le tarif en direct : vous voyez le montant avant de vous déplacer à Hollerich. Un montage muséal, une Marie-Louise biseautée, une caisse américaine, un objet en volume ou un verre anti-UV à 99 % sortent du catalogue : nous établissons alors un devis à l'atelier, sans engagement. Les grands formats et les séries d'entreprise suivent un chiffrage à part, avec pose sur site si besoin. Apportez l'œuvre ou les cotes : nous vous indiquons une fourchette dès le premier rendez-vous."),
     ("Quel est le délai ?",
-     "Un cadre standard Nielsen se retire souvent en Click & Collect dans l'heure, selon le stock à l'atelier. Un encadrement sur mesure prend en général quelques jours : le temps de commander la baguette, de couper les cartons et de monter le verre. Les montages museum, les objets et les très grands formats demandent davantage de préparation. Une restauration de tableau suit un planning propre, convenu après diagnostic, car le séchage des vernis et des apprêts ne se précipite pas. Pour une commande institutionnelle (portraits officiels, série d'hôtel, panneaux Deloitte), nous verrouillons les dates de pose avec vous dès le devis."),
+     "Un cadre standard Nielsen se retire souvent en Click & Collect dans l'heure, selon le stock à l'atelier. Un encadrement sur mesure prend en général quelques jours : le temps de commander la baguette, de couper les cartons et de monter le verre. Les montages muséaux, les objets et les très grands formats demandent davantage de préparation. Une restauration de tableau suit un planning propre, convenu après diagnostic, car le séchage des vernis et des apprêts ne se précipite pas. Pour une commande institutionnelle (portraits officiels, série d'hôtel, panneaux Deloitte), nous verrouillons les dates de pose avec vous dès le devis."),
     ("Faut-il prendre rendez-vous ?",
      "Oui. Nous vous accueillons sur rendez-vous, mercredi au samedi de 10 h à 18 h, au 2 bis rue de la toison d'or à Hollerich (L-2342 Luxembourg). Le rendez-vous permet de sortir les échantillons, de regarder l'œuvre à la lumière de l'atelier et de parler budget sans file d'attente. Appelez le +352 27 84 94 88 ou écrivez à contact@artcadres.lu : nous répondons sous 48 h ouvrées. Indiquez si possible le format, le type de pièce (papier, toile, objet, restauration) et si vous souhaitez un Click & Collect Nielsen ou un montage artisanal. Parking de quartier à proximité."),
     ("Puis-je composer mon cadre en ligne sans venir ?",
@@ -786,7 +786,7 @@ FAQ_HOME = [
     ("Quels verres proposez-vous ?",
      "Verre minéral standard (2 mm, chants polis), verre anti-reflet pour le confort visuel, et verres de conservation anti-UV de 55 % à 99 % selon l'œuvre et le budget. Le verre musée (souvent appelé museum) coupe presque tout le rayonnement ultraviolet et réduit les reflets : il est indiqué pour les photographies, les aquarelles et les pièces à transmettre. Un tirage récent en intérieur peu exposé peut rester en verre standard. Nous posons le verre à l'atelier, jamais en kit collé. Le choix se fait autour des échantillons, à Hollerich, en tenant compte de la lumière du lieu d'accrochage."),
     ("Établissez-vous des factures pour les entreprises ?",
-     "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur, hôtels et collections corporate. Confidentialité et planning adaptés aux institutions (sièges, palais, bibliothèques). Nous travaillons déjà avec Deloitte, Accor (ibis Styles, Mercure, MGallery), SES à Betzdorf, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale (plus de 200 portraits officiels). Un e-mail avec les cotes, le lieu de pose et le volume suffit à ouvrir le dossier. Paiement et mentions légales : voir nos CGV. Page dédiée : institutions et entreprises."),
+     "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur, hôtels et collections d'entreprise. Confidentialité et planning adaptés aux institutions (sièges, palais, bibliothèques). Nous travaillons déjà avec Deloitte, Accor (ibis Styles, Mercure, MGallery), SES à Betzdorf, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale (plus de 200 portraits officiels). Un e-mail avec les cotes, le lieu de pose et le volume suffit à ouvrir le dossier. Paiement et mentions légales : voir nos CGV. Page dédiée : institutions et entreprises."),
     ("Où se trouve l'atelier ?",
      "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. E-mail contact@artcadres.lu. Horaires : mercredi au samedi, 10 h à 18 h, sur rendez-vous. Un savoir-faire d'encadrement transmis depuis 1972 par Kathia Neumann. Pose des grands formats dans un rayon d'environ 25 km (Howald, Kirchberg, et au-delà pour les comptes suivis). L'atelier réunit encadrement, restauration, dorure et une galerie. Plan Google Maps sur la page Contact."),
 ]
@@ -954,7 +954,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   <article class="bio-card">
     <h2>Kathia Neumann</h2>
     <p class="bio-card__role">Fondatrice · Encadreur d'art</p>
-    <p>Kathia Neumann dirige l'antenne luxembourgeoise. Plus de trente ans de métier : lecture de l'œuvre, choix des moulures, montages museum, suivi des commandes institutionnelles. Elle a formé l'atelier de Hollerich sur le modèle de Metz : conseil à la table, pas de cadre anonyme de grande surface. Les séries Deloitte, Accor, SES et les portraits de la Cour grand-ducale passent par cet interlocuteur unique.</p>
+    <p>Kathia Neumann dirige l'antenne luxembourgeoise. Plus de trente ans de métier : lecture de l'œuvre, choix des moulures, montages muséaux, suivi des commandes institutionnelles. Elle a formé l'atelier de Hollerich sur le modèle de Metz : conseil à la table, pas de cadre anonyme de grande surface. Les séries Deloitte, Accor, SES et les portraits de la Cour grand-ducale passent par cet interlocuteur unique.</p>
   </article>
   <article class="bio-card">
     <h2>Sylvie Schied</h2>
@@ -978,7 +978,7 @@ hist_body = f'''<section class="section"><div class="p-w">
 # ================= ENCADREMENT SUR MESURE =================
 FAQ_MESURE = [
     ("Combien coûte un cadre sur mesure à Luxembourg ?",
-     "Le tarif suit le format, la baguette, le passe-partout et le verre. Un Nielsen courant se chiffre en ligne. Un montage museum, une Marie-Louise, un objet ou un grand format se devisent à l'atelier, sans engagement."),
+     "Le tarif suit le format, la baguette, le passe-partout et le verre. Un Nielsen courant se chiffre en ligne. Un montage muséal, une Marie-Louise, un objet ou un grand format se devisent à l'atelier, sans engagement."),
     ("Quelle est la différence avec un cadre Nielsen prêt-à-poser ?",
      "Le standard Nielsen convient aux formats du catalogue, retrait en 1 h. Le sur-mesure commence quand le format, l'épaisseur, le verre de conservation ou l'objet sortent de cette boîte."),
     ("Quels délais pour un encadrement artisanal ?",
@@ -987,7 +987,7 @@ FAQ_MESURE = [
      "Oui : médailles, maillots, végétaux, couverts, pièces en relief. La rehausse maintient le verre au-dessus du volume. Apportez l'objet, ne le forcez pas dans un cadre plat."),
 ]
 mesure_body = f'''<section class="section"><div class="p-w">
-{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est avant tout de l'artisanat, et il existe des centaines de possibilités. L'originalité et la subtilité du montage font toute la différence dans la mise en valeur de vos œuvres.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
+{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est un métier d'artisan. Deux montages ne se ressemblent jamais : le choix de la baguette, du passe-partout et du verre change ce que l'œuvre donne à voir une fois au mur.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
 <h2 class="p-h2 reveal">Nos trois techniques signature</h2>
 {tech_cards([
     ("assets/gal-15.jpg", "La Marie-Louise biseautée",
@@ -995,7 +995,7 @@ mesure_body = f'''<section class="section"><div class="p-w">
     ("assets/gal-08.jpg", "La caisse américaine",
      "L'encadrement le plus répandu au monde : l'œuvre flotte dans le cadre, en léger retrait. Très demandée pour l'art contemporain et la photographie."),
     ("assets/gal-24.jpg", "La technique de rehausse",
-     "Le verre reste en suspension au-dessus du sujet, un fond peut s'ajouter. Pour les objets, les pièces en volume et les montages museum."),
+     "Une rehausse maintient le verre à distance de l'œuvre, qui semble flotter en léger creux. Pour les objets, les pièces en volume et les montages muséaux."),
 ])}
 </div></section>
 <section class="section section--alt"><div class="p-w">
@@ -1045,7 +1045,7 @@ standard_body = f'''<section class="section"><div class="p-w">
 </div></section>
 <section class="section section--alt"><div class="p-w">
 <h2 class="p-h2 reveal">Bois ou aluminium, ce que vous obtenez</h2>
-{icon_row([("frame", "Les cadres bois", "Dorés, bruts ou en couleur, dans les quatre univers Nielsen : Nature, Color, Design et Charme."), ("size", "Les cadres aluminium", "Se chargent et se démontent sans outil. Tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis."), ("shield", "Certifiés FSC®, fabriqués en Allemagne", "Bois issu de forêts gérées de façon responsable. Nous sommes revendeur Nielsen à Luxembourg.")])}
+{icon_row([("frame", "Les cadres bois", "Dorés, bruts ou en couleur : du bois naturel aux finitions métallisées, en passant par les patines à l'ancienne."), ("size", "Les cadres aluminium", "Ils se montent et se démontent à la main, sans outil. Tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis."), ("shield", "Certifiés FSC®, fabriqués en Allemagne", "Bois issu de forêts gérées de façon responsable. Nous sommes revendeur Nielsen à Luxembourg.")])}
 {strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
 </div></section>
 <section class="section"><div class="p-w">
@@ -1110,21 +1110,21 @@ INST_CASES = [
     ("assets/ref-accor.jpg", "Accor · ibis Styles, Mercure, MGallery", "Hôtellerie",
      "Encadrements pour plusieurs établissements : art contemporain et photographies dans espaces communs et chambres. Finitions pensées pour le flux hôtelier (maintenance, séries identiques, remplacement d'une pièce sans tout recommencer). Facture et suivi par site."),
     ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
-     "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontière."),
-    ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces corporate et collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
+     "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontières."),
+    ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces et les collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
     ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
-     "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales. Conservation du papier, verre adapté, discrétion dans les salles."),
+     "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales. Nous assurons la conservation du papier, choisissons un verre adapté et travaillons avec discrétion dans les salles."),
     ("assets/ref-courducale.jpg", "Cour grand-ducale & mairies", "Institution officielle",
-     "Plus de 200 portraits officiels encadrés lors des changements protocolaires. Un niveau d'exigence que nous assumons avec discrétion : séries homogènes, délais tenus, interlocuteur unique."),
+     "Plus de 200 portraits officiels encadrés lors des changements protocolaires. Un niveau d'exigence que nous assumons avec discrétion : nous garantissons des séries homogènes, des délais tenus et un interlocuteur unique."),
     ("assets/ref-sodikart-maillot.jpg", "SODIKART", "Sport · mémorabilia",
-     "Maillots signés, pièces de collection et objets sportifs encadrés avec des montages museum adaptés aux pièces de valeur. Rehausse, fond, verre : le textile ne touche pas la glace."),
+     "Maillots signés, pièces de collection et objets sportifs encadrés avec des montages muséaux adaptés aux pièces de valeur. Une rehausse et un fond maintiennent le textile à distance : il ne touche jamais le verre."),
     ("assets/ref-mchat.jpg", "M.Chat · Thoma Vuille", "Artiste",
      "Collaboration avec l'artiste : encadrements sur mesure pour des œuvres iconiques du street-art international. Caisse américaine et aluminium selon la pièce, pour la galerie comme pour le collectionneur."),
 ]
 
 institutions_body = f'''<section class="section"><div class="p-w">
 {content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions",
-"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections corporate. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Un savoir-faire d'atelier depuis 1972. La même exigence artisanale pour Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale.</p>",
+"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections d'entreprise. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Un savoir-faire d'atelier depuis 1972. La même exigence, que le client soit Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg ou la Cour grand-ducale.</p>",
 "assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 <h2 class="p-h2 reveal">Références nommées</h2>
@@ -1132,7 +1132,7 @@ institutions_body = f'''<section class="section"><div class="p-w">
 {client_cards(INST_CASES)}
 <h2 class="p-h2 reveal">Comment nous travaillons</h2>
 {icon_row([
-    ("ruler", "1. Le brief", "Volumes, délais, lieux de pose, charte graphique. Nous travaillons sous confidentialité pour les sièges et les institutions."),
+    ("ruler", "1. Le brief", "Nous cadrons ensemble les volumes, les délais, le lieu de pose et votre charte graphique. Chaque échange reste confidentiel pour les sièges et les institutions."),
     ("doc", "2. Le devis", "Quantités, baguettes, verre, fonds et pose, chiffrés ligne par ligne. Un e-mail avec les cotes et le lieu suffit à ouvrir le dossier."),
     ("frame", "3. La pose", "Sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz)."),
 ])}
@@ -1192,7 +1192,7 @@ partners_block = f'''<div id="partenaires" class="hist-partners">
   <div class="brandfeat__body">
     <h2>Nielsen Design, notre fournisseur de référence</h2>
     <p>Nielsen conçoit et fabrique ses baguettes et ses cadres en Allemagne depuis plus de trente ans. Certification FSC®. Nous sommes revendeur Nielsen à Luxembourg : configurateur en ligne et Click &amp; Collect à Hollerich, souvent dans l'heure.</p>
-    <p>Quand le format sort du catalogue, nous restons dans le même atelier : sur-mesure, museum, restauration.</p>
+    <p>Quand le format sort du catalogue, nous restons dans le même atelier : sur-mesure, montage muséal, restauration.</p>
   </div>
 </div>
 <h2 class="p-h2 reveal">Ils nous recommandent</h2>
@@ -1227,7 +1227,7 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 <span class="p-eyebrow">Notre galerie</span>
 <h1 class="p-h1">Galerie d'art et réalisations encadrées</h1>
 {gal_group("Contemporain, pop-art et street-art", GAL_ITEMS[0:8], eager_n=3)}
-{gal_group("Photographie, papier et museum", GAL_ITEMS[8:16])}
+{gal_group("Photographie, papier et conservation", GAL_ITEMS[8:16])}
 {gal_group("Intérieurs et montages classiques", GAL_ITEMS[16:24])}
 <div class="g-cta reveal">{btn_orange("Prendre rendez-vous", "contact.html")} {btn_plain("Encadrement sur mesure", "encadrement-sur-mesure.html")}</div>
 </div></section>'''
@@ -1289,12 +1289,12 @@ configurateur_body = f'''<section id="cfg">
   </div>
   <div class="cfg-seo reveal">
     <h2>Quand venir à l'atelier</h2>
-    <p>Le configurateur ne gère pas les objets, médailles, textiles, papiers fragiles ni les formats hors catalogue. Marie-Louise, caisse américaine, verre museum, restauration : rendez-vous à Hollerich, mercredi au samedi, 10 h à 18 h.</p>
-    <p>Série d'entreprise ou pose monumentale : page institutions et page grands formats. Un montage museum ou une pose s'ajoute à l'atelier, sur devis.</p>
+    <p>Le configurateur ne gère pas les objets, médailles, textiles, papiers fragiles ni les formats hors catalogue. Marie-Louise, caisse américaine, verre musée, restauration : rendez-vous à Hollerich, mercredi au samedi, 10 h à 18 h.</p>
+    <p>Série d'entreprise ou pose monumentale : page institutions et page grands formats. Un montage muséal ou une pose s'ajoute à l'atelier, sur devis.</p>
   </div>
   {faq_section("Questions configurateur", [
     ("Le prix affiché est-il le prix final ?",
-     "Pour les options choisies dans le configurateur Nielsen, oui. Pose sur site, museum, objet ou format hors catalogue s'ajoutent à l'atelier."),
+     "Pour les options choisies dans le configurateur Nielsen, oui. Pose sur site, montage muséal, objet ou format hors catalogue s'ajoutent à l'atelier."),
     ("Livrez-vous à domicile ?",
      "Le Click & Collect se retire à Hollerich. Pas d'envoi postal. La pose dans un rayon de 25 km se facture à part."),
     ("Le configurateur voit-il mon œuvre ?",
@@ -1320,13 +1320,13 @@ gf_body = f'''<section class="section"><div class="p-w">
 {icon_row([("size", "De la médaille au mur entier", "Nous encadrons toutes les tailles, de la médaille au panneau de plusieurs mètres."), ("shield", "Nous venons poser chez vous", "Livraison et accrochage sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville."), ("bag", "Pour les entreprises comme les particuliers", "Le même atelier et le même soin, avec un devis et un planning dédiés pour les chantiers.")])}
 {content_story("Là où le configurateur s'arrête", [
     "Un cadre Nielsen se retire en une heure quand le format entre dans la grille. Un panneau de deux ou trois mètres, un triptyque, une photographie monumentale pour un hall : le configurateur s'arrête. Nous prenons les cotes sur place ou à l'atelier, nous dessinons le montage, nous fabriquons, nous accrochons.",
-    "Deloitte nous a confié des panneaux muraux. La Bibliothèque nationale, des grands formats en situ. Accor, des séries hôtelières. La Cour grand-ducale, plus de 200 portraits officiels. Ces chantiers ont appris à l'atelier le rythme d'un siège, d'un hall, d'un palais : discrétion, planning, pièces de rechange.",
+    "Nous avons posé des panneaux muraux pour Deloitte, des grands formats en situ pour la Bibliothèque nationale, des séries pour les hôtels Accor, et encadré plus de 200 portraits officiels pour la Cour grand-ducale. Ces chantiers nous ont appris le rythme d'un siège, d'un hall ou d'un palais : discrétion, planning tenu, pièces de rechange prévues.",
     "Les particuliers et les artistes passent par la même table. Une toile hors norme, une photographie de voyage en très grand, une collection à accrocher d'un seul tenant : nous venons voir le mur. Howald, Kirchberg, Hollerich, et un rayon d'environ 25 km autour de Luxembourg-Ville.",
 ])}
 <div class="p-list reveal">{content_list("Étude, fabrication, pose", [
-    ("Relevé", "Cotes du mur, contraintes (spots, climatisation, vitrage). Photos du lieu si vous ne pouvez pas vous déplacer tout de suite."),
-    ("Montage", "Châssis, baguette, fond, verre ou plexi. Le poids et la dilatation ne sont pas ceux d'un 40 × 50."),
-    ("Pose", "À deux, sur rendez-vous. Facture entreprise possible. Confidentialité pour les sièges."),
+    ("Relevé", "Nous relevons les cotes du mur et repérons les contraintes du lieu (spots, climatisation, vitrage). Des photos suffisent si vous ne pouvez pas vous déplacer tout de suite."),
+    ("Montage", "Nous définissons le châssis, la baguette, le fond et le vitrage, verre ou plexi selon le poids. La dilatation d'un grand format n'a rien à voir avec celle d'un 40 × 50."),
+    ("Pose", "La pose se fait à deux, sur rendez-vous. Nous facturons au nom de l'entreprise et gardons la confidentialité sur les chantiers de sièges."),
 ])}</div>
 <h3 class="p-objh reveal">Du plus petit au plus grand</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
