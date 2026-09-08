@@ -116,7 +116,7 @@ def footer():
     trust = [
         ("shield", "Un savoir-faire depuis 1972", "L'atelier d'encadrement d'art de Kathia Neumann, à Hollerich.", "notre-histoire.html"),
         ("size", "Grands formats & institutions", "Panneaux monumentaux · pose sur site.", "institutions-entreprises.html"),
-        ("photo", "Restauration agréée MH", "Tableaux et patrimoine familial.", "dorures-restauration.html"),
+        ("photo", "Restauration de tableaux", "Tableaux, cadres et patrimoine familial.", "dorures-restauration.html"),
         ("doc", "Devis en ligne Nielsen", "Configurateur · retrait en 1 h à Hollerich.", "configurateur.html"),
     ]
     trust_html = "".join(
@@ -240,15 +240,6 @@ def schema_local():
             "worksFor": {"@id": SITE_URL + "/#localbusiness"},
             "image": SITE_URL + "/assets/kathia-portrait.jpg",
             "url": SITE_URL + "/notre-histoire.html",
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "@id": SITE_URL + "/#sylvie",
-            "name": "Sylvie Schied",
-            "jobTitle": "Restauratrice agréée monuments historiques",
-            "worksFor": {"@id": SITE_URL + "/#localbusiness"},
-            "url": SITE_URL + "/dorures-restauration.html",
         },
     ]
     tags = [f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>']
@@ -718,7 +709,7 @@ services = [
      "Chaque œuvre dicte sa baguette, son passe-partout et son verre. Nous étudions le format, la lumière et le lieu, puis nous réalisons le cadre à l'atelier.",
      "encadrement-sur-mesure.html"),
     ("photo", "03", "Dorure & restauration",
-     "Tableaux, dorure à la feuille et patrimoine familial. Diagnostic à l'atelier, agrément monuments historiques, interventions mesurées pour rendre à la pièce sa présence.",
+     "Tableaux, dorure à la feuille et patrimoine familial. Diagnostic à l'atelier et interventions mesurées et réversibles, pour rendre à la pièce sa présence.",
      "dorures-restauration.html"),
     ("bag", "04", "Institutions & entreprises",
      "Collections d'entreprise, hôtellerie et institutions. Grands formats, séries et pose sur site, du Luxembourg à la Grande Région.",
@@ -780,7 +771,7 @@ FAQ_HOME = [
     ("Encadrez-vous les très grands formats ?",
      "Oui. Des médailles aux panneaux muraux de plusieurs mètres : nous encadrons et installons sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz). Deloitte, Accor, SES, la Bibliothèque nationale et la Cour grand-ducale nous ont confié des pièces monumentales et des séries protocolaires. Le grand format n'est pas un cadre agrandi : il faut un châssis adapté, un verre ou un plexi calculé, et une pose à deux. Particuliers artistes et collectionneurs : même atelier, même exigence. Voir la page dédiée aux grands formats."),
     ("Restaurez-vous les tableaux, ou uniquement l'encadrement ?",
-     "Nous restaurons aussi. Vernis jaunis, salissures, petites déchirures, soulèvements de couche picturale : le diagnostic se fait à l'atelier avec Sylvie Schied, restauratrice agréée monuments historiques. L'agrément MH est une reconnaissance de l'État français pour intervenir sur le patrimoine classé : il engage une méthode, pas une retouche décorative. Nous ne repeignons pas une œuvre au neuf. L'encadrement et la dorure à la feuille viennent ensuite, quand la pièce le demande. Apportez le tableau sans le démonter vous-même. Devis écrit, aucune intervention sans votre accord."),
+     "Nous restaurons aussi. Vernis jaunis, salissures, petites déchirures, soulèvements de couche picturale : le diagnostic se fait à l'atelier, selon une méthode de conservation (tests, réversibilité, matériaux adaptés), pas une retouche décorative. Nous ne repeignons pas une œuvre au neuf. L'encadrement et la dorure à la feuille viennent ensuite, quand la pièce le demande. Apportez le tableau sans le démonter vous-même. Devis écrit, aucune intervention sans votre accord."),
     ("Quelle est la différence avec un cadre prêt-à-poser ?",
      "Un cadre de grande surface se choisit au format du commerce. Chez nous, la baguette, le carton PH neutre et le verre sont choisis pour l'œuvre, sa lumière et le mur. Conservation, ajustement au millimètre, finition atelier : ce n'est pas le même métier. Un kit 40 × 50 convient à une affiche. Une aquarelle, une lithographie ou un pastel ont besoin d'un passe-partout sans acide et souvent d'un verre anti-UV. L'express 48 h d'une chaîne limite le catalogue. Nous combinons le Click & Collect Nielsen pour les formats simples et le sur-mesure pour tout ce qui sort de la boîte."),
     ("Quels verres proposez-vous ?",
@@ -854,7 +845,7 @@ accueil_body = f'''<section id="acc">
      "Des médailles aux panneaux de plusieurs mètres, pose sur site.",
      "encadrement-grand-format.html", False),
     ("assets/rest-apres.jpg", "Restauration de tableaux",
-     "Diagnostic avec Sylvie Schied, agréée monuments historiques.",
+     "Diagnostic et restauration de tableaux à l'atelier.",
      "dorures-restauration.html", True),
     ("assets/ac-dorures-4.jpg", "Dorure à la feuille",
      "Cadres, miroirs et objets dorés selon les techniques traditionnelles.",
@@ -935,19 +926,19 @@ hist_body = f'''<section class="section"><div class="p-w">
 <div class="hist-stats reveal">
   <div><span class="hist-stats__n">1972</span><span class="hist-stats__l">Les débuts de l'atelier</span></div>
   <div><span class="hist-stats__n">30+</span><span class="hist-stats__l">ans d'expérience</span></div>
-  <div><span class="hist-stats__n">MH</span><span class="hist-stats__l">agrément Sylvie Schied</span></div>
+  <div><span class="hist-stats__n">Mer. à sam.</span><span class="hist-stats__l">atelier sur rendez-vous</span></div>
   <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
     "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
-    "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille, et la restauration avec Sylvie Schied, agréée monuments historiques. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
+    "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille et la restauration de tableaux. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
     "Aujourd'hui, l'atelier travaille pour des particuliers, des artistes et des collectionneurs, comme pour des institutions : la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, Deloitte, Accor et SES.",
 ])}
 <div class="p-list reveal">{content_list("Repères", [
     ("1972", "Fondation de l'atelier d'encadrement à Metz."),
     ("30+ ans", "Kathia Neumann encadre, forme l'antenne Luxembourg."),
     ("Hollerich", "Atelier, galerie, Click & Collect, rendez-vous mercredi au samedi."),
-    ("Agréée MH", "Sylvie Schied restaure à l'atelier, devis écrit avant le geste."),
+    ("Restauration", "Tableaux anciens : diagnostic et devis écrit avant le geste."),
 ])}</div>
 <div class="bio-grid reveal">
   <article class="bio-card">
@@ -956,9 +947,9 @@ hist_body = f'''<section class="section"><div class="p-w">
     <p>Kathia Neumann dirige l'antenne luxembourgeoise. Plus de trente ans de métier : lecture de l'œuvre, choix des moulures, montages muséaux, suivi des commandes institutionnelles. Elle a formé l'atelier de Hollerich sur le modèle de Metz : conseil à la table, pas de cadre anonyme de grande surface. Les séries Deloitte, Accor, SES et les portraits de la Cour grand-ducale passent par cet interlocuteur unique.</p>
   </article>
   <article class="bio-card">
-    <h2>Sylvie Schied</h2>
-    <p class="bio-card__role">Restauratrice agréée monuments historiques</p>
-    <p>Sylvie Schied restaure les tableaux à l'atelier. L'agrément monuments historiques reconnaît une méthode : diagnostic, tests de nettoyage, consolidations mesurées. Elle n'efface pas l'histoire d'une pièce pour la rendre « neuve ». Vernis jaunis, salissures, petites déchirures, dorure à la feuille : le travail se décide avec vous, par écrit, avant la première intervention. Page dédiée : dorure et restauration.</p>
+    <h2>Restauration &amp; dorure</h2>
+    <p class="bio-card__role">Tableaux anciens · patrimoine familial</p>
+    <p>Nous restaurons les tableaux anciens et redorons cadres, miroirs et objets à la feuille. Diagnostic à l'atelier, méthode de conservation (tests, réversibilité, matériaux adaptés) et devis écrit : aucune intervention sans votre accord. Nous ne repeignons pas une œuvre au neuf. Page dédiée : dorure et restauration.</p>
   </article>
 </div>
 {icon_row([
@@ -1069,8 +1060,8 @@ standard_body = f'''<section class="section"><div class="p-w">
 
 # ================= DORURES & RESTAURATION =================
 FAQ_DORURES = [
-    ("Qu'est-ce que l'agrément monuments historiques ?",
-     "C'est une reconnaissance officielle de compétence pour intervenir sur le patrimoine classé. Sylvie Schied l'a obtenu. Il n'autorise pas n'importe quelle retouche : il engage une méthode (diagnostic, réversibilité, matériaux adaptés). Au Luxembourg, cet agrément reste un signal rare pour un atelier d'encadreur."),
+    ("Restaurez-vous tous les tableaux anciens ?",
+     "Nous étudions chaque pièce à l'atelier avant de nous engager. Selon l'état (vernis jauni, salissures, déchirure, soulèvement de couche), nous proposons une intervention de conservation. Diagnostic et devis écrit avant tout geste, aucune intervention sans votre accord."),
     ("Combien coûte une restauration de tableau ?",
      "Le prix suit l'état, pas le format seul. Un vernis jauni n'est pas une déchirure, une déchirure n'est pas un soulèvement de couche. Diagnostic à l'atelier, devis écrit, aucune intervention sans votre accord. Merci de ne pas démonter le cadre vous-même."),
     ("Restaurez-vous aussi les cadres dorés ?",
@@ -1079,22 +1070,22 @@ FAQ_DORURES = [
      "Après diagnostic. Les séchages ne se précipitent pas. Un nettoyage de vernis et une dorure locale se comptent en semaines, pas en 48 h. Nous posons un planning avec vous dès le devis."),
 ]
 dorures_body = f'''<section id="dor" class="section"><div class="p-w">
-{content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien. À Hollerich, Sylvie Schied, restauratrice agréée monuments historiques, établit le diagnostic avant toute intervention.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
-{icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation avec agrément monuments historiques."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
+{content_hero("Dorure & restauration", "Restauration de tableaux au Luxembourg", "<p>Le temps laisse son empreinte : vernis jaunis, salissures, poussière, petites déchirures ou altérations peuvent ternir la beauté d'un tableau ancien. À Hollerich, nous établissons un diagnostic avant toute intervention et travaillons selon une méthode de conservation.</p>", "assets/rest-apres.jpg", "Tableau restauré et cadre doré à la feuille", eager_img=True)}
+{icon_row([("shield", "Diagnostic sur place", "Nous étudions chaque œuvre avant toute intervention."), ("photo", "Restauration tableaux", "Nettoyage, consolidation et harmonisation, dans le respect de la matière."), ("frame", "Dorure à la feuille", "Cadres, miroirs et objets dorés selon les techniques traditionnelles.")])}
 {rest_gallery()}
 </div></section>
 <section class="section section--alt"><div class="p-w">
 {content_story("Le diagnostic, avant le geste", [
-    "Apportez le tableau à l'atelier, sans le démonter. Un cadre mal retiré arrache parfois la toile ou le papier. Sylvie Schied regarde la couche picturale, le châssis, les soulèvements, les manques, le vernis. Elle dit ce qui se fait, ce qui se discute, et ce que nous refusons : repeindre une œuvre « au neuf », masquer une lacune sous un aplomb décoratif, remplacer un cadre ancien par une imitation plastique.",
+    "Apportez le tableau à l'atelier, sans le démonter. Un cadre mal retiré arrache parfois la toile ou le papier. Nous regardons la couche picturale, le châssis, les soulèvements, les manques, le vernis, puis nous disons ce qui se fait, ce qui se discute, et ce que nous refusons : repeindre une œuvre « au neuf », masquer une lacune sous un aplomb décoratif, remplacer un cadre ancien par une imitation plastique.",
     "Le devis est écrit. Aucune intervention sans votre accord. Les étapes classiques, selon l'état : dépoussiérage, tests de solubilité, allègement de vernis jauni, consolidation d'une déchirure, masticage ponctuel, réintégration mesurée, vernis final. Chaque geste vise à retrouver la présence de la pièce, pas à inventer un tableau plus jeune que son auteur.",
 ])}
 <h2 class="p-h2 reveal">Diagnostic, dorure, limites</h2>
-{icon_row([("shield", "Diagnostic", "Sylvie Schied, agréée monuments historiques. Devis écrit, aucune intervention sans votre accord."), ("frame", "Dorure à la feuille", "Feuille d'or sur cadres, miroirs, consoles, statues et ferronnerie. Apprêts, bol, brunissoir, pas une peinture métallisée."), ("doc", "Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}
+{icon_row([("shield", "Diagnostic", "Étude de l'œuvre à l'atelier avant toute intervention. Devis écrit, aucune intervention sans votre accord."), ("frame", "Dorure à la feuille", "Feuille d'or sur cadres, miroirs, consoles, statues et ferronnerie. Apprêts, bol, brunissoir, pas une peinture métallisée."), ("doc", "Ce que nous ne faisons pas", "Nous ne repeignons pas une œuvre au neuf. Nous ne remplaçons pas un cadre ancien par du plastique doré.")])}
 </div></section>
 <section class="section"><div class="p-w">
 <div class="bio-card bio-card--solo reveal">
-  <h2>Sylvie Schied, restauratrice agréée MH</h2>
-  <p>L'agrément monuments historiques est délivré en France après examen des compétences. Il distingue une restauratrice formée à la conservation du patrimoine d'un atelier qui « rafraîchit » les tableaux. À Luxembourg, cet agrément est l'argument le plus rare du métier : il protège les familles qui confient un portrait d'ancêtre autant que les pièces destinées à une collection. Sylvie travaille à Hollerich, dans le même lieu que l'encadrement : une fois la restauration stabilisée, le cadre et le verre se décident sans transporter l'œuvre une seconde fois.</p>
+  <h2>Notre approche de la restauration</h2>
+  <p>Restaurer n'est pas « rafraîchir ». Chaque tableau ancien est d'abord diagnostiqué à l'atelier, puis traité selon une méthode de conservation : interventions réversibles, matériaux adaptés, respect de la matière et de l'intention d'origine. Nous n'effaçons pas l'histoire d'une pièce pour la rendre « neuve ». Restauration et encadrement au même endroit, à Hollerich : une fois la pièce stabilisée, le cadre et le verre se décident sans transporter l'œuvre une seconde fois.</p>
 </div>
 </div></section>
 <section class="section section--alt"><div class="p-w">
@@ -1357,8 +1348,6 @@ GLOSS = [
      "Pose de feuille d'or (apprêts, bol, brunissoir). Ce n'est pas une peinture métallisée. Cadres, miroirs, consoles, statues."),
     ("Click & Collect",
      "Commande Nielsen en ligne, retrait à l'atelier Hollerich, souvent dans l'heure. Pas d'envoi postal."),
-    ("Agrément monuments historiques",
-     "Reconnaissance officielle de compétence pour restaurer le patrimoine classé. Sylvie Schied le détient. Méthode, pas retouche décorative."),
 ]
 gloss_dl = "".join(
     f'<div class="gloss-item"><dt>{e(t)}</dt><dd>{e(d)}</dd></div>' for t, d in GLOSS)
@@ -1393,7 +1382,7 @@ STANDARD_LD = schema_service(
 ) + "\n  " + schema_faq(FAQ_STANDARD)
 DORURES_LD = schema_service(
     "Restauration de tableaux et dorure",
-    "Restauration de tableaux et dorure à la feuille à Luxembourg, avec Sylvie Schied, agréée monuments historiques.",
+    "Restauration de tableaux et dorure à la feuille à Luxembourg. Diagnostic à l'atelier, interventions réversibles.",
     "dorures-restauration.html",
 ) + "\n  " + schema_faq(FAQ_DORURES)
 CFG_LD = schema_service(
@@ -1410,7 +1399,7 @@ GF_LD = schema_service(
 
 PAGES = [
     ("index.html", "Encadreur d'art à Luxembourg · Art'Cadres",
-     "Encadreur d'art à Hollerich : sur mesure, cadres Nielsen, dorure, restauration agréée MH. Institutions Deloitte, Accor, SES. Devis en ligne.",
+     "Encadreur d'art à Hollerich : sur mesure, cadres Nielsen, dorure, restauration de tableaux. Institutions Deloitte, Accor, SES. Devis en ligne.",
      accueil_body, "index.html", None, INDEX_LD),
     ("institutions-entreprises.html", "Encadrement entreprises Luxembourg · Art'Cadres",
      "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
@@ -1425,7 +1414,7 @@ PAGES = [
      "Cadres standards Nielsen bois et aluminium à Luxembourg. FSC, fabriqués en Allemagne. Devis instantané et retrait en 1 h à Hollerich.",
      standard_body, "encadrement-standard.html", None, STANDARD_LD),
     ("dorures-restauration.html", "Restauration tableau Luxembourg · Art'Cadres",
-     "Restauration de tableaux et dorure à la feuille à Luxembourg. Diagnostic, agrément monuments historiques, patrimoine familial.",
+     "Restauration de tableaux et dorure à la feuille à Luxembourg. Diagnostic à l'atelier, patrimoine familial.",
      dorures_body, "dorures-restauration.html", None, DORURES_LD),
     ("notre-galerie.html", "Galerie d'art encadrée Luxembourg · Art'Cadres",
      "Galerie Art'Cadres Luxembourg : œuvres encadrées sur mesure, pop-art, photographies et pièces de collection.",
@@ -1506,7 +1495,7 @@ with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f:
 - {SITE_URL}/institutions-entreprises.html — B2B Deloitte, Accor, SES, BNL
 - {SITE_URL}/encadrement-sur-mesure.html — Sur mesure artisanal
 - {SITE_URL}/encadrement-standard.html — Cadres Nielsen
-- {SITE_URL}/dorures-restauration.html — Restauration & dorure, Sylvie Schied agréée MH
+- {SITE_URL}/dorures-restauration.html : restauration & dorure de tableaux
 - {SITE_URL}/encadrement-grand-format.html — Grands formats et pose sur site
 - {SITE_URL}/glossaire-encadrement.html — Lexique (passe-partout, Marie-Louise, verre musée)
 - {SITE_URL}/notre-galerie.html — Galerie et réalisations
