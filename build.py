@@ -224,7 +224,6 @@ def schema_local():
                 "url": SITE_URL + "/institutions-entreprises.html",
             }},
         ],
-        "sameAs": ["https://www.facebook.com/maisonneumann"],
         "knowsAbout": [
             "Encadrement d'art", "Restauration de tableaux", "Dorure à la feuille",
             "Cadres Nielsen", "Pose grand format",
@@ -259,12 +258,6 @@ def schema_organization():
         "alternateName": "Art'Cadres Encadrement",
         "url": SITE_URL + "/",
         "logo": SITE_URL + "/assets/logo-artcadres-fonce.svg",
-        "sameAs": ["https://www.facebook.com/maisonneumann"],
-        "parentOrganization": {
-            "@type": "Organization",
-            "name": "Maison Neumann",
-            "url": "https://maisonneumann.com/",
-        },
     }
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
@@ -920,19 +913,18 @@ accueil_body = f'''<section id="acc">
 
 # ---- Teaser nouvelle prestation (contenu de préfiguration) ----
 nouveau_section = '''<section id="nouveau" class="section"><div class="p-w">
-  <div class="nv-band reveal">
-    <div class="nv-band__text">
+  <div class="p-story reveal">
+    <div class="p-intro">
       <span class="p-eyebrow">Nouveau · 2027</span>
-      <h2 class="nv-band__title">L'architecture d'intérieur entre à l'atelier</h2>
-      <p>En 2027, Art'Cadres élargit son métier au conseil en décoration et en architecture d'intérieur. Le même œil que pour un cadre, appliqué cette fois à la pièce entière : l'accrochage, l'harmonie des murs, le choix des matières et de la lumière.</p>
-      <p class="nv-band__soon">Une nouvelle prestation et un nouveau visage à l'atelier. Nous vous en reparlerons bientôt.</p>
+      <h2>L'architecture d'intérieur arrive à l'atelier</h2>
+      <div class="p-body">
+        <p>En 2027, Art'Cadres élargit son métier au conseil en décoration et en architecture d'intérieur. Le même regard que pour un cadre, porté cette fois sur la pièce entière : l'accrochage, l'harmonie des murs, les matières et la lumière.</p>
+        <p>Une nouvelle prestation, confiée à Jacques Dupont, architecte d'intérieur. Nous vous en reparlerons très bientôt.</p>
+      </div>
     </div>
-    <figure class="nv-person">
-      <div class="nv-avatar" aria-hidden="true">JD</div>
-      <figcaption>
-        <strong>Jacques Dupont</strong>
-        <span>Architecte d'intérieur · conseil en décoration</span>
-      </figcaption>
+    <figure>
+      <div class="p-frame"><div class="jd-portrait"><span class="jd-portrait__mono">JD</span><span class="jd-portrait__cap">Portrait à venir</span></div></div>
+      <figcaption class="p-cap p-cap--lg"><strong>Jacques Dupont</strong> · architecte d'intérieur.</figcaption>
     </figure>
   </div>
 </div></section>

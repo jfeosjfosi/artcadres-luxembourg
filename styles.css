@@ -1,6 +1,6 @@
 /* Art'Cadres Luxembourg — tokens : voir DESIGN.md */
 :root{
-  --bg:#fbfaf9; --bg2:#f2efe9; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
+  --bg:#fdfdfc; --bg2:#f5f2ec; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
   --line:color-mix(in srgb,var(--ink) 12%,transparent);
   --shadow:0 24px 60px -34px color-mix(in srgb,var(--ink) 40%,transparent);
   --maxw:1180px;
@@ -766,16 +766,9 @@ a{color:inherit;}
 .rdv-card__txt{margin:0 0 22px;color:var(--muted);font-size:16px;line-height:1.65;max-width:52ch;}
 .rdv-card__btns{display:flex;flex-wrap:wrap;gap:12px;}
 
-/* ---- Teaser nouvelle prestation (#nouveau) ---- */
-.nv-band{display:grid;grid-template-columns:1fr;gap:var(--s5);align-items:center;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r-frame);padding:clamp(26px,4vw,48px);}
-.nv-band__title{margin:0 0 14px;font-size:clamp(24px,3vw,34px);line-height:1.1;letter-spacing:-.02em;color:var(--ink);max-width:20ch;}
-.nv-band__text p{margin:0 0 14px;color:var(--muted);font-size:17px;line-height:1.7;max-width:56ch;}
-.nv-band__soon{color:var(--ink);font-weight:600;}
-.nv-person{margin:0;display:flex;align-items:center;gap:18px;}
-.nv-avatar{width:84px;height:84px;flex:none;border-radius:50%;background:var(--mat);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;letter-spacing:.04em;color:var(--accent);box-shadow:var(--shadow);}
-.nv-person figcaption{display:flex;flex-direction:column;gap:4px;}
-.nv-person figcaption strong{font-size:18px;color:var(--ink);}
-.nv-person figcaption span{font-size:14px;color:var(--muted);}
-@media(min-width:860px){.nv-band{grid-template-columns:1fr auto;gap:var(--s7);}.nv-person{flex-direction:column;text-align:center;gap:14px;}}
+/* ---- Teaser nouvelle prestation (#nouveau) : placeholder de portrait encadré ---- */
+.jd-portrait{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--bg2);}
+.jd-portrait__mono{font-size:clamp(38px,5vw,52px);font-weight:700;letter-spacing:.05em;color:var(--accent);line-height:1;}
+.jd-portrait__cap{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
 
 
