@@ -309,7 +309,7 @@ def schema_institutions_page():
         "@type": "WebPage",
         "name": "Encadrement entreprises et institutions au Luxembourg",
         "url": SITE_URL + "/institutions-entreprises.html",
-        "description": "Références B2B : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale.",
+        "description": "Références B2B : Deloitte, Accor, SES, Bibliothèque nationale du Luxembourg.",
         "about": {"@id": SITE_URL + "/#localbusiness"},
     }
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
@@ -725,8 +725,6 @@ REF_LOGOS = [
     ("img", "logo-ref-deloitte.svg", "Deloitte", "logosvg--deloitte"),
     ("img", "logo-ref-accor.svg", "Accor", "logosvg--accor"),
     ("img", "logo-ref-ses.svg", "SES", "logosvg--ses"),
-    ("word", "cour", "Cour grand-ducale du Luxembourg",
-     "<b>COUR</b><small>grand-ducale</small>"),
     ("word", "bnl", "Bibliothèque nationale du Luxembourg", "BnL"),
     ("word", "heler", "Maison Heler", "Maison Heler"),
     ("word", "sodikart", "SODIKART", "SODIKART"),
@@ -747,7 +745,7 @@ REF_VIGNETTES = [
     ("assets/ref-deloitte-install.jpg", "Deloitte", "Installation grand format sur site"),
     ("assets/ref-accor.jpg", "Accor", "Hôtels ibis Styles, Mercure et MGallery"),
     ("assets/ref-ses.jpg", "SES", "Fournisseur sur site · Betzdorf"),
-    ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale", "Grand format en situ"),
+    ("assets/biblio-kathia.jpg", "Bibliothèque nationale", "Grand format en situ"),
 ]
 
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
@@ -769,7 +767,7 @@ FAQ_HOME = [
     ("Puis-je composer mon cadre en ligne sans venir ?",
      "Oui, pour les formats courants Nielsen. Choisissez baguette, passe-partout et verre dans le configurateur : le prix s'affiche tout de suite, sans engagement. Le retrait se fait à l'atelier (pas d'envoi postal). Pour une œuvre fragile, un objet, une médaille, un textile, un verre de conservation ou un format hors catalogue, un passage à Hollerich reste le plus sûr. Le configurateur ne voit pas le grain du papier ni l'épaisseur d'un relief : ces choix se font autour de la table, avec les échantillons. Vous pouvez commencer en ligne, puis nous affiner le montage sur place."),
     ("Encadrez-vous les très grands formats ?",
-     "Oui. Des médailles aux panneaux muraux de plusieurs mètres : nous encadrons et installons sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz). Deloitte, Accor, SES, la Bibliothèque nationale et la Cour grand-ducale nous ont confié des pièces monumentales et des séries protocolaires. Le grand format n'est pas un cadre agrandi : il faut un châssis adapté, un verre ou un plexi calculé, et une pose à deux. Particuliers artistes et collectionneurs : même atelier, même exigence. Voir la page dédiée aux grands formats."),
+     "Oui. Des médailles aux panneaux muraux de plusieurs mètres : nous encadrons et installons sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville, plus loin pour les comptes suivis (Betzdorf, Metz). Deloitte, Accor, SES et la Bibliothèque nationale du Luxembourg nous ont confié des pièces monumentales et des grands formats posés en situ. Le grand format n'est pas un cadre agrandi : il faut un châssis adapté, un verre ou un plexi calculé, et une pose à deux. Particuliers artistes et collectionneurs : même atelier, même exigence. Voir la page dédiée aux grands formats."),
     ("Restaurez-vous les tableaux, ou uniquement l'encadrement ?",
      "Nous restaurons aussi. Vernis jaunis, salissures, petites déchirures, soulèvements de couche picturale : le diagnostic se fait à l'atelier, selon une méthode de conservation (tests, réversibilité, matériaux adaptés), pas une retouche décorative. Nous ne repeignons pas une œuvre au neuf. L'encadrement et la dorure à la feuille viennent ensuite, quand la pièce le demande. Apportez le tableau sans le démonter vous-même. Devis écrit, aucune intervention sans votre accord."),
     ("Quelle est la différence avec un cadre prêt-à-poser ?",
@@ -777,7 +775,7 @@ FAQ_HOME = [
     ("Quels verres proposez-vous ?",
      "Verre minéral standard (2 mm, chants polis), verre anti-reflet pour le confort visuel, et verres de conservation anti-UV de 55 % à 99 % selon l'œuvre et le budget. Le verre musée (souvent appelé museum) coupe presque tout le rayonnement ultraviolet et réduit les reflets : il est indiqué pour les photographies, les aquarelles et les pièces à transmettre. Un tirage récent en intérieur peu exposé peut rester en verre standard. Nous posons le verre à l'atelier, jamais en kit collé. Le choix se fait autour des échantillons, à Hollerich, en tenant compte de la lumière du lieu d'accrochage."),
     ("Établissez-vous des factures pour les entreprises ?",
-     "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur, hôtels et collections d'entreprise. Confidentialité et planning adaptés aux institutions (sièges, palais, bibliothèques). Nous travaillons déjà avec Deloitte, Accor (ibis Styles, Mercure, MGallery), SES à Betzdorf, la Bibliothèque nationale du Luxembourg et la Cour grand-ducale (plus de 200 portraits officiels). Un e-mail avec les cotes, le lieu de pose et le volume suffit à ouvrir le dossier. Paiement et mentions légales : voir nos CGV. Page dédiée : institutions et entreprises."),
+     "Oui. Devis, facture et pose sur site pour les directions communication, architectes d'intérieur, hôtels et collections d'entreprise. Confidentialité et planning adaptés aux institutions (sièges, halls, bibliothèques). Nous travaillons déjà avec Deloitte, Accor (ibis Styles, Mercure, MGallery), SES à Betzdorf et la Bibliothèque nationale du Luxembourg. Un e-mail avec les cotes, le lieu de pose et le volume suffit à ouvrir le dossier. Paiement et mentions légales : voir nos CGV. Page dédiée : institutions et entreprises."),
     ("Où se trouve l'atelier ?",
      "Art'Cadres est à Hollerich, Luxembourg-Ville : 2 bis rue de la toison d'or, L-2342. Tél. +352 27 84 94 88. E-mail contact@artcadres.lu. Horaires : mercredi au samedi, 10 h à 18 h, sur rendez-vous. Un savoir-faire d'encadrement transmis depuis 1972 par Kathia Neumann. Pose des grands formats dans un rayon d'environ 25 km (Howald, Kirchberg, et au-delà pour les comptes suivis). L'atelier réunit encadrement, restauration, dorure et une galerie. Plan Google Maps sur la page Contact."),
 ]
@@ -823,7 +821,7 @@ accueil_body = f'''<section id="acc">
     </a>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>Nous encadrons, dorons et restaurons vos œuvres, du dessin de famille aux 200 portraits officiels de la Cour grand-ducale. Un savoir-faire d'atelier perfectionné depuis 1972, à Hollerich.</p></div>
+    <div class="p-lead"><p>Nous encadrons, dorons et restaurons vos œuvres, du dessin de famille aux grands formats de la Bibliothèque nationale du Luxembourg. Un savoir-faire d'atelier perfectionné depuis 1972, à Hollerich.</p></div>
     <div class="p-btns">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Voir le prix de mon cadre en ligne", "configurateur.html")}</div>
   </div>
   {polaroid_stack(POLAROIDS)}
@@ -871,7 +869,7 @@ accueil_body = f'''<section id="acc">
 </section>
 <section id="conf" class="section"><div class="p-w">
 <h2 class="p-h2 reveal-in">Des institutions, des marques et des artistes nous confient leurs œuvres</h2>
-<p class="p-sub reveal-in">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
+<p class="p-sub reveal-in">Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg, SODIKART et M.Chat : nous encadrons leurs collections avec la même exigence artisanale.</p>
 {ref_logo_strip(REF_LOGOS)}
 {ref_vignettes(REF_VIGNETTES)}
 <div class="p-cta reveal-in">{btn_orange("Demander un devis institutionnel", "contact.html")} {btn_plain("Voir toutes nos références", "institutions-entreprises.html")}</div>
@@ -879,7 +877,7 @@ accueil_body = f'''<section id="acc">
 <section id="gf" class="section"><div class="p-w">
 <div class="p-feat reveal">
   <div><p class="p-stat">Du format intime au monumental</p><h2>Nous encadrons et installons sur site</h2><p>Des médailles aux panneaux muraux de plusieurs mètres : nous maîtrisons l'encadrement sur mesure et la pose en entreprise, pour les particuliers comme pour les institutions.</p>{btn_plain("Page grands formats", "encadrement-grand-format.html")}</div>
-  <div class="p-imgs"><div class="p-frame"><img src="assets/kathia-grand-format.jpg" alt="Pose d'un grand format sur site, Luxembourg" loading="lazy"></div><div class="p-frame"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
+  <div class="p-imgs"><div class="p-frame"><img src="assets/biblio-kathia.jpg" alt="Kathia Neumann et un grand format à la Bibliothèque nationale du Luxembourg" loading="lazy"></div><div class="p-frame"><img src="assets/gf-deloitte-2.jpg" alt="Panneau mural monumental pour Deloitte" loading="lazy"></div></div>
 </div>
 <h3 class="p-objh reveal">Nous encadrons tout type d'objet</h3>
 <div class="p-objs reveal">{gf_objs_html}</div>
@@ -920,6 +918,27 @@ accueil_body = f'''<section id="acc">
 <div class="p-avis reveal">{avis_cards}</div>
 </div></section>'''
 
+# ---- Teaser nouvelle prestation (contenu de préfiguration) ----
+nouveau_section = '''<section id="nouveau" class="section"><div class="p-w">
+  <div class="nv-band reveal">
+    <div class="nv-band__text">
+      <span class="p-eyebrow">Nouveau · 2027</span>
+      <h2 class="nv-band__title">L'architecture d'intérieur entre à l'atelier</h2>
+      <p>En 2027, Art'Cadres élargit son métier au conseil en décoration et en architecture d'intérieur. Le même œil que pour un cadre, appliqué cette fois à la pièce entière : l'accrochage, l'harmonie des murs, le choix des matières et de la lumière.</p>
+      <p class="nv-band__soon">Une nouvelle prestation et un nouveau visage à l'atelier. Nous vous en reparlerons bientôt.</p>
+    </div>
+    <figure class="nv-person">
+      <div class="nv-avatar" aria-hidden="true">JD</div>
+      <figcaption>
+        <strong>Jacques Dupont</strong>
+        <span>Architecte d'intérieur · conseil en décoration</span>
+      </figcaption>
+    </figure>
+  </div>
+</div></section>
+'''
+accueil_body = accueil_body.replace('<section id="real"', nouveau_section + '<section id="real"', 1)
+
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
 {content_hero("Art'Cadres · Luxembourg", "Notre histoire", "<p>Art'Cadres Luxembourg réunit en un même lieu l'encadrement sur mesure, la restauration de tableaux, la dorure et une galerie d'art. L'atelier de Hollerich perpétue un savoir-faire né à Metz en 1972.</p>", "assets/ac-histoire.jpg", "L'atelier Art'Cadres à Hollerich, Luxembourg-Ville", eager_img=True, wide=True)}
@@ -932,7 +951,7 @@ hist_body = f'''<section class="section"><div class="p-w">
 {content_story("De Metz à Luxembourg", [
     "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
     "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille et la restauration de tableaux. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
-    "Aujourd'hui, l'atelier travaille pour des particuliers, des artistes et des collectionneurs, comme pour des institutions : la Bibliothèque nationale du Luxembourg, la Cour grand-ducale, Deloitte, Accor et SES.",
+    "Aujourd'hui, l'atelier travaille pour des particuliers, des artistes et des collectionneurs, comme pour des institutions : la Bibliothèque nationale du Luxembourg, Deloitte, Accor et SES.",
 ])}
 <div class="p-list reveal">{content_list("Repères", [
     ("1972", "Fondation de l'atelier d'encadrement à Metz."),
@@ -944,7 +963,7 @@ hist_body = f'''<section class="section"><div class="p-w">
   <article class="bio-card">
     <h2>Kathia Neumann</h2>
     <p class="bio-card__role">Fondatrice · Encadreur d'art</p>
-    <p>Kathia Neumann dirige l'antenne luxembourgeoise. Plus de trente ans de métier : lecture de l'œuvre, choix des moulures, montages muséaux, suivi des commandes institutionnelles. Elle a formé l'atelier de Hollerich sur le modèle de Metz : conseil à la table, pas de cadre anonyme de grande surface. Les séries Deloitte, Accor, SES et les portraits de la Cour grand-ducale passent par cet interlocuteur unique.</p>
+    <p>Kathia Neumann dirige l'antenne luxembourgeoise. Plus de trente ans de métier : lecture de l'œuvre, choix des moulures, montages muséaux, suivi des commandes institutionnelles. Elle a formé l'atelier de Hollerich sur le modèle de Metz : conseil à la table, pas de cadre anonyme de grande surface. Les séries Deloitte, Accor, SES et les grands formats de la Bibliothèque nationale passent par cet interlocuteur unique.</p>
   </article>
   <article class="bio-card">
     <h2>Restauration &amp; dorure</h2>
@@ -1102,10 +1121,8 @@ INST_CASES = [
     ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
      "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontières."),
     ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces et les collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
-    ("assets/ref-bibliotheque.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
+    ("assets/biblio-kathia.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
      "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales. Nous assurons la conservation du papier, choisissons un verre adapté et travaillons avec discrétion dans les salles."),
-    ("assets/ref-courducale.jpg", "Cour grand-ducale & mairies", "Institution officielle",
-     "Plus de 200 portraits officiels encadrés lors des changements protocolaires. Un niveau d'exigence que nous assumons avec discrétion : nous garantissons des séries homogènes, des délais tenus et un interlocuteur unique."),
     ("assets/ref-sodikart-maillot.jpg", "SODIKART", "Sport · mémorabilia",
      "Maillots signés, pièces de collection et objets sportifs encadrés avec des montages muséaux adaptés aux pièces de valeur. Une rehausse et un fond maintiennent le textile à distance : il ne touche jamais le verre."),
     ("assets/ref-mchat.jpg", "M.Chat · Thoma Vuille", "Artiste",
@@ -1114,11 +1131,11 @@ INST_CASES = [
 
 institutions_body = f'''<section class="section"><div class="p-w">
 {content_hero("Institutions & entreprises", "Encadrement pour entreprises et institutions",
-"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections d'entreprise. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Un savoir-faire d'atelier depuis 1972. La même exigence, que le client soit Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg ou la Cour grand-ducale.</p>",
+"<p>Nous accompagnons les directions communication, les architectes d'intérieur et les responsables de collections d'entreprise. Du petit format au panneau monumental, nous étudions, encadrons et installons sur site.</p><p>Un savoir-faire d'atelier depuis 1972. La même exigence, que le client soit Deloitte, Accor, SES ou la Bibliothèque nationale du Luxembourg.</p>",
 "assets/histoire-atelier-2.jpg", "Commande institutionnelle · portraits officiels prêts à livrer", eager_img=True)}
 {logo_block(REF_LOGOS)}
 <h2 class="p-h2 reveal">Références nommées</h2>
-<p class="p-sub reveal">Huit références que nous pouvons citer. Chacune a suivi le même chemin : un devis chiffré, une fabrication à l'atelier de Hollerich, une pose sur site.</p>
+<p class="p-sub reveal">Sept références que nous pouvons citer. Chacune a suivi le même chemin : un devis chiffré, une fabrication à l'atelier de Hollerich, une pose sur site.</p>
 {client_cards(INST_CASES)}
 <h2 class="p-h2 reveal">Comment nous travaillons</h2>
 {icon_row([
@@ -1258,6 +1275,33 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
 </div>
 </div></section>'''
 
+# ---- Réservation en ligne (cal.com) ----
+# Laisser CAL_LINK vide tant que le compte cal.com n'existe pas : un panneau soigne
+# s'affiche a la place. Des que le compte est cree, mettre "compte/type-d-evenement"
+# (ex: "artcadres-luxembourg/rendez-vous") : le calendrier s'affiche automatiquement.
+CAL_LINK = ""
+if CAL_LINK:
+    rdv_embed = (
+        f'<div class="rdv-embed reveal"><iframe src="https://cal.com/{CAL_LINK}?embed=true&amp;theme=light" '
+        f'title="Prendre rendez-vous en ligne avec Art\'Cadres Luxembourg" loading="lazy"></iframe></div>')
+else:
+    rdv_embed = f'''<div class="rdv-card reveal">
+    <div class="rdv-card__body">
+      <p class="rdv-card__lab">Sur rendez-vous</p>
+      <p class="rdv-card__hours">Mercredi au samedi · 10 h à 18 h</p>
+      <p class="rdv-card__txt">La réservation de créneau en ligne arrive très bientôt. En attendant, un appel ou un e-mail suffit : nous fixons ensemble le moment qui vous convient, à Hollerich.</p>
+      <div class="rdv-card__btns">{btn_orange("Appeler l'atelier", "tel:+35227849488")} {btn_plain("Écrire un e-mail", "mailto:contact@artcadres.lu", arrow=False)}</div>
+    </div>
+  </div>'''
+rdv_section = f'''
+<section id="rdv" class="section section--alt"><div class="p-w">
+<span class="p-eyebrow">Rendez-vous en ligne</span>
+<h2 class="p-h2">Réserver un créneau à l'atelier</h2>
+<p class="p-sub">Choisissez le moment qui vous arrange pour venir à Hollerich : un encadrement, une restauration, ou simplement un conseil autour de votre œuvre.</p>
+{rdv_embed}
+</div></section>'''
+contact_body = contact_body + rdv_section
+
 # ================= CONFIGURATEUR =================
 CFG_URL = "https://nielsen.oxyz.studio/project/new/3b83739c106fa33d171be9a151d26ab9/app"
 configurateur_body = f'''<section id="cfg">
@@ -1301,7 +1345,7 @@ FAQ_GF = [
     ("La pose est-elle incluse ?",
      "La pose sur site se chiffre à part, dans un rayon d'environ 25 km, plus loin pour les comptes suivis. Un particulier collectionneur et une entreprise passent par le même planning."),
     ("Particuliers ou seulement les entreprises ?",
-     "Les deux. La page institutions détaille nos références (Deloitte, Accor, SES, la Bibliothèque nationale, la Cour grand-ducale), mais cette page s'adresse tout autant aux artistes et aux collectionneurs."),
+     "Les deux. La page institutions détaille nos références (Deloitte, Accor, SES, la Bibliothèque nationale du Luxembourg), mais cette page s'adresse tout autant aux artistes et aux collectionneurs."),
 ]
 gf_body = f'''<section class="section"><div class="p-w">
 {content_hero("Grands formats", "Encadrement grand format au Luxembourg",
@@ -1310,7 +1354,7 @@ gf_body = f'''<section class="section"><div class="p-w">
 {icon_row([("size", "De la médaille au mur entier", "Nous encadrons toutes les tailles, de la médaille au panneau de plusieurs mètres."), ("shield", "Nous venons poser chez vous", "Livraison et accrochage sur site, dans un rayon d'environ 25 km autour de Luxembourg-Ville."), ("bag", "Pour les entreprises comme les particuliers", "Le même atelier et le même soin, avec un devis et un planning dédiés pour les chantiers.")])}
 {content_story("Là où le configurateur s'arrête", [
     "Un cadre Nielsen se retire en une heure quand le format entre dans la grille. Un panneau de deux ou trois mètres, un triptyque, une photographie monumentale pour un hall : le configurateur s'arrête. Nous prenons les cotes sur place ou à l'atelier, nous dessinons le montage, nous fabriquons, nous accrochons.",
-    "Nous avons posé des panneaux muraux pour Deloitte, des grands formats en situ pour la Bibliothèque nationale, des séries pour les hôtels Accor, et encadré plus de 200 portraits officiels pour la Cour grand-ducale. Ces chantiers nous ont appris le rythme d'un siège, d'un hall ou d'un palais : discrétion, planning tenu, pièces de rechange prévues.",
+    "Nous avons posé des panneaux muraux pour Deloitte, des grands formats en situ pour la Bibliothèque nationale, et des séries pour les hôtels Accor. Ces chantiers nous ont appris le rythme d'un siège, d'un hall ou d'une salle patrimoniale : discrétion, planning tenu, pièces de rechange prévues.",
     "Les particuliers et les artistes passent par la même table. Une toile hors norme, une photographie de voyage en très grand, une collection à accrocher d'un seul tenant : nous venons voir le mur. Howald, Kirchberg, Hollerich, et un rayon d'environ 25 km autour de Luxembourg-Ville.",
 ])}
 <div class="p-list reveal">{content_list("Étude, fabrication, pose", [
@@ -1366,7 +1410,7 @@ INST_LD = (
     schema_institutions_page() + "\n  "
     + schema_service(
         "Encadrement institutions et entreprises",
-        "Encadrement B2B, grands formats et pose sur site au Luxembourg. Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale.",
+        "Encadrement B2B, grands formats et pose sur site au Luxembourg. Deloitte, Accor, SES, Bibliothèque nationale du Luxembourg.",
         "institutions-entreprises.html",
     )
 )
@@ -1402,7 +1446,7 @@ PAGES = [
      "Encadreur d'art à Hollerich : sur mesure, cadres Nielsen, dorure, restauration de tableaux. Institutions Deloitte, Accor, SES. Devis en ligne.",
      accueil_body, "index.html", None, INDEX_LD),
     ("institutions-entreprises.html", "Encadrement entreprises Luxembourg · Art'Cadres",
-     "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale, Cour grand-ducale. Grands formats et installation sur site.",
+     "Encadrement B2B au Luxembourg : Deloitte, Accor, SES, Bibliothèque nationale du Luxembourg. Grands formats et installation sur site.",
      institutions_body, "institutions-entreprises.html", SITE_URL + "/assets/histoire-atelier-2.jpg", INST_LD),
     ("notre-histoire.html", "Notre histoire : un savoir-faire depuis 1972 · Art'Cadres",
      "Art'Cadres Luxembourg perpétue un savoir-faire d'encadrement né en 1972 : sur mesure, restauration, dorure et galerie d'art à Hollerich.",
