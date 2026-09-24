@@ -3,12 +3,26 @@
 Produit des fichiers .html autonomes (header/footer partages) a cote de ce script.
 Lancer :  python3 build.py
 """
+import hashlib
 import html
 import json
 import os
 from datetime import date
 
 OUT = os.path.dirname(os.path.abspath(__file__))
+
+
+def _asset_ver(fname):
+    """Hash court du fichier pour casser le cache navigateur a chaque changement."""
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), fname), "rb") as fh:
+            return hashlib.md5(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "1"
+
+
+CSS_VER = _asset_ver("styles.css")
+JS_VER = _asset_ver("script.js")
 # Canonical = repo d'origine (Pages). Ne PAS mettre artcadres.lu tant que le
 # WordPress y est encore live (sinon Google consoliderait vers l'ancien site).
 # Au cutover DNS : SITE_URL = "https://artcadres.lu" + 301 (voir SEO/REDIRECTIONS-301.md).
@@ -465,7 +479,7 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">{head_extra}
+  <link rel="stylesheet" href="styles.css?v={CSS_VER}">{head_extra}
 </head>
 <body{f' class="{body_class}"' if body_class else ''}>
 {header(active)}
@@ -474,7 +488,7 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
 {body}
 </main>
 {footer()}
-<script defer src="script.js"></script>
+<script defer src="script.js?v={JS_VER}"></script>
 </body>
 </html>'''
 

@@ -36,19 +36,48 @@
 
   var drawer = document.querySelector("header .nav");
   var burger = document.querySelector("header .bar > .nav-toggle");
+  var mqMobile = window.matchMedia("(max-width: 1079px)");
   function syncDrawer() {
     var open = document.body.classList.contains("nav-open");
+    var isMobile = mqMobile.matches;
+    // inert/aria-hidden UNIQUEMENT quand le tiroir mobile est fermé.
+    // Sur desktop la nav doit toujours rester cliquable (sinon toute la navbar est morte).
+    var hide = isMobile && !open;
     if (drawer) {
-      drawer.setAttribute("aria-hidden", open ? "false" : "true");
-      if ("inert" in drawer) drawer.inert = !open;
+      drawer.setAttribute("aria-hidden", hide ? "true" : "false");
+      if ("inert" in drawer) drawer.inert = hide;
     }
     if (burger) burger.setAttribute("aria-expanded", open ? "true" : "false");
+    // Verrou de scroll robuste (iOS compris) quand le tiroir mobile est ouvert.
+    if (open && isMobile) {
+      if (!document.body.hasAttribute("data-scroll-lock")) {
+        var sy = window.scrollY || window.pageYOffset || 0;
+        document.body.setAttribute("data-scroll-lock", String(sy));
+        document.body.style.position = "fixed";
+        document.body.style.top = -sy + "px";
+        document.body.style.left = "0";
+        document.body.style.right = "0";
+        document.body.style.width = "100%";
+      }
+    } else if (document.body.hasAttribute("data-scroll-lock")) {
+      var y = parseInt(document.body.getAttribute("data-scroll-lock") || "0", 10);
+      document.body.removeAttribute("data-scroll-lock");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, y);
+    }
   }
   syncDrawer();
   new MutationObserver(syncDrawer).observe(document.body, {
     attributes: true,
     attributeFilter: ["class"],
   });
+  // Repasser en desktop doit réactiver la nav (retirer inert) et lever un éventuel verrou.
+  if (mqMobile.addEventListener) mqMobile.addEventListener("change", syncDrawer);
+  else if (mqMobile.addListener) mqMobile.addListener(syncDrawer);
 
   document.querySelectorAll(".nav a").forEach(function (a) {
     a.addEventListener("click", function () {
