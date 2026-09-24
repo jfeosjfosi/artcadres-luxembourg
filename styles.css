@@ -1,6 +1,6 @@
 /* Art'Cadres Luxembourg — tokens : voir DESIGN.md */
 :root{
-  --bg:#fdfdfc; --bg2:#f5f2ec; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
+  --bg:#fefefd; --bg2:#f6f4f0; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
   --line:color-mix(in srgb,var(--ink) 12%,transparent);
   --shadow:0 24px 60px -34px color-mix(in srgb,var(--ink) 40%,transparent);
   --maxw:1180px;
@@ -96,7 +96,7 @@ a{color:inherit;}
   .nav-toggle{display:inline-flex;position:relative;z-index:110;}
   body.nav-open .bar > .nav-toggle{visibility:hidden;pointer-events:none;}
   .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg);}
-  .nav{position:fixed;top:0;right:0;bottom:0;left:auto;width:min(88vw,360px);height:100dvh;max-height:100dvh;z-index:100;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:88px 20px 24px;transform:translateX(100%);transition:transform .4s cubic-bezier(.32,.72,0,1),visibility 0s linear .4s;box-shadow:-20px 0 60px -30px #2c1f1799;overflow-y:auto;pointer-events:none;visibility:hidden;}
+  .nav{position:fixed;top:0;right:0;bottom:0;left:auto;width:min(88vw,360px);height:100dvh;max-height:100dvh;z-index:100;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:88px 20px 24px;transform:translateX(100%);transition:transform .4s cubic-bezier(.32,.72,0,1),visibility 0s linear .4s;box-shadow:-20px 0 60px -30px #2c1f1799;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;pointer-events:none;visibility:hidden;}
   body.nav-open .nav{transform:translateX(0);pointer-events:auto;visibility:visible;transition:transform .4s cubic-bezier(.32,.72,0,1),visibility 0s;}
   body.nav-open{overflow:hidden;}
   .nav a{padding:14px 6px;border-bottom:1px solid #2c1f1714;font-size:17px;}
@@ -104,7 +104,9 @@ a{color:inherit;}
   .nav-close{position:absolute;top:18px;right:16px;z-index:1;}
 }
 .nav-backdrop{display:none;}
-@media(max-width:1079px){body.nav-open .nav-backdrop{display:block;position:fixed;inset:0;background:#2c1f1755;z-index:90;}}
+@media(max-width:1079px){body.nav-open .nav-backdrop{display:block;position:fixed;inset:0;background:#2c1f1755;z-index:90;touch-action:none;overscroll-behavior:none;}}
+html:has(body.nav-open){overflow:hidden;overscroll-behavior:none;}
+body.nav-open{overflow:hidden;overscroll-behavior:none;}
 
 /* ---------- Boutons génériques ---------- */
 .btn,.btn2{display:inline-flex;align-items:center;justify-content:center;min-height:var(--btn-h);height:var(--btn-h);box-sizing:border-box;font-weight:600;font-size:16px;border-radius:var(--r-pill);text-decoration:none;line-height:1.2;}
@@ -766,9 +768,5 @@ a{color:inherit;}
 .rdv-card__txt{margin:0 0 22px;color:var(--muted);font-size:16px;line-height:1.65;max-width:52ch;}
 .rdv-card__btns{display:flex;flex-wrap:wrap;gap:12px;}
 
-/* ---- Teaser nouvelle prestation (#nouveau) : placeholder de portrait encadré ---- */
-.jd-portrait{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--bg2);}
-.jd-portrait__mono{font-size:clamp(38px,5vw,52px);font-weight:700;letter-spacing:.05em;color:var(--accent);line-height:1;}
-.jd-portrait__cap{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
 
 

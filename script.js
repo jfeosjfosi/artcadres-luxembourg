@@ -60,7 +60,7 @@
     var btn = dd.querySelector(".nav-dd__btn");
     if (!btn) return;
     btn.addEventListener("click", function (ev) {
-      if (window.matchMedia("(max-width: 1399px)").matches) return;
+      if (window.matchMedia("(max-width: 1079px)").matches) return;
       ev.preventDefault();
       var open = !dd.classList.contains("is-open");
       document.querySelectorAll(".nav-dd.is-open").forEach(function (other) {

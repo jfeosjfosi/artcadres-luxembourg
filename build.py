@@ -814,7 +814,7 @@ accueil_body = f'''<section id="acc">
     </a>
     </div>
     <h1 class="p-h1">Encadreur d'art à Luxembourg</h1>
-    <div class="p-lead"><p>Nous encadrons, dorons et restaurons vos œuvres, du dessin de famille aux grands formats de la Bibliothèque nationale du Luxembourg. Un savoir-faire d'atelier perfectionné depuis 1972, à Hollerich.</p></div>
+    <div class="p-lead"><p>Depuis plus de 30 ans, Art'Cadres Luxembourg met son savoir-faire artisanal au service de vos œuvres, photographies et objets.</p><p>Nous réalisons des encadrements sur mesure, du plus classique au plus contemporain, ainsi que la restauration, la dorure et le nettoyage de tableaux.</p><p>Chaque pièce est unique et bénéficie du même soin, de la même exigence et de conseils personnalisés.</p></div>
     <div class="p-btns">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Voir le prix de mon cadre en ligne", "configurateur.html")}</div>
   </div>
   {polaroid_stack(POLAROIDS)}
@@ -911,25 +911,53 @@ accueil_body = f'''<section id="acc">
 <div class="p-avis reveal">{avis_cards}</div>
 </div></section>'''
 
-# ---- Teaser nouvelle prestation (contenu de préfiguration) ----
-nouveau_section = '''<section id="nouveau" class="section"><div class="p-w">
+# ---- Impression photo · Décoration · Espace d'exposition (nouvelles sections accueil) ----
+tirage_section = '''<section id="tirage" class="section"><div class="p-w">
   <div class="p-story reveal">
     <div class="p-intro">
-      <span class="p-eyebrow">Nouveau · 2027</span>
-      <h2>L'architecture d'intérieur arrive à l'atelier</h2>
+      <span class="p-eyebrow">Tirage photo</span>
+      <h2>Impression photo haute qualité</h2>
       <div class="p-body">
-        <p>En 2027, Art'Cadres élargit son métier au conseil en décoration et en architecture d'intérieur. Le même regard que pour un cadre, porté cette fois sur la pièce entière : l'accrochage, l'harmonie des murs, les matières et la lumière.</p>
-        <p>Une nouvelle prestation, confiée à Jacques Dupont, architecte d'intérieur. Nous vous en reparlerons très bientôt.</p>
+        <p>Nous réalisons vos tirages photo, du petit au grand format, à partir de vos fichiers numériques.</p>
+        <p>Pour les grands formats, nous travaillons sur traceur Epson afin d'obtenir une impression précise et fidèle aux couleurs.</p>
+        <p>Apportez votre fichier sur clé USB ou envoyez-le directement en ligne : nous nous occupons du reste.</p>
       </div>
     </div>
-    <figure>
-      <div class="p-frame"><div class="jd-portrait"><span class="jd-portrait__mono">JD</span><span class="jd-portrait__cap">Portrait à venir</span></div></div>
-      <figcaption class="p-cap p-cap--lg"><strong>Jacques Dupont</strong> · architecte d'intérieur.</figcaption>
-    </figure>
+    <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Tirage photographique encadré, Art'Cadres Luxembourg" loading="lazy"></div></figure>
   </div>
 </div></section>
 '''
-accueil_body = accueil_body.replace('<section id="real"', nouveau_section + '<section id="real"', 1)
+deco_section = '''<section id="deco" class="section section--alt"><div class="p-w">
+  <div class="p-story p-story--flip reveal">
+    <div class="p-intro">
+      <span class="p-eyebrow">Nouveau service</span>
+      <h2>Conseil en décoration intérieure</h2>
+      <div class="p-body">
+        <p>Art'Cadres Luxembourg propose un accompagnement personnalisé pour repenser et relooker votre intérieur, en partenariat avec un architecte décorateur.</p>
+        <p>Peintures, papiers peints, mobilier, luminaires, matières, couleurs et mise en valeur des œuvres : chaque détail est étudié pour créer un intérieur harmonieux, élégant et à votre image.</p>
+        <p>Du simple conseil déco à un projet plus complet, nous vous accompagnons dans la transformation de votre espace.</p>
+      </div>
+    </div>
+    <figure><div class="p-frame"><img src="assets/atelier-interieur.jpg" alt="Intérieur de l'atelier Art'Cadres à Hollerich" loading="lazy"></div></figure>
+  </div>
+</div></section>
+'''
+expo_section = '''<section id="expo" class="section"><div class="p-w">
+  <div class="p-story reveal">
+    <div class="p-intro">
+      <span class="p-eyebrow">Galerie</span>
+      <h2>Espace d'exposition</h2>
+      <div class="p-body">
+        <p>Art'Cadres Luxembourg accueille également une salle d'exposition dédiée aux artistes et artisans d'art.</p>
+        <p>Un espace pensé pour mettre en lumière des œuvres originales, des savoir-faire et des créations uniques, au fil d'expositions et de rencontres.</p>
+        <p>Peinture, sculpture, verre, bronze, métiers d'art : notre galerie se veut un lieu vivant de découverte et de partage au cœur de Luxembourg.</p>
+      </div>
+    </div>
+    <figure><div class="p-frame"><img src="assets/gal-11.jpg" alt="Salle d'exposition, Art'Cadres Luxembourg" loading="lazy"></div></figure>
+  </div>
+</div></section>
+'''
+accueil_body = accueil_body.replace('<section id="real"', tirage_section + deco_section + expo_section + '<section id="real"', 1)
 
 # ================= NOTRE HISTOIRE =================
 hist_body = f'''<section class="section"><div class="p-w">
@@ -941,9 +969,9 @@ hist_body = f'''<section class="section"><div class="p-w">
   <div><span class="hist-stats__n">4,7</span><span class="hist-stats__l">avis Google Luxembourg</span></div>
 </div>
 {content_story("De Metz à Luxembourg", [
-    "L'atelier d'encadrement ouvre à Metz en 1972. Kathia Neumann y travaille plus de trente ans, puis elle installe Art'Cadres à Hollerich.",
-    "Rue de la toison d'or, nous faisons le sur-mesure, les cadres Nielsen en Click & Collect, la dorure à la feuille et la restauration de tableaux. Il y a aussi une galerie. Nous travaillons en français. Pose dans un rayon d'environ 25 km.",
-    "Aujourd'hui, l'atelier travaille pour des particuliers, des artistes et des collectionneurs, comme pour des institutions : la Bibliothèque nationale du Luxembourg, Deloitte, Accor et SES.",
+    "L'aventure commence à Metz en 1972. Kathia Neumann y développe depuis plus de 30 ans son savoir-faire d'encadreur d'art, avant d'installer Art'Cadres à Hollerich.",
+    "Aujourd'hui, l'atelier accompagne particuliers, artistes, collectionneurs, architectes d'intérieur et institutions pour leurs projets d'encadrement sur mesure, dorure et restauration de tableaux.",
+    "De Metz à Luxembourg, une même exigence : le conseil, le geste artisanal et le respect des œuvres.",
 ])}
 <div class="p-list reveal">{content_list("Repères", [
     ("1972", "Fondation de l'atelier d'encadrement à Metz."),
@@ -988,7 +1016,7 @@ FAQ_MESURE = [
      "Oui : médailles, maillots, végétaux, couverts, pièces en relief. La rehausse maintient le verre au-dessus du volume. Apportez l'objet, ne le forcez pas dans un cadre plat."),
 ]
 mesure_body = f'''<section class="section"><div class="p-w">
-{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>L'encadrement d'art est un métier d'artisan. Deux montages ne se ressemblent jamais : le choix de la baguette, du passe-partout et du verre change ce que l'œuvre donne à voir une fois au mur.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
+{content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>Chaque œuvre est unique. Nous créons des encadrements sur mesure pensés pour la mettre en valeur, la protéger et l'intégrer harmonieusement à votre intérieur.</p><p>Moulures, verres et finitions sont sélectionnés avec soin dans notre boutique à Luxembourg.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
 <h2 class="p-h2 reveal">Nos trois techniques signature</h2>
 {tech_cards([
     ("assets/gal-15.jpg", "La Marie-Louise biseautée",
@@ -1042,7 +1070,7 @@ FAQ_STANDARD = [
      "Oui. Le configurateur donne le prix. Les échantillons sont au mur de l'atelier. Un rendez-vous de dix minutes évite souvent un échange de teinte."),
 ]
 standard_body = f'''<section class="section"><div class="p-w">
-{content_hero("Cadres standards", "Cadres standards Nielsen au Luxembourg", "<p>Les cadres Nielsen, aluminium comme bois, sont fabriqués en Allemagne et certifiés FSC®. Vous composez le vôtre en ligne, vous le retirez à Hollerich, souvent dans l'heure.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
+{content_hero("Cadres standards", "Cadres standards Nielsen à Luxembourg", "<p>Référence incontournable du cadre standard, Nielsen propose des cadres en aluminium et en bois, fabriqués en Allemagne et certifiés FSC®, reconnus pour leur qualité et leur design.</p><p>Découvrez notre sélection de formats et de finitions, disponibles dans notre atelier à Hollerich.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
 </div></section>
 <section class="section section--alt"><div class="p-w">
 <h2 class="p-h2 reveal">Bois ou aluminium, ce que vous obtenez</h2>
@@ -1253,7 +1281,9 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
-        <p>Plus de trente ans d'expérience dans l'encadrement d'art. Kathia Neumann perpétue à Luxembourg un savoir-faire né à Metz en 1972, avec la même exigence artisanale.</p>
+        <p>Depuis plus de 30 ans, Kathia Neumann met son savoir-faire au service des œuvres, des particuliers et des institutions.</p>
+        <p>Installée au Luxembourg, elle accompagne chaque projet avec une approche artisanale, exigeante et personnalisée.</p>
+        <p>Pour bénéficier pleinement de ses conseils et de son expertise, il est préférable de prendre rendez-vous. Elle peut également se déplacer à domicile afin de conseiller au mieux le choix de l'encadrement, en tenant compte de l'œuvre, de la lumière et de votre intérieur.</p>
       </figcaption>
     </figure>
   </aside>
