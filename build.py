@@ -433,7 +433,7 @@ def crumbs_nav(active):
     return f'<nav class="crumbs" aria-label="Fil d\'Ariane">{sep.join(parts)}</nav>'
 
 
-def page(title, description, body, active, extra_head="", og_image=None, json_ld=""):
+def page(title, description, body, active, extra_head="", og_image=None, json_ld="", body_class="", noindex=False):
     slug = "" if active == "index.html" else active
     canonical = SITE_URL + ("/" if not slug else "/" + slug)
     og_img = og_image or (SITE_URL + "/assets/ac-contact.jpg")
@@ -450,7 +450,7 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{e(title)}</title>
   <meta name="description" content="{e(description)}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="{'noindex, nofollow' if noindex else 'index, follow'}">
   <meta name="theme-color" content="#2c1f17">
   <meta property="article:published_time" content="{DATE_PUBLISHED}">
   <meta property="article:modified_time" content="{date.today().isoformat()}">
@@ -467,7 +467,7 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">{head_extra}
 </head>
-<body>
+<body{f' class="{body_class}"' if body_class else ''}>
 {header(active)}
 {crumb_html}
 <main>
@@ -1529,6 +1529,18 @@ for entry in PAGES:
     print("écrit :", fname)
     if not fname.startswith("politique") and "mentions" not in fname and "conditions" not in fname:
         PAGE_URLS.append(fname)
+
+# luxe.html : version sombre "cachée" de l'accueil (non indexée, hors nav et sitemap)
+luxe_html = page(
+    "Art'Cadres Luxembourg · Édition confidentielle",
+    "Version sombre de présentation, réservée à un usage confidentiel.",
+    accueil_body, "index.html",
+    '<link rel="preload" as="image" href="assets/ac-contact.jpg">',
+    og_image=None, json_ld="", body_class="theme-dark", noindex=True,
+).replace("assets/logo-artcadres-fonce.svg", "assets/logo-artcadres-blanc.svg")
+with open(os.path.join(OUT, "luxe.html"), "w", encoding="utf-8") as f:
+    f.write(luxe_html)
+print("écrit : luxe.html (caché)")
 
 # sitemap.xml
 today = date.today().isoformat()

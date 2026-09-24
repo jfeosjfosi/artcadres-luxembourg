@@ -770,3 +770,26 @@ body.nav-open{overflow:hidden;overscroll-behavior:none;}
 
 
 
+
+/* ================= THEME SOMBRE (page luxe cachee, .theme-dark) ================= */
+body.theme-dark{
+  --bg:#0d0d0f; --bg2:#161618; --ink:#f5f1ea; --muted:#a8a39a; --mat:#191a1d;
+  --line:color-mix(in srgb,#ffffff 14%,transparent);
+  --shadow:0 30px 70px -40px rgba(0,0,0,.85);
+  background:var(--bg); color:var(--ink);
+}
+body.theme-dark .announce{background:#000;color:#efeae1;border-bottom:1px solid #ffffff12;}
+body.theme-dark .site-header{background:color-mix(in srgb,#0d0d0f 82%,transparent);border-bottom:1px solid #ffffff12;}
+body.theme-dark .nav-dd__menu{background:#161618;}
+body.theme-dark .p-gtrust{background:#ffffff0d;border-color:#ffffff24;}
+body.theme-dark .btn2{border-color:color-mix(in srgb,#fff 24%,transparent);}
+body.theme-dark .btn2:hover{background:#ffffff12;}
+body.theme-dark .trust--icons{border-top-color:#ffffff10;}
+body.theme-dark .trust__ico{border-color:#ffffff24;background:#161618;}
+body.theme-dark .p-card{background:var(--mat);}
+body.theme-dark #conf .p-card{background:var(--bg2);}
+body.theme-dark #conf .p-fr{border-color:#ffffff1f;box-shadow:0 20px 46px -30px rgba(0,0,0,.8);}
+body.theme-dark #conf .p-strip2{border-top-color:#ffffff1f;border-bottom-color:#ffffff1f;}
+body.theme-dark #avis .p-avis{background:#ffffff14;border-color:#ffffff14;}
+body.theme-dark .faq-item,body.theme-dark .faq-a,body.theme-dark .faq{border-color:#ffffff14;}
+body.theme-dark .site-footer{background:#000;}
