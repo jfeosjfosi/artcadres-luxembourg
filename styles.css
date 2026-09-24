@@ -1,6 +1,6 @@
 /* Art'Cadres Luxembourg — tokens : voir DESIGN.md */
 :root{
-  --bg:#fefefd; --bg2:#f6f4f0; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
+  --bg:#fbf8f2; --bg2:#f4f0e9; --ink:#191919; --muted:#585652; --accent:#c15715; --mat:#ffffff;
   --line:color-mix(in srgb,var(--ink) 12%,transparent);
   --shadow:0 24px 60px -34px color-mix(in srgb,var(--ink) 40%,transparent);
   --maxw:1180px;
