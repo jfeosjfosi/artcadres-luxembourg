@@ -790,7 +790,9 @@ faq_html = faq_markup(FAQ_HOME)
 
 gf_objs = [("obj-medailles", "Médailles & décorations"),
            ("obj-vegetal", "Cadres végétaux"),
+           ("obj-uniforme", "Tenues & uniformes"),
            ("obj-cuillere", "Objets (couverts, souvenirs)"),
+           ("obj-leopard", "Pièces d'exception"),
            ("obj-trefle", "Porte-bonheur & petites pièces")]
 gf_objs_html = "".join(
     f'<div class="p-obj"><div class="p-frame"><img src="assets/{s}.jpg" alt="{e(l)}" loading="lazy"></div>'
@@ -831,7 +833,7 @@ accueil_body = f'''<section id="acc">
     <div class="p-lead"><p>Depuis plus de 30 ans, Art'Cadres Luxembourg met son savoir-faire artisanal au service de vos œuvres, photographies et objets.</p><p>Nous réalisons des encadrements sur mesure, du plus classique au plus contemporain, et proposons également des services de restauration, de dorure et de nettoyage de tableaux.</p><p>Chaque pièce est unique. Nous lui accordons le même soin et la même exigence, avec des conseils personnalisés pour trouver l'encadrement qui saura la mettre en valeur et la préserver.</p></div>
     <div class="p-btns">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Voir le prix de mon cadre en ligne", "configurateur.html")}</div>
   </div>
-  {polaroid_stack(POLAROIDS)}
+  <figure class="p-hero-fig"><div class="p-frame"><img src="assets/accueil-showroom.jpg" alt="Le showroom Art'Cadres à Hollerich : Kathia Neumann au comptoir et les murs d'échantillons Nielsen" width="1179" height="696" loading="eager"></div></figure>
 </div>
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
@@ -1032,14 +1034,16 @@ FAQ_MESURE = [
 ]
 mesure_body = f'''<section class="section"><div class="p-w">
 {content_hero("Sur mesure", "Encadrement sur mesure au Luxembourg", "<p>Chaque œuvre est unique. Son encadrement doit l'être aussi.</p><p>Chez Art'Cadres Luxembourg, nous vous accompagnons dans la création d'un encadrement entièrement sur mesure, pensé pour mettre en valeur votre œuvre, la protéger et s'intégrer harmonieusement à votre intérieur.</p><p>Tableaux, œuvres sur papier, photographies, affiches, textiles ou objets : nous prenons le temps de vous conseiller pour trouver l'encadrement juste, adapté à votre œuvre, à vos goûts et à votre intérieur.</p>", "assets/histoire-atelier-1.jpg", "Encadrement sur mesure à l'atelier, Hollerich", eager_img=True)}
-<h2 class="p-h2 reveal">Nos trois techniques signature</h2>
+<h2 class="p-h2 reveal">Nos techniques signature</h2>
 {tech_cards([
-    ("assets/gal-15.jpg", "La Marie-Louise biseautée",
-     "Le haut de gamme du passe-partout : un biseau qui crée de la profondeur autour du sujet, en montage traditionnel comme contemporain."),
-    ("assets/gal-08.jpg", "La caisse américaine",
-     "L'encadrement le plus répandu au monde : l'œuvre flotte dans le cadre, en léger retrait. Très demandée pour l'art contemporain et la photographie."),
-    ("assets/gal-24.jpg", "La technique de rehausse",
-     "Une rehausse maintient le verre à distance de l'œuvre, qui semble flotter en léger creux. Pour les objets, les pièces en volume et les montages muséaux."),
+    ("assets/tech-caisse-americaine.jpg", "La caisse américaine",
+     "Large gamme et tous les budgets. L'œuvre flotte dans le cadre, en léger retrait, sans toucher le verre. Très demandée pour l'art contemporain et la photographie."),
+    ("assets/tech-plexi.jpg", "La création plexi",
+     "Quand votre cadre devient plus qu'un cadre : une déco élégante qui sublime votre œuvre."),
+    ("assets/tech-biseau-anglais.jpg", "Le biseau anglais",
+     "Entièrement fait à la main, couleurs et taille personnalisées : un savoir-faire proche de l'excellence."),
+    ("assets/tech-cadre-neon.jpg", "Le cadre néon",
+     "Pour mettre du peps et de la couleur sur vos murs."),
 ])}
 </div></section>
 <section class="section section--alt"><div class="p-w">
@@ -1085,17 +1089,17 @@ FAQ_STANDARD = [
      "Oui. Le configurateur donne le prix. Les échantillons sont au mur de l'atelier. Un rendez-vous de dix minutes évite souvent un échange de teinte."),
 ]
 standard_body = f'''<section class="section"><div class="p-w">
-{content_hero("Cadres standards", "Cadres standards Nielsen à Luxembourg", "<p>La qualité d'un beau cadre, adaptée à votre budget.</p><p>Référence incontournable du cadre standard, Nielsen propose des cadres en aluminium et en bois, fabriqués en Allemagne et certifiés FSC®, reconnus pour leur qualité, leur élégance et leur design intemporel.</p><p>Du petit au grand format, découvrez un large choix de dimensions, couleurs et finitions, pour trouver la solution adaptée à votre œuvre comme à votre budget.</p>", "assets/ac-mesure-1.jpg", "Passe-partout et cartons Nielsen à l'atelier, Hollerich", eager_img=True)}
+{content_hero("Cadres standards", "Cadres standards Nielsen à Luxembourg", "<p>La qualité d'un beau cadre, adaptée à votre budget.</p><p>Référence incontournable du cadre standard, Nielsen propose des cadres en aluminium et en bois, fabriqués en Allemagne et certifiés FSC®, reconnus pour leur qualité, leur élégance et leur design intemporel.</p><p>Du petit au grand format, découvrez un large choix de dimensions, couleurs et finitions, pour trouver la solution adaptée à votre œuvre comme à votre budget.</p>", "assets/std-compo-bw.jpg", "Cadres Nielsen bois et aluminium mis en scène", eager_img=True)}
 </div></section>
 <section class="section section--alt"><div class="p-w">
 <h2 class="p-h2 reveal">Bois ou aluminium, ce que vous obtenez</h2>
 {icon_row([("frame", "Les cadres bois", "Dorés, bruts ou en couleur : du bois naturel aux finitions métallisées, en passant par les patines à l'ancienne."), ("size", "Les cadres aluminium", "Ils se montent et se démontent à la main, sans outil. Tournettes rivetées sur dos MDF, verre minéral 2 mm à chants polis."), ("shield", "Certifiés FSC®, fabriqués en Allemagne", "Bois issu de forêts gérées de façon responsable. Nous sommes revendeur Nielsen à Luxembourg.")])}
-{strip(["assets/histoire-atelier-1.jpg", "assets/ac-contact.jpg"], 2, ["Échantillons à l'atelier Hollerich", "Mur de baguettes Nielsen"])}
+{strip(["assets/std-portrait-situ.jpg", "assets/std-arbre-situ.jpg"], 2, ["Cadre fin et tirage contemporain en situ", "Caisse noire et photographie, intérieur contemporain"])}
 </div></section>
 <section class="section"><div class="p-w">
 <div class="p-story reveal">
   <div class="p-intro"><h2>Composez, retirez selon les stocks</h2><div class="p-body"><p>Vous composez baguette, passe-partout et verre en ligne. Le prix s'affiche tout de suite, et le retrait se fait à Hollerich, en fonction des stocks disponibles.</p><p>Nielsen n'est pas un cadre de grande surface : verre minéral, cartons conçus pour l'encadrement, bois certifié FSC®. Les gammes du configurateur, du bois naturel aux finitions dorées, sont aussi celles du stock à Hollerich.</p></div></div>
-  <figure><div class="p-frame"><img src="assets/gal-08.jpg" alt="Photographies encadrées à l'atelier" width="1200" height="900" loading="lazy"></div></figure>
+  <figure><div class="p-frame"><img src="assets/std-nielsen-c2.jpg" alt="Cadre Nielsen C2 aluminium 30 x 40, fabriqué en Allemagne, certifié FSC" width="1179" height="784" loading="lazy"></div></figure>
 </div>
 {compare_table("Cadre Nielsen ou sur-mesure : lequel vous faut-il ?",
     ["", "Cadre Nielsen, en ligne", "Sur-mesure, à l'atelier"],
@@ -1172,6 +1176,14 @@ institutions_body = f'''<section class="section"><div class="p-w">
 <h2 class="p-h2 reveal">Références nommées</h2>
 <p class="p-sub reveal">Sept références que nous pouvons citer. Chacune a suivi le même chemin : un devis chiffré, une fabrication à l'atelier de Hollerich, une pose sur site.</p>
 {client_cards(INST_CASES)}
+<h2 class="p-h2 reveal">Nos réalisations en entreprise et en institution</h2>
+<p class="p-sub reveal">Œuvres et photographies encadrées, installées dans les bureaux, halls et espaces d'accueil de nos clients.</p>
+<div class="realisations reveal">
+  <figure><div class="p-frame"><img src="assets/ent-reunion.jpg" alt="Photographies de paysages encadrées dans une salle de réunion" loading="lazy"></div><figcaption class="p-cap">Photographies encadrées, salle de réunion</figcaption></figure>
+  <figure><div class="p-frame"><img src="assets/ent-lounge.jpg" alt="Série de photographies encadrées dans un espace d'accueil" loading="lazy"></div><figcaption class="p-cap">Série encadrée, espace d'accueil</figcaption></figure>
+  <figure><div class="p-frame"><img src="assets/ent-oeuvre-situ.jpg" alt="Œuvre encadrée en situation dans un intérieur" loading="lazy"></div><figcaption class="p-cap">Œuvre encadrée en situation</figcaption></figure>
+  <figure><div class="p-frame"><img src="assets/serie-portraits.jpg" alt="Portraits encadrés en série, prêts à la livraison" loading="lazy"></div><figcaption class="p-cap">Portraits encadrés en série, prêts à la livraison</figcaption></figure>
+</div>
 <h2 class="p-h2 reveal">Comment nous travaillons</h2>
 {icon_row([
     ("ruler", "1. Le brief", "Nous cadrons ensemble les volumes, les délais, le lieu de pose et votre charte graphique. Chaque échange reste confidentiel pour les sièges et les institutions."),
