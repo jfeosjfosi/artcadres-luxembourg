@@ -749,10 +749,10 @@ conf_hl_html = "".join(
     f'<strong>{e(n)}</strong> · {e(d)}.</figcaption></figure>' for s, n, d in conf_hl)
 
 REF_VIGNETTES = [
-    ("assets/ref-deloitte-install.jpg", "Deloitte", "Installation grand format sur site"),
-    ("assets/ref-accor.jpg", "Accor", "Hôtels ibis Styles, Mercure et MGallery"),
-    ("assets/ref-ses.jpg", "SES", "Fournisseur sur site · Betzdorf"),
-    ("assets/biblio-kathia.jpg", "Bibliothèque nationale", "Grand format en situ"),
+    ("assets/ref-deloitte-hall.jpg", "Deloitte", "Grand format installé sur site"),
+    ("assets/ent-reunion.jpg", "Bureaux d'entreprise", "Photographies encadrées en salle de réunion"),
+    ("assets/ent-lounge.jpg", "Espace d'accueil", "Série encadrée en entreprise"),
+    ("assets/ent-oeuvre-situ.jpg", "En situation", "Œuvre grand format encadrée"),
 ]
 
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
@@ -1153,13 +1153,13 @@ dorures_body = f'''<section id="dor" class="section"><div class="p-w">
 
 # ================= INSTITUTIONS & ENTREPRISES =================
 INST_CASES = [
-    ("assets/ref-deloitte-install.jpg", "Deloitte Luxembourg", "Grand compte · B2B",
+    ("assets/ref-deloitte-hall.jpg", "Deloitte Luxembourg", "Grand compte · B2B",
      "Panneaux muraux monumentaux et œuvres contemporaines : étude atelier, fabrication sur mesure et pose sur site dans les bureaux du Grand-Duché. Le grand format n'est pas un cadre agrandi : châssis, verre ou plexi, accrochage à deux. Confidentialité de chantier, planning hors heures d'ouverture si le hall l'exige."),
     ("assets/ref-accor.jpg", "Accor · ibis Styles, Mercure, MGallery", "Hôtellerie",
      "Encadrements pour plusieurs établissements : art contemporain et photographies dans espaces communs et chambres. Finitions pensées pour le flux hôtelier (maintenance, séries identiques, remplacement d'une pièce sans tout recommencer). Facture et suivi par site."),
     ("assets/ref-maisonheler.jpg", "Maison Heler, Metz", "Hôtellerie premium",
      "Le bar de l'hôtel signé Philippe Starck : moulures et finitions artisanales pour un lieu iconique de l'hôtellerie lorraine. Preuve que l'atelier de Hollerich travaille aussi hors frontières."),
-    ("assets/ref-ses.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces et les collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
+    ("assets/ref-ses-site.jpg", "SES", "Satellites · Betzdorf", "Fournisseur sur site du groupe satellite : cadres et présentations pour les espaces et les collections d'entreprise. Betzdorf est hors du rayon 25 km courant : nous y allons pour les comptes suivis."),
     ("assets/biblio-kathia.jpg", "Bibliothèque nationale du Luxembourg", "Institution culturelle",
      "Grand format en situ : nous maîtrisons l'encadrement et la pose de pièces monumentales pour les institutions patrimoniales. Nous assurons la conservation du papier, choisissons un verre adapté et travaillons avec discrétion dans les salles."),
     ("assets/ref-sodikart-maillot.jpg", "SODIKART", "Sport · mémorabilia",
@@ -1304,7 +1304,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
   </div>
   <aside class="c-kathia">
     <figure>
-      <div class="p-frame"><img src="assets/kathia-bleu.jpg" alt="Kathia Neumann, fondatrice d'Art'Cadres Luxembourg" width="800" height="1000" loading="eager" draggable="false"></div>
+      <div class="p-frame"><img src="assets/contact-boutique.jpg" alt="Kathia Neumann dans la boutique Art'Cadres à Hollerich" width="556" height="696" loading="eager" draggable="false"></div>
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>

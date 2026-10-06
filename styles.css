@@ -225,7 +225,7 @@ img[src*="biblio-kathia"]{object-fit:contain!important;background:var(--mat);}
 #acc .p-hw{position:relative;z-index:1;max-width:none;margin:0;width:100%;padding:0;}
 #acc .p-hw .p-eyebrow{color:var(--accent);}#acc .p-hw .p-eyebrow::before{background:var(--accent);}
 #acc .p-hw .p-h1{font-size:clamp(36px,5.2vw,64px);line-height:1.02;letter-spacing:-.025em;margin:0 0 var(--s4);max-width:14ch;color:var(--ink);text-wrap:balance;}
-#acc .p-hw .p-lead{color:var(--muted);max-width:44ch;}
+#acc .p-hw .p-lead{color:var(--muted);max-width:44ch;font-size:clamp(14.5px,1.3vw,16.5px);}
 .p-gtrust{display:inline-flex;align-items:center;gap:8px;margin:0 0 var(--s3);text-decoration:none;color:var(--ink);font-size:13px;letter-spacing:.01em;border:1px solid #2c1f1718;border-radius:999px;padding:7px 14px 7px 12px;background:#ffffff88;}
 .p-gtrust__stars{color:var(--accent);letter-spacing:1px;font-size:12px;line-height:1;}
 .p-gtrust strong{font-size:14px;font-weight:800;letter-spacing:-.02em;}
@@ -694,7 +694,6 @@ img[src*="biblio-kathia"]{object-fit:contain!important;background:var(--mat);}
 .realisations figure{margin:0;}
 .realisations .p-frame img{aspect-ratio:4/3;object-fit:cover;width:100%;}
 .realisations .p-frame img[src*="serie-portraits"]{object-position:center 28%;}
-.realisations .p-frame img[src*="ent-oeuvre"]{object-position:center 60%;}
 
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .p-frame:hover,.c-frame:hover,.ref-showcase__frame:hover,.tech-card__img:hover,.rest-step .p-frame:hover{
