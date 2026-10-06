@@ -167,6 +167,8 @@ body.nav-open{overflow:hidden;overscroll-behavior:none;}
 .p-hero{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
 .p-frame{padding:var(--s2);background:var(--mat);border:1px solid var(--line);border-radius:var(--r-frame);box-shadow:var(--shadow);transition:transform .55s var(--ease);}
 .p-frame img{display:block;width:100%;height:auto;border-radius:2px;}
+/* Photo Bibliothèque nationale : cadre vertical montré EN ENTIER partout (letterbox crème = passe-partout) */
+img[src*="biblio-kathia"]{object-fit:contain!important;background:var(--mat);}
 .p-cap{margin:14px 2px 0;font-size:13px;letter-spacing:.04em;color:var(--muted);}
 .p-cap--lg{margin-top:16px;font-size:16px;line-height:1.45;color:var(--ink);font-weight:700;}
 .p-cap--lg strong{font-weight:700;}
