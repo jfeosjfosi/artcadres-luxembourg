@@ -812,11 +812,11 @@ avis_cards = "".join(
     for n, s, t in avis)
 
 POLAROIDS = [
-    ("assets/hero-boutique.jpg", "Kathia Neumann dans la boutique Art'Cadres à Hollerich"),
-    ("assets/hero-boutique.jpg", ""),
-    ("assets/hero-boutique.jpg", ""),
-    ("assets/hero-boutique.jpg", ""),
-    ("assets/hero-boutique.jpg", ""),
+    ("assets/accueil-showroom.jpg", "Kathia Neumann dans la boutique Art'Cadres à Hollerich"),
+    ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
+    ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
+    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle, avant la pose"),
+    ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
 ]
 
 accueil_body = f'''<section id="acc">
