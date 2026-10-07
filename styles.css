@@ -686,8 +686,6 @@ img[src*="biblio-kathia"]{object-fit:contain!important;background:var(--mat);}
 .tech-card__img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;}
 .tech-card h3{margin:0 0 var(--s3);font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
 .tech-card p{margin:0;font-size:15px;line-height:1.6;color:var(--muted);max-width:42ch;}
-/* Hero accueil : photo showroom (remplace les polaroids) */
-#acc .p-hero-fig{margin:0;}
 /* Bande "Nos réalisations en entreprise" (institutions) : vues en situ paysage */
 .realisations{margin-top:var(--space-block);display:grid;grid-template-columns:1fr;gap:20px;}
 @media(min-width:720px){.realisations{grid-template-columns:repeat(2,1fr);gap:24px;}}

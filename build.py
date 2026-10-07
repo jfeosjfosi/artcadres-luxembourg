@@ -812,11 +812,11 @@ avis_cards = "".join(
     for n, s, t in avis)
 
 POLAROIDS = [
-    ("assets/kathia-portrait.jpg", "Kathia Neumann à l'atelier"),
-    ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
-    ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
-    ("assets/histoire-atelier-2.jpg", "Commande institutionnelle, avant la pose"),
-    ("assets/ac-mesure-2.jpg", "Échantillons de moulures à l'atelier"),
+    ("assets/hero-boutique.jpg", "Kathia Neumann dans la boutique Art'Cadres à Hollerich"),
+    ("assets/hero-boutique.jpg", ""),
+    ("assets/hero-boutique.jpg", ""),
+    ("assets/hero-boutique.jpg", ""),
+    ("assets/hero-boutique.jpg", ""),
 ]
 
 accueil_body = f'''<section id="acc">
@@ -833,7 +833,7 @@ accueil_body = f'''<section id="acc">
     <div class="p-lead"><p>Depuis plus de 30 ans, Art'Cadres Luxembourg met son savoir-faire artisanal au service de vos œuvres, photographies et objets.</p><p>Nous réalisons des encadrements sur mesure, du plus classique au plus contemporain, et proposons également des services de restauration, de dorure et de nettoyage de tableaux.</p><p>Chaque pièce est unique. Nous lui accordons le même soin et la même exigence, avec des conseils personnalisés pour trouver l'encadrement qui saura la mettre en valeur et la préserver.</p></div>
     <div class="p-btns">{btn_orange("Prendre rendez-vous à l'atelier", "contact.html")} {btn_plain("Voir le prix de mon cadre en ligne", "configurateur.html")}</div>
   </div>
-  <figure class="p-hero-fig"><div class="p-frame"><img src="assets/accueil-showroom.jpg" alt="Le showroom Art'Cadres à Hollerich : Kathia Neumann au comptoir et les murs d'échantillons Nielsen" width="1179" height="696" loading="eager"></div></figure>
+  {polaroid_stack(POLAROIDS)}
 </div>
 <div class="p-w">
   <div class="p-services reveal-in">{svc_html}</div>
