@@ -450,7 +450,7 @@ def crumbs_nav(active):
 def page(title, description, body, active, extra_head="", og_image=None, json_ld="", body_class="", noindex=False):
     slug = "" if active == "index.html" else active
     canonical = SITE_URL + ("/" if not slug else "/" + slug)
-    og_img = og_image or (SITE_URL + "/assets/ac-contact.jpg")
+    og_img = og_image or (SITE_URL + "/assets/og-default.jpg")
     head_extra = f"\n  {extra_head}" if extra_head else ""
     if json_ld:
         head_extra += f"\n  {json_ld}"
@@ -466,6 +466,9 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
   <meta name="description" content="{e(description)}">
   <meta name="robots" content="{'noindex, nofollow' if noindex else 'index, follow'}">
   <meta name="theme-color" content="#2c1f17">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta property="article:published_time" content="{DATE_PUBLISHED}">
   <meta property="article:modified_time" content="{date.today().isoformat()}">
   <link rel="canonical" href="{canonical}">
@@ -476,6 +479,10 @@ def page(title, description, body, active, extra_head="", og_image=None, json_ld
   <meta property="og:description" content="{e(description)}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{og_img}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{e(title)}">
+  <meta name="twitter:description" content="{e(description)}">
+  <meta name="twitter:image" content="{og_img}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -812,7 +819,7 @@ avis_cards = "".join(
     for n, s, t in avis)
 
 POLAROIDS = [
-    ("assets/accueil-showroom.jpg", "Kathia Neumann dans la boutique Art'Cadres à Hollerich"),
+    ("assets/boutique-kathia.jpg", "Kathia Neumann dans la boutique Art'Cadres à Hollerich"),
     ("assets/ac-contact.jpg", "Mur de baguettes à l'atelier Art'Cadres, Hollerich"),
     ("assets/histoire-atelier-1.jpg", "Œuvre encadrée sur chevalet à l'atelier"),
     ("assets/histoire-atelier-2.jpg", "Commande institutionnelle, avant la pose"),
@@ -1304,7 +1311,7 @@ contact_body = f'''<section id="contact" class="section"><div class="p-w">
   </div>
   <aside class="c-kathia">
     <figure>
-      <div class="p-frame"><img src="assets/contact-boutique.jpg" alt="Kathia Neumann dans la boutique Art'Cadres à Hollerich" width="556" height="696" loading="eager" draggable="false"></div>
+      <div class="p-frame"><img src="assets/boutique-kathia.jpg" alt="Kathia Neumann dans la boutique Art'Cadres à Hollerich" width="1000" height="1250" loading="eager" draggable="false"></div>
       <figcaption>
         <h3>Kathia Neumann</h3>
         <p class="c-founder__role">Fondatrice · Encadreur d'art</p>
