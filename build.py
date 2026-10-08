@@ -878,7 +878,7 @@ accueil_body = f'''<section id="acc">
       <div class="p-cta__action">{btn_orange("Composer mon cadre et voir le prix", "configurateur.html")}<p class="p-cta__note">Click &amp; Collect · retrait selon les stocks disponibles</p></div>
     </div>
     <figure class="p-cta__fig">
-      <div class="p-frame"><img src="assets/ac-contact.jpg" alt="Mur de baguettes à l'atelier Art'Cadres, Hollerich" loading="lazy"></div>
+      <div class="p-frame"><img src="assets/boutique-collage.jpg" alt="La boutique Art'Cadres à Hollerich : showroom, échantillons et espace galerie" loading="lazy"></div>
     </figure>
   </div>
 </div>
