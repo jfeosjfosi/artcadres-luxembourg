@@ -757,9 +757,9 @@ conf_hl_html = "".join(
 
 REF_VIGNETTES = [
     ("assets/ref-deloitte-hall.jpg", "Deloitte", "Grand format installé sur site"),
+    ("assets/biblio-kathia.jpg", "Bibliothèque nationale du Luxembourg", "Grand format en situ"),
     ("assets/ent-reunion.jpg", "Bureaux d'entreprise", "Photographies encadrées en salle de réunion"),
-    ("assets/ent-lounge.jpg", "Espace d'accueil", "Série encadrée en entreprise"),
-    ("assets/ent-oeuvre-situ.jpg", "En situation", "Œuvre grand format encadrée"),
+    ("assets/ref-accor-hotel.jpg", "Accor", "Mur d'œuvres encadrées, hôtel Mercure"),
 ]
 
 GAL_TEASER = [(f"assets/gal-{i:02d}.jpg", cap) for i, cap in [
