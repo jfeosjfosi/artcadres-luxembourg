@@ -1295,11 +1295,11 @@ galerie_body = f'''<section id="gal" class="section"><div class="p-w">
 
 # ================= CONTACT =================
 contact_body = f'''<section id="contact" class="section"><div class="p-w">
-<span class="p-eyebrow">Nous trouver</span>
-<h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
-<div class="c-lead reveal-in"><p>Que vous veniez pour un cadre, une restauration ou un projet d'entreprise, tout se passe au même endroit : notre atelier de Hollerich, à Luxembourg-Ville.</p></div>
 <div class="c-grid reveal-in">
   <div>
+    <span class="p-eyebrow">Nous trouver</span>
+    <h1 class="p-h1">Contact · Art'Cadres Luxembourg</h1>
+    <div class="c-lead"><p>Que vous veniez pour un cadre, une restauration ou un projet d'entreprise, tout se passe au même endroit : notre atelier de Hollerich, à Luxembourg-Ville.</p></div>
     <div class="c-info">
       <div class="c-row"><p class="c-lab">Téléphone</p><div class="c-val"><p><a href="tel:+35227849488" style="color:var(--accent);text-decoration:none">+352 27 84 94 88</a></p></div></div>
       <div class="c-row"><p class="c-lab">E-mail</p><div class="c-val"><p><a href="mailto:contact@artcadres.lu" style="color:var(--accent);text-decoration:none">contact@artcadres.lu</a></p></div></div>
