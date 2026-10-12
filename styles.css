@@ -801,3 +801,11 @@ body.theme-dark #conf .p-strip2{border-top-color:#ffffff1f;border-bottom-color:#
 body.theme-dark #avis .p-avis{background:#ffffff14;border-color:#ffffff14;}
 body.theme-dark .faq-item,body.theme-dark .faq-a,body.theme-dark .faq{border-color:#ffffff14;}
 body.theme-dark .site-footer{background:#000;}
+/* Lightbox (cliquer une image de contenu pour l'agrandir) */
+.zoomable{cursor:zoom-in;}
+body.lbox-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;}
+.lbox{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:clamp(10px,4vw,40px);background:rgba(13,13,15,.93);overscroll-behavior:contain;}
+.lbox.is-open{display:flex;}
+.lbox__img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:3px;background:#fff;box-shadow:0 30px 90px -20px rgba(0,0,0,.7);}
+.lbox__close{position:absolute;top:max(10px,env(safe-area-inset-top));right:14px;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:28px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.lbox__close:hover{background:rgba(255,255,255,.28);}

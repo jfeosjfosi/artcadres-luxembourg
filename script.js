@@ -258,3 +258,44 @@
     });
   }
 })();
+
+/* Lightbox : cliquer une image de contenu pour l'agrandir (mobile-first) */
+(function () {
+  var SEL = ".p-frame img, .g-frame img, .ref-showcase__frame img, .tech-card__img img, .inst-card__img img, .rest-ba img, .rest-steps img";
+  var imgs = [].slice.call(document.querySelectorAll(SEL)).filter(function (im) { return !im.closest("a"); });
+  if (!imgs.length) return;
+  var box, boxImg, sY = 0;
+  function build() {
+    box = document.createElement("div");
+    box.className = "lbox";
+    box.innerHTML = '<button type="button" class="lbox__close" aria-label="Fermer">×</button><img class="lbox__img" alt="">';
+    document.body.appendChild(box);
+    boxImg = box.querySelector(".lbox__img");
+    box.addEventListener("click", function (e) {
+      if (e.target === box || e.target.classList.contains("lbox__close")) close();
+    });
+  }
+  function open(src, alt) {
+    if (!box) build();
+    boxImg.setAttribute("src", src);
+    boxImg.setAttribute("alt", alt || "");
+    sY = window.scrollY || 0;
+    document.body.style.top = -sY + "px";
+    document.body.classList.add("lbox-open");
+    box.classList.add("is-open");
+  }
+  function close() {
+    if (!box) return;
+    box.classList.remove("is-open");
+    document.body.classList.remove("lbox-open");
+    document.body.style.top = "";
+    window.scrollTo(0, sY);
+  }
+  imgs.forEach(function (im) {
+    im.classList.add("zoomable");
+    im.addEventListener("click", function () { open(im.currentSrc || im.src, im.alt); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && box && box.classList.contains("is-open")) close();
+  });
+})();
