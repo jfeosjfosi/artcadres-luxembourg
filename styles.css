@@ -657,6 +657,7 @@ img[src*="biblio-kathia"]{object-fit:contain!important;background:var(--mat);}
 
 /* --- Restauration : avant / pendant / après --- */
 #dor .p-hero .p-frame img{aspect-ratio:4/5;object-fit:cover;object-position:center 22%;}
+#dor .p-hero .p-frame video.hero-video{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center;border-radius:2px;background:#161210;}
 .rest-work{margin-top:var(--space-block);}
 .rest-work .p-h2{margin-top:0;margin-bottom:22px;}
 .rest-steps{display:grid;grid-template-columns:1fr;gap:12px;}

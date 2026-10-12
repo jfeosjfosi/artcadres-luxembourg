@@ -1158,6 +1158,14 @@ dorures_body = f'''<section id="dor" class="section"><div class="p-w">
 <div class="p-endcta reveal"><h2>Confiez-nous votre tableau</h2><p>Apportez l'œuvre pour un diagnostic et un devis écrit, sans engagement. Merci de ne pas la démonter vous-même.</p><div class="p-cta">{btn_orange("Demander un diagnostic", "contact.html")}</div></div>
 </div></section>'''
 
+DORURE_VIDEO = ('<video class="hero-video" poster="assets/dorure-poster.jpg" autoplay muted loop '
+                'playsinline preload="metadata" '
+                'aria-label="Pose de feuille d\'or sur un cadre, atelier de dorure et restauration Art\'Cadres">'
+                '<source src="assets/dorure.mp4" type="video/mp4"></video>')
+dorures_body = dorures_body.replace(
+    '<img src="assets/rest-apres.jpg" alt="Restauration de tableaux au Luxembourg" width="1200" height="900" loading="eager">',
+    DORURE_VIDEO)
+
 # ================= INSTITUTIONS & ENTREPRISES =================
 INST_CASES = [
     ("assets/ref-deloitte-hall.jpg", "Deloitte Luxembourg", "Grand compte · B2B",
